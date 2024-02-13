@@ -1,0 +1,69 @@
+
+/* Start in Footer Section Style */
+.footer {
+    background-color: #212121;
+}
+
+.footer h6 {
+    color: #fff;
+}
+
+.footer .f_serves {
+    overflow: hidden;
+    width: 95%;
+}
+
+.footer .footer_serves {
+    background-color: #000;
+    width: auto;
+    padding: .5rem;
+    line-height: 3.5rem;
+    border-radius: 24px;
+    font-size: 14px;
+}
+
+.footer .social_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.footer .social_icon .fa-brand{
+    font-size: 1.7rem;
+    color: #fff;
+    margin-top: -.5rem !important;
+    margin: 0 1.2rem;
+}
+.footer .social_icon .fa-brand .facebook:hover,
+.footer .social_icon .fa-brand .twitter:hover,
+.footer .social_icon .fa-brand .instagram:hover{
+    margin-top: -1rem !important;
+    transition: all .5s;
+}
+
+.footer .footer_list {
+    list-style: none;
+    display: flex;
+    gap: .9rem;
+
+}
+
+
+.footer .footer_list .list_li {
+    color: #fff;
+    font-size: 14px;
+}
+.footer .footer_list .list_li:hover{
+    color: #008080 !important;
+    margin-top: -1rem !important;
+    transition: all .5s;
+}
+.footer .line::after {
+    content: "";
+    width: 86.5vw;
+    height: .1px;
+    background-color: #383838;
+    position: absolute;
+
+}
+
+/* End in Footer Section Style */

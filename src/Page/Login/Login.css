@@ -1,0 +1,140 @@
+.login{
+    background-image: linear-gradient(#fff,#008080) !important;
+    height: 100vh;
+    overflow: hidden;
+}
+.fa-x{
+    color: #008080;
+    font-size: 20px;
+    cursor: pointer;
+}
+.login_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_main .form{
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 3px solid #008080;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.form .form_head{
+    width: 40%;
+}
+.form .form_head h4{
+    color: #008080;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+.form .form-control{
+    padding: 10px 20px;
+    border-color: #008080;
+}
+.form .forget .forget_password{
+    text-decoration: none;
+    color: #008080 !important;
+    font-size: 15px;
+    font-weight: 500;
+}
+.form .forget .forget_password:hover{
+    margin-left: 2.5rem !important;
+    transition: all .5s;
+}
+.form .form-check .form-check-label{
+    color: #008080;
+    font-size: 15px;
+    font-weight: 500;
+}
+.submit_btn{
+    text-align: center;
+}
+.submit_btn .sing_in{
+    background-color: #008080;
+    color: #fff;
+    width: 80%;
+    font-size: 20px;
+    font-weight: 500;
+    border-color: #008080 !important;
+}
+.submit_btn .sing_in:hover{
+    color: #008080;
+    transition: all .5s;
+}
+.submit_btn p {
+    font-size: 16px;
+    font-weight: 500;
+}
+.submit_btn p .link_singup{
+    text-decoration: none;
+    color: #008080 !important;
+}
+.submit_btn p .link_singup:hover{
+    margin-left: 2rem;
+    transition: all .5s;
+}
+/* Sing Up */
+.singup .login_main{
+    margin: 0rem !important;
+}
+.pl1{
+    padding-left:0 !important ;
+}
+.pl2{
+    padding-right: 0 !important;
+}
+.singup .nationality{
+    width: 25%;
+    border-right: none;
+    border-radius: 5px 0 0 5px ;
+    border-color: #008080;
+}
+.singup .phone{
+    border-left: none;
+    border-radius: 0 5px 5px 0  ;
+    border-color: #008080;
+    padding-left: 0rem;
+}
+/*verify account */
+
+.Verify .login_main .form{
+    margin-top: 6rem !important;
+}
+.form-control-verify{
+    margin: .8rem;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid #008080;
+}
+.btn-verify,
+.send_again{
+    padding: 8px 35px ;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+.btn-verify{
+    background-color: #008080 !important;
+    color: #fff;
+    padding: 8px 35px !important;
+}
+.btn-verify:hover{
+    background-color: #fff !important;
+    color: #008080 !important;
+    border: 2px solid #008080 !important;
+}
+.send_again{
+    background-color: #fff;
+    color: #008080 !important;
+    border: 2px solid #008080 !important;
+}
+.send_again:hover{
+    background-color: #008080 !important;
+    color: #fff !important;
+}

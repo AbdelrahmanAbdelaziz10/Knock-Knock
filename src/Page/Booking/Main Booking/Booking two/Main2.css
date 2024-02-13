@@ -1,0 +1,72 @@
+.input_time{
+    border: 2px solid #008080 !important;
+    height: 7vh;
+    width: 90%;
+    padding: 0 .5rem;
+    border-radius: 4px;
+}
+.step_2{
+    overflow:hidden !important;
+}
+.display_none{
+    display: none;
+}
+.main_step_2{
+    overflow-y: hidden !important;
+}
+.massage{
+    border: 2px solid #008080;
+    height: 20vh;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: .8rem;
+}
+.phone_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000009f;
+    height: 100vh;
+    position: absolute;
+inset: 0;
+    z-index: 111111111;
+    height: 100vh;
+    overflow: hidden !important;
+}
+.phone_login .form{
+    width: 36vw;
+    padding: 1rem .5rem;
+}
+.phone_login .title{
+    border-bottom: 1px solid #00000038;
+    padding-bottom: 1rem;
+}
+.phone_login .title h5{
+    font-size: 19px;
+}
+.phone_login .exit_icon{
+    font-size: 26px;
+    cursor: pointer;
+}
+.phone_login .nationality_code{
+    width: 35%;
+    border: none;
+    border-bottom: 1px solid #008080;
+    border-radius: 0;
+}
+.phone_login .phone_code{
+    border: none !important;
+    border-bottom: 1px solid #008080 !important;
+    border-radius: 0;
+}
+.phone_login label{
+    color: #000000a1;
+}
+.phone_login .btn-verify{
+    width: 90%;
+}
+.ltr .massage{
+    padding-left: 1rem;
+    padding-top: .5rem;
+    margin-left: 1rem;
+}

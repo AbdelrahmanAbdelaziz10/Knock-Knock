@@ -1,0 +1,26 @@
+.product_head {
+    height: 50vh;
+}
+.product_head .head_image{
+    height: 100%;
+    width: 100%;
+}
+.product_head .home_icon{
+    color: #008080;
+    font-size: 20px;
+}
+.product_head span,
+.product_head .page1{
+    color: #000 !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+.btn-book{
+    width: 100%;
+}
+.ltr .btn-book{
+    margin-left: 7rem;
+}
+.rtl .btn-book{
+    margin-right: 7rem;
+}
