@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 import { Col } from "react-bootstrap";
 
-const PhoneNumber = () => {
+const PhoneNumber = ({test,setTest}) => {
     return (
         <div class="singup phone_login">
           <div class="container">
@@ -18,7 +18,7 @@ const PhoneNumber = () => {
                   <h5 className=" ">Log in or sign up </h5>
                   </Col>
                   <Col xs={2} lg={2} md={2} sm={2} >
-                  <IoMdExit className=" exit_icon" />
+                  <IoMdExit className=" exit_icon" onClick={()=>setTest(true)}/>
                   </Col>
                   </div>
     

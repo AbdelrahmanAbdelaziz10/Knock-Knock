@@ -11,10 +11,15 @@
     .navbar-brand {
         width: 16% !important;
     }
+    .dropmenu {
+        top: 6.5rem !important;
+        width: 35vw !important;
+        z-index: 1111;
+    }
 
     /* 2-Header Home */
     .header {
-        height: 45vh;
+        height: 75vh;
         background-position: 0 0 60px 0;
     }
 
@@ -25,7 +30,7 @@
     /* 2-All Serves- Serves Row -one Product */
     .card.one_Product {
         width: 84%;
-        height: 26vh;
+        height: 29vh;
     }
 
     .ltr .card.one_Product {
@@ -281,6 +286,14 @@
         height: 15vh;
         width: 110%;
     }
+    /* Start in Booking Step 4 page responsive */
+    /* 1-main Serves Details - product Head */
+    .ltr .payment .visa{
+        margin-left: 8.5rem !important;
+    }
+    .rtl .payment .visa{
+        margin-right: 8.5rem !important;
+    }
 
     /* Start in Log In page responsive */
     .login .login_main {
@@ -350,7 +363,12 @@
     .navbar-brand {
         width: 18% !important;
     }
-
+    .dropmenu {
+        top: 4rem !important;
+        right: 2rem;
+        width: 75vw !important;
+        z-index: 1111;
+    }
     /* 2-Header Home */
     .header {
         height: 50vh;
@@ -828,6 +846,14 @@
         width: 90%;
         left: 1.8rem;
     }
+        /* Start in Booking Step 4 page responsive */
+    /* 1-main Serves Details - product Head */
+    .ltr .payment .visa{
+        margin-left: 5rem !important;
+    }
+    .rtl .payment .visa{
+        margin-right: 5rem !important;
+    }
 }
 @media (max-width: 375px) {
         .phone_login .form .form-select {
@@ -867,5 +893,28 @@
     .time_input .input_time {
         height: 5.5vh;
         width: 93%;
+    }
+            /* Start in Booking Step 4 page responsive */
+    /* 1-main Serves Details - product Head */
+    .payment .create_pay{
+        width: 95% !important;
+    }
+    .ltr .payment .create_pay{
+        margin-left: .5rem !important;
+    }
+    .rtl .payment .create_pay{
+        margin-right: .5rem !important;
+    }
+    .ltr .payment .visa{
+        margin-left: 2rem !important;
+    }
+    .rtl .payment .visa{
+        margin-right: 2rem !important;
+    }
+    .payment .nots .icon{
+        font-size:5rem !important;
+    }
+    .payment .nots .btn-details{
+        margin-top: 8rem;
     }
 }

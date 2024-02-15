@@ -1,6 +1,10 @@
 {
     "title":"hallow in home page",
     "language":"english",
+    "login":"Sing Up",
+    "singup":"Sing Up",
+    "help":"Help",
+    "Usa":" United Arab Emirates",
     "h-title":"The first application for providing home services",
     "h-search":"Where would you like to receive the service?",
     "h-input":"Search for area, street, landmark...",

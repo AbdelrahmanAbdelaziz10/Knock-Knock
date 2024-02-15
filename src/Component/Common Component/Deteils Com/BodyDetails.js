@@ -64,7 +64,7 @@ const BodyDetails = () => {
             </div>
 
             </div>
-            <div className="col-lg-12 row justify-content-center add_btn ">
+            {/* <div className="col-lg-12 row justify-content-center add_btn ">
             <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
                     <button className="btn decincrease">
                         <IoRemoveOutline className="remove"/>
@@ -85,7 +85,7 @@ const BodyDetails = () => {
                     <Link to="" className="btn btn-Add">Add To Card</Link>
                     </Col>
                 </div>
-
+ */}
 
 
             </div>

@@ -1,5 +1,4 @@
 
-
 .dropmenu {
     position: absolute;
     top: 5.4rem;
@@ -107,7 +106,7 @@
 }
 
 .dropmenu .country_name p {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -126,12 +125,24 @@
     color: #fff;
     border-radius: 15px;
 }
-
+.dropmenu .btn-login:hover {
+    background-color: #ffd03e;
+    opacity: .8;
+}
 .dropmenu .row.border_top {
     padding-top: 1rem !important;
     border-top: 1px solid #0000006c;
     border-radius: 0;
 
 }
-
+.rtl .dropmenu .fa-circle-question{
+    margin-left: .5rem;
+}
+.ltr .dropmenu .fa-circle-question{
+    margin-right: .5rem;
+}
+.ltr .dropmenu .direction{
+    direction: ltr !important;
+    text-align: left;
+}
 /* End In NavBar Section Style */

@@ -20,13 +20,8 @@ const MainBook2 = () => {
   }
   return (
     <>
-              {test===false?
-      (   
-        <PhoneNumber />
-      )
-      :
-      (null)}
-    <div className={test===false?('main_step_2'):(null)}>
+              {test===false?( <PhoneNumber test={test} setTest={setTest} />):(null)}
+    <div className={test===false?('main_step_2 display_none'):("")}>
           <NavBar />
           <div className="main_book py-lg-3 py-md-2 pb-5">
       <Container className='booking_container'>

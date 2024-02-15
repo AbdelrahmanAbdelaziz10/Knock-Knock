@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from '../Component/Common Component/NavBar/NavBar'
 import Footer from '../Component/Common Component/Footer/Footer'
 import MainProductDetails from '../Component/Main ProductDeteils  com/MainProductDeteils'

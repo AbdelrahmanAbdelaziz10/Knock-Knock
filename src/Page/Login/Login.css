@@ -162,6 +162,11 @@
 }
 
 /* Phone Number */
+.phone_login{
+    position: fixed;
+    height: auto;
+    overflow: hidden !important;
+}
 .phone_login .form{
     padding: 1rem .5rem;
 }

@@ -1,3 +1,7 @@
+.product_details_false{
+    overflow-y: hidden !important;
+    height: 100vh !important;
+}
 .product_head {
     height: 50vh;
 }

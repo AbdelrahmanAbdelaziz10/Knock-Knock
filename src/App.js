@@ -15,6 +15,8 @@ import BookPage from './Page/Booking/BookPage';
 import MainBook2 from './Page/Booking/Main Booking/Booking two/MainBook2';
 import PhoneNumber from './Page/phonenumber/PhoneNumber';
 import './style/mediaquery.css'
+import { CheckOutpage } from './Page/Checkout/CheckOutpage';
+import Location from './Page/Location/Location';
 export const ContextLang = createContext();
 
 function App() {
@@ -30,8 +32,10 @@ function App() {
               <Route path="/peivateserves" element={<PrivateServes />} />
               <Route path="/productdeteils" element={<ProductDeteils />} />
               <Route path="/serves_details" element={<ServesDetiels />} />
+              <Route path="/location" element={<Location />} />
               <Route path="/booking" element={<BookPage />} />
               <Route path="/booking_step2" element={<MainBook2 />} />
+              <Route path="/checkout" element={<CheckOutpage />} />
               <Route path="/login" element={<Login /> } />
               <Route path="/singup" element={<SingUp /> } />
               <Route path="/verify" element={<Verify /> } />
