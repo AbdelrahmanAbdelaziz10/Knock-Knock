@@ -12,35 +12,36 @@ import product4 from "../../../images/product4.svg"
 import private3 from "../../../images/private3.svg";
 import OneServe from './OneServe'
 import OneProduct from './OneProduct'
+import { Col } from 'react-bootstrap'
 export const ServesRow = ({title,link}) => {
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">
-        <div className="col-lg-10">
+        <Col xs={9} lg={10} md={9} sm={9} className="">
             <h4>
                 {title}
             </h4>
-        </div>
-        <div className="col-lg-2">
+        </Col>
+        <Col xs={3} lg={2} md={3} sm={3} className="">
             <Link to={link} className="link" > <span>See More</span></Link>
-        </div>
+        </Col>
 
     </div>
     {
         title==="Products Section"? (
             <div className="row servies">
-            <div className="col-lg-3 ">
+            <Col xs={6} lg={3} md={6} sm={6} className=" mb-5">
             <OneProduct img={product1} name={"Sunny oil"} prise={"40"} discount={"-30%"} link={"/productdeteils"} />
-            </div>
-            <div className="col-lg-3 ">
+            </Col>
+            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
             <OneProduct img={product2} name={"Flour"} prise={"10"} discount={"-30%"} link={"/productdeteils"} />
-            </div>
-            <div className="col-lg-3 ">
+            </Col>
+            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
             <OneProduct img={product3} name={"Dasani"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
-            </div>
-            <div className="col-lg-3 ">
+            </Col>
+            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
             <OneProduct img={product4} name={"suger"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
-            </div>
+            </Col>
             </div>
         ):(       
             <div className="row servies">

@@ -10,7 +10,7 @@ const HeaderHome = () => {
     <header class="header">
         <div class="container row justify-content-center">
             <div class="header_text col-lg-8">
-                <h2>
+                <h2 className='text-center'>
                 {t("h-title")}
                 </h2>
                 <div class="header_form">

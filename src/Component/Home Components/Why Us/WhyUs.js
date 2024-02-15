@@ -4,6 +4,7 @@ import star from '../../../images/star.svg'
 import calendar from '../../../images/calendar (1).svg'
 import topQuality from "../../../images/topquality.PNG";
 import  goApp from "../../../images/gooapp.PNG"
+import { Col } from 'react-bootstrap';
 const WhyUs = () => {
   return (
             <section className="Why-Us py-5">
@@ -15,7 +16,7 @@ const WhyUs = () => {
                 <p className="text-center">إليك أفضل 4 أسباب!</p>
             </div>
             <div className="row ">
-                <div className="col-lg-3">
+                <Col xs={6} lg={3} md={6} sm={6} className="">
                     <div className="card">
                         <div className="why-us-icon">
                             <img src={star} alt="star"/>
@@ -25,8 +26,8 @@ const WhyUs = () => {
                             <p>خبراؤنا ذوو ثقة ومدربون بشكل احترافي، وحاصلون على تقييمٍ 4.78 من 5!</p>
                         </div>
                     </div>
-                </div>
-                <div className="col-lg-3">
+                </Col>
+                <Col xs={6} lg={3} md={6} sm={6} className="">
                     <div className="card">
                         <div className="why-us-icon">
                             <img src={calendar } alt=""/>
@@ -38,8 +39,8 @@ const WhyUs = () => {
                             <p>احجز جلستك في أقل من 60 ثانية، كما يمكنك تحديد موعداً في اليوم نفسه.</p>
                         </div>
                     </div>
-                </div>
-                <div className="col-lg-3">
+                </Col>
+                <Col xs={6} lg={3} md={6} sm={6} className="">
                     <div className="card">
                         <div className="why-us-icon">
                             <img className="mt-3" src={topQuality}alt=""/>
@@ -50,8 +51,8 @@ const WhyUs = () => {
                                 خدماتنا بعين الاعتبار.</p>
                         </div>
                     </div>
-                </div>
-                <div className="col-lg-3">
+                </Col>
+                <Col xs={6} lg={3} md={6} sm={6} className="">
                     <div className="card">
                         <div className="why-us-icon">
                             <img src={goApp} alt=""/>
@@ -62,7 +63,7 @@ const WhyUs = () => {
                                 نلبي جميع احتياجاتك!</p>
                         </div>
                     </div>
-                </div>
+                </Col>
             </div>
         </div>
 

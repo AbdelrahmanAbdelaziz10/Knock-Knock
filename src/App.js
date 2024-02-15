@@ -14,7 +14,7 @@ import { ServesDetiels } from './Page/ServesDetiels';
 import BookPage from './Page/Booking/BookPage';
 import MainBook2 from './Page/Booking/Main Booking/Booking two/MainBook2';
 import PhoneNumber from './Page/phonenumber/PhoneNumber';
-
+import './style/mediaquery.css'
 export const ContextLang = createContext();
 
 function App() {

@@ -12,18 +12,18 @@ const MainServes = () => {
     <div className="main_serves my-4">
       <Container>
         <div className="row servies">
-          <OneServe img={product1} link={""}/>
-          <OneServe img={product2} link={""} />
-          <OneServe img={product3} link={""} />
-          <OneServe img={product4} link={""} />
-          <OneServe img={product1} link={""} />
-          <OneServe img={product2} link={""} />
-          <OneServe img={product3} link={""} />
-          <OneServe img={product4} link={""} />
-          <OneServe img={product1} link={""} />
-          <OneServe img={product2} link={""} />
-          <OneServe img={product3} link={""} />
-          <OneServe img={product4} link={""} />
+          <OneServe img={product1} link={"/serves_details"}/>
+          <OneServe img={product2} link={"/serves_details"} />
+          <OneServe img={product3} link={"/serves_details"} />
+          <OneServe img={product4} link={"/serves_details"} />
+          <OneServe img={product1} link={"/serves_details"} />
+          <OneServe img={product2} link={"/serves_details"} />
+          <OneServe img={product3} link={"/serves_details"} />
+          <OneServe img={product4} link={"/serves_details"} />
+          <OneServe img={product1} link={"/serves_details"} />
+          <OneServe img={product2} link={"/serves_details"} />
+          <OneServe img={product3} link={"/serves_details"} />
+          <OneServe img={product4} link={"/serves_details"} />
         </div>
       </Container>
     </div>

@@ -35,9 +35,23 @@
 }
 .form-control{
     border: 2px solid #008080d2 !important;
-    border-right: 0px !important;
     padding: 0 .5rem;
     height: 7vh !important;
+}
+
+.ltr .form-control{
+    border-right: 0px !important;
+}
+.rtl .form-control{
+    border-left: 0px !important;
+    border-right: 2px solid #008080 !important;
+    border-radius: 0 5px 5px 0 !important;
+
+}
+.rtl .input-group-text{
+    border-right: 0 !important;
+    border-left: 2px solid #008080 !important;
+    border-radius: 5px 0 0 5px !important;
 }
 .input-group-text{
     height: 7vh !important;
@@ -131,5 +145,5 @@
     margin-right: .5rem;
 }
 .rtl .nots .icon{
-    margin-right: .5rem;
+    margin-left: .5rem;
 }

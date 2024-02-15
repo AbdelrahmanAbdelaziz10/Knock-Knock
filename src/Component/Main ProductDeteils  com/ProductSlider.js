@@ -22,7 +22,7 @@ const ProductSlider = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide className="SwiperSlide swiper-slide-thumb-active">
+        <SwiperSlide className="SwiperSlide ">
         <div className="swiper_img">
         <img src={sunoil} alt="" />
         </div>

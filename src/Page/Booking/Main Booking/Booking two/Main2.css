@@ -33,38 +33,6 @@ inset: 0;
     height: 100vh;
     overflow: hidden !important;
 }
-.phone_login .form{
-    width: 36vw;
-    padding: 1rem .5rem;
-}
-.phone_login .title{
-    border-bottom: 1px solid #00000038;
-    padding-bottom: 1rem;
-}
-.phone_login .title h5{
-    font-size: 19px;
-}
-.phone_login .exit_icon{
-    font-size: 26px;
-    cursor: pointer;
-}
-.phone_login .nationality_code{
-    width: 35%;
-    border: none;
-    border-bottom: 1px solid #008080;
-    border-radius: 0;
-}
-.phone_login .phone_code{
-    border: none !important;
-    border-bottom: 1px solid #008080 !important;
-    border-radius: 0;
-}
-.phone_login label{
-    color: #000000a1;
-}
-.phone_login .btn-verify{
-    width: 90%;
-}
 .ltr .massage{
     padding-left: 1rem;
     padding-top: .5rem;

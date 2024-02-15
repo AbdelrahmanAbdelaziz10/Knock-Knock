@@ -20,9 +20,9 @@ const DateTime = () => {
     <div className="row date_time step_2">
       <h5 className="mb-3">When would you like your service?</h5>
       <div className="delivery_date step_2 row mb-4">
-        <div className="col-lg-6">
+        <div className="col-lg-6 col-md-6">
           <h5>
-            Delivery <span>Date</span>{" "}
+            Delivery <span>Date</span>
           </h5>
           <label>
             <Datepicker
@@ -32,7 +32,7 @@ const DateTime = () => {
             />
           </label>
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-6 col-md-6">
           <h5>
             Delivery <span>time</span>
           </h5>
@@ -56,8 +56,7 @@ const DateTime = () => {
         <Col xs={11} lg={11} md={11}>
           <h5>Any instructions or special requirements?</h5>
           <div className="">
-            <textarea className="massage" placeholder="Example:Sink is leaking, i have a faulty wire, A/C is making noise,
-            etc." />
+            <textarea className="massage" placeholder="Example:Sink is leaking, i have a faulty wire, A/C is making noise, etc." />
           </div>
         </Col>
       </div>

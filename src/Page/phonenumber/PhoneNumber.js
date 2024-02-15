@@ -2,35 +2,37 @@ import React from "react";
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
+import { Col } from "react-bootstrap";
 
 const PhoneNumber = () => {
     return (
         <div class="singup phone_login">
           <div class="container">
             <div class="row login_main mt-4">
-              <div class="col-lg-5 col-md-9 ">
+              <Col xs={11} lg={5} md={8} sm={11} class="col-lg-5 col-md-8 ">
                 <form
                   class="row form g-3 mb-5 mt-3"
-                  method="POST"
-                  action="{{route('register.store')}}"
                 >
                   <div class=" mb-3 row title">
-                    <h5 className="col-lg-10">Log in or sign up </h5>
-                    <IoMdExit className="col-lg-2 exit_icon" />
-
+                  <Col xs={10} lg={10} md={10} sm={11} >
+                  <h5 className=" ">Log in or sign up </h5>
+                  </Col>
+                  <Col xs={2} lg={2} md={2} sm={2} >
+                  <IoMdExit className=" exit_icon" />
+                  </Col>
                   </div>
     
                   <div class="col-lg-12 row col-md-12 my-3">
                     <div class="row justify-content-center">
-                    <label>Your phone number</label>
-                    <div class="mb-2 d-flex">
-                            <select class="form-select nationality_code" aria-label="Default select example">
+                    <label className="mb-3">Your phone number</label>
+                    <div class=" d-flex justify-content-center">
+                            <select class="form-select nationality" aria-label="Default select example">
                                 <option selected>Egy +20</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                               </select>
-                              <input type="number" class="form-control phone_code" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number" />
+                              <input type="number" class="form-control phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number" />
 
                           </div>
                     </div>
@@ -43,7 +45,7 @@ const PhoneNumber = () => {
 
                   </div>
                 </form>
-              </div>
+              </Col>
             </div>
           </div>
         </div>

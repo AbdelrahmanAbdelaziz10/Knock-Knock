@@ -2,19 +2,20 @@ import React from 'react'
 import '../Login/Login.css'
 import logo from '../../images/Logo.png'
 import { Link } from 'react-router-dom'
+import { Col } from 'react-bootstrap'
 export const SingUp = () => {
   return (
     <div class="login singup">
         <div class="container">
             <div class="row login_main mt-4">
-                <div class="col-lg-5 col-md-9 ">
+                <Col xs={10} lg={5} ms={8} sm={10} >
                     <form class="row form g-3  mt-3">
                         <i class="fa-solid fa-x"></i>
                         <div class="form_head text-center mb-3">
                             <img class="" src={logo} alt="" />
                             <h4> Sing Up</h4>
                         </div>
-                        <div class="col-lg-12 col-md-12 my-2 row">
+                        <div class="col-lg-12 col-md-12 my-lg-2 my-md-2 row media">
                             <div class="col-lg-6 col-md-6 pl1">
                                 <input type="text" class="form-control" id="inputEmail" name="firstname" placeholder="First Name" />
                             </div>
@@ -24,7 +25,7 @@ export const SingUp = () => {
         
                         </div>
 
-                        <div class="mb-2 d-flex">
+                        <div class="mb-lg-2 mb-md-2 d-flex">
                             <select class="form-select nationality" aria-label="Default select example">
                                 <option selected>Egy +20</option>
                                 <option value="1">One</option>
@@ -47,7 +48,7 @@ export const SingUp = () => {
 
                         </div>
                     </form>
-                </div>
+                </Col>
             </div>
         </div>
 

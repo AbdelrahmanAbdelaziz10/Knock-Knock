@@ -11,7 +11,7 @@ const MainProductDetails = () => {
     <div className='main_product_details'>
     <Container>
     <div className='row'>
-    <ProductHead img={headimg}/>
+    <ProductHead img={headimg} page1={"Product"} page2={"Sunny Oil"}/>
     <ProductSlider />
     </div>
     <BodyDetails />

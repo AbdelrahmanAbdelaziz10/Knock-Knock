@@ -8,7 +8,7 @@
   .mySwiper .swiper-slide {
     width: 25%;
     height: 100%;
-    opacity: .7;
+    opacity: 1;
   }
   
   .mySwiper .swiper-slide-thumb-active {

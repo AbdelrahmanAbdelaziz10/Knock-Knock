@@ -51,11 +51,11 @@ const BodyDetails = () => {
             Select date and time of delivery
             </h5>
             <div className="delivery_date row mb-4">
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-md-6">
                 <h5>Delivery <span>Date</span> </h5>
                 <label><Datepicker selected={selectDate} onChange={date=>setSelectDate(date)}  customInput={<CustomInput />}/></label> 
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-md-6">
             <h5>Delivery <span>time</span></h5>
             <div className="time_input">
                 <input type="time" className="input_time" />
@@ -65,7 +65,7 @@ const BodyDetails = () => {
 
             </div>
             <div className="col-lg-12 row justify-content-center add_btn ">
-            <div className="col-lg-3">
+            <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
                     <button className="btn decincrease">
                         <IoRemoveOutline className="remove"/>
                     </button>
@@ -75,15 +75,15 @@ const BodyDetails = () => {
                     <button className="btn increase">
                         <IoAddOutline className="add"/>
                     </button>
-                    </div>
-                    <div className="col-lg-5 mt-2">
+                    </Col>
+                    <Col xs={6} lg={5} md={5} sm={6} className="col-lg-5 col-md-5 mt-2">
                     <button className=" total_price mt-2">
                     Total Price: 200 AED
                     </button>
-                    </div>
-                    <div className="col-lg-4 mt-3 ">
+                    </Col>
+                    <Col xs={12} lg={4} md={3} sm={12} className="col-lg-4 col-md-3 mt-3 ">
                     <Link to="" className="btn btn-Add">Add To Card</Link>
-                    </div>
+                    </Col>
                 </div>
 
 

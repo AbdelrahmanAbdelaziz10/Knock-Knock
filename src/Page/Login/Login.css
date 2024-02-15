@@ -84,11 +84,20 @@
 .singup .login_main{
     margin: 0rem !important;
 }
+.ltr .singup .form-control{
+    border-right: 2px solid #008080 !important;
+}
+.rtl .singup .form-control{
+    border-left: 2px solid #008080 !important;
+}
 .pl1{
-    padding-left:0 !important ;
+    padding-left:0rem !important ;
+    margin-bottom: 1rem;
 }
 .pl2{
     padding-right: 0 !important;
+    margin-bottom: 1rem;
+
 }
 .singup .nationality{
     width: 25%;
@@ -101,6 +110,19 @@
     border-radius: 0 5px 5px 0  ;
     border-color: #008080;
     padding-left: 0rem;
+}
+.singup .form .form-select{
+    border: 2px solid #2d9696 !important;
+    width: 35%;
+}
+.ltr .singup .form .form-select{
+    border-right: 0 !important;
+}
+.rtl .singup .form .form-select{
+    border-left: 0 !important;
+}
+.ltr .singup .form-control.phone{
+    border-left: 0 !important;
 }
 /*verify account */
 
@@ -137,4 +159,40 @@
 .send_again:hover{
     background-color: #008080 !important;
     color: #fff !important;
+}
+
+/* Phone Number */
+.phone_login .form{
+    padding: 1rem .5rem;
+}
+.phone_login .title{
+    border-bottom: 1px solid #00000038;
+    padding-bottom: 1rem;
+}
+.phone_login .title h5{
+    font-size: 19px;
+}
+.phone_login .exit_icon{
+    font-size: 26px;
+    cursor: pointer;
+}
+.phone_login .nationality_code{
+    width: 35%;
+    border: none;
+    border-bottom: 1px solid #008080;
+    border-radius: 0;
+}
+.phone_login .phone_code{
+    border: none !important;
+    border-bottom: 1px solid #008080 !important;
+    border-radius: 0;
+}
+.phone_login label{
+    color: #000000a1;
+}
+.phone_login .btn-verify{
+    width: 90%;
+}
+.phone_login .form .form-select{
+    width: 40% !important;
 }

@@ -2,14 +2,15 @@ import React from 'react'
 import logo from '../../images/Logo.png'
 import './Login.css'
 import { Link } from 'react-router-dom'
+import { Col } from 'react-bootstrap'
 const Login = () => {
   return (
 
     <div className="login">
 
         <div className="container">
-            <div className="row login_main mt-4">
-                <div className="col-lg-5 col-md-9 ">
+            <div className="row login_main">
+                <Col xs={10} lg={5} md={7} sm={10} >
                     <form className="row form g-3 mb-5" method="POST" action="{{route('register.store')}}">
                         <i className="fa-solid fa-x"></i>
                         <div className="form_head text-center mb-2">
@@ -31,8 +32,8 @@ const Login = () => {
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                 <label className="form-check-label" for="exampleCheck1">Check me out</label>
                               </div>
-                            <div className="col-6 forget ps-5">
-                                <Link to="" className="forget_password ms-2">
+                            <div className="col-6 forget ps-lg-5 ps-md-4">
+                                <Link to="" className="forget_password ms-lg-2">
                                     Forget Password
                                 </Link>
                             </div>
@@ -44,7 +45,7 @@ const Login = () => {
 
                         </div>
                     </form>
-                </div>
+                </Col>
 
             </div>
         </div>

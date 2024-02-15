@@ -17,7 +17,10 @@
 .sponser img {
     width: 100%;
 }
-
+.Justlife_protects h2,
+.Justlife_protects p{
+    color: #fff;
+}
 .Justlife_protects .sponsor_text {
     margin-right: 3rem;
 }

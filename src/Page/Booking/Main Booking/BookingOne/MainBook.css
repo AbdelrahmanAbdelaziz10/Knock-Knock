@@ -1,5 +1,9 @@
 .main_book{
     background-color: #e9e8e8 !important;
+    overflow-y: hidden ;
+}
+.booking_row_main{
+    gap: 1.5rem;
 }
 .serves_col{
     height: 55vh !important ;
@@ -88,7 +92,7 @@
 .booking_details {
     border-radius: 5px;
     padding: 1rem 2rem !important;
-    height: 50vh;
+    height: auto;
     background-color: #fff;
 }
 
@@ -130,6 +134,9 @@
 
 .rtl .booking_details ul li span {
     padding-left: 1rem;
+}
+.booking_details .serves_name{
+    margin: 0 !important;
 }
 /* Booking Details */
 .total{

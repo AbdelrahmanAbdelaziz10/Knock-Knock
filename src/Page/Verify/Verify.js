@@ -3,18 +3,16 @@ import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Link } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
+import { Col } from "react-bootstrap";
 
 const Verify = () => {
   return (
     <div class="login Verify">
       <div class="container">
         <div class="row login_main mt-4">
-          <div class="col-lg-5 col-md-9 ">
+          <Col xs={11} lg={5} md={7} sm={11} class="">
             <form
-              class="row form g-3 mb-5 mt-3"
-              method="POST"
-              action="{{route('register.store')}}"
-            >
+              class="row form g-3 mb-5 mt-3">
             {/* <IoMdExit class="fa-solid fa-x"/> */}
               <div class="form_head text-center mb-3">
                 <img class="" src={logo} alt="" />
@@ -63,7 +61,7 @@ const Verify = () => {
                 </Link>
               </div>
             </form>
-          </div>
+          </Col>
         </div>
       </div>
     </div>

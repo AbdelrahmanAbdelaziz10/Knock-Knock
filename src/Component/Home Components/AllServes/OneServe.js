@@ -1,9 +1,10 @@
 import React from 'react'
+import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const OneServe = ({img,link}) => {
   return (
-    <div className="col-lg-3 text-center">
+    <Col xs={6} lg={3} md={3} sm={6} className="text-center">
     <div className="servies_image">
         <Link to={link} className="link">
             <img src={img} alt=""/>
@@ -11,7 +12,7 @@ const OneServe = ({img,link}) => {
         </Link>
 
     </div>
-</div>
+</Col>
   )
 }
 

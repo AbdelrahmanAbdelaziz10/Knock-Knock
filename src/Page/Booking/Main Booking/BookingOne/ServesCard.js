@@ -6,12 +6,12 @@ export const ServesCard = ({img,title,prag,price}) => {
   return (
     <Card className="book_card ">
     <div className='row add_serves'>
-      <Col xs={6} lg={3} md={3} sm={6}>
+      <Col xs={4} lg={3} md={3} sm={4}>
         <div className='serv_img'>
           <img src={img} alt=''/>
         </div>
         </Col>
-        <Col xs={6} lg={9} md={9} sm={6}>
+        <Col xs={8} lg={9} md={9} sm={8}>
         <div className='serv_text'>
         <h6>{title}</h6>
         <p>{prag}</p>
