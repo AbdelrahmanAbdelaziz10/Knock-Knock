@@ -53,10 +53,10 @@ const Verify = () => {
               </div>
 
               <div class="col-12 submit_btn mt-4">
-                <Link type="submit" class="btn mb-4 mx-2 btn-verify">
+                <Link to="/" type="submit" class="btn mb-4 mx-2 btn-verify">
                   Verify
                 </Link>
-                <Link type="submit" class="btn mb-4 mx-2 send_again">
+                <Link to="phone" type="submit" class="btn mb-4 mx-2 send_again">
                   Send Again
                 </Link>
               </div>

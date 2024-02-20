@@ -11,7 +11,7 @@ const Login = () => {
         <div className="container">
             <div className="row login_main">
                 <Col xs={10} lg={5} md={8} sm={10} >
-                    <form className="row form g-3 mb-5" method="POST" action="{{route('register.store')}}">
+                    <form className="row form g-3 mb-5" >
                         <i className="fa-solid fa-x"></i>
                         <div className="form_head text-center mb-2">
                             <img className="" src={logo} alt=""/>
@@ -40,8 +40,8 @@ const Login = () => {
                         </div>
 
                         <div className="col-12 submit_btn mt-4">
-                            <button type="submit" className="btn mb-4 mx-4 sing_in">Log In</button>
-                            <p>Don't Have An account? <Link to="" className='link_singup'>Sing Up</Link></p>
+                            <Link to="/phone" type="submit" className="btn mb-4 mx-4 sing_in">Log In</Link>
+                            <p>Don't Have An account? <Link to="/singup" className='link_singup'>Sing Up</Link></p>
 
                         </div>
                     </form>

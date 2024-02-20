@@ -43,8 +43,8 @@ export const SingUp = () => {
                         </div>
 
                         <div class="col-12 submit_btn mt-4">
-                            <button type="submit" class="btn mb-4 mx-4 sing_in">Sing Up</button>
-                            <p>Already Have an Account? <Link to="" className='link_singup'>Log In</Link></p>
+                            <Link to="/login" type="submit" class="btn mb-4 mx-4 sing_in">Sing Up</Link>
+                            <p>Already Have an Account? <Link to="/login" className='link_singup'>Log In</Link></p>
 
                         </div>
                     </form>
