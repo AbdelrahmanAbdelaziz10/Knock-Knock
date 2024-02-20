@@ -30,16 +30,16 @@ export const ServesRow = ({title,link}) => {
     {
         title==="Products Section"? (
             <div className="row servies">
-            <Col xs={6} lg={3} md={6} sm={6} className=" mb-5">
+            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
             <OneProduct img={product1} name={"Sunny oil"} prise={"40"} discount={"-30%"} link={"/productdeteils"} />
             </Col>
-            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
+            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
             <OneProduct img={product2} name={"Flour"} prise={"10"} discount={"-30%"} link={"/productdeteils"} />
             </Col>
-            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
+            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
             <OneProduct img={product3} name={"Dasani"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
             </Col>
-            <Col xs={6} lg={3} md={6} sm={6}  className=" mb-5">
+            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
             <OneProduct img={product4} name={"suger"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
             </Col>
             </div>

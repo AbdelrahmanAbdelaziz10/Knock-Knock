@@ -26,6 +26,7 @@
 }
 .form .form_head{
     width: 40%;
+    margin-top: -1rem !important;
 }
 .form .form_head h4{
     color: #008080;
@@ -90,14 +91,17 @@
 .rtl .singup .form-control{
     border-left: 2px solid #008080 !important;
 }
-.pl1{
+.ltr .pl1{
     padding-left:0rem !important ;
-    margin-bottom: 1rem;
 }
-.pl2{
+.rtl .pl1{
+    padding-left:1rem !important ;
+}
+.ltr .pl2{
     padding-right: 0 !important;
-    margin-bottom: 1rem;
-
+}
+.rtl .pl2{
+    padding-left: 0 !important;
 }
 .singup .nationality{
     width: 25%;
@@ -125,7 +129,9 @@
     border-left: 0 !important;
 }
 /*verify account */
-
+.Verify .form_head{
+    margin-top: 0 !important;
+}
 .Verify .login_main .form{
     margin-top: 6rem !important;
 }
@@ -199,5 +205,5 @@
     width: 90%;
 }
 .phone_login .form .form-select{
-    width: 40% !important;
+    width: 30% !important;
 }

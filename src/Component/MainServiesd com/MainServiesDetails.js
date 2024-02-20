@@ -46,9 +46,12 @@ const MainServiesDetails = ({changeTest}) => {
             </div>
 
             <div className="col-lg-9 mt-3">
-              <button className="btn btn-book" onClick={changeTest}>
+            <Link to="/cart_shop" className="btn btn-book" >
                 Book Now
-              </button>
+              </Link>
+              {/* <button className="btn btn-book" onClick={changeTest}>
+                Book Now
+              </button> */}
             </div>
           </div>
         </Container>

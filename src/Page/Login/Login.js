@@ -10,7 +10,7 @@ const Login = () => {
 
         <div className="container">
             <div className="row login_main">
-                <Col xs={10} lg={5} md={7} sm={10} >
+                <Col xs={10} lg={5} md={8} sm={10} >
                     <form className="row form g-3 mb-5" method="POST" action="{{route('register.store')}}">
                         <i className="fa-solid fa-x"></i>
                         <div className="form_head text-center mb-2">

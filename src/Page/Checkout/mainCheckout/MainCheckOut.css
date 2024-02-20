@@ -36,7 +36,7 @@
 }
 .payment .visa{
     color: #1434cb;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 .ltr .payment .visa{
     margin-left: 9.5rem;
@@ -60,4 +60,17 @@
 }
 .payment .nots .icon{
     margin: 0 .7rem;
+}
+.payment_title .change_card{
+    color: #008080 !important;
+    font-size: 18px;
+    font-weight: 500;
+}
+.payment_title .change_card:hover{
+    color: #000 !important;
+    transition: all .5s !important;
+    margin-top: -.5rem !important;
+}
+.payment_title{
+    justify-content: space-between;
 }

@@ -10,6 +10,7 @@ import NavBar from "../Component/Common Component/NavBar/NavBar";
 import AllServes from "../Component/Home Components/AllServes/AllServes";
 import HeaderHome from "../Component/Home Components/Header/HeaderHome";
 import { Serves } from './../Component/Home Components/Serves/Serves';
+import AboutSay from "../Component/Home Components/About Say/AboutSay";
 
 const Homepage = () => {
   const { t, i18n } = useTranslation();
@@ -27,6 +28,7 @@ const Homepage = () => {
       <Serves />
       <WhyUs />
       <Sponsor />
+      <AboutSay />
       <DownloadApp />
       <Footer />
     </div>

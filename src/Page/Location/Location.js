@@ -8,8 +8,8 @@ const Location = ({test,setTest}) => {
     return (
         <div class= {test===true?("display_none"):("singup phone_login")}>
           <div class="container">
-            <div class="row login_main mt-4">
-              <Col xs={11} lg={5} md={8} sm={11} class="col-lg-5 col-md-8 ">
+            <div class="row login_main mt-4 justify-content-center">
+              <Col xs={12} lg={6} md={10} sm={12} class=" ">
                 <form
                   class="row form g-3 mb-5 mt-3"
                 >
@@ -26,7 +26,7 @@ const Location = ({test,setTest}) => {
                     <div class="row justify-content-center">
                     <label className="mb-3">ADDRESS DETAILS</label>
                     <div class=" d-flex justify-content-center">
-                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ADDRESS DETAILS" />
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ADDRESS DETAILS" />
 
                           </div>
                     </div>

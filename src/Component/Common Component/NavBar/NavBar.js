@@ -12,6 +12,15 @@ import appstore from "../../../images/appstore.png";
 import flag from "../../../images/Flag_of_the_United_Arab_Emirates 1.png";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Col } from "react-bootstrap";
+import { IoPersonCircleSharp } from "react-icons/io5";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaCreditCard } from "react-icons/fa";
+import { TbGiftCard } from "react-icons/tb";
+import { LiaHandsHelpingSolid } from "react-icons/lia";
+import { MdOutlineSettings } from "react-icons/md";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { MdPolicy } from "react-icons/md";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const NavBar = () => {
   const { t, i18n } = useTranslation();
@@ -122,7 +131,109 @@ const NavBar = () => {
         </div>
       </div>
 
+      {/* Profile after login Dropdown  */}
       <div
+        className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
+        id="country"
+      >
+        {/* <p>حدد الدولة</p> */}
+        <Link to="/profile" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <IoPersonCircleSharp />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("profile")}</p>
+          </Col>
+        </Link>
+        {/* Add more country dropdown options if needed  */}
+        <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <FaLocationDot />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Address")}</p>
+          </Col>
+        </Link>
+        <Link to="/credits" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <FaCreditCard />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Payment_Methods")}</p>
+          </Col>
+        </Link>
+        <Link to="/send_gift" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <TbGiftCard />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Gift_Card")}</p>
+          </Col>
+        </Link>
+        
+        <Link to="/your-order" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <FaCalendarAlt />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Booking")}</p>
+          </Col>
+        </Link>
+        <Link to="/contact" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <LiaHandsHelpingSolid />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Get_Help")}</p>
+          </Col>
+        </Link>
+        <Link to='/privacy_policy' className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <MdPolicy />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("policy")}</p>
+          </Col>
+        </Link>
+        {/* <div className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <MdOutlineSettings />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Setting")}</p>
+          </Col>
+        </div> */}
+        <div className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <RiLogoutCircleRLine />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p className="log_out"> {t("Log_Out")}</p>
+          </Col>
+        </div>
+      </div>
+
+      {/* Profile before login Dropdown  */}
+
+      {/* <div
         className={test2 === true ? "display-block dropmenu" : "dropmenu"}
         id="signup"
       >
@@ -150,7 +261,7 @@ const NavBar = () => {
             <img src={googleplay} alt="Google Play" />
           </Col>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

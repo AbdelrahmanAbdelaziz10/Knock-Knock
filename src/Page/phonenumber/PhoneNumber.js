@@ -9,7 +9,7 @@ const PhoneNumber = ({test,setTest}) => {
         <div class="singup phone_login">
           <div class="container">
             <div class="row login_main mt-4">
-              <Col xs={11} lg={5} md={8} sm={11} class="col-lg-5 col-md-8 ">
+              <Col xs={11} lg={6} md={10} sm={11} class="col-lg-5 col-md-8 ">
                 <form
                   class="row form g-3 mb-5 mt-3"
                 >
@@ -38,7 +38,7 @@ const PhoneNumber = ({test,setTest}) => {
                     </div>
                   </div>
     
-                  <div class="col-12 submit_btn mt-4">
+                  <div class="row justify-content-center submit_btn mt-4">
                     <Link type="submit" class="btn mb-4 mx-2 btn-verify" to="/verify">
                       Continue
                     </Link>

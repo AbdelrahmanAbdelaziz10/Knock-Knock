@@ -15,7 +15,7 @@ export const MainCheckOut = () => {
     <div className="main_book py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">
         <Row className="booking_row_main ">
-          <BookHead stepnum={3} title={"Check Out"} />
+          {/* <BookHead stepnum={3} title={"Check Out"} /> */}
           <Col
             xs={12}
             lg={7}
@@ -23,9 +23,15 @@ export const MainCheckOut = () => {
             sm={12}
             className="border main_col py-3 ps-lg-4"
           >
-            <div className="serves_col">
+            <div className="">
               <div className="payment ">
-                <h4>Payment Method</h4>
+              <div className="payment_title d-flex" >
+              <h4>Payment Method</h4> 
+                <Link to="/credit_card" className="change_card">
+                  <span className="">Change</span>
+                </Link>
+              </div>
+
                 <div className="create_pay mb-4">
                   <Row className="row">
                     <Col xs={9} lg={10} md={7} sm={9}>
@@ -119,14 +125,9 @@ export const MainCheckOut = () => {
                 <h6 className="col-lg-5">Serves:</h6>
                 <p className="col-lg-7">Handyman & Maintenance</p>
               </div>
-              <div className="row">
-                <h6 className="col-lg-5">Serves Details:</h6>
-                <div className="col-lg-7 d-block">
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                </div>
+              <div className="row d-flex">
+                <h6 className="col-lg-5">Phone:</h6>
+                <p className="serves_name col-lg-7">+20115269845</p>
               </div>
             </Col>
             <Col
@@ -138,11 +139,35 @@ export const MainCheckOut = () => {
             >
               <h4>Payment Summary</h4>
               <div className="row">
-                <Col xs={7} lg={7} md={5} sm={7}>
+                <Col xs={7} lg={7} md={6} sm={7}>
+                  <h6 className=" ">sub Total:</h6>
+                </Col>
+                <Col xs={5} lg={5} md={6} sm={5}>
+                  <p className=""> 20 AED</p>
+                </Col>
+              </div>
+              <div className="row">
+                <Col xs={7} lg={7} md={6} sm={7}>
+                  <h6 className=" ">delivery fee:</h6>
+                </Col>
+                <Col xs={5} lg={5} md={6} sm={5}>
+                  <p className="">40 AED </p>
+                </Col>
+              </div>
+              <div className="row">
+                <Col xs={7} lg={7} md={6} sm={7}>
+                  <h6 className=" ">Tax:</h6>
+                </Col>
+                <Col xs={5} lg={5} md={6} sm={5}>
+                  <p className="">10 AED</p>
+                </Col>
+              </div>
+              <div className="row price_total">
+                <Col xs={7} lg={7} md={6} sm={7}>
                   <h6 className=" ">Total:</h6>
                 </Col>
-                <Col xs={5} lg={5} md={7} sm={5}>
-                  <p className="">AED 165.00</p>
+                <Col xs={5} lg={5} md={6} sm={5}>
+                  <p className="">30 AED</p>
                 </Col>
               </div>
             </Col>

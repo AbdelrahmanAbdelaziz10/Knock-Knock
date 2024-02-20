@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../AllServes/AllServes.css"
+import { Col } from 'react-bootstrap'
 const OneProduct = ({img,name,prise,discount,link}) => {
   return (
     <div className="card one_Product">
@@ -14,7 +15,9 @@ const OneProduct = ({img,name,prise,discount,link}) => {
             <h6>AED {prise} <span>{discount}</span></h6>
             <Link to={link} className="btn btn-deteils">Details</Link>
     </div>
-</div>  )
+</div>
+
+  )
 }
 
 export default OneProduct

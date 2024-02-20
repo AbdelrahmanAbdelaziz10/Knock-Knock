@@ -56,7 +56,7 @@ const DateTime = () => {
         <Col xs={11} lg={11} md={11}>
           <h5>Any instructions or special requirements?</h5>
           <div className="">
-            <textarea className="massage" placeholder="Example:Sink is leaking, i have a faulty wire, A/C is making noise, etc." />
+            <textarea className="c" placeholder="Example:Sink is leaking, i have a faulty wire, A/C is making noise, etc." />
           </div>
         </Col>
       </div>

@@ -8,7 +8,7 @@ export const SingUp = () => {
     <div class="login singup">
         <div class="container">
             <div class="row login_main mt-4">
-                <Col xs={10} lg={5} ms={8} sm={10} >
+                <Col xs={10} lg={5} md={8} sm={10} >
                     <form class="row form g-3  mt-3">
                         <i class="fa-solid fa-x"></i>
                         <div class="form_head text-center mb-3">

@@ -14,7 +14,7 @@ const MainProductDetails = () => {
 
   return (
     <>
-    <div className='main_product_details'>
+    <div className='main_product_details py-3'>
     <Container>
     <div className='row'>
     <ProductHead img={headimg} page1={"Product"} page2={"Sunny Oil"}/>
@@ -23,7 +23,7 @@ const MainProductDetails = () => {
     <BodyDetails />
     <div className="row time_date">
     <div className="col-lg-12 row justify-content-center add_btn ">
-    <h5>Number Of Hours</h5>
+    {/* <h5>Number Of Hours</h5> */}
 
             <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
                     <button className="btn decincrease">
@@ -42,7 +42,7 @@ const MainProductDetails = () => {
                     </button>
                     </Col>
                     <Col xs={12} lg={4} md={3} sm={12} className="col-lg-4 col-md-3 mt-3 ">
-                    <Link to="" className="btn btn-Add">Add To Card</Link>
+                    <Link to="/cart_shop" className="btn btn-Add">Add To Card</Link>
                     </Col>
                 </div>
 
