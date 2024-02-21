@@ -13,7 +13,9 @@ import private3 from "../../../images/private3.svg";
 import OneServe from './OneServe'
 import OneProduct from './OneProduct'
 import { Col } from 'react-bootstrap'
+import useFetch from '../../../hooks/useFetch'
 export const ServesRow = ({title,link}) => {
+
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">

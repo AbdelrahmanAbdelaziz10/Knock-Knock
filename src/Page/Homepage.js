@@ -11,6 +11,7 @@ import AllServes from "../Component/Home Components/AllServes/AllServes";
 import HeaderHome from "../Component/Home Components/Header/HeaderHome";
 import { Serves } from './../Component/Home Components/Serves/Serves';
 import AboutSay from "../Component/Home Components/About Say/AboutSay";
+import { SwiperHeader } from "../Component/Home Components/Header/SwiperHeader";
 
 const Homepage = () => {
   const { t, i18n } = useTranslation();
@@ -23,7 +24,8 @@ const Homepage = () => {
   return (
     <div className="homepage">
       <NavBar />
-      <HeaderHome />
+      {/* <HeaderHome /> */}
+      <SwiperHeader />
       <AllServes />
       <Serves />
       <WhyUs />
