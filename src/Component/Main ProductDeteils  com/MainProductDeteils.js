@@ -8,16 +8,18 @@ import headimg from '../../images/product1.svg'
 import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import Location from '../../Page/Location/Location'
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next'
 
 const MainProductDetails = () => {
-
+    const {t,i18n}=useTranslation()
 
   return (
     <>
     <div className='main_product_details py-3'>
     <Container>
     <div className='row'>
-    <ProductHead img={headimg} page1={"Product"} page2={"Sunny Oil"}/>
+    <ProductHead img={headimg} page1={t("all_product_product")} page2={t("all_product_product1_name")}/>
     <ProductSlider />
     </div>
     <BodyDetails />
@@ -38,7 +40,7 @@ const MainProductDetails = () => {
                     </Col>
                     <Col xs={6} lg={5} md={5} sm={6} className="col-lg-5 col-md-5 mt-2">
                     <button className=" total_price mt-2">
-                    Total Price: 200 AED
+                    {t("total_price")} 200 {t("price")}
                     </button>
                     </Col>
                     <Col xs={12} lg={4} md={3} sm={12} className="col-lg-4 col-md-3 mt-3 ">

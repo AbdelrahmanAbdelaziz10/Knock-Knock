@@ -147,3 +147,12 @@
 .rtl .nots .icon{
     margin-left: .5rem;
 }
+.btn_day{
+    opacity: .8;
+}
+.btn_day.action{
+    opacity: 1;
+}
+.day_booking.col p{
+    margin: 0 .1rem;
+}

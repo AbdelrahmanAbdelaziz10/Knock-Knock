@@ -16,7 +16,12 @@
     transition: all .5s;
 
 }
-
+.ltr .allservice .see_more.link {
+    margin-left: 5rem !important;
+}
+.rtl .allservice .see_more.link {
+    margin-right: 5rem !important;
+}
 .servies_image img {
     height: 100% !important;
     width: 105% !important;
@@ -80,8 +85,14 @@ font-weight: 500;
 line-height: 14px;
 letter-spacing: 0em;
 text-align: left;
-padding-left: 3rem;
+color: red;
 
+}
+.ltr .card.one_Product .card_text_product h6 span{
+    padding-left: 3rem;
+}
+.rtl .card.one_Product .card_text_product h6 span{
+    padding-right: 3.5rem;
 }
 .card.one_Product .card_text_product .btn-deteils{
     color: #fff;

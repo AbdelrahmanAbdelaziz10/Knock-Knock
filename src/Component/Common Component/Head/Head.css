@@ -17,12 +17,13 @@ img{
     width: 100%;
     height: 100%;
 }
-.head_serves .head_text{
+ .head_serves .head_text{
     position: absolute;
     top: 5rem;
     left: 40%;
     z-index: 11;
 }
+
 .head_serves .head_text h2{
     color: #fff !important;
     font-size: 2.4rem;
@@ -37,5 +38,5 @@ img{
     margin-left: 4rem;
 }
 .rtl .head_serves .head_text .home_icon{
-    margin-right: 5rem;
+    margin-right: 3rem;
 }

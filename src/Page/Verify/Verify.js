@@ -4,8 +4,11 @@ import logo from "../../images/Logo.png";
 import { Link } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 import { Col } from "react-bootstrap";
+import { i18n } from 'i18next';
+import { useTranslation } from "react-i18next";
 
 const Verify = () => {
+  const {t,i18n}=useTranslation()
   return (
     <div class="login Verify">
       <div class="container">
@@ -16,7 +19,9 @@ const Verify = () => {
             {/* <IoMdExit class="fa-solid fa-x"/> */}
               <div class="form_head text-center mb-3">
                 <img class="" src={logo} alt="" />
-                <h4> Verify Account</h4>
+                <h4>
+                  {t("verify_title")}
+                </h4>
               </div>
 
               <div class="col-lg-12 row col-md-12 my-3">
@@ -54,10 +59,11 @@ const Verify = () => {
 
               <div class="col-12 submit_btn mt-4">
                 <Link to="/" type="submit" class="btn mb-4 mx-2 btn-verify">
-                  Verify
+                {t("verify_btn1")}
+
                 </Link>
                 <Link to="phone" type="submit" class="btn mb-4 mx-2 send_again">
-                  Send Again
+                {t("verify_btn2")}
                 </Link>
               </div>
             </form>

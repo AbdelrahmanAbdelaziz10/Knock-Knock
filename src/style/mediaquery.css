@@ -27,7 +27,6 @@
     top: 12rem;
   }
 
-
   
     .header {
         height: 75vh;
@@ -114,7 +113,15 @@
     .main_product .servies .card.one_Product .card_text_product h6 span {
         padding-left: 2rem;
     }
-
+    .ltr .head_serves .head_text .home_icon{
+        margin-left: 3rem;
+    }
+    .rtl .head_serves .head_text .home_icon{
+        margin-right: 2.5rem;
+    }
+    .rtl .card.one_Product .card_text_product h6 span {
+        padding-right: 1rem;
+    }
     /* Start in Serves Details page responsive */
     /* 1-main Serves Details - product Head */
     .main_product_details .product_head {
@@ -397,6 +404,12 @@
     .rtl .main_card h5 {
         margin-right: 2rem;
     }
+    .day_booking{
+        margin: 0 2px 10px 0 !important;
+    }
+    .date_day{
+        margin: 0 !important;
+    }
 }
 
 
@@ -548,10 +561,15 @@
         z-index: 11;
     }
 
-    .ltr .head_serves .head_text .home_icon {
-        margin-left: 0rem;
+    .ltr .head_serves .head_text .home_icon{
+        margin-left: 2rem;
     }
-
+    .rtl .head_serves .head_text .home_icon{
+        margin-right: .2rem;
+    }
+    .rtl .card.one_Product .card_text_product h6 span {
+        padding-right: 2rem;
+    }
     /* 2-Main Product */
     .ltr .card.one_Product {
         margin-left: 1rem;

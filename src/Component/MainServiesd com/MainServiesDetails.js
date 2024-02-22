@@ -8,8 +8,11 @@ import { FaCircleExclamation } from 'react-icons/fa6';
 import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import Location from '../../Page/Location/Location';
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const MainServiesDetails = ({changeTest}) => {
+  const {t,i18n}=useTranslation()
 
   return (
     <>
@@ -17,19 +20,23 @@ const MainServiesDetails = ({changeTest}) => {
       <div className="main_product_details mb-4">
         <Container>
           <div className="row my-3">
-            <ProductHead img={serves} page1={'Private Services'} page2={'Insecticide spraying service'} />
+            <ProductHead img={serves} page1={t('home_category1')} page2={t("serviess")} />
           </div>
           <BodyDetails />
 
           <div className="nots mb-4">
             <FaCircleExclamation className="icon" />
-            <p>Free cancellation until 12 hours before the start of your booking</p>
-            <span className=" btn-details">Details</span>
+            <p>
+            {t("serves_details_massage")}
+            </p>
+            <span className=" btn-details">{t("details_details")}</span>
           </div>
 
           <div className="row time_date">
             <div className="col-lg-12 row justify-content-center add_btn ">
-              <h5>Number Of Hours</h5>
+              <h5>
+              {t("serves_details_hours")}
+              </h5>
 
               <Col xs={6} lg={6} md={6} sm={6} className="col-lg-3 col-md-4">
                 <button className="btn decincrease">
@@ -41,13 +48,14 @@ const MainServiesDetails = ({changeTest}) => {
                 </button>
               </Col>
               <Col xs={6} lg={6} md={6} sm={6} className="col-lg-5 col-md-5 mt-2">
-                <button className=" total_price mt-2">Total Price: 200 AED</button>
+                <button className=" total_price mt-2">{t("total_price")}
+  200 {t("price")}</button>
               </Col>
             </div>
 
             <div className="col-lg-9 mt-3">
             <Link to="/cart_shop" className="btn btn-book" >
-                Book Now
+              {t("serves_details_btn")}
               </Link>
               {/* <button className="btn btn-book" onClick={changeTest}>
                 Book Now

@@ -25,25 +25,25 @@ const MainContact = () => {
             <form className="form_contact border">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
-                  Email address
+                {t("contact_email")}
                 </label>
                 <input
                   type="email"
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="Enter Your Mail"
+                  placeholder={t("contact_email_placeholder")}
                 />
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
-                  Massage
+                  {t("contact_massage")}
                 </label>
-                <textarea className="massage" placeholder="Your Massage" />
+                <textarea className="massage" placeholder={t("contact_email_placeholder")} />
               </div>
 
               <button type="submit" class="btn btn_submit">
-                Submit
+                {t("contact_btn")}
               </button>
             </form>
           </Col>

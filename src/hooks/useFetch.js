@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const Domain = "https://dashboard.knock-knock.ae" ;
 export const useFetch = (url) => {
-    const [getdata,setGetData]=useState(null)
+    const [data,setData]=useState(null)
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
   
@@ -11,7 +11,7 @@ export const useFetch = (url) => {
         try {
             setLoading(true);
             const res = await axios.get(`${Domain}${url}`);
-            setGetData(res.data);
+            setData(res.data);
         } catch (error) {
             setError(error);
             console.error("Error fetching data:", error);
@@ -23,7 +23,7 @@ export const useFetch = (url) => {
     useEffect(()=>{
         getFetchFunction(url)
     },[url])
-    return  { getdata, error, loading };
+    return  { data, error, loading };
 
 
     }

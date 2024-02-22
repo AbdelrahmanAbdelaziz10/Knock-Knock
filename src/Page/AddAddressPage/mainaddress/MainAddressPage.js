@@ -27,7 +27,7 @@ const MainAddressPage = () => {
                   </Link>
                 </Col>
                 <Col xs={10} lg={10} md={10} sm={10} className="">
-                  <h4 className="text-center">Addresses</h4>
+                  <h4 className="text-center">{t("address_title")}</h4>
                 </Col>
               </div>
 
@@ -38,12 +38,12 @@ const MainAddressPage = () => {
                     class="form-control"
                     id="inputAddress"
                     name="address"
-                    placeholder="55 Abu Dhobi st"
+                    placeholder={t("address_title")}
                   />
                 </div>
                 <div class="col-8 submit_btn mt-4">
                   <button type="submit" class="btn mb-4 mx-4 sing_in">
-                    Add New Address
+                  {t("address_btn")}
                   </button>
                 </div>
               </div>

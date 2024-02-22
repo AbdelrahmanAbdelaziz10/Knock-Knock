@@ -11,8 +11,11 @@ import './creditswiper.css';
 // import required modules
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function CreditSwiper() {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Swiper
@@ -25,28 +28,31 @@ export default function CreditSwiper() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <h5 className='mb-4'>BASIC PACKAGE </h5>
-            <p className='descend mb-4'>AED 300</p>
-            <h4 className='mb-3'>AED 279</h4>
-            <p>Get <strong>AED 300</strong>  worth of knock knock credit for price of <strong>AED 279</strong> </p>
-            <p>Earn <strong>8% More</strong> <br/>  Vaild for 30 days on all home services</p>
-            <Link to="/checkout" className='btn btn_next' >Buy Now</Link>
+            <h5 className='mb-4'>{t("buy_bacge_h")} </h5>
+            <p className='descend mb-4'>{t("price")} 300</p>
+            <h4 className='mb-3'>{t("price")} 279</h4>
+            <p>{t("buy_bacge_p1")} </p>
+            
+            <p>{t("buy_bacge_p2.1")} <br/>{t("buy_bacge_p2.2")}  </p>
+            <Link to="/checkout" className='btn btn_next' >{t("buy_bacge_btn")}</Link>
         </SwiperSlide>
         <SwiperSlide>
-            <h5 className='mb-4'>BASIC PACKAGE </h5>
-            <p className='descend mb-4'>AED 300</p>
-            <h4 className='mb-3'>AED 279</h4>
-            <p>Get <strong>AED 300</strong>  worth of knock knock credit for price of <strong>AED 279</strong> </p>
-            <p>Earn <strong>8% More</strong> <br/>  Vaild for 30 days on all home services</p>
-            <Link to="/checkout" className='btn btn_next' >Buy Now</Link>
+            <h5 className='mb-4'>{t("buy_bacge_h")} </h5>
+            <p className='descend mb-4'>{t("price")} 300</p>
+            <h4 className='mb-3'>{t("price")} 279</h4>
+            <p>{t("buy_bacge_p1")} </p>
+            
+            <p>{t("buy_bacge_p2.1")} <br/>{t("buy_bacge_p2.2")}  </p>
+            <Link to="/checkout" className='btn btn_next' >{t("buy_bacge_btn")}</Link>
         </SwiperSlide>
         <SwiperSlide>
-            <h5 className='mb-4'>BASIC PACKAGE </h5>
-            <p className='descend mb-4'>AED 300</p>
-            <h4 className='mb-3'>AED 279</h4>
-            <p>Get <strong>AED 300</strong>  worth of knock knock credit for price of <strong>AED 279</strong> </p>
-            <p>Earn <strong>8% More</strong> <br/>  Vaild for 30 days on all home services</p>
-            <Link to="/checkout" className='btn btn_next' >Buy Now</Link>
+            <h5 className='mb-4'>{t("buy_bacge_h")} </h5>
+            <p className='descend mb-4'>{t("price")} 300</p>
+            <h4 className='mb-3'>{t("price")} 279</h4>
+            <p>{t("buy_bacge_p1")} </p>
+            
+            <p>{t("buy_bacge_p2.1")} <br/>{t("buy_bacge_p2.2")}  </p>
+            <Link to="/checkout" className='btn btn_next' >{t("buy_bacge_btn")}</Link>
         </SwiperSlide>
       </Swiper>
     </>

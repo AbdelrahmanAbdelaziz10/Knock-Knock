@@ -17,9 +17,9 @@ const MainBuyCredit = () => {
     <div className='main_buy'>
     <div className='row justify-content-center '>
     <Col xs={10} lg={6} md={7} sm={10} className='text-center pt-3 knock_credit'>
-    <p className=''>Knock Knock</p>
+    {/* <p className=''>Knock Knock</p> */}
     <h4> 
-    Credit Packages
+    {t("buy_credit_title")}
     </h4>
     </Col>
 
@@ -40,7 +40,7 @@ const MainBuyCredit = () => {
                   </Link>
                 </Col>
                 <Col xs={10} lg={9} md={10} sm={10} className="">
-                  <h4 className="text-center">Pay Less & Get More</h4>
+                  <h4 className="text-center">{t("buy_credit_h")}</h4>
                 </Col>
               </div>
 
@@ -53,9 +53,7 @@ const MainBuyCredit = () => {
                   className=" text-center buy_credit card"
                 >
                   <p>
-                    Select a package that suits you best and earn
-                    <strong> up to 18%</strong>
-                    on all services
+                  {t("credit_buy_p")}
                   </p>
                 </Col>
               </Row>
@@ -70,7 +68,9 @@ const MainBuyCredit = () => {
                 >
                 <Link to="/send_gift" className="d-flex">
                 <TbGiftCard className="gift_credit" />
-                  <p>Send a Gift Card</p>
+                  <p>
+                    {t("gift_title")}
+                  </p>
                 </Link>
 
                 </Col>

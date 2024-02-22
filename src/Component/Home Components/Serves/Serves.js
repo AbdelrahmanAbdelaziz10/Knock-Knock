@@ -11,17 +11,20 @@ import t_person from "../../../images/technical-person.svg"
 import air from "../../../images/air-conditioner.svg"
 import { FaVanShuttle } from "react-icons/fa6";
 import { Col } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 export const Serves = () => {
+    const {t,i18n} = useTranslation()
+
   return (
     <section className="Servies py-5">
         <div className="container">
             <div className="row title mb-4">
                 <h4 className=" text-center">
-                    اترك قائمة مهامك لخبرائنا!
+                {t("home_serve_title")}
                 </h4>
                 <p className="text-center">
-                    تفقّد بعض أفضل خدماتنا المنزلية:
+                {t("home_serve_p")}
                 </p>
             </div>
             <div className="row servies_div">
@@ -30,7 +33,9 @@ export const Serves = () => {
                         <img src={clean} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p> عمال نظافة</p>
+                        <p>  
+                        {t("home_serve_title1")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -38,7 +43,9 @@ export const Serves = () => {
                         <img src={technical} alt="technical person"/>
                     </div>
                     <div className="card_head">
-                        <p>عمالة فنية</p>
+                        <p> 
+                        {t("home_serve_title2")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -46,7 +53,9 @@ export const Serves = () => {
                     <FaVanShuttle className="fa-solid fa-truck"/>
                     </div>
                     <div className="card_head">
-                        <p> نقل المواد</p>
+                        <p>
+                        {t("home_serve_title3")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -54,7 +63,9 @@ export const Serves = () => {
                         <img src={air_condition} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p>صيانة للمكيفات</p>
+                        <p>
+                        {t("home_serve_title4")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -62,7 +73,9 @@ export const Serves = () => {
                         <img src={barber} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p> صالونك المنزلي</p>
+                        <p>
+                        {t("home_serve_title5")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -70,7 +83,9 @@ export const Serves = () => {
                         <img src={fitness} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p>مدرب خاص</p>
+                        <p>
+                        {t("home_serve_title6")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -78,7 +93,9 @@ export const Serves = () => {
                         <img src={pest} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p>مكافحة الحشرات</p>
+                        <p>
+                        {t("home_serve_title7")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -86,7 +103,9 @@ export const Serves = () => {
                         <img src={baby} alt="baby seater"/>
                     </div>
                     <div className="card_head">
-                        <p>جليسة اطفال</p>
+                        <p>
+                        {t("home_serve_title8")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -94,7 +113,9 @@ export const Serves = () => {
                         <img src={t_person} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p>كوافير نسائي</p>
+                        <p>
+                        {t("home_serve_title9")}
+                        </p>
                     </div>
                 </Col>
                 <Col xs={4} lg={2} md={3} sm={4} className="servies_card col-lg-2 col-md-3">
@@ -102,7 +123,9 @@ export const Serves = () => {
                         <img src={air} alt=""/>
                     </div>
                     <div className="card_head">
-                        <p> تنظيف المخازن</p>
+                        <p>
+                        {t("home_serve_title10")}
+                        </p>
                     </div>
                 </Col>
             </div>

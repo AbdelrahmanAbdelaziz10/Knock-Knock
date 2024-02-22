@@ -44,7 +44,7 @@ function App() {
               <Route path="/peivateserves" element={<PrivateServes />} />
               <Route path="/productdeteils" element={<ProductDeteils />} />
               <Route path="/serves_details" element={<ServesDetiels />} />
-              <Route path="/location" element={<Location />} />
+              {/* <Route path="/location" element={<Location />} /> */}
               {/* <Route path="/booking_step2" element={<MainBook2 />} /> */}
               <Route path="/checkout" element={<CheckOutpage />} />
               <Route path="/login" element={<Login /> } />

@@ -7,8 +7,11 @@ import { FaCircleExclamation } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import greenVisa from "../../../images/visagreen.png"
 import redVisa from "../../../images/visared.png"
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next'
 
 const MainCreditCard = () => {
+  const {t,i18n}=useTranslation()
   return (
     <div className="main_book main_card py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">
@@ -22,13 +25,17 @@ const MainCreditCard = () => {
           >
             <div className="">
               <div className="payment ">
-                <h3 className='text-center'>Credit Cards</h3>
+                <h3 className='text-center'>
+                {t("credit_title")}
+                </h3>
                 <div className="create_pay mb-4">
                   <Row className="row">
                     <Col xs={9} lg={10} md={9} sm={9}>
                       <h6 className="credit">
                         <FaRegCreditCard className="create" />
-                        <span>Credit / Debit Card</span>
+                        <span>
+                        {t("add_card_visa")}
+                        </span>
                       </h6>
                     </Col>
 
@@ -40,13 +47,17 @@ const MainCreditCard = () => {
                 </div>
 
                 <Row className="px-lg-4 justify-content-center">
-                <h5>QNB BANK</h5>
+                <h5>
+                {t("credit_Qnb")}
+                </h5>
                   <Col xs={8} md={7} lg={7} sm={8} className="mb-4">
                   <div className='visa_img'>
                   <img src={greenVisa} alt='' />
                   </div>
                   </Col>
-                  <h5>CIB BANK</h5>
+                  <h5>
+                  {t("credit_Cib")}
+                  </h5>
                   <Col xs={8} md={7} lg={7} sm={8} className="mb-4">
                   <div className='visa_img'>
                   <img src={redVisa} alt='' />
@@ -59,7 +70,7 @@ const MainCreditCard = () => {
             </div>
             <div className="row">
               <Link to="/add_card" className="btn btn_next">
-                Add New Card
+              {t("add_card_title")}
               </Link>
             </div>
           </Col>

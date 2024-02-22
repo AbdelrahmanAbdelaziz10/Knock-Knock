@@ -5,8 +5,11 @@ import downloadimg from '../../../images/download.jpg';
 import googleplay from '../../../images/googleplay.png';
 import appstore from '../../../images/appstore.png';
 import { Col } from 'react-bootstrap';
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const Downloadapp = () => {
+    const {t,i18n}= useTranslation()
   return (
     <>
             <section className="download mb-3">
@@ -15,14 +18,13 @@ const Downloadapp = () => {
                 <Col xs={12} lg={7} md={8} sm={12} className="col-lg-7 col-md-8 mt-lg-5 ">
                     <div className="text">
                         <span>
-                            معك اينما كنت
+                            {t("home_download_span")}  
                         </span>
                         <h2>
-                            حمل التطبيق الان
+                        {t("home_download_head")}  
                         </h2>
                         <p>
-                            يمكنك الحجز وإدارة حجزك من خلال التطبيق ببضع خطوات بسيطة. بالإضافة إلى رؤية جميع تفاصيل
-                            العاملة المخصصة لك.
+                        {t("home_download_p")}  
                         </p>
                     </div>
                     <div className=" row img_download">

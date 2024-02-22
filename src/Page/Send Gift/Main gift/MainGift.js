@@ -28,7 +28,9 @@ const MainGift = () => {
                   </Link>
                 </Col>
                 <Col xs={10} lg={9} md={10} sm={10} className="">
-                  <h4 className="text-center">Send a Gift Card </h4>
+                  <h4 className="text-center">
+                    {t("gift_title")}
+                  </h4>
                 </Col>
 
                 <div className="row justify-content-center main_gift_box px-lg-5 px-md-4 ">
@@ -41,11 +43,15 @@ const MainGift = () => {
                   >
                   <Row>
                   <Col xs={7} lg={6} md={7} sm={7} className="">
-                      <h6>The perfect gift card for your loved one! </h6>
-                      <p>Treat them to their favorite home service!</p>
-                      <Link to="" className="Link">
+                      <h6>
+                      {t("gift_h")}
+                       </h6>
+                      <p>
+                      {t("gift_p")}
+                      </p>
+                      {/* <Link to="" className="Link">
                         See Details
-                      </Link>
+                      </Link> */}
                     </Col>
                     <Col xs={5} lg={6} md={5} sm={5} className="">
                       <img src={vector} alt="" />
@@ -59,44 +65,45 @@ const MainGift = () => {
               <Row className="justify-content-center ">
                 <Col xs={10} lg={9} md={10} sm={10} className=" ">
   <div className="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Select Gift Amount</label>
-    <input type="number" className="form-control" id="exampleInputEmail1" placeholder="Enter Amount"/>
+    <label for="exampleInputEmail1" class="form-label">
+    {t("gift_amount")}
+    </label>
+    <input type="number" className="form-control" id="exampleInputEmail1" placeholder={t("gift_input_placeholder")}/>
   </div>
   <Row className="border_b">
   <Col xs={11} lg={11} md={11} sm={11} className=" massage row">
   <Col xs={10} lg={10} md={10} sm={10} className=" ">
-  <p>Your Message (Optional)</p>
+  <p>
+  {t("gift_massage")}
+  </p>
 </Col>
   <Col xs={2} lg={2} md={2} sm={2} className="add_link ">
   <Link to="" className="link">
-    Add
+  {t("gift_add")}
+
   </Link>
 </Col>
 </Col>
   <Col xs={11} lg={11} md={11} sm={11} className=" massage row">
   <Col xs={10} lg={10} md={10} sm={10} className=" ">
-  <p>Account number of the person you love (Optional)</p>
+  <p>
+  {t("gift_acount")}
+  </p>
 </Col>
   <Col xs={2} lg={2} md={2} sm={2} className="add_link ">
   <Link to="" className="link">
-    Add
+  {t("gift_add")}
   </Link>
 </Col>
 </Col>
-  <Col xs={11} lg={11} md={11} sm={11} className=" massage row">
-  <Col xs={10} lg={10} md={10} sm={10} className=" ">
-  <p>phone number with a remaining balance (Optional)</p>
-</Col>
-  <Col xs={2} lg={2} md={2} sm={2} className="add_link ">
-  <Link to="" className="link">
-    Add
-  </Link>
-</Col>
-</Col>
+
   </Row>
 <Row className="mb-4" >
-<p className="text-center">You have to select a method to send it with</p>
-  <Link to="/checkout" type="submit" class="btn btn_next">Next</Link>
+{/* <p className="text-center">
+You have to select a method to send it with
+</p> */}
+  <Link to="/checkout" type="submit" class="btn btn_next">  {t("gift_btn")}
+</Link>
 </Row>
 
                 </Col>

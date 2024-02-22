@@ -32,21 +32,21 @@ export const MainCredit = () => {
                   </Link>
                 </Col>
                 <Col xs={10} lg={9} md={10} sm={10} className="">
-                  <h4 className="text-center">Available Credits </h4>
+                  <h4 className="text-center">{t("credit_available")} </h4>
                 </Col>
 
                 <div className="row justify-content-start px-5">
                   <Col xs={8} lg={9} md={8} sm={8} className="total_credit ">
-                    <h5>Total Credit</h5>
-                    <p>AED 0.00</p>
+                    <h5>{t("credit_h")}</h5>
+                    <p>{t("price")} 0.00</p>
                     {selectedLanguage === "en" ? (
                       <Link to="" className="Link">
-                        See Transactions
+                        {t("credit_trans")}
                         <IoIosArrowForward className="transaction_arrow" />
                       </Link>
                     ) : (
                       <Link to="" className="Link">
-                        See Transactions
+                      {t("credit_trans")}
                         <IoIosArrowBack className="transaction_arrow" />
                       </Link>
                     )}
@@ -65,11 +65,11 @@ export const MainCredit = () => {
                   className=" text-center buy_credit card"
                 >
                   <p>
-                    Select a package that suits you best and earn
-                    <strong> up to 18%</strong>
-                    on all services
+                  {t("credit_buy_p")}
                   </p>
-                  <Link to="/buy-credit" className="btn btn_credit">Buy Credit</Link>
+                  <Link to="/buy-credit" className="btn btn_credit">
+                    {t("credit_buy")}
+                  </Link>
                 </Col>
               </Row>
 
@@ -83,7 +83,9 @@ export const MainCredit = () => {
                 >
                 <Link to="/send_gift" className="d-flex">
                 <TbGiftCard className="gift_credit" />
-                  <p>Send a Gift Card</p>
+                  <p>
+                    {t("gift_title")}
+                  </p>
                 </Link>
 
                 </Col>
@@ -95,7 +97,7 @@ export const MainCredit = () => {
                   className="wallet "
                 >
                                 <h5>
-                Available Credits
+                {t("credit_available")}
                 </h5>
                 <div className="d-flex justify-content-center mt-5">
                 <IoWalletSharp className="wallet_icon"/>

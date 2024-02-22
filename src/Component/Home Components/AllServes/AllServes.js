@@ -12,13 +12,16 @@ import product4 from "../../../images/product4.svg"
 import private3 from "../../../images/private3.svg";
 import { Link } from 'react-router-dom'
 import { ServesRow } from './ServesRow'
+import { useTranslation } from 'react-i18next'
 const AllServes = () => {
+    const {t,i18n}=useTranslation()
+
   return (
     <section className="allservice">
         <div className="container">
-        <ServesRow title={"Private Services"} link={"/peivateserves"} />
-        <ServesRow title={"General Services"} link={"/peivateserves"}/>
-        <ServesRow title={"Products Section"} link={"/allproduct"}/>
+        <ServesRow title={t("home_category1")} link={"/peivateserves"}  />
+        <ServesRow title={t("home_category2")} link={"/peivateserves"}  />
+        <ServesRow title={t("home_category3")} link={"/allproduct"}  />
 
             {/* <div className="general_servies mb-5">
                 <div className="row my-3 head">

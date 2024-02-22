@@ -11,20 +11,36 @@ import { Navigation } from "swiper/modules";
 
 import "./AboutSay.css";
 import profile from "../../../images/profile-pc.webp"
+import { useTranslation } from "react-i18next";
 const SwiperHome = () => {
+  const {t,i18n} = useTranslation()
+
   return (
     <Swiper navigation={true} modules={[Navigation]}
     loopAddBlankSlides={true} className="mySwiper">
+
+<SwiperSlide>
+        <div class="person">
+          <div class="person_img">
+            <img src={profile} alt="" />
+          </div>
+          <span>{t("home_say_username")} </span>
+        </div>
+        <p>
+        {t("home_say_p2")}
+        </p>
+      </SwiperSlide>
+
+
       <SwiperSlide>
         <div class="person">
           <div class="person_img">
             <img src={profile} alt="" />
           </div>
-          <span>جيلينا ماركوفيتش</span>
+          <span>{t("home_say_username")} </span>
         </div>
         <p>
-          خدمة مدهشة ومريحة واحترافية، تمنيت أن لا تنتهي! يتمتع الموظفون بخبرة
-          عالية ويقومون بواحدة من أفضل جلسات التدليك التي تلقيتها على الإطلاق!
+        {t("home_say_p2")}
         </p>
       </SwiperSlide>
 
@@ -33,35 +49,22 @@ const SwiperHome = () => {
           <div class="person_img">
             <img src={profile} alt="" />
           </div>
-          <span>جيلينا ماركوفيتش</span>
+          <span>{t("home_say_username")} </span>
         </div>
         <p>
-          خدمة مدهشة ومريحة واحترافية، تمنيت أن لا تنتهي! يتمتع الموظفون بخبرة
-          عالية ويقومون بواحدة من أفضل جلسات التدليك التي تلقيتها على الإطلاق!
+        {t("home_say_p2")}
         </p>
       </SwiperSlide>
+
       <SwiperSlide>
         <div class="person">
           <div class="person_img">
             <img src={profile} alt="" />
           </div>
-          <span>جيلينا ماركوفيتش</span>
+          <span>{t("home_say_username")} </span>
         </div>
         <p>
-          خدمة مدهشة ومريحة واحترافية، تمنيت أن لا تنتهي! يتمتع الموظفون بخبرة
-          عالية ويقومون بواحدة من أفضل جلسات التدليك التي تلقيتها على الإطلاق!
-        </p>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="person">
-          <div class="person_img">
-            <img src={profile} alt="" />
-          </div>
-          <span>جيلينا ماركوفيتش</span>
-        </div>
-        <p>
-          خدمة مدهشة ومريحة واحترافية، تمنيت أن لا تنتهي! يتمتع الموظفون بخبرة
-          عالية ويقومون بواحدة من أفضل جلسات التدليك التي تلقيتها على الإطلاق!
+        {t("home_say_p2")}
         </p>
       </SwiperSlide>
 

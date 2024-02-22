@@ -2,8 +2,11 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
+import { i18n } from 'i18next';
+import { useTranslation } from "react-i18next";
 
 export const ServesCard = ({ img, title, prag, price }) => {
+  const {t,i18n}=useTranslation()
   return (
     <Card className="book_card ">
       <div className="row add_serves">
@@ -18,7 +21,7 @@ export const ServesCard = ({ img, title, prag, price }) => {
             <p>{prag}</p>
             <Row>
             <Col xs={5} lg={6} md={6} sm={5}>
-            <span>AED {price}</span>
+            <span>{t("price")} {price}</span>
             </Col>
             <Col xs={7} lg={6} md={6} sm={7} className="d-flex">
               <button className=" btn btn_decrease">

@@ -14,18 +14,21 @@ import OneServe from './OneServe'
 import OneProduct from './OneProduct'
 import { Col } from 'react-bootstrap'
 import useFetch from '../../../hooks/useFetch'
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next'
 export const ServesRow = ({title,link}) => {
+const {t,i18n}=useTranslation()
 
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">
-        <Col xs={9} lg={10} md={9} sm={9} className="">
+        <Col xs={9} lg={9} md={9} sm={9} className="">
             <h4>
                 {title}
             </h4>
         </Col>
-        <Col xs={3} lg={2} md={3} sm={3} className="">
-            <Link to={link} className="link" > <span>See More</span></Link>
+        <Col xs={3} lg={3} md={3} sm={3} className="">
+            <Link to={link} className="link see_more" > <span>{t("home_see_more")}</span></Link>
         </Col>
 
     </div>
@@ -47,10 +50,10 @@ export const ServesRow = ({title,link}) => {
             </div>
         ):(       
             <div className="row servies">
-    <OneServe img={Rectangle1} link={"/serves_details"} />
-    <OneServe img={Rectangle2} link={"/serves_details"} />
-    <OneServe img={private3} link={"/serves_details"} />
-    <OneServe img={private4} link={"/serves_details"} />
+    <OneServe image={Rectangle1} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
+    <OneServe image={Rectangle2} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
+    <OneServe image={private3} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
+    <OneServe image={private4} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
     </div>)
     }
 

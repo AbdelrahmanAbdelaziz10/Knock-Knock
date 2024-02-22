@@ -1,70 +1,107 @@
-import React ,{ useState } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import Datepicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.module.css'
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import Datepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.module.css";
 import CustomInput from "./CustomInput";
-import './BodyDeteils.css'
+import "./BodyDeteils.css";
 import { IoAddOutline } from "react-icons/io5";
 import { IoRemoveOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
+import { useTranslation } from "react-i18next";
+import { ContextLang } from "../../../App";
 
 const BodyDetails = () => {
-    const [date, setDate] = useState(new Date());
-    const [selectDate, setSelectDate] = useState(null);
+  const { t, i18n } = useTranslation();
+  const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
+  const [date, setDate] = useState(new Date());
+  const [selectDate, setSelectDate] = useState(null);
+  const { data: day } = useFetch("/api/v1/days/get-all");
+  console.log(day);
 
-    const onChange = date=>{
-        setDate(date);
-    }
+  const onChange = (date) => {
+    setDate(date);
+  };
 
   return (
     <div className="body_details my-4">
       <Row>
         <div className="description">
-          <h4>SUN OIL</h4>
+          <h4>
+            {t("details_head")}
+          </h4>
           <p>
-            Extracted from the finest, handpicked olives, our Extra Virgin Olive
-            Oil is cold-pressed to ensure the highest quality and purity. Its
-            rich golden hue and robust, fruity aroma are a prelude to the depth
-            of flavor that awaits within.
+          {t("details_p")}
           </p>
         </div>
         <div className="details">
-          <h4>Details</h4>
+          <h4>
+          {t("details_details")}
+          </h4>
           <ul>
-            <li>Numbers: 40 bottle Roses</li>
-            <li>Presented as a hand bouquet</li>
-            <li>Available colors: Pink, red, white or Yellow</li>
-            <li>Height 50, width 25 cm</li>
+            <li>
+            {t("details_details1")}
+            </li>
+            <li>
+            {t("details_details2")}
+            </li>
+            <li>
+            {t("details_details3")}
+            </li>
+            <li> 
+            {t("details_details4")}
+</li>
           </ul>
         </div>
         <div className="stock mb-2">
-            <h4>Availability: <span>In Stock</span></h4>
-            <h4>SKU: <span>Knock Knock56235</span></h4>
+          <h4>
+            {t("details_avilable")} <span>In Stock</span>
+          </h4>
+          <h4>
+            {t("details_sku")} <span>Knock Knock56235</span>
+          </h4>
         </div>
         <div className="price_serves stock mb-2">
-            <h4>The Price Of Serves: <span>100$ / hr</span></h4>
+          <h4>
+          {t("details_serves_price")}<span>100$ </span>
+          </h4>
         </div>
         <div className="time_date">
-            <h5 className="mb-3">
-            Select date and time of delivery
-            </h5>
-            <div className="delivery_date row mb-4">
-            <div className="col-lg-4 col-md-6">
-                <h5>Delivery <span>Date</span> </h5>
-                <label><Datepicker selected={selectDate} onChange={date=>setSelectDate(date)}  customInput={<CustomInput />}/></label> 
-            </div>
-            <div className="col-lg-4 col-md-6">
-            <h5>Delivery <span>time</span></h5>
-            <div className="time_input">
+          {/* <h5 className="mb-3">Select date and time of delivery</h5> */}
+          <div className="delivery_date row mb-4">
+            <Col xs={11} lg={10} md={12} sm={11} className=" date_day">
+              <h5 className="my-2">{t("details_date")} 
+                {/* Chose best Delivery <span>Date</span>{" "} */}
+              </h5>
+              {/* <label><Datepicker selected={selectDate} onChange={date=>setSelectDate(date)}  customInput={<CustomInput />}/></label>  */}
+              {day && (
+                <Row className="d-flex justify-content-between mt-4 ">
+                  {day.data.map((day, idx) => {
+                    return (
+                      <Col xs={3} lg={1} md={1} sm={4} className="d-flex day_booking" key={day.id}>
+                        {selectedLanguage === "en" ? (
+                          <p className="btn btn_day action">{day.name_en}</p>
+                        ) : (
+                          <p className="btn btn_day action">{day.name_ar}</p>
+                        )}
+                      </Col>
+                    );
+                  })}
+                </Row>
+              )}
+            </Col>
+            <div className="col-lg-12 col-md-6">
+              <h5>
+                {t("details_time")}
+              </h5>
+              <div className="time_input">
                 <input type="time" className="input_time" />
+              </div>
             </div>
-                
-            </div>
-
-            </div>
-            {/* <div className="col-lg-12 row justify-content-center add_btn ">
+          </div>
+          {/* <div className="col-lg-12 row justify-content-center add_btn ">
             <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
                     <button className="btn decincrease">
                         <IoRemoveOutline className="remove"/>
@@ -86,10 +123,7 @@ const BodyDetails = () => {
                     </Col>
                 </div>
  */}
-
-
-            </div>
-
+        </div>
       </Row>
     </div>
   );

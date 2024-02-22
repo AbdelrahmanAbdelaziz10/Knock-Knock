@@ -5,15 +5,20 @@ import calendar from '../../../images/calendar (1).svg'
 import topQuality from "../../../images/topquality.PNG";
 import  goApp from "../../../images/gooapp.PNG"
 import { Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 const WhyUs = () => {
+    const {t,i18n} = useTranslation()
+
   return (
             <section className="Why-Us py-5">
         <div className="container">
             <div className="row title mb-4">
                 <h4 className=" text-center">
-                    هناك العديد من الأسباب التي تدفعك للثقة بجست لايف!
+                {t("home_whyus_title")}
                 </h4>
-                <p className="text-center">إليك أفضل 4 أسباب!</p>
+                <p className="text-center">
+                {t("home_whyus_p")}
+                </p>
             </div>
             <div className="row ">
                 <Col xs={6} lg={3} md={6} sm={6} className="">
@@ -22,8 +27,12 @@ const WhyUs = () => {
                             <img src={star} alt="star"/>
                         </div>
                         <div className="why-us-text">
-                            <h5>أفضل الأخصائيون</h5>
-                            <p>خبراؤنا ذوو ثقة ومدربون بشكل احترافي، وحاصلون على تقييمٍ 4.78 من 5!</p>
+                            <h5>
+                                {t("home_whyus_title1")}
+                            </h5>
+                            <p>
+                            {t("home_whyus_p1")}
+                            </p>
                         </div>
                     </div>
                 </Col>
@@ -33,10 +42,12 @@ const WhyUs = () => {
                             <img src={calendar } alt=""/>
                         </div>
                         <div className="why-us-text">
-                            <h5>خدمة في اليوم نفسه
-
+                            <h5>
+                            {t("home_whyus_title2")}
                             </h5>
-                            <p>احجز جلستك في أقل من 60 ثانية، كما يمكنك تحديد موعداً في اليوم نفسه.</p>
+                            <p>
+                            {t("home_whyus_p2")}
+                            </p>
                         </div>
                     </div>
                 </Col>
@@ -46,9 +57,12 @@ const WhyUs = () => {
                             <img className="mt-3" src={topQuality}alt=""/>
                         </div>
                         <div className="why-us-text">
-                            <h5 className="pt-4">خدمة عالية الجود وتستحق الثمن</h5>
-                            <p>يتم تجهيز خبراءنا بأفضل المعدات والأدوات، ويتم تسعير الخدمات دائماً متخذين مستخدمي
-                                خدماتنا بعين الاعتبار.</p>
+                            <h5 className="pt-4">
+                            {t("home_whyus_title3")}
+                            </h5>
+                            <p>
+                            {t("home_whyus_p3")}
+                                </p>
                         </div>
                     </div>
                 </Col>
@@ -58,9 +72,12 @@ const WhyUs = () => {
                             <img src={goApp} alt=""/>
                         </div>
                         <div className="why-us-text">
-                            <h5 className="pt-4">تطبيقٌ متميزٌ</h5>
-                            <p>أن يكون التطبيق متميزاً يعني أنه يشمل مجموعة واسعة جداً من الخدمات المنزلية، ولذلك نحن
-                                نلبي جميع احتياجاتك!</p>
+                            <h5 className="pt-4">
+                            {t("home_whyus_title4")}
+                            </h5>
+                            <p>
+                            {t("home_whyus_p4")}
+                                </p>
                         </div>
                     </div>
                 </Col>

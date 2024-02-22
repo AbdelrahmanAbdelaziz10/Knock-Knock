@@ -1,6 +1,9 @@
 .main_serves .oneservies{
     margin-bottom:2rem ;
 }
+.main_serves .oneservies .servies_image .link img{
+}
 .main_serves .oneservies .servies_image .link p{
     color: #008080 !important;
+    padding-top: 2rem;
 }

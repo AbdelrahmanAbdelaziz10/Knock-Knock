@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom'
 import '../Main Addcard/mainaddcard.css'
 import BookHead from '../../Booking/Main Booking/Book Head/BookHead'
 import pay from "../../../images/Group 156.png"
+import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next'
 const MainAddCard = () => {
+  const {t,i18n} =useTranslation()
   return (
     <div className="main_book py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">
@@ -21,13 +24,17 @@ const MainAddCard = () => {
           >
             <div className="">
               <div className="payment ">
-                <h3 className='text-center'>Add New Car</h3>
+                <h3 className='text-center'>
+                {t("add_card_title")}
+                </h3>
                 <div className="create_pay mb-4">
                   <Row className="row">
                     <Col xs={10} lg={10} md={8} sm={10}>
                       <h6 className="credit">
                         <FaRegCreditCard className="create" />
-                        <span>Credit / Debit Card</span>
+                        <span>
+                        {t("add_card_visa")}
+                        </span>
                       </h6>
                     </Col>
 
@@ -45,7 +52,7 @@ const MainAddCard = () => {
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Card Number"
+                      placeholder={t("add_card_placeholder_card")}
                     />
                   </Col>
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
@@ -54,7 +61,7 @@ const MainAddCard = () => {
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Date(MM/YY)"
+                      placeholder={t("add_card_placeholder_date")}
                     />
                   </Col>
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
@@ -63,7 +70,7 @@ const MainAddCard = () => {
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="CVV Number"
+                      placeholder={t("add_card_placeholder_cvv")}
                     />
                   </Col>
                 </Row>
@@ -71,10 +78,11 @@ const MainAddCard = () => {
                   <div className="nots mb-4">
                     <FaCircleExclamation className="icon" />
                     <p>
-                      The session amount will be reserved on your card. You will
-                      only be charged once the session is completed.
+                    {t("add_card_massage")}
                     </p>
-                    <span className=" btn-details">Details</span>
+                    <span className=" btn-details">
+                      {t("all_product_product_btn")}
+                    </span>
                   </div>
                 </Row>
 
@@ -82,7 +90,7 @@ const MainAddCard = () => {
             </div>
             <div className="row">
               <Link to="/credit_card" className="btn btn_next">
-                Save
+                {t("personal_btn")}
               </Link>
             </div>
           </Col>
