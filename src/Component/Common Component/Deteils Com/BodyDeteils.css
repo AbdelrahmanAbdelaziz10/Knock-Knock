@@ -40,6 +40,7 @@
     border: 2px solid #008080d2 !important;
     padding: 0 .5rem;
     height: 7vh !important;
+    border-radius: 5px !important;
 }
 
 .ltr .form-control{

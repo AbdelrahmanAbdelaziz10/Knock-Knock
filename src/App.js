@@ -6,7 +6,6 @@ import { createContext, useState } from 'react';
 import ltl from "./style/ltr.css";
 import rtl from "./style/rtl.css";
 import Verify from './Page/Verify/Verify';
-import { SingUp } from './Page/SingUp/SingUp';
 import AllProduct from './Page/AllProduct';
 import Serves from './Page/PrivateServes';
 import ProductDeteils from './Page/ProductDeteils';
@@ -31,6 +30,10 @@ import CreditCardPage from './Page/CreditCard/CreditCardPage';
 import CartPage from './Page/CartPage/CartPage';
 import axios from 'axios';
 import useFetch from './hooks/useFetch';
+import HomePageLogin from './Page/HomePageLogin';
+import ForgetPassword from './Page/ForgetPassword/ForgetPassword';
+import ResetPassword from './Page/RestetPassword/ResetPassword';
+import SingUp from './Page/SingUp/SingUp';
 export const ContextLang = createContext();
 
 function App() {
@@ -54,7 +57,8 @@ function App() {
       <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
               <BrowserRouter >
             <Routes>
-              <Route path="/" element={<Homepage />} />
+              <Route path="/" element={<HomePageLogin />} />
+              <Route path="/home" element={<Homepage />} />
               <Route path="/product" element={<AllProduct getPage={getPageProduct} product={product?.data} />} />
               <Route path="product/:productId" element={<ProductDeteils />} />
               <Route path="/serves" element={<Serves getPage={getPageServes} />} />
@@ -65,6 +69,9 @@ function App() {
               <Route path="/login" element={<Login /> } />
               <Route path="/singup" element={<SingUp /> } />
               <Route path="/verify" element={<Verify /> } />
+              <Route path="/forget_password" element={<ForgetPassword /> } />
+              <Route path="/reset_password" element={<ResetPassword /> } />
+
               <Route path="/phone" element={<PhoneNumber /> } />
               <Route path="/profile" element={<ProfilePage /> } />
               <Route path="/addaddress" element={<AddAddressPage /> } />

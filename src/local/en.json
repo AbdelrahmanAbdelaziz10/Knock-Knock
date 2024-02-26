@@ -14,7 +14,11 @@
     "policy":"Privacy Policy",
     "Setting":"Setting",
     "Log_Out":"Log Out",
-    "h-title":"The first application for providing home services",
+    "forget_password":"Forget Password",
+    "reset_password":"Change Password",
+
+    "h-title":"First Application for providing Home Services",
+    "h_p":"Our services are available to all places in different countries.",
     "h-search":"Where would you like to receive the service?",
     "h-input":"Search for area, street, landmark...",
     "contact":"Contact Us",
@@ -129,6 +133,8 @@
     "singup_p":"Already Have an Account?",  
     "verify_title":"Verify Account",
     "verify_btn1":"Send Again",
+    "forget_password_btn1":"Send Code",
+
     "verify_btn2":"Verify",
     "phone_title":"Log in or sign up",
     "phone_p":"Your phone number",

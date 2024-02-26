@@ -14,7 +14,11 @@
     "policy":"سياسات الخصوصية",
     "Setting":"الاعدادات",
     "Log_Out":"تسجيل الخروج",
+    "forget_password":"نسيت كلمه المرور",
+    "reset_password":"تعيين كلمه المرور",
+
     "h-title":"التطبيق الاول لتوفير الخدمات المنزلية",
+    "h_p":"خدماتنا متوفرة لجميع الاماكن في مختلف البلاد المختلفة",
     "h-search":"أين تود أن تتلقى الخدمة؟",
     "h-input":"ابحث عن منطقة, شارع, معلم......",
     "contact":"تواصل معنا",
@@ -127,6 +131,8 @@
     "verify_title":"التحقق من الحساب",
     "verify_btn1":"اعادة ارسال",
     "verify_btn2":"تاكيد",
+    "forget_password_btn1":"ارسال الرمز",
+
     "phone_title":"تسجيل الدخول أو الاشتراك",
     "phone_p":"رقم الهاتف الخاص بك",
     "phone_placeholder":"رقم الهاتف",
@@ -136,6 +142,7 @@
     "personal_lname_placeholder":"الاسم الاخير",
     "personal_email_placeholder":"الايميل",
     "personal_password_placeholder":"رقم السري",
+    "personal_Confirmpassword_placeholder":"تاكيد الرقم السري",
     "personal_email":"الاميل الخاص بك",
     "personal_phone_placeholder":"رقم الهاتف",
     "personal_select_placeholder":"",

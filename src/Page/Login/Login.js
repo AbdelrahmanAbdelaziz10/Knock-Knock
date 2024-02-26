@@ -67,7 +67,7 @@ const Login = () => {
               <i className="fa-solid fa-x"></i>
               <div className="form_head text-center mb-2">
                 <img className="" src={logo} alt="" />
-                <h4> Log In</h4>
+                <h4>{t("login")} </h4>
               </div>
 
               <div className="col-lg-12 col-md-12 my-3">
@@ -96,17 +96,18 @@ const Login = () => {
 
               <div className="row check justify-content-between  mt-4 ">
                 <div className="mb-3 col-6 form-check">
+                <label className="form-check-label" for="exampleCheck1">
+                    {t("login_check")}
+                  </label>
                   <input
                     type="checkbox"
                     className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label className="form-check-label" for="exampleCheck1">
-                    {t("login_check")}
-                  </label>
+
                 </div>
                 <div className="col-6 forget ps-lg-5 ps-md-4">
-                  <Link to="" className="forget_password ms-lg-2">
+                  <Link to="/forget_password" className="forget_password ms-lg-2">
                     {t("login_forget")}
                   </Link>
                 </div>

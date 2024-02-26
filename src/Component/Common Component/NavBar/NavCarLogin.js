@@ -12,17 +12,8 @@ import appstore from "../../../images/appstore.png";
 import flag from "../../../images/Flag_of_the_United_Arab_Emirates 1.png";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Col } from "react-bootstrap";
-import { IoPersonCircleSharp } from "react-icons/io5";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaCreditCard } from "react-icons/fa";
-import { TbGiftCard } from "react-icons/tb";
-import { LiaHandsHelpingSolid } from "react-icons/lia";
-import { MdOutlineSettings } from "react-icons/md";
-import { RiLogoutCircleRLine } from "react-icons/ri";
-import { MdPolicy } from "react-icons/md";
-import { FaCalendarAlt } from "react-icons/fa";
 
-const NavBar = () => {
+const NavBarLogin = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const [test, setTest] = useState(false);
@@ -71,14 +62,14 @@ const NavBar = () => {
                 العربية
               </button>
             )}
-
+{/* 
             <button
               className="btn btn-flag"
               onClick={() => togglleDrowpDown()}
               type="button"
             >
               <img src={country} alt="Flag" />
-            </button>
+            </button> */}
             <button
               className="btn btn-menu"
               type="button"
@@ -131,11 +122,10 @@ const NavBar = () => {
       </div> */}
 
       {/* Profile after login Dropdown  */}
-      <div
+      {/* <div
         className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
         id="country"
       >
-        {/* <p>حدد الدولة</p> */}
         <Link to="/profile" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -146,7 +136,6 @@ const NavBar = () => {
             <p> {t("profile")}</p>
           </Col>
         </Link>
-        {/* Add more country dropdown options if needed  */}
         <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -177,7 +166,6 @@ const NavBar = () => {
             <p> {t("Gift_Card")}</p>
           </Col>
         </Link>
-        
         <Link to="/your-order" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -208,16 +196,6 @@ const NavBar = () => {
             <p> {t("policy")}</p>
           </Col>
         </Link>
-        {/* <div className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <MdOutlineSettings />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Setting")}</p>
-          </Col>
-        </div> */}
         <div className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -228,11 +206,11 @@ const NavBar = () => {
             <p className="log_out"> {t("Log_Out")}</p>
           </Col>
         </div>
-      </div>
+      </div> */}
 
       {/* Profile before login Dropdown  */}
 
-      {/* <div
+      <div
         className={test2 === true ? "display-block dropmenu" : "dropmenu"}
         id="signup"
       >
@@ -246,12 +224,12 @@ const NavBar = () => {
             {t("singup")}
           </Link>
         </div>
-        <div className="row pt-2 mb-3 ">
+        <Link to="/contact" className="row pt-2 mb-3 help_nav">
           <p className="direction">
             <FaQuestionCircle className="fa-solid fa-circle-question" />
             {t("help")}
           </p>
-        </div>
+        </Link>
         <div className="row border_top pt-2 mb-3">
           <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
             <img src={appstore} alt="App Store" />
@@ -260,9 +238,9 @@ const NavBar = () => {
             <img src={googleplay} alt="Google Play" />
           </Col>
         </div>
-      </div> */}
+      </div> 
     </>
   );
 };
 
-export default NavBar;
+export default NavBarLogin;

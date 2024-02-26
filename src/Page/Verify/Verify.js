@@ -1,74 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
-import { Link } from "react-router-dom";
-import { IoMdExit } from "react-icons/io";
-import { Col } from "react-bootstrap";
-import { i18n } from 'i18next';
+import { Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEmailContext } from "../../Context/EmailContext ";
 
 const Verify = () => {
-  const {t,i18n}=useTranslation()
-  return (
-    <div class="login Verify">
-      <div class="container">
-        <div class="row login_main mt-4">
-          <Col xs={11} lg={5} md={7} sm={11} class="">
-            <form
-              class="row form g-3 mb-5 mt-3">
-            {/* <IoMdExit class="fa-solid fa-x"/> */}
-              <div class="form_head text-center mb-3">
-                <img class="" src={logo} alt="" />
-                <h4>
-                  {t("verify_title")}
-                </h4>
-              </div>
+  const { t } = useTranslation();
+  const { email } = useEmailContext();
 
-              <div class="col-lg-12 row col-md-12 my-3">
-                <div class="row justify-content-center">
+  const [code, setCode] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setCode(value);
+    setResponseMessage(""); // Clear response message when input changes
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://dashboard.knock-knock.ae/api/auth/account_verification",
+        { email, code }
+      );
+      console.log(response.data);
+      // Handle success response
+      setResponseMessage(response.data.message);
+      setCode("");
+      if (
+        response.data.message === "Your account actived successfully you can login now !"
+      ) {
+        navigate("/reset_password");
+      }
+    } catch (error) {
+      // Handle error response
+      console.error("Error submitting form", error);
+      setResponseMessage("An error occurred. Please try again.");
+    }
+  };
+  const handleSubmitResent = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://dashboard.knock-knock.ae/api/auth/resend-code",
+        { email }
+      );
+      console.log(response.data);
+      // Handle success response
+      setResponseMessage(response.data.message);
+      setCode("");
+      // if (
+      //   response.data.message !== "Email Not Found Please Enter Valide Email"
+      // ) {
+      //   navigate("/reset_password");
+      // }
+    } catch (error) {
+      // Handle error response
+      console.error("Error submitting form", error);
+      setResponseMessage("An error occurred. Please try again.");
+    }
+  };
+  return (
+    <div className="login Verify">
+      <div className="container">
+        <Row className=" login_main mt-4">
+          <Col xs={11} lg={5} md={7} sm={11} className="">
+            <form className="row form g-3 mb-5 mt-3" >
+              <div className="form_head text-center mb-3">
+                <img className="" src={logo} alt="" />
+                <h4>{t("verify_title")}</h4>
+              </div>
+              <div className="col-lg-12 row col-md-12 my-3">
+                <div className="row justify-content-center">
                   <input
                     type="number"
-                    class="form-control-verify col-2"
-                    id="inputEmail"
-                    name="Phone"
-                    placeholder="5"
-                  />
-                  <input
-                    type="number"
-                    class="form-control-verify col-2"
-                    id="inputEmail"
-                    name="Phone"
-                    placeholder="5"
-                  />
-                  <input
-                    type="number"
-                    class="form-control-verify col-2"
-                    id="inputEmail"
-                    name="Phone"
-                    placeholder="5"
-                  />
-                  <input
-                    type="number"
-                    class="form-control-verify col-2"
-                    id="inputEmail"
-                    name="Phone"
-                    placeholder="5"
+                    className="form-control-verify col-9"
+                    name="code"
+                    value={code}
+                    placeholder="5   5   5   5"
+                    onChange={handleChange}
                   />
                 </div>
               </div>
+              <div className="col-12 submit_btn mt-4">
+              <button type="submit" onClick={handleSubmitResent} className="btn mb-4 mx-2 send_again">
+                  {t("verify_btn1")}
+                </button>
+                <button type="submit" onClick={handleSubmit} className="btn mb-4 mx-2 btn-verify">
+                  {t("verify_btn2")}
+                </button>
 
-              <div class="col-12 submit_btn mt-4">
-                <Link to="/" type="submit" class="btn mb-4 mx-2 btn-verify">
-                {t("verify_btn1")}
-
-                </Link>
-                <Link to="phone" type="submit" class="btn mb-4 mx-2 send_again">
-                {t("verify_btn2")}
-                </Link>
+                {responseMessage && (
+                  <div className="text-success">{responseMessage}</div>
+                )}
               </div>
             </form>
           </Col>
-        </div>
+        </Row>
       </div>
     </div>
   );

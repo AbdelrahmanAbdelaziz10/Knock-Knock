@@ -33,20 +33,27 @@
     width: 40%;
     margin-top: -1rem !important;
 }
-
 .form .form_head h4 {
     color: #008080;
     text-align: center;
     font-size: 22px;
     font-weight: 600;
     margin-top: 1.5rem;
+    width: 100% !important;
 }
-
+.form .check{
+    direction: ltr !important;
+}
+.form .check .form-check{
+    direction: ltr !important;
+}
 .form .form-control {
     padding: 10px 20px;
     border-color: #008080;
 }
-
+.login .login_main .form .form-control {
+    border-radius: 5px !important;
+}
 .form .forget .forget_password {
     text-decoration: none;
     color: #008080 !important;
@@ -67,6 +74,7 @@
 
 .submit_btn {
     text-align: center;
+    direction: rtl;
 }
 
 .submit_btn .sing_in {
@@ -99,6 +107,11 @@
 }
 
 /* Sing Up */
+.singup{
+    margin-top: 0rem !important;
+    padding-top: 0 !important;
+    height: 105vh;
+}
 .singup .login_main {
     margin: 0rem !important;
 }
@@ -116,7 +129,7 @@
 }
 
 .rtl .pl1 {
-    padding-left: 1rem !important;
+    padding-right: 0rem !important;
 }
 
 .ltr .pl2 {
@@ -162,6 +175,12 @@
 .Verify .form_head {
     margin-top: 0 !important;
 }
+.Verify .form_head {
+    width: 100%;
+}
+.Verify .form_head img{
+    width: 40%;
+}
 
 .Verify .login_main .form {
     margin-top: 6rem !important;
@@ -169,11 +188,26 @@
 
 .form-control-verify {
     margin: .8rem;
+    padding-left: .6rem !important;
     text-align: center;
     border: none;
     border-bottom: 2px solid #008080;
+    height: 5vh !important;
+}
+.form-control-verify:focus{
+    outline: none;
+}
+/* Hide the spinner arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
+/* Hide the text field */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
 .btn-verify,
 .send_again {
     padding: 8px 35px;
@@ -183,7 +217,7 @@
 
 .btn-verify {
     background-color: #008080 !important;
-    color: #fff;
+    color: #fff !important;
     padding: 8px 35px !important;
 }
 
@@ -262,4 +296,7 @@
     padding: .3rem 2rem;
     margin-top: .5rem;
     font-weight: 500;
+}
+.forget_password .form-control-verify{
+    text-align: start !important;
 }

@@ -1,6 +1,7 @@
 /* Start In Header Section Style */
 .header {
     background-image: url(../../../images/main.webp);
+    border-image: fill 0 linear-gradient(#0080802c,#0080804b);
     background-size: cover;
     height: 100vh;
     background-repeat: no-repeat;
@@ -17,10 +18,14 @@
 }
 
 .header .header_text h2 {
-    color:#000;
-    margin-bottom: 2rem;
+    color:#000000ef;
+    margin-bottom: 1rem;
 }
-
+.header .header_text p {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #000000ef;
+}
 .header .header_text .header_form {
     background-color: #fff;
     border-radius: 10px;

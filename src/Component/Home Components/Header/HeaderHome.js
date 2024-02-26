@@ -13,11 +13,14 @@ const HeaderHome = () => {
                 <h2 className='text-center'>
                 {t("h-title")}
                 </h2>
+                <p className='text-center'>{t("h_p")}</p>
+                {/*
                 <div class="header_form">
                     <h6>{t("h-search")}</h6>
-                    <FaLocationDot  class="fa-solid fa-location-dot"/>
-                    <input type="text" placeholder={t("h-input")}/>
+                     <FaLocationDot  class="fa-solid fa-location-dot"/>
+                    <input type="text" placeholder={t("h-input")}/> 
                 </div>
+                */}
             </div>
         </div>
     </header>

@@ -9,12 +9,12 @@ import axios from "axios";
 export const SingUp = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
     password: "",
-    confirmPassword: "",
+    password_confirmation: "",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,11 +32,11 @@ export const SingUp = () => {
 
   const validateForm = () => {
     let errors = {};
-    if (!formData.fname.trim()) {
-      errors.fname = "first Name is required";
+    if (!formData.first_name.trim()) {
+      errors.first_name = "first Name is required";
     }
-    if (!formData.lname.trim()) {
-      errors.lname = "last name is required";
+    if (!formData.last_name.trim()) {
+      errors.last_name = "last name is required";
     }
     if (!formData.email.trim()) {
       errors.email = "last is required";
@@ -49,8 +49,8 @@ export const SingUp = () => {
     if (!formData.password.trim()) {
       errors.password = "last is required";
     }
-    if (formData.password !== formData.confirmPassword) {
-      errors.confirmPassword = "passwords do not match";
+    if (formData.password_confirmation !== formData.password_confirmation) {
+      errors.password_confirmation = "passwords do not match";
     }
     setErrors(errors);
     return Object.keys(errors).length === 0; // Return true if no errors
@@ -67,12 +67,12 @@ export const SingUp = () => {
         // Handle success response
         alert("Registration successful!");
         setFormData({
-          fname: "",
-          lname: "",
+          first_name: "",
+          last_name: "",
           email: "",
           phone: "",
           password: "",
-          confirmPassword: "",
+          password_confirmation: "",
         });
       } catch (error) {
         // Handle error response
@@ -99,24 +99,24 @@ export const SingUp = () => {
                 <div className="col-lg-6 col-md-6 pl1">
                   <input
                     type="text"
-                    name="fname"
+                    name="first_name"
                     className="form-control"
-                    value={formData.fname}
+                    value={formData.first_name}
                     onChange={handleChange}
                     placeholder={t("personal_fname_placeholder")}
                   />
-                  {errors.fname && <div className="error">{errors.fname}</div>}
+                  {errors.first_name && <div className="error">{errors.first_name}</div>}
                 </div>
                 <div className="col-lg-6 col-md-6 pl2">
                   <input
                     type="text"
                     className="form-control"
-                    value={formData.lname}
+                    value={formData.last_name}
                     onChange={handleChange}
-                    name="lname"
+                    name="last_name"
                     placeholder={t("personal_lname_placeholder")}
                   />
-                  {errors.lname && <div className="error">{errors.lname}</div>}
+                  {errors.last_name && <div className="error">{errors.last_name}</div>}
                 </div>
               </div>
               <div className="col-md-12 mb-2 p-r">
@@ -156,12 +156,12 @@ export const SingUp = () => {
                 <input
                   type="password"
                   className="form-control"
-                  value={formData.confirmPassword}
+                  value={formData.password_confirmation}
                   onChange={handleChange}
-                  name="confirmPassword"
+                  name="password_confirmation"
                   placeholder={t("personal_Confirmpassword_placeholder")}
                 />
-                {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
+                {errors.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
               </div>
 
               <div className="col-12 submit_btn mt-4">

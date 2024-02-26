@@ -138,9 +138,12 @@
     background-color: #ffd03e;
     color: #fff;
     border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 .dropmenu .btn-login:hover {
     background-color: #ffd03e;
+    color: #fff;
     opacity: .8;
 }
 .dropmenu .row.border_top {
@@ -148,6 +151,9 @@
     border-top: 1px solid #0000006c;
     border-radius: 0;
 
+}
+.help_nav p.direction{
+    color: #000 !important;
 }
 .rtl .dropmenu .fa-circle-question{
     margin-left: .5rem;
