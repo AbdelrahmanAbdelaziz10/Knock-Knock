@@ -19,9 +19,8 @@ const AllServes = () => {
   return (
     <section className="allservice">
         <div className="container">
-        <ServesRow title={t("home_category1")} link={"/peivateserves"}  />
-        <ServesRow title={t("home_category2")} link={"/peivateserves"}  />
-        <ServesRow title={t("home_category3")} link={"/allproduct"}  />
+        <ServesRow title={t("home_category1")} link={"/serves"}  />
+        <ServesRow title={t("home_category3")} link={"/product"}  />
 
             {/* <div className="general_servies mb-5">
                 <div className="row my-3 head">

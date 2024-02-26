@@ -1,19 +1,23 @@
-.login{
-    background-image: linear-gradient(#fff,#008080) !important;
+.login {
+    background-image: linear-gradient(#fff, #008080) !important;
     height: 100vh;
     overflow: hidden;
+    padding-top: 3rem;
 }
-.fa-x{
+
+.fa-x {
     color: #008080;
     font-size: 20px;
     cursor: pointer;
 }
-.login_main{
+
+.login_main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.login_main .form{
+
+.login_main .form {
     background-color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 10px;
@@ -24,40 +28,48 @@
     align-items: center;
     margin-top: 1.5rem;
 }
-.form .form_head{
+
+.form .form_head {
     width: 40%;
     margin-top: -1rem !important;
 }
-.form .form_head h4{
+
+.form .form_head h4 {
     color: #008080;
     text-align: center;
     font-size: 22px;
     font-weight: 600;
     margin-top: 1.5rem;
 }
-.form .form-control{
+
+.form .form-control {
     padding: 10px 20px;
     border-color: #008080;
 }
-.form .forget .forget_password{
+
+.form .forget .forget_password {
     text-decoration: none;
     color: #008080 !important;
     font-size: 15px;
     font-weight: 500;
 }
-.form .forget .forget_password:hover{
+
+.form .forget .forget_password:hover {
     margin-left: 2.5rem !important;
     transition: all .5s;
 }
-.form .form-check .form-check-label{
+
+.form .form-check .form-check-label {
     color: #008080;
     font-size: 15px;
     font-weight: 500;
 }
-.submit_btn{
+
+.submit_btn {
     text-align: center;
 }
-.submit_btn .sing_in{
+
+.submit_btn .sing_in {
     background-color: #008080;
     color: #fff;
     width: 80%;
@@ -65,145 +77,189 @@
     font-weight: 500;
     border-color: #008080 !important;
 }
-.submit_btn .sing_in:hover{
+
+.submit_btn .sing_in:hover {
     color: #008080 !important;
     transition: all .5s;
 }
+
 .submit_btn p {
     font-size: 16px;
     font-weight: 500;
 }
-.submit_btn p .link_singup{
+
+.submit_btn p .link_singup {
     text-decoration: none;
     color: #008080 !important;
 }
-.submit_btn p .link_singup:hover{
+
+.submit_btn p .link_singup:hover {
     margin-left: 2rem;
     transition: all .5s;
 }
+
 /* Sing Up */
-.singup .login_main{
+.singup .login_main {
     margin: 0rem !important;
 }
-.ltr .singup .form-control{
+
+.ltr .singup .form-control {
     border-right: 2px solid #008080 !important;
 }
-.rtl .singup .form-control{
+
+.rtl .singup .form-control {
     border-left: 2px solid #008080 !important;
 }
-.ltr .pl1{
-    padding-left:0rem !important ;
+
+.ltr .pl1 {
+    padding-left: 0rem !important;
 }
-.rtl .pl1{
-    padding-left:1rem !important ;
+
+.rtl .pl1 {
+    padding-left: 1rem !important;
 }
-.ltr .pl2{
+
+.ltr .pl2 {
     padding-right: 0 !important;
 }
-.rtl .pl2{
+
+.rtl .pl2 {
     padding-left: 0 !important;
 }
-.singup .nationality{
+
+.singup .nationality {
     width: 25%;
     border-right: none;
-    border-radius: 5px 0 0 5px ;
+    border-radius: 5px 0 0 5px;
     border-color: #008080;
 }
-.singup .phone{
+
+.singup .phone {
     border-left: none;
-    border-radius: 0 5px 5px 0  ;
+    border-radius: 0 5px 5px 0;
     border-color: #008080;
     padding-left: 0rem;
 }
-.singup .form .form-select{
+
+.singup .form .form-select {
     border: 2px solid #2d9696 !important;
     width: 35%;
 }
-.ltr .singup .form .form-select{
+
+.ltr .singup .form .form-select {
     border-right: 0 !important;
 }
-.rtl .singup .form .form-select{
+
+.rtl .singup .form .form-select {
     border-left: 0 !important;
 }
-.ltr .singup .form-control.phone{
+
+.ltr .singup .form-control.phone {
     border-left: 0 !important;
 }
+
 /*verify account */
-.Verify .form_head{
+.Verify .form_head {
     margin-top: 0 !important;
 }
-.Verify .login_main .form{
+
+.Verify .login_main .form {
     margin-top: 6rem !important;
 }
-.form-control-verify{
+
+.form-control-verify {
     margin: .8rem;
     text-align: center;
     border: none;
     border-bottom: 2px solid #008080;
 }
+
 .btn-verify,
-.send_again{
-    padding: 8px 35px ;
+.send_again {
+    padding: 8px 35px;
     font-size: 18px !important;
     font-weight: 500 !important;
 }
-.btn-verify{
+
+.btn-verify {
     background-color: #008080 !important;
     color: #fff;
     padding: 8px 35px !important;
 }
-.btn-verify:hover{
+
+.btn-verify:hover {
     background-color: #fff !important;
     color: #008080 !important;
     border: 2px solid #008080 !important;
 }
-.send_again{
+
+.send_again {
     background-color: #fff;
     color: #008080 !important;
     border: 2px solid #008080 !important;
 }
-.send_again:hover{
+
+.send_again:hover {
     background-color: #008080 !important;
     color: #fff !important;
 }
 
 /* Phone Number */
-.phone_login{
+.phone_login {
     position: fixed;
     height: auto;
     overflow: hidden !important;
 }
-.phone_login .form{
+
+.phone_login .form {
     padding: 1rem .5rem;
 }
-.phone_login .title{
+
+.phone_login .title {
     border-bottom: 1px solid #00000038;
     padding-bottom: 1rem;
 }
-.phone_login .title h5{
+
+.phone_login .title h5 {
     font-size: 19px;
 }
-.phone_login .exit_icon{
+
+.phone_login .exit_icon {
     font-size: 26px;
     cursor: pointer;
 }
-.phone_login .nationality_code{
+
+.phone_login .nationality_code {
     width: 35%;
     border: none;
     border-bottom: 1px solid #008080;
     border-radius: 0;
 }
-.phone_login .phone_code{
+
+.phone_login .phone_code {
     border: none !important;
     border-bottom: 1px solid #008080 !important;
     border-radius: 0;
 }
-.phone_login label{
+
+.phone_login label {
     color: #000000a1;
 }
-.phone_login .btn-verify{
+
+.phone_login .btn-verify {
     width: 90%;
 }
-.phone_login .form .form-select{
+
+.phone_login .form .form-select {
     width: 30% !important;
+}
+
+.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.226);
+    border: 2px solid rgba(255, 0, 0, 0.795);
+    border-radius: 5px;
+    padding: .3rem 2rem;
+    margin-top: .5rem;
+    font-weight: 500;
 }

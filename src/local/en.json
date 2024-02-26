@@ -23,7 +23,7 @@
     "Contact_address":"477, Al Faisaliah, Kingdom of Saudi Arabia",
     
     "home_see_more":"See More",
-    "home_category1":"Private Services",
+    "home_category1":"Services",
     "home_category2":"General Services",
     "home_category3":" Products Section",
 
@@ -71,8 +71,8 @@
     "all_product_product4_name":"Dasani",
     "all_product_product_btn":"Details",
 
-    "price":"AED",
-    "total_price":"Total Price:",
+    "price":" AED",
+    "total_price":"Total Price: ",
 
     "f-serves":"Services",
     "f-serves1":"Cleaning workers",
@@ -106,9 +106,10 @@
     "details_details2":"Presented as a hand bouquet",
     "details_details3":"Available colors: Pink, red, white or Yellow",
     "details_details4":"Height 50, width 25 cm",
-    "details_avilable":"Availability:",
-    "details_sku":"SKU:",
-    "details_serves_price":"The Price Of Serves:",
+    "details_avilable":"Availability: ",
+    "details_sku":"SKU: ",
+    "details_serves_price":"The Price: ",
+    "details_serves_discount":"Discount: ",
     "details_":"",
     "details_date":"Whate Date would you like us To start ?",
     "details_time":"Whate Time would you like us To start ?",
@@ -137,6 +138,8 @@
     "personal_lname_placeholder":"Last Name",
     "personal_email_placeholder":"Email",
     "personal_password_placeholder":"Password",
+    "personal_email":"Email",
+
     "personal_phone_placeholder":"Phone Number",
     "personal_Confirmpassword_placeholder":"Confirm Password",
     "personal_delet":"Delete Account",
@@ -208,5 +211,7 @@
     "Policy_p1":"Our privacy policy describes how we collect and process your personal information, such as the information you provide through our application. The policy also outlines your rights regarding your personal information, how it is retained, and secured.",
     "Policy_p2":"Communication: Various communication channels are provided in case of any questions or inquiries about the privacy policy. You can speak to the team through the application, call the specified number, or contact them via email.",
     "Policy_p3":"Updates: In the event of any changes in the way personal information is processed or in the policy itself, you will be promptly notified via email and the application will be updated. This is a general summary, and if you need assistance or additional clarification on a specific part of the text, feel free to ask",
-    "serviess":"Insecticide  spraying service"
+    "serviess":"Insecticide  spraying service",
+    "pagination_next":">>",
+    "pagination_previous":"<<"
 }

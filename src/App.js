@@ -8,7 +8,7 @@ import rtl from "./style/rtl.css";
 import Verify from './Page/Verify/Verify';
 import { SingUp } from './Page/SingUp/SingUp';
 import AllProduct from './Page/AllProduct';
-import PrivateServes from './Page/PrivateServes';
+import Serves from './Page/PrivateServes';
 import ProductDeteils from './Page/ProductDeteils';
 import { ServesDetiels } from './Page/ServesDetiels';
 import BookPage from './Page/Booking/BookPage';
@@ -29,21 +29,36 @@ import MyOrderpage from './Page/myorder/MyOrderpage';
 import AddCard from './Page/Add card/AddCard';
 import CreditCardPage from './Page/CreditCard/CreditCardPage';
 import CartPage from './Page/CartPage/CartPage';
+import axios from 'axios';
+import useFetch from './hooks/useFetch';
 export const ContextLang = createContext();
 
 function App() {
+  const [contentProduct,setContentProduct]=useState()
+  const [contentServes,setContenServes]=useState([])
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const { data: product } = useFetch("/api/v1/products/get-all-products");
 
+  const getPageProduct= async(page)=>{
+    console.log(contentProduct)
+    const res = await axios.get(`https://dashboard.knock-knock.ae/api/v1/products/get-all-products?page=${page}`)
+    setContentProduct(res?.data?.data?.data)
+  }
+  const getPageServes= async(page)=>{
+    const res = await axios.get(`https://dashboard.knock-knock.ae/api/v1/services/get-all?page=${page}`)
+    setContenServes(res?.data?.data?.data)
+    console.log(contentServes)
+  }
   return (
     <ContextLang.Provider value={{ selectedLanguage, setSelectedLanguage }}>
       <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
               <BrowserRouter >
             <Routes>
               <Route path="/" element={<Homepage />} />
-              <Route path="/allproduct" element={<AllProduct />} />
-              <Route path="/peivateserves" element={<PrivateServes />} />
-              <Route path="/productdeteils" element={<ProductDeteils />} />
-              <Route path="/serves_details" element={<ServesDetiels />} />
+              <Route path="/product" element={<AllProduct getPage={getPageProduct} product={product?.data} />} />
+              <Route path="product/:productId" element={<ProductDeteils />} />
+              <Route path="/serves" element={<Serves getPage={getPageServes} />} />
+              <Route path="/serves/:servesId" element={<ServesDetiels />} />
               {/* <Route path="/location" element={<Location />} /> */}
               {/* <Route path="/booking_step2" element={<MainBook2 />} /> */}
               <Route path="/checkout" element={<CheckOutpage />} />

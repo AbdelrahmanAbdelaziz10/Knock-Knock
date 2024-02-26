@@ -1,24 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Rectangle1 from "../../../images/Rectangle 195.svg"
-import Rectangle2 from "../../../images/Rectangle2.svg"
-import private4 from "../../../images/private4.svg"
-import general1 from "../../../images/general1.svg"
-import general2 from "../../../images/general2.svg"
-import product1 from "../../../images/product1.svg"
-import product2 from "../../../images/product2.svg"
-import product3 from "../../../images/product3.svg"
-import product4 from "../../../images/product4.svg"
-import private3 from "../../../images/private3.svg";
 import OneServe from './OneServe'
 import OneProduct from './OneProduct'
 import { Col } from 'react-bootstrap'
 import useFetch from '../../../hooks/useFetch'
-import { i18n } from 'i18next';
 import { useTranslation } from 'react-i18next'
 export const ServesRow = ({title,link}) => {
 const {t,i18n}=useTranslation()
-
+const {data: serves}=useFetch("/api/v1/services/get-all")
+const {data: product}=useFetch("/api/v1/products/get-all-products")
+const allProduct=product?.data?.data
+const allserves=serves?.data?.data
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">
@@ -33,27 +25,30 @@ const {t,i18n}=useTranslation()
 
     </div>
     {
-        title==="Products Section"? (
+        title===t("home_category3")? (
             <div className="row servies">
-            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
-            <OneProduct img={product1} name={"Sunny oil"} prise={"40"} discount={"-30%"} link={"/productdeteils"} />
-            </Col>
-            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
-            <OneProduct img={product2} name={"Flour"} prise={"10"} discount={"-30%"} link={"/productdeteils"} />
-            </Col>
-            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
-            <OneProduct img={product3} name={"Dasani"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
-            </Col>
-            <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
-            <OneProduct img={product4} name={"suger"} prise={"5"} discount={"-30%"} link={"/productdeteils"} />
-            </Col>
+            {allProduct && allProduct?.map((product)=>{
+                if(product.id<=4){
+                    return (
+                        <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
+                        <OneProduct image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product.id}`} />
+
+                        </Col>
+
+                    )
+                }
+            })}
+
             </div>
         ):(       
             <div className="row servies">
-    <OneServe image={Rectangle1} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
-    <OneServe image={Rectangle2} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
-    <OneServe image={private3} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
-    <OneServe image={private4} link={"/serves_details"} name_ar={"منتج واحد"} name_en={"product one"}/>
+            {allserves && allserves?.map((serve)=>{
+                if(serve.id<=4){
+                    return (
+                        <OneServe image={`https://dashboard.knock-knock.ae/${serve.image}`} link={`/serves/${serve.id}`} name_ar={serve.name_ar} name_en={serve.name_en}/>
+                    )
+                }
+            })}
     </div>)
     }
 

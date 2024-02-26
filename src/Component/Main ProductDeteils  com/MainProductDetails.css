@@ -7,7 +7,8 @@
 }
 .product_head .head_image{
     height: 100%;
-    width: 100%;
+    width: 50%;
+    padding: .5rem 0;
 }
 .product_head .home_icon{
     color: #008080;
@@ -27,4 +28,13 @@
 }
 .rtl .btn-book{
     margin-right: 7rem;
+}
+.btn-Add.next{
+    padding: 7px 45px;
+}
+.ltr .nots .icon{
+    font-size: 2.2rem !important;
+}
+.rtl .nots .icon{
+    font-size: 1.5rem !important;
 }

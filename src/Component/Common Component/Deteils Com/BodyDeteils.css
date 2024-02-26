@@ -2,18 +2,18 @@
 
 .body_details h4{
     color: #008080;
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
 }
 .body_details p,
 .body_details li{
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
 }
 .body_details .stock h4 span{
     color: #000000d7;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 17px;
 }
 .body_details .time_date h5{
     color: #008080;
@@ -25,6 +25,9 @@
 }
 .delivery_date h5 span{
     color: #008080;
+}
+.price_serves h4 .discount{
+    color: red !important;
 }
 .body_details .time_input .input_time{
     border: 2px solid #008080d2;
@@ -40,10 +43,10 @@
 }
 
 .ltr .form-control{
-    border-right: 0px !important;
+    /* border-right: 0px !important; */
 }
 .rtl .form-control{
-    border-left: 0px !important;
+    /* border-left: 0px !important; */
     border-right: 2px solid #008080 !important;
     border-radius: 0 5px 5px 0 !important;
 
@@ -99,6 +102,10 @@
     font-weight: 500;
     border-radius: 4px;
     border: none;
+}
+.total_price span{
+    color: #008080;
+    font-size: 19px;
 }
 .ltr .total_price{
     margin-left: 4rem;

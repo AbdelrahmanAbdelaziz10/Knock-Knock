@@ -24,12 +24,13 @@
 }
 .servies_image img {
     height: 100% !important;
-    width: 105% !important;
+    width: 75% !important;
 }
 
 .servies_image:hover img {
     transform: scale(1.1);
     transition: all .5s;
+    margin-bottom: 1rem;
 }
 
 .servies .link p {
@@ -59,6 +60,7 @@
 }
 .card.one_Product .card_image_product {
     height: 55%;
+    padding: .5rem;
 }
 
 .card.one_Product .card_text_product {
@@ -89,10 +91,10 @@ color: red;
 
 }
 .ltr .card.one_Product .card_text_product h6 span{
-    padding-left: 3rem;
+    padding-left: 2rem;
 }
 .rtl .card.one_Product .card_text_product h6 span{
-    padding-right: 3.5rem;
+    padding-right: 2rem;
 }
 .card.one_Product .card_text_product .btn-deteils{
     color: #fff;

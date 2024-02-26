@@ -640,6 +640,101 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/products/get-all-products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"get-all-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/products/get-product-details?product_id=1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"get-product-details"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -708,7 +803,7 @@
 								},
 								{
 									"key": "service_id",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -726,6 +821,82 @@
 									"value": "Cash",
 									"description": "Cash , Card",
 									"type": "text"
+								},
+								{
+									"key": "notes",
+									"value": "please i need this service fast .",
+									"description": "Optional",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Egypt , Cairo",
+									"type": "text"
+								},
+								{
+									"key": "building_number",
+									"value": "122",
+									"type": "text"
+								},
+								{
+									"key": "flat_number",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "6 October city",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Egypt",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "31.233334",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "30.033333",
+									"type": "text"
+								},
+								{
+									"key": "service_coupon_id",
+									"value": "2",
+									"description": "Optional only in apply coupon . put the new information here",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "discount_percentage",
+									"value": "15",
+									"description": "Optional only in apply coupon . put the new information here",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "discount_amount",
+									"value": "52.5",
+									"description": "Optional only in apply coupon . put the new information here",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price_after_discount",
+									"value": "297.5",
+									"description": "Optional only in apply coupon . put the new information here",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "grant_total",
+									"value": "322.5",
+									"description": "Optional only in apply coupon . put the new information here",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -739,6 +910,148 @@
 								"v1",
 								"service_orders",
 								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Orders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "order_status",
+									"value": "0",
+									"description": "( 0 => Pending , 1 => Processing , 2 => Delivered , 3 => Cancelled  )",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/service_orders/my-orders",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"service_orders",
+								"my-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "order_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "0",
+									"description": "( 0 => Pending , 1 => Processing , 2 => Delivered , 3 => Cancelled  )",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/service_orders/cancel-orders",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"service_orders",
+								"cancel-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Coupon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coupon_name",
+									"value": "ahmed123",
+									"type": "text"
+								},
+								{
+									"key": "service_id",
+									"value": "2",
+									"description": "( 0 => Pending , 1 => Processing , 2 => Delivered , 3 => Cancelled  )",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/service_orders/apply-coupon",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"service_orders",
+								"apply-coupon"
 							]
 						}
 					},
