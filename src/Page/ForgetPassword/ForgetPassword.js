@@ -43,9 +43,9 @@ const ForgetPassword = () => {
         setResponseMessage(response.data.message);
         // setEmailValue('');
         if (
-          response.message !== 'Email Not Found Please Enter Valide Email'
+          response.status 
         ) {
-          navigate('/verify');
+          navigate('/reset_password');
         }
       } catch (error) {
         // Handle error response
@@ -66,7 +66,9 @@ const ForgetPassword = () => {
                 <img className="" src={logo} alt="" />
                 <h4>{t('forget_password')}</h4>
               </div>
-
+              {responseMessage && (
+                  <div className="error text-center">{responseMessage}</div>
+                )}
               <div className="col-lg-12 row col-md-12 my-1">
                 <div className="row forget_password justify-content-center">
                   <input
@@ -87,9 +89,7 @@ const ForgetPassword = () => {
                 <button type="submit" className="btn mb-4 mx-2 btn-verify">
                   {t('forget_password_btn1')}
                 </button>
-                {responseMessage && (
-                  <div className="text-success">{responseMessage}</div>
-                )}
+
               </div>
             </form>
           </Col>

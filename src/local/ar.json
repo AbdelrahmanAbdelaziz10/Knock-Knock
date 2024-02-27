@@ -132,6 +132,8 @@
     "verify_btn1":"اعادة ارسال",
     "verify_btn2":"تاكيد",
     "forget_password_btn1":"ارسال الرمز",
+    "reset_password":"ارسل الرمز",
+    "Reset_password":"إعادة تعيين كلمة المرور",
 
     "phone_title":"تسجيل الدخول أو الاشتراك",
     "phone_p":"رقم الهاتف الخاص بك",

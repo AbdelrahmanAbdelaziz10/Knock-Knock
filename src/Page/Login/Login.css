@@ -293,10 +293,25 @@ input[type="number"] {
     background-color: rgba(255, 0, 0, 0.226);
     border: 2px solid rgba(255, 0, 0, 0.795);
     border-radius: 5px;
-    padding: .3rem 2rem;
+    padding: .5rem 1rem;
     margin-top: .5rem;
     font-weight: 500;
 }
 .forget_password .form-control-verify{
     text-align: start !important;
+}
+.text-success{
+    background-color: rgba(32, 178, 171, 0.26);
+    border: rgba(32, 178, 171, 0.76);
+    padding: 1rem 2rem;
+    color: #198754;
+}
+.success {
+    color: #198754;
+    background-color: #1987544d;
+    border: 2px solid #1987549f;
+    border-radius: 5px;
+    padding: .3rem 2rem;
+    margin-top: .5rem;
+    font-weight: 500;
 }

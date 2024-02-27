@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Col, Row } from "react-bootstrap";
@@ -6,11 +6,14 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEmailContext } from "../../Context/EmailContext ";
+import { FormDataContext } from "../../App";
 
 const Verify = () => {
   const { t } = useTranslation();
-  const { email } = useEmailContext();
-
+  // const { email } = useEmailContext();
+  const { saveFormData ,formData } = useContext(FormDataContext);
+  const [email,setEmail]=useState(formData.email);
+console.log(email)
   const [code, setCode] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
   const navigate = useNavigate();
@@ -32,17 +35,20 @@ const Verify = () => {
       // Handle success response
       setResponseMessage(response.data.message);
       setCode("");
-      if (
-        response.data.message === "Your account actived successfully you can login now !"
-      ) {
-        navigate("/reset_password");
+      if (response.data.status) {
+        navigate("/login");
       }
     } catch (error) {
       // Handle error response
       console.error("Error submitting form", error);
-      setResponseMessage("An error occurred. Please try again.");
+      if (error.response && error.response.data && error.response.data.message) {
+        setResponseMessage(error.response.data.message);
+      } else {
+        setResponseMessage("An error occurred. Please try again.");
+      }
     }
   };
+  
   const handleSubmitResent = async (e) => {
     e.preventDefault();
     try {
@@ -54,17 +60,17 @@ const Verify = () => {
       // Handle success response
       setResponseMessage(response.data.message);
       setCode("");
-      // if (
-      //   response.data.message !== "Email Not Found Please Enter Valide Email"
-      // ) {
-      //   navigate("/reset_password");
-      // }
     } catch (error) {
       // Handle error response
       console.error("Error submitting form", error);
-      setResponseMessage("An error occurred. Please try again.");
+      if (error.response && error.response.data && error.response.data.message) {
+        setResponseMessage(error.response.data.message);
+      } else {
+        setResponseMessage("An error occurred. Please try again.");
+      }
     }
   };
+  
   return (
     <div className="login Verify">
       <div className="container">
@@ -75,6 +81,10 @@ const Verify = () => {
                 <img className="" src={logo} alt="" />
                 <h4>{t("verify_title")}</h4>
               </div>
+              {responseMessage === "account is incorrect !" || responseMessage==="The given data was invalid." && (
+                  <div className="error text-center">{responseMessage}</div>
+                )}
+
               <div className="col-lg-12 row col-md-12 my-3">
                 <div className="row justify-content-center">
                   <input
@@ -95,9 +105,10 @@ const Verify = () => {
                   {t("verify_btn2")}
                 </button>
 
-                {responseMessage && (
-                  <div className="text-success">{responseMessage}</div>
-                )}
+
+                {/* {responseMessage === "account is incorrect !" && responseMessage==="The given data was invalid." && (
+                  <div className="success">{responseMessage}</div>
+                )} */}
               </div>
             </form>
           </Col>

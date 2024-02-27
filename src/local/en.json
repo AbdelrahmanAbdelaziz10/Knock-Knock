@@ -134,6 +134,8 @@
     "verify_title":"Verify Account",
     "verify_btn1":"Send Again",
     "forget_password_btn1":"Send Code",
+    "reset_password":"Send Code",
+    "Reset_password":"Reset Password",
 
     "verify_btn2":"Verify",
     "phone_title":"Log in or sign up",

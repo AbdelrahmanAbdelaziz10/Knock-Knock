@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { FormDataContext } from "../../App";
 
 export const SingUp = () => {
   const { t } = useTranslation();
+  const { saveFormData } = useContext(FormDataContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -18,16 +21,18 @@ export const SingUp = () => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [responseMessage, setResponseMessage] = useState("");
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-     setErrors({
+    setErrors({
       ...errors,
       [e.target.name]: "", // Clear error message when input changes
-    }); 
+    });
+    setResponseMessage(""); // Clear response message when input changes
   };
 
   const validateForm = () => {
@@ -49,7 +54,7 @@ export const SingUp = () => {
     if (!formData.password.trim()) {
       errors.password = "last is required";
     }
-    if (formData.password_confirmation !== formData.password_confirmation) {
+    if (formData.password !== formData.password_confirmation) {
       errors.password_confirmation = "passwords do not match";
     }
     setErrors(errors);
@@ -61,11 +66,14 @@ export const SingUp = () => {
     if (validateForm()) {
       try {
         setIsSubmitting(true);
-  
-        const response = await axios.post("https://dashboard.knock-knock.ae/api/auth/register", formData);
+
+        const response = await axios.post(
+          "https://dashboard.knock-knock.ae/api/auth/register",
+          formData
+        );
         console.log(response.data);
         // Handle success response
-        alert("Registration successful!");
+        setResponseMessage(response.data.error);
         setFormData({
           first_name: "",
           last_name: "",
@@ -74,16 +82,21 @@ export const SingUp = () => {
           password: "",
           password_confirmation: "",
         });
+        if (response.data.status) {
+          saveFormData(response.data.user);
+          navigate("/verify");
+        }
       } catch (error) {
         // Handle error response
         console.error("Error submitting form", error);
-        alert("Failed to register. Please check your inputs and try again.");
+        setResponseMessage(
+          "Failed to register. Please check your inputs and try again."
+        );
       } finally {
         setIsSubmitting(false);
       }
     }
   };
-
   return (
     <div className="login singup">
       <div className="container">
@@ -95,6 +108,9 @@ export const SingUp = () => {
                 <img className="" src={logo} alt="" />
                 <h4>{t("singup")}</h4>
               </div>
+              {responseMessage && (
+                <div className="error text-center">{responseMessage}</div>
+              )}
               <div className="col-lg-12 col-md-12 my-lg-2 my-md-2 row media">
                 <div className="col-lg-6 col-md-6 pl1">
                   <input
@@ -105,7 +121,9 @@ export const SingUp = () => {
                     onChange={handleChange}
                     placeholder={t("personal_fname_placeholder")}
                   />
-                  {errors.first_name && <div className="error">{errors.first_name}</div>}
+                  {errors.first_name && (
+                    <div className="error">{errors.first_name}</div>
+                  )}
                 </div>
                 <div className="col-lg-6 col-md-6 pl2">
                   <input
@@ -116,7 +134,9 @@ export const SingUp = () => {
                     name="last_name"
                     placeholder={t("personal_lname_placeholder")}
                   />
-                  {errors.last_name && <div className="error">{errors.last_name}</div>}
+                  {errors.last_name && (
+                    <div className="error">{errors.last_name}</div>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 mb-2 p-r">
@@ -150,7 +170,9 @@ export const SingUp = () => {
                   name="password"
                   placeholder={t("personal_password_placeholder")}
                 />
-                {errors.password && <div className="error">{errors.password}</div>}
+                {errors.password && (
+                  <div className="error">{errors.password}</div>
+                )}
               </div>
               <div className="col-md-12 mb-2 p-r">
                 <input
@@ -161,11 +183,17 @@ export const SingUp = () => {
                   name="password_confirmation"
                   placeholder={t("personal_Confirmpassword_placeholder")}
                 />
-                {errors.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
+                {errors.password_confirmation && (
+                  <div className="error">{errors.password_confirmation}</div>
+                )}
               </div>
 
               <div className="col-12 submit_btn mt-4">
-                <button type="submit" className="btn mb-4 mx-4 sing_in" disabled={isSubmitting}>
+                <button
+                  type="submit"
+                  className="btn mb-4 mx-4 sing_in"
+                  disabled={isSubmitting}
+                >
                   {t("singup")}
                 </button>
                 <p>

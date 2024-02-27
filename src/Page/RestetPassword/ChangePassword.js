@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useEmailContext } from "../../Context/EmailContext ";
 
-const ResetPassword = () => {
+const ChangePassword = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { email } = useEmailContext();
@@ -84,7 +84,9 @@ const ResetPassword = () => {
                 <img className="" src={logo} alt="" />
                 <h4>{t("reset_password")}</h4>
               </div>
-
+              {responseMessage && (
+                  <div className="error">{responseMessage}</div>
+                )}
               <div className="col-lg-12 row col-md-12 my-1">
                 <div className="row forget_password justify-content-center">
                   <input
@@ -114,9 +116,7 @@ const ResetPassword = () => {
                 <button type="submit" className="btn mb-4 mx-2 btn-verify">
                   {t("forget_password_btn1")}
                 </button>
-                {responseMessage && (
-                  <div className="text-success">{responseMessage}</div>
-                )}
+
               </div>
             </form>
           </Col>
@@ -126,4 +126,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ChangePassword;

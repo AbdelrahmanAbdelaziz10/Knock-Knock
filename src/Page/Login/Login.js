@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../images/Logo.png";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { LoginFormDataContext } from "../../App";
 
 const Login = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { saveLoginFormData ,loginFormData} = useContext(LoginFormDataContext);
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({});
-  
+  const [responseMessage, setResponseMessage] = useState('');
+
   const handleChange = (e) => {
     setLoginData({
       ...loginData,
@@ -23,6 +28,8 @@ const Login = () => {
       ...errors,
       [e.target.name]: "", // Clear error message when input changes
     });
+    setResponseMessage(''); // Clear response message when input changes
+
   };
 
   const validateForm = () => {
@@ -46,14 +53,20 @@ const Login = () => {
         const response = await axios.post("https://dashboard.knock-knock.ae/api/auth/login", loginData);
         console.log(response.data);
         // Handle success response
-        alert("Login successful!");
+        setResponseMessage(response.data.error);
+
         setLoginData({
           email: "",
           password: "",
         });
+        if (response.data.status) {
+          saveLoginFormData(response.data.user);
+          navigate("/home");
+        }
       } catch (error) {
         // Handle error response
         console.error("Error submitting form", error);
+        setResponseMessage('your Email or Password Is Rang.');
       }
     }
   };
@@ -69,7 +82,9 @@ const Login = () => {
                 <img className="" src={logo} alt="" />
                 <h4>{t("login")} </h4>
               </div>
-
+              {responseMessage && (
+                  <div className="error text-center">{responseMessage}</div>
+                )}
               <div className="col-lg-12 col-md-12 my-3">
                 <input
                   type="email"
