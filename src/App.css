@@ -1,3 +1,7 @@
 .display_none{
     display: none;
 }
+.leaftel-container{
+    height: 80vh !important;
+    width: 100vw;
+}

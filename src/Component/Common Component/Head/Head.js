@@ -10,9 +10,9 @@ const Head = ({img,page,title}) => {
     <div className='head_img' >
         <img src={img} alt=""/>
     </div>
-    <div className='head_text'>
+    <div className='head_text text-center'>
     <h2>{title}</h2>
-    <Link to="/" className='home_icon'><FaHome /></Link> <span> <MdKeyboardArrowRight />  {page}</span>
+    <Link to="/home" className='home_icon'><FaHome /></Link> <span> <MdKeyboardArrowRight />  {page}</span>
     </div>
     </div>
   )

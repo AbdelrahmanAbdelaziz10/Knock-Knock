@@ -18,7 +18,7 @@ const MainAddressPage = () => {
             <Card className="address_card">
               <div className="row d-flex">
                 <Col xs={1} lg={1} md={1} sm={1}>
-                  <Link to="/">
+                  <Link to="/home">
                     {selectedLanguage === "ar" ? (
                       <FaArrowRight className=" arrow_icon arrow_icon_ar" />
                     ) : (
@@ -30,15 +30,60 @@ const MainAddressPage = () => {
                   <h4 className="text-center">{t("address_title")}</h4>
                 </Col>
               </div>
-
+              
               <div className="row justify-content-center">
-                <div class="col-9 mb-2 p-r">
+              <div class="col-10 mb-2 p-r">
                   <input
                     type="text"
                     class="form-control"
                     id="inputAddress"
                     name="address"
                     placeholder={t("address_title")}
+                  />
+                </div>
+                <div class="col-10 mb-2 p-r">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address"
+                    placeholder={t("Building_No.")}
+                  />
+                </div>
+                <div class="col-10 mb-2 p-r">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address"
+                    placeholder={t("Flat_No.")}
+                  />
+                </div>
+                <div class="col-10 mb-2 p-r">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address"
+                    placeholder={t("phone")}
+                  />
+                </div>
+                <div class="col-10 mb-2 p-r">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address"
+                    placeholder={t("State")}
+                  />
+                </div>
+                <div class="col-10 mb-2 p-r">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    name="address"
+                    placeholder={t("city")}
                   />
                 </div>
                 <div class="col-8 submit_btn mt-4">

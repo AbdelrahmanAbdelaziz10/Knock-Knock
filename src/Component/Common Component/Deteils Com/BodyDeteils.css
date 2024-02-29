@@ -131,7 +131,7 @@
 .nots{
     display: flex;
     background-color: #D3D3D3;
-    width: 55vh;
+    width: 90%;
     border-radius: 20px;
     padding: .5rem;
 }

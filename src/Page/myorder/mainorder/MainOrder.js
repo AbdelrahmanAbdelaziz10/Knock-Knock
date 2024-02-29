@@ -17,16 +17,16 @@ const MainOrder = () => {
             sm={12}
             className="row justify-content-center"
           >
-            <Col xs={4} lg={2} md={3} sm={4} className="">
+            <Col xs={5} lg={2} md={3} sm={5} className="">
               <button className="btn btn_order active">{t("order_pending")}</button>
             </Col>
-            <Col xs={4} lg={2} md={3} sm={4} className="">
+            <Col xs={5} lg={2} md={3} sm={5} className="">
               <button className="btn btn_order">{t("order_processing")}</button>
             </Col>
-            <Col xs={4} lg={2} md={3} sm={4} className="">
+            <Col xs={5} lg={2} md={3} sm={5} className="">
               <button className="btn btn_order">{t("order_cancelled")}</button>
             </Col>
-            <Col xs={4} lg={2} md={3} sm={4} className="">
+            <Col xs={4} lg={2} md={3} sm={5} className="">
               <button className="btn btn_order">{t("order_finish")}</button>
             </Col>
           </Col>

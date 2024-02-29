@@ -19,7 +19,7 @@ const MainGift = () => {
             <Card className="address_card">
               <div className="row d-flex credit_transition">
                 <Col xs={1} lg={1} md={1} sm={1}>
-                  <Link to="/">
+                  <Link to="/home">
                     {selectedLanguage === "ar" ? (
                       <FaArrowRight className=" arrow_icon arrow_icon_ar" />
                     ) : (
@@ -37,7 +37,7 @@ const MainGift = () => {
                   <Col
                     xs={11}
                     lg={11}
-                    md={12}
+                    md={11}
                     sm={11}
                     className="total_credit card py-2"
                   >

@@ -82,7 +82,7 @@ const ChangePassword = () => {
             <form className="row form g-3 mb-5 mt-3" onSubmit={handleSubmit}>
               <div className="form_head text-center mb-3">
                 <img className="" src={logo} alt="" />
-                <h4>{t("reset_password")}</h4>
+                <h4>{t("Change_password")}</h4>
               </div>
               {responseMessage && (
                   <div className="error">{responseMessage}</div>
@@ -114,7 +114,7 @@ const ChangePassword = () => {
 
               <div className="col-12 submit_btn mt-4">
                 <button type="submit" className="btn mb-4 mx-2 btn-verify">
-                  {t("forget_password_btn1")}
+                  {t("Change_password")}
                 </button>
 
               </div>

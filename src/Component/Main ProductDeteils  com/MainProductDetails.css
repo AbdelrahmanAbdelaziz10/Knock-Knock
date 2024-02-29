@@ -38,3 +38,22 @@
 .rtl .nots .icon{
     font-size: 1.5rem !important;
 }
+.nots_add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem !important;
+}
+.nots .input_nots{
+    width: 90%;
+    border: none !important;
+    border-bottom: 2px solid #008080 !important;
+    background-color: #d3d3d35e !important;
+    border-radius: 0 !important;
+    
+}
+.rtl .nots .input_nots{
+    border-right: 0px !important;
+}
+.ltr .nots .input_nots{
+}

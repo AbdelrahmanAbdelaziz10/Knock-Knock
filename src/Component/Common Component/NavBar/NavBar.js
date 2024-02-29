@@ -4,12 +4,10 @@ import "./NavBar.css";
 import { CgProfile } from "react-icons/cg";
 import { TiThMenu } from "react-icons/ti";
 import Logo from "../../../images/Logo.png";
-import country from "../../../images/Flag_of_the_United_Arab_Emirates 1.png";
 import { useTranslation } from "react-i18next";
 import { ContextLang } from "../../../App";
 import googleplay from "../../../images/googleplay.png";
 import appstore from "../../../images/appstore.png";
-import flag from "../../../images/Flag_of_the_United_Arab_Emirates 1.png";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Col } from "react-bootstrap";
 import { IoPersonCircleSharp } from "react-icons/io5";
@@ -48,11 +46,14 @@ const NavBar = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
   };
+  const clearLocalStorage = () => {
+    localStorage.removeItem("loginFormData");
+  };
   return (
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/home">
             <img src={Logo} alt="Logo" />
           </Link>
           <div className="d-flex form" role="search">
@@ -73,69 +74,21 @@ const NavBar = () => {
             )}
 
             <button
-              className="btn btn-flag"
-              onClick={() => togglleDrowpDown()}
-              type="button"
-            >
-              <img src={country} alt="Flag" />
-            </button>
-            <button
               className="btn btn-menu"
               type="button"
               onClick={() => togglleSinAndLogin()}
             >
               <TiThMenu className="fa-solid fa-bars mt-1" />
               <CgProfile className="fa-solid fa-user" />
-              {/* <i className="fa-solid fa-bars mt-2"></i>
-              <i className="fa-solid fa-user"></i> */}
             </button>
           </div>
         </div>
       </nav>
-      {/* Country Dropdown  */}
-      {/* <div
-        className={test === true ? "display-block dropmenu" : "dropmenu"}
-        id="country"
-      >
-        <p>حدد الدولة</p>
-        <div className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={2} md={3} sm={3} className="col-lg-2">
-            <div className="flag">
-              <img src={flag} alt="Flag" />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Usa")}</p>
-          </Col>
-        </div>
-        <div className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={2} md={3} sm={3} className="col-lg-2">
-            <div className="flag">
-              <img src={flag} alt="Flag" />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Usa")}</p>
-          </Col>
-        </div>
-        <div className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={2} md={3} sm={3} className="col-lg-2">
-            <div className="flag">
-              <img src={flag} alt="Flag" />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Usa")}</p>
-          </Col>
-        </div>
-      </div> */}
 
-      {/* Profile after login Dropdown  */}
       <div
         className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
         id="country"
       >
-        {/* <p>حدد الدولة</p> */}
         <Link to="/profile" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -146,7 +99,6 @@ const NavBar = () => {
             <p> {t("profile")}</p>
           </Col>
         </Link>
-        {/* Add more country dropdown options if needed  */}
         <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -208,59 +160,17 @@ const NavBar = () => {
             <p> {t("policy")}</p>
           </Col>
         </Link>
-        {/* <div className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <MdOutlineSettings />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Setting")}</p>
-          </Col>
-        </div> */}
-        <div className="row row_hover border pt-2 mb-3">
+        <Link to="/" className="row row_hover border pt-2 mb-3" onClick={clearLocalStorage}>
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <RiLogoutCircleRLine />
             </div>
           </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name" >
             <p className="log_out"> {t("Log_Out")}</p>
           </Col>
-        </div>
+        </Link>
       </div>
-
-      {/* Profile before login Dropdown  */}
-
-      {/* <div
-        className={test2 === true ? "display-block dropmenu" : "dropmenu"}
-        id="signup"
-      >
-        <div className="row  pt-2 mb-3">
-          <Link to="/login" className="btn btn-login">
-            {t("login")}
-          </Link>
-        </div>
-        <div className="row  pt-2 mb-3">
-          <Link to="/singup" className="btn btn-login">
-            {t("singup")}
-          </Link>
-        </div>
-        <div className="row pt-2 mb-3 ">
-          <p className="direction">
-            <FaQuestionCircle className="fa-solid fa-circle-question" />
-            {t("help")}
-          </p>
-        </div>
-        <div className="row border_top pt-2 mb-3">
-          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
-            <img src={appstore} alt="App Store" />
-          </Col>
-          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
-            <img src={googleplay} alt="Google Play" />
-          </Col>
-        </div>
-      </div> */}
     </>
   );
 };

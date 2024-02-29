@@ -14,12 +14,12 @@ const allserves=serves?.data?.data
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">
-        <Col xs={9} lg={9} md={9} sm={9} className="">
+        <Col xs={8} lg={9} md={8} sm={8} className="">
             <h4>
                 {title}
             </h4>
         </Col>
-        <Col xs={3} lg={3} md={3} sm={3} className="">
+        <Col xs={4} lg={3} md={4} sm={4} className="">
             <Link to={link} className="link see_more" > <span>{t("home_see_more")}</span></Link>
         </Col>
 

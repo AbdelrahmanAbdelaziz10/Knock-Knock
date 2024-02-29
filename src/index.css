@@ -18,3 +18,12 @@ a,Link {
 .homepage{
   overflow: hidden;
 }
+.arrow_icon{
+  color: #008080;
+}
+.ltr .btn.visa_img{
+  margin-left: 1rem;
+}
+.rtl .btn.visa_img{
+  margin-right: 1.5rem;
+}

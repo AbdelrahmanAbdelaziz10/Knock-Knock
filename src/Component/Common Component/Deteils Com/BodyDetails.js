@@ -46,15 +46,6 @@ const BodyDetails = ({ serveDetails }) => {
                   />            </>
           )}
         </div>
-        {/* <div className="details">
-          <h4>{t("details_details")}</h4>
-          <ul>
-            <li>{t("details_details1")}</li>
-            <li>{t("details_details2")}</li>
-            <li>{t("details_details3")}</li>
-            <li>{t("details_details4")}</li>
-          </ul>
-        </div> */}
         <div className="stock mb-3">
           <h4 className="mb-3">
             {t("details_avilable")} <span>{serveDetails?.quantity}</span>

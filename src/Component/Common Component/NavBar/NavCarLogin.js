@@ -43,7 +43,7 @@ const NavBarLogin = () => {
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" >
             <img src={Logo} alt="Logo" />
           </Link>
           <div className="d-flex form" role="search">

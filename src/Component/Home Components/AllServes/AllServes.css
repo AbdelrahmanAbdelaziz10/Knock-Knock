@@ -17,10 +17,10 @@
 
 }
 .ltr .allservice .see_more.link {
-    margin-left: 5rem !important;
+    margin-left: 5rem ;
 }
 .rtl .allservice .see_more.link {
-    margin-right: 5rem !important;
+    margin-right: 5rem ;
 }
 .servies_image img {
     height: 100% !important;

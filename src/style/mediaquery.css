@@ -13,7 +13,7 @@
     }
 
     .dropmenu {
-        top: 6.5rem !important;
+        top: 5.5rem !important;
         width: 35vw !important;
         z-index: 1111;
     }
@@ -42,7 +42,10 @@
         width: 84%;
         height: 29vh;
     }
-
+    .main_order .order_title .btn_pending {
+        font-size: 13px;
+        font-weight: 500;
+    }
     .ltr .card.one_Product {
         margin-left: 2rem;
     }
@@ -50,7 +53,9 @@
     .rtl .card.one_Product {
         margin-right: 2rem;
     }
-
+    .btn.visa_img{
+        height: 10vh !important;
+    }
     /* 3- Sponsor */
     .ltr .sponsor_text {
         margin-right: -1rem;
@@ -63,9 +68,11 @@
 
     /* 5- Footer */
     .ltr .footer .social_icon {
-        margin-left: 5rem !important;
+        margin-left: 3rem !important;
     }
-
+    .rtl .footer .social_icon {
+        margin-right: 0rem !important;
+    }
     .ltr .footer .footer_list {
         margin-left: 2rem !important;
     }
@@ -92,12 +99,8 @@
     .head_serves .head_text {
         position: absolute;
         top: 5rem;
-        left: 35%;
+        left: 38%;
         z-index: 11;
-    }
-
-    .ltr .head_serves .head_text .home_icon {
-        margin-left: 2rem;
     }
 
     /* 2-Main Product */
@@ -114,13 +117,16 @@
         padding-left: 2rem;
     }
     .ltr .head_serves .head_text .home_icon{
-        margin-left: 3rem;
+        margin-left: 0rem;
     }
     .rtl .head_serves .head_text .home_icon{
-        margin-right: 2.5rem;
+        margin-right: 0rem;
+    }
+    .ltr .card.one_Product .card_text_product h6 span {
+        padding-left: .7rem;
     }
     .rtl .card.one_Product .card_text_product h6 span {
-        padding-right: 1rem;
+        padding-right: .6rem;
     }
     /* Start in Serves Details page responsive */
     /* 1-main Serves Details - product Head */
@@ -354,7 +360,6 @@
     .form .form_head {
         margin-bottom: .2rem !important;
     }
-
     .singup .form_head img {
         width: 75%;
     }
@@ -391,7 +396,10 @@
     .contact_main .form_contact .massage {
         width: 100%;
     }
-
+.rtl .contact_main .form_contact .massage {
+    padding-right: 1rem;
+    padding-top: .6rem;
+}
     /* Start in Credit Card page responsive */
     .main_card h5 {
         padding-bottom: 1rem;
@@ -410,6 +418,19 @@
     .date_day{
         margin: 0 !important;
     }
+    .Why-Us .card{
+        height: 30vh;
+        margin-bottom: 1.4rem;
+    }
+    .ltr .footer .footer_list {
+        margin-left: 0rem !important;
+    }
+    .ltr .allservice .see_more.link {
+        margin-left: 2rem !important;
+    }
+    .rtl .allservice .see_more.link {
+        margin-right: 2rem !important;
+    }
 }
 
 
@@ -417,7 +438,9 @@
 /* Small devices (phones) */
 @media (max-width: 576px) {
     /* Styles for small devices */
-
+    .btn.visa_img{
+        height: 10vh !important;
+    }
     /* Start in home page responsive */
     /* 1-NavBar */
     .navbar {
@@ -527,13 +550,30 @@
     /* 4- Footer */
     .ltr .footer .social_icon {
         margin: 1rem 0;
-        margin-left: 9rem !important;
+        margin-left: 4rem !important;
     }
 
     .ltr .footer .footer_list {
         margin-left: 2rem !important;
     }
-
+    .header .header_text p {
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+    .servies_card .card_head p{
+        font-size: 11px;
+        font-weight: 400;
+    }
+    .aboutsay .swiper .swiper-slide p {
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        margin-bottom: 4rem;
+    }
+    .download .text p {
+        margin: 1rem 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
     /* Start in All Product page responsive */
     /* 1-Header of product */
     .head_serves {
@@ -557,15 +597,15 @@
     .head_serves .head_text {
         position: absolute;
         top: 4rem;
-        left: 26%;
+        left: 36%;
         z-index: 11;
     }
 
     .ltr .head_serves .head_text .home_icon{
-        margin-left: 2rem;
+        margin-left: 0rem;
     }
     .rtl .head_serves .head_text .home_icon{
-        margin-right: .2rem;
+        margin-right: 0rem;
     }
     .rtl .card.one_Product .card_text_product h6 span {
         padding-right: 2rem;
@@ -633,7 +673,9 @@
     .input-group-append {
         height: 4vh !important;
     }
-
+    .total_price{
+        font-size: 16px;
+    }
     .ltr .total_price {
         margin-left: 1.5rem;
     }
@@ -675,10 +717,6 @@
         width: 80%;
     }
 
-    .nots {
-        width: 40vh;
-    }
-
     .nots .icon {
         font-size: 1.9rem;
     }
@@ -703,8 +741,17 @@
     .rtl .nots .icon {
         margin-left: .5rem;
     }
-
-
+    .profile .form_head{
+        width: 80% !important;
+    }
+    .profile .form_head h4{
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    .main_address .address_card h4{
+        font-size:17px;
+    }
     /* Start in Booking Step 1 page responsive */
     /* 1-main Serves Details - product Head */
     .booking_container {
@@ -922,6 +969,13 @@
     }
 
     /* Start in Verify page responsive */
+    .Verify .form .form_head img {
+        margin-top: 1.5rem;
+        width: 70%;
+    }
+    .Verify .form .form_head h4 {
+        margin-top: 1rem !important;
+    }
     .verify .form .form_head {
         width: 90% !important;
     }
@@ -1022,6 +1076,10 @@
     .rtl .phone_login .form-select{
         margin-right: .5rem;
     }
+    .rtl .contact_main .form_contact .massage {
+        padding-right: 5rem;
+        padding-top: .3rem;
+    }
     .phone_login .btn-verify{
         width: 80%;
     }
@@ -1035,6 +1093,31 @@
         width: 90vw !important;
         height: 50vh !important;
     }
+    .Why-Us .card{
+        height: 30vh;
+        margin-bottom: 1.4rem;
+    }
+    .rtl .social_icon{
+        margin:1rem 0;
+        /* margin-right: 11.2rem !important; */
+    }
+    .form .form_head {
+        width: 55%;
+        margin-top: -1rem !important;
+    }
+    .form .form_head img{
+        width: 80%;
+    }
+    .ltr .allservice .see_more.link {
+        margin-left: 0rem !important;
+    }
+    .rtl .allservice .see_more.link {
+        margin-right: 0rem !important;
+    }
+    /* .form .forget .forget_password:hover { */
+        /* margin-left: 1.5rem !important; */
+        /* transition: all .5s; */
+    /* } */
 }
 
 @media (max-width: 375px) {
@@ -1187,5 +1270,16 @@
     }
     .aboutsay .swiper {
         height: 70vh !important;
+    }
+    .Why-Us .card {
+        height: 50vh;
+        margin-bottom: 1.4rem;
+    }
+    .singup .form .form_head {
+        width: 65%;
+        margin-top: -1rem !important;
+    }
+    .singup .form .form_head img{
+        width: 80%;
     }
 }

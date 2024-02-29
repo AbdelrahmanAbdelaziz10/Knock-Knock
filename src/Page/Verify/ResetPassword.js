@@ -84,7 +84,7 @@ const RestPassword = () => {
               </div>
               <div className="col-12 submit_btn mt-4">
                 <button type="submit" className="btn mb-4 mx-2 btn-verify">
-                  {t("reset_password")}
+                  {t("Reset_password")}
                 </button>
               </div>
             </form>

@@ -98,7 +98,7 @@
     "f-quter":"قطر",
     "f-doha":"الدوحة",
     "f-terms":"التعليمات",
-    "f-privacy":"الشروط والسياسات",
+    "f-privacy":"السياسات",
     "f-sitemap":"الخصوصية",
     "f-career":"مهنة",
     "details_head":"زيت الشمس",
@@ -116,6 +116,9 @@
     "details_date":"ما هو التاريخ الذي تريد أن نبدأ فيه؟",
     "details_time":"ما هو الوقت الذي تريد أن نبدأ فيه؟",
     "details_btn":"أضف إلى البطاقة",
+    "details_nots_p":"هل لديك اي شئ تحب ان تضيفة؟",
+    "details_nots_placeholder":"ادخل اضافاتك",
+
     "serves_details_massage":"إلغاء مجاني حتى 12 ساعة قبل بدء الحجز",
     "serves_details_hours":"عدد الساعات",
     "serves_details_btn":"احجز الآن",
@@ -133,7 +136,8 @@
     "verify_btn2":"تاكيد",
     "forget_password_btn1":"ارسال الرمز",
     "reset_password":"ارسل الرمز",
-    "Reset_password":"إعادة تعيين كلمة المرور",
+    "Reset_password":"تاكيد الرمز",
+    "Change_password":"تغير كلمه المرور",
 
     "phone_title":"تسجيل الدخول أو الاشتراك",
     "phone_p":"رقم الهاتف الخاص بك",
@@ -151,6 +155,11 @@
     "personal_delet":"حذف الحساب",
     "personal_btn":"حفظ",
     "address_title":"العنوان",
+    "Building_No.":"رقم المبني",
+    "Flat_No.":"رقم الشقة",
+    "phone":"الهاتف",
+    "State":"المنطقة",
+    "city":"المدينة.",
     "address_placeholder":"55 ش ابو ظبي",
     "address_btn":"اضافة عنوان جديد",
     "credit_h":"إجمالي الائتمان",
@@ -190,7 +199,8 @@
     "contact_massage_placeholder":"اترك لنا رسالتك",
 
     "credit_title":"بطاقات الائتمان",
-    "credit_Qnb":"بنك قطر الوطني",
+    "paid_Way":"طريقة الدفع",
+    "cash":"نقدا",
     "credit_Cib":"بنك التجارة الدولية",
 
     "add_card_title":"إضافة بطافة جديدة",
@@ -212,7 +222,7 @@
     "payment_title":"ملخص الدفع",
     "payment_total":"المجموع الفرعي:",
     "payment_delivery":"رسوم التوصيل:",
-    "payment_taps":"ضريبة:",
+    "payment_taps":"تكلفة التسوق:",
 
 
     "Policy_title":"سياسة الخصوصية",

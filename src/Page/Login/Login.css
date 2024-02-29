@@ -61,11 +61,6 @@
     font-weight: 500;
 }
 
-.form .forget .forget_password:hover {
-    margin-left: 2.5rem !important;
-    transition: all .5s;
-}
-
 .form .form-check .form-check-label {
     color: #008080;
     font-size: 15px;
@@ -110,7 +105,11 @@
 .singup{
     margin-top: 0rem !important;
     padding-top: 0 !important;
-    height: 105vh;
+    height: auto;
+}
+.singup .form .form_head {
+    width: 45%;
+    margin-top: -1rem !important;
 }
 .singup .login_main {
     margin: 0rem !important;
@@ -293,9 +292,10 @@ input[type="number"] {
     background-color: rgba(255, 0, 0, 0.226);
     border: 2px solid rgba(255, 0, 0, 0.795);
     border-radius: 5px;
-    padding: .5rem 1rem;
+    padding: .5rem .8rem;
     margin-top: .5rem;
     font-weight: 500;
+    font-size: 15px !important;
 }
 .forget_password .form-control-verify{
     text-align: start !important;

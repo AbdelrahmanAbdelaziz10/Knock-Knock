@@ -150,7 +150,7 @@ export const SingUp = () => {
                 />
                 {errors.email && <div className="error">{errors.email}</div>}
               </div>
-              <div className="mb-lg-2 mb-md-2 d-flex">
+              <div className="mb-lg-2 mb-md-2">
                 <input
                   type="number"
                   className="form-control"

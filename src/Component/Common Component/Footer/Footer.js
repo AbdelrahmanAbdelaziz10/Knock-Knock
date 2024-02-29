@@ -111,7 +111,7 @@ const Footer = () => {
                 </Col>
               </div>
             </Col>
-            <Col xs={2} lg={4} md={2} sm={2} className="col-lg-4 col-md-2 social_icon">
+            <Col xs={8} lg={4} md={2} sm={8} className=" social_icon">
               <Link to="" className="fa-brand">
               <FaFacebook className="facebook"/>
               </Link>
@@ -122,7 +122,7 @@ const Footer = () => {
               <FaInstagram className="instagram"/>
               </Link>
             </Col>
-            <Col xs={9} lg={4} md={3} sm={9} className="col-lg-4 col-md-5">
+            <Col xs={11} lg={4} md={5} sm={11} className="">
               <ul className="footer_list">
                 <li>
                   <Link to="" className="list_li">

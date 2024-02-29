@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import BookHead from '../../Booking/Main Booking/Book Head/BookHead'
-import { FaRegCreditCard } from 'react-icons/fa'
+import { FaArrowLeft, FaArrowRight, FaRegCreditCard } from 'react-icons/fa'
 import { SiVisa } from 'react-icons/si'
 import { FaCircleExclamation } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
@@ -9,9 +9,12 @@ import greenVisa from "../../../images/visagreen.png"
 import redVisa from "../../../images/visared.png"
 import { i18n } from 'i18next';
 import { useTranslation } from 'react-i18next'
+import { ContextLang } from '../../../App'
 
 const MainCreditCard = () => {
-  const {t,i18n}=useTranslation()
+  const {t}=useTranslation()
+  const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
+
   return (
     <div className="main_book main_card py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">
@@ -25,103 +28,48 @@ const MainCreditCard = () => {
           >
             <div className="">
               <div className="payment ">
-                <h3 className='text-center'>
-                {t("credit_title")}
-                </h3>
-                <div className="create_pay mb-4">
-                  <Row className="row">
-                    <Col xs={9} lg={10} md={9} sm={9}>
-                      <h6 className="credit">
-                        <FaRegCreditCard className="create" />
-                        <span>
-                        {t("add_card_visa")}
-                        </span>
-                      </h6>
-                    </Col>
+              <div className="row d-flex">
+                <Col xs={1} lg={1} md={1} sm={1}>
+                  <Link to="/checkout">
+                    {selectedLanguage === "ar" ? (
+                      <FaArrowRight className=" arrow_icon arrow_icon_ar" />
+                    ) : (
+                      <FaArrowLeft className="arrow_icon arrow_icon_en" />
+                    )}
+                  </Link>
+                </Col>
+                <Col xs={10} lg={10} md={10} sm={10} className="">
+                  <h3 className="text-center">{t("paid_Way")}</h3>
+                </Col>
+              </div>
+              
 
-                    <Col xs={3} lg={2} md={3} sm={3} className=''>
-                      <SiVisa className="visa" />
-
-                    </Col>
-                  </Row>
-                </div>
-
-                <Row className="px-lg-4 justify-content-center">
-                <h5>
-                {t("credit_Qnb")}
-                </h5>
-                  <Col xs={8} md={7} lg={7} sm={8} className="mb-4">
-                  <div className='visa_img'>
-                  <img src={greenVisa} alt='' />
-                  </div>
+                <Row className=" justify-content-center mt-2">
+                  <Col xs={10} md={8} lg={7} sm={10} className="mb-5">
+                  <button className='btn visa_img'>
+                  {t("cash")}
+                  {/* <img src={greenVisa} alt='' /> */}
+                  </button>
                   </Col>
-                  <h5>
-                  {t("credit_Cib")}
-                  </h5>
-                  <Col xs={8} md={7} lg={7} sm={8} className="mb-4">
-                  <div className='visa_img'>
-                  <img src={redVisa} alt='' />
-                  </div>
+
+                  <Col xs={10} md={8} lg={7} sm={10} className="mb-5">
+                  <button className='btn visa_img'>
+                  {t("credit_title")}
+                  {/* <img src={redVisa} alt='' /> */}
+                  </button>
                   </Col>
 
                 </Row>
 
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <Link to="/add_card" className="btn btn_next">
               {t("add_card_title")}
               </Link>
-            </div>
+            </div> */}
           </Col>
-          {/* <Col xs={12} lg={5} md={4} sm={12} className="row ">
-            <Col
-              xs={12}
-              lg={12}
-              md={12}
-              sm={12}
-              className="border booking_details"
-            >
-              <h4>Booking Details</h4>
-              <div className="row">
-                <h6 className="col-lg-5 col-md-12">Address:</h6>
-                <p className="col-lg-7 col-md-12">
-                  73 Financial Center Rd - Downtown Dubai - Dubai - United Arab
-                  Emir
-                </p>
-              </div>
-              <div className="row">
-                <h6 className="col-lg-5">Serves:</h6>
-                <p className="col-lg-7">Handyman & Maintenance</p>
-              </div>
-              <div className="row">
-                <h6 className="col-lg-5">Serves Details:</h6>
-                <div className="col-lg-7 d-block">
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                  <p className="serves_name">1x Handyman Book Hourly</p>
-                </div>
-              </div>
-            </Col>
-            <Col
-              xs={12}
-              lg={12}
-              md={12}
-              sm={12}
-              className="border booking_details total"
-            >
-              <h4>Payment Summary</h4>
-              <div className="row">
-                <Col xs={7} lg={7} md={5} sm={7}>
-                  <h6 className=" ">Total:</h6>
-                </Col>
-                <Col xs={5} lg={5} md={7} sm={5}>
-                  <p className="">AED 165.00</p>
-                </Col>
-              </div>
-            </Col>
-          </Col> */}
+         
         </Row>
       </Container>
     </div> 

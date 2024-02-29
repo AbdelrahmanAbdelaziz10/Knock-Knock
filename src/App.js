@@ -38,12 +38,38 @@ import RestPassword from "./Page/Verify/ResetPassword";
 export const ContextLang = createContext();
 export const FormDataContext = createContext();
 export const LoginFormDataContext = createContext();
+export const LocationContext= createContext();
+export const ServesDetailsContext= createContext();
 
 function App() {
   const [contentProduct, setContentProduct] = useState();
   const [contentServes, setContenServes] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { data: product } = useFetch("/api/v1/products/get-all-products");
+  // const [servesDetails, setServesDetails] = useState()
+  const saveServesDetails = (data) => {
+    setServesDetails(data);
+  };
+  const [servesDetails, setServesDetails] = useState( {
+    user_id:"",
+    service_id:"",
+    selected_day_id:"",
+    selected_time:"",
+    payment_method:"",
+    notes:"",
+    // address:"",
+    // building_number:"",
+    // flat_number:"",
+    // city:"",
+    // country:"",
+    // longitude:"",
+    // latitude:"",
+    // service_coupon_id:"",
+    // discount_percentage:"",
+    // discount_amount:"",
+    // price_after_discount:"",
+    // grand_total:"",
+  } );
 
   const [formData, setFormData] = useState(null);
   const saveFormData = (data) => {
@@ -52,6 +78,10 @@ function App() {
   const [loginFormData, setLoginFormData] = useState(null);
   const saveLoginFormData = (data) => {
     setLoginFormData(data);
+  };
+  const [location, setLoactiocation] = useState(null);
+  const saveLocation = (data) => {
+    setFormData(data);
   };
   useEffect(() => {
     if (loginFormData) {
@@ -79,7 +109,12 @@ function App() {
       <LoginFormDataContext.Provider
         value={{ loginFormData, saveLoginFormData }}
       >
+            <LocationContext.Provider
+        value={{ location, saveLocation }}
+      >
         <FormDataContext.Provider value={{ formData, saveFormData }}>
+        <ServesDetailsContext.Provider value={{servesDetails, saveServesDetails}}>
+          
           <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
             <BrowserRouter>
               <Routes>
@@ -100,7 +135,7 @@ function App() {
                   element={<Serves getPage={getPageServes} />}
                 />
                 <Route path="/serves/:servesId" element={<ServesDetiels />} />
-                {/* <Route path="/location" element={<Location />} /> */}
+                <Route path="/location" element={<Location />} />
                 {/* <Route path="/booking_step2" element={<MainBook2 />} /> */}
                 <Route path="/checkout" element={<CheckOutpage />} />
                 <Route path="/login" element={<Login />} />
@@ -109,9 +144,9 @@ function App() {
                 <Route path="/forget_password" element={<ForgetPassword />} />
                 <Route path="/change_password" element={<ChangePassword />} />
                 <Route path="/reset_password" element={<RestPassword />} />
-
-                <Route path="/phone" element={<PhoneNumber />} />
                 <Route path="/profile" element={<ProfilePage />} />
+
+                {/* <Route path="/phone" element={<PhoneNumber />} /> */}
                 <Route path="/addaddress" element={<AddAddressPage />} />
                 <Route path="/credits" element={<CreditsPage />} />
                 <Route path="/send_gift" element={<SendGiftPage />} />
@@ -126,7 +161,9 @@ function App() {
               </Routes>
             </BrowserRouter>
           </div>
+          </ServesDetailsContext.Provider>
         </FormDataContext.Provider>
+        </LocationContext.Provider>
       </LoginFormDataContext.Provider>
     </ContextLang.Provider>
   );
