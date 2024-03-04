@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./MainBook.css";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import BookHead from "../Book Head/BookHead";
@@ -8,17 +8,28 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PaymentSummary from "../../../Checkout/mainCheckout/PaymentSummary";
 import BookingDetails from "../../../Checkout/mainCheckout/BookingDetails";
+import { OrderDataContext } from "../../../../App";
 
 const MainBook = () => {
   const { t, i18n } = useTranslation();
-
+  const servesOrderData = JSON.parse(localStorage.getItem("servesOrderData"));
+console.log(servesOrderData?.data)
   return (
     <div className="main_book main_card py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">
         <Row className="booking_row_main ">
+        <div className="row">
+        <Col xs={10} lg={10} md={10} sm={10} >
         <h2>
           {t("booking_title2")}
         </h2>
+        </Col>
+        <Col xs={2} lg={2} md={2} sm={2} >
+        <button className="btn btn_cancelled">
+        {t("order_cancelled")}
+        </button>
+        </Col>
+        </div>
           {/* <BookHead stepnum={1} title={"Serves Details"} /> */}
           <Col
             xs={12}
@@ -29,34 +40,26 @@ const MainBook = () => {
           >
             <div className="">
             <ServesCard
-                img={serves}
-                title={t("cart_h")}
-                prag={t("cart_p")}
-                price={"129"}
+                img={servesOrderData?.data[0]?.service.image}
+                title_ar={servesOrderData?.data[0]?.service?.name_ar}
+                title_en={servesOrderData?.data[0]?.service?.name_en}
+                description_ar={servesOrderData?.data[0]?.service?.description_ar}
+                description_en={servesOrderData?.data[0]?.service?.description_en}
+                price={servesOrderData?.data[0]?.service?.price}
               />
-              <ServesCard
-                img={serves}
-                title={t("cart_h")}
-                prag={t("cart_p")}
-                price={"129"}
-              />
-              <ServesCard
-                img={serves}
-                title={t("cart_h")}
-                prag={t("cart_p")}
-                price={"129"}
-              />
-              <ServesCard
-                img={serves}
-                title={t("cart_h")}
-                prag={t("cart_p")}
-                price={"129"}
-              />
+              
             </div>
           </Col>
           <Col xs={12} lg={5} md={4} sm={12} className="row ">
-          <BookingDetails />
-            <PaymentSummary />
+          <BookingDetails address={servesOrderData?.data[0]?.address}
+          country={servesOrderData?.data[0]?.country} 
+          name_ar={servesOrderData?.data[0]?.service?.name_ar}
+          name_en={servesOrderData?.data[0]?.service?.name_en}
+          />
+            <PaymentSummary 
+            subtotal={servesOrderData?.data[0]?.service?.price}
+            grand_total={servesOrderData?.data[0]?.grand_total}
+            />
 
           </Col>
         </Row>

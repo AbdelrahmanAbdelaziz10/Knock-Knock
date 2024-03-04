@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next';
 import useFetch from '../../../hooks/useFetch';
 
-const PaymentSummary = () => {
+const PaymentSummary = ({subtotal,grand_total}) => {
     const { t, i18n } = useTranslation();
     const {data:setting}=useFetch("/api/v1/settings/get-all");
   return (
@@ -20,7 +20,7 @@ const PaymentSummary = () => {
         <h6 className=" ">{t("payment_total")}</h6>
       </Col>
       <Col xs={5} lg={5} md={6} sm={5}>
-        <p className=""> 20 {t("price")}</p>
+        <p className=""> {subtotal} {t("price")}</p>
       </Col>
     </div>
     <div className="row">
@@ -31,20 +31,20 @@ const PaymentSummary = () => {
         <p className="">{setting?.data?.delivery_cost}{t("price")} </p>
       </Col>
     </div>
-    <div className="row">
+    {/* <div className="row">
       <Col xs={7} lg={7} md={6} sm={7}>
         <h6 className=" ">{t("payment_taps")}</h6>
       </Col>
       <Col xs={5} lg={5} md={6} sm={5}>
         <p className="">{setting?.data?.shipping_cost} {t("price")}</p>
       </Col>
-    </div>
+    </div> */}
     <div className="row price_total">
       <Col xs={7} lg={7} md={6} sm={7}>
         <h6 className=" ">{t("order_total")}</h6>
       </Col>
       <Col xs={5} lg={5} md={6} sm={5}>
-        <p className="">30 {t("price")}</p>
+        <p className="">{grand_total} {t("price")}</p>
       </Col>
     </div>
   </Col>

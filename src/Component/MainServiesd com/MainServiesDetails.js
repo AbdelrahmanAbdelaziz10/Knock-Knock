@@ -212,7 +212,7 @@ const MainServiesDetails = ({ changeTest }) => {
                 sm={6}
                 className="col-lg-4 col-md-3 mt-3 "
               >
-                <Link to="/cart_shop"  className="btn btn-Add next">
+                <Link onClick={addData} to='/location'  className="btn btn-Add next">
                   {t("gift_btn")}
                 </Link>
               </Col>

@@ -48,6 +48,8 @@ const NavBar = () => {
   };
   const clearLocalStorage = () => {
     localStorage.removeItem("loginFormData");
+    localStorage.removeItem("servesOrder");
+
   };
   return (
     <>

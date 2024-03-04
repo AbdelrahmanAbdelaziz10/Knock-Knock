@@ -57,3 +57,12 @@
 }
 .ltr .nots .input_nots{
 }
+
+
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    color: #fff !important;
+    background-color: #00808093 !important;
+    border: none !important;
+    opacity: .7;
+}

@@ -40,37 +40,46 @@ export const FormDataContext = createContext();
 export const LoginFormDataContext = createContext();
 export const LocationContext= createContext();
 export const ServesDetailsContext= createContext();
+export const OrderDataContext= createContext();
 
 function App() {
   const [contentProduct, setContentProduct] = useState();
   const [contentServes, setContenServes] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { data: product } = useFetch("/api/v1/products/get-all-products");
-  // const [servesDetails, setServesDetails] = useState()
-  const saveServesDetails = (data) => {
-    setServesDetails(data);
+  const [orderData, setOrderData] = useState()
+  const saveOrderData = (data) => {
+    setOrderData(data);
+    localStorage.setItem("servesOrderData", JSON.stringify(data));
   };
-  const [servesDetails, setServesDetails] = useState( {
-    user_id:"",
-    service_id:"",
-    selected_day_id:"",
-    selected_time:"",
-    payment_method:"",
-    notes:"",
-    // address:"",
-    // building_number:"",
-    // flat_number:"",
-    // city:"",
-    // country:"",
-    // longitude:"",
-    // latitude:"",
+
+  const savedServesDetails = localStorage.getItem("servesOrder");
+  const [servesDetails, setServesDetails] = useState(
+    savedServesDetails ? JSON.parse(savedServesDetails) : {
+      user_id:"",
+      service_id:"",
+      selected_day_id:"",
+      selected_time:"",
+      payment_method:"",
+      notes:"",
+      address:"",
+      building_number:"",
+      flat_number:"",
+      city:"",
+      country:"",
+      longitude:"",
+      latitude:"",
     // service_coupon_id:"",
     // discount_percentage:"",
     // discount_amount:"",
     // price_after_discount:"",
     // grand_total:"",
   } );
-
+  const saveServesDetails = (data) => {
+    setServesDetails(data);
+    localStorage.setItem("servesOrder", JSON.stringify(data));
+  };
+  
   const [formData, setFormData] = useState(null);
   const saveFormData = (data) => {
     setFormData(data);
@@ -89,6 +98,11 @@ function App() {
     }
   }, [loginFormData]);
 
+  useEffect(() => {
+    if (servesDetails) {
+      localStorage.setItem("servesOrder", JSON.stringify(servesDetails));
+    }
+  }, [loginFormData]);
   const getPageProduct = async (page) => {
     console.log(contentProduct);
     const res = await axios.get(
@@ -114,7 +128,8 @@ function App() {
       >
         <FormDataContext.Provider value={{ formData, saveFormData }}>
         <ServesDetailsContext.Provider value={{servesDetails, saveServesDetails}}>
-          
+        <OrderDataContext.Provider value={{orderData, saveOrderData}}>
+
           <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
             <BrowserRouter>
               <Routes>
@@ -153,7 +168,7 @@ function App() {
                 <Route path="/buy-credit" element={<BuyCreditPage />} />
                 <Route path="/privacy_policy" element={<PolicyPage />} />
                 <Route path="/contact" element={<ContactUs />} />
-                <Route path="/your-order" element={<MyOrderpage />} />
+                <Route path="/your-order" element={<MyOrderpage getPageServes={getPageServes} />} />
                 <Route path="/credit_card" element={<CreditCardPage />} />
                 <Route path="/add_card" element={<AddCard />} />
                 <Route path="/booking" element={<BookPage />} />
@@ -161,6 +176,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           </div>
+          </OrderDataContext.Provider>
           </ServesDetailsContext.Provider>
         </FormDataContext.Provider>
         </LocationContext.Provider>

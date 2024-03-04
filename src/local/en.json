@@ -159,8 +159,8 @@
     "Building_No.":"Building No.",
     "Flat_No.":"Flat No.",
     "phone":"Phone",
-    "State":"State",
-    "city":"City.",
+    "city":"City",
+    "country":"Country",
 
     "address_placeholder":"55 Abu Dhobi st",
     "address_btn":"Add New Address",

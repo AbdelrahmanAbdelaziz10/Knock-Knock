@@ -1,26 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./MainCheckOut.css";
-import { Col, Container, Row } from "react-bootstrap";
-import BookHead from "../../Booking/Main Booking/Book Head/BookHead";
-import { ServesCard } from "../../Booking/Main Booking/BookingOne/ServesCard";
-import serves from "../../../images/Rectangle 195.svg";
-import { Link } from "react-router-dom";
+import { Col, Container, Row, Alert } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegCreditCard } from "react-icons/fa";
 import { SiVisa } from "react-icons/si";
 import { FaCircleExclamation } from "react-icons/fa6";
-import "../../../Component/Main ProductDeteils  com/MainProductDetails.css";
-import { i18n } from "i18next";
 import { useTranslation } from "react-i18next";
 import PaymentSummary from "./PaymentSummary";
 import BookingDetails from "./BookingDetails";
+import { ServesDetailsContext } from "../../../App";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const MainCheckOut = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { servesDetails } = useContext(ServesDetailsContext);
+  const navigate = useNavigate();
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://dashboard.knock-knock.ae/api/v1/service_orders/save",
+        servesDetails
+      );
+      Swal.fire({
+        text: response.data.message,
+        icon: "question",
+      });
+      if (response.data.status) {
+        navigate("/home");
+      }else{
+        navigate(`/serves/${servesDetails.service_id}`);
+
+      }
+    } catch (error) {
+      Swal.fire({
+        text: "Failed to register. Please check your inputs and try again.",
+        icon: "error",
+      });
+      navigate(`/serves/${servesDetails.service_id}`);
+
+    }
+  };
+
   return (
     <div className="main_book py-lg-3 py-md-2 pb-5">
-      <Container className=" booking_container">
-        <Row className="booking_row_main ">
-          {/* <BookHead stepnum={3} title={"Check Out"} /> */}
+      <Container className="booking_container">
+        <Row className="booking_row_main">
           <Col
             xs={12}
             lg={7}
@@ -29,11 +56,11 @@ export const MainCheckOut = () => {
             className="border main_col py-3 ps-lg-4"
           >
             <div className="">
-              <div className="payment ">
+              <div className="payment">
                 <div className="payment_title d-flex">
                   <h4> {t("check_title")}</h4>
                   <Link to="/credit_card" className="change_card">
-                    <span className="">{t("check_change")}</span>
+                    <span>{t("check_change")}</span>
                   </Link>
                 </div>
 
@@ -55,7 +82,7 @@ export const MainCheckOut = () => {
                   <Col xs={12} md={12} lg={12} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_card")}
@@ -64,7 +91,7 @@ export const MainCheckOut = () => {
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_date")}
@@ -73,7 +100,7 @@ export const MainCheckOut = () => {
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_cvv")}
@@ -84,19 +111,17 @@ export const MainCheckOut = () => {
                   <div className="nots mb-4">
                     <FaCircleExclamation className="icon" />
                     <p>{t("add_card_massage")}</p>
-                    <span className=" btn-details">
+                    <span className="btn-details">
                       {t("all_product_product_btn")}
                     </span>
                   </div>
                 </Row>
                 <Row>
-                  <h4>
-                    {t("check_code_title")}
-                  </h4>
+                  <h4>{t("check_code_title")}</h4>
                   <Col xs={6} md={4} lg={4} sm={6} className="mb-2">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("check_place_code")}
@@ -106,13 +131,13 @@ export const MainCheckOut = () => {
               </div>
             </div>
             <div className="row">
-              <Link to="/home" className="btn btn_next">
+              <button onClick={handelSubmit} className="btn btn_next">
                 Complete
-              </Link>
+              </button>
             </div>
           </Col>
-          <Col xs={12} lg={5} md={4} sm={12} className="row ">
-          <BookingDetails />
+          <Col xs={12} lg={5} md={4} sm={12} className="row">
+            <BookingDetails />
             <PaymentSummary />
           </Col>
         </Row>
