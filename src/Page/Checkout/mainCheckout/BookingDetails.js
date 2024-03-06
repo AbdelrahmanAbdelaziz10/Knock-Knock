@@ -3,7 +3,7 @@ import { Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { ContextLang, LoginFormDataContext } from "../../../App";
 
-const BookingDetails = ({ address, country, name_en, name_ar }) => {
+const BookingDetails = ({ address, country, name_en, name_ar, phone }) => {
   const { t } = useTranslation();
   const { selectedLanguage } = useContext(ContextLang);
 console.log(name_en)
@@ -27,7 +27,7 @@ console.log(name_en)
       </div>
       <div className="row d-flex">
         <h6 className="col-lg-5">{t("booking_phone")}</h6>
-        <p className="serves_name col-lg-7">+20115269845</p>
+        <p className="serves_name col-lg-7">{phone}</p>
       </div>
     </Col>
   );

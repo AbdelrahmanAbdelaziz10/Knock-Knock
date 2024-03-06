@@ -191,6 +191,7 @@
     "order_processing":"Processing",
     "order_shipped":"Shipped",
     "order_cancelled":"Cancelled",
+    "to_order_cancelled":"To Cancelled",
     "order_number":"Track Order",
     "order_total":"Total",
     "order_amount":"Amount",
@@ -223,7 +224,11 @@
     "payment_total":"sub Total:",
     "payment_delivery":"delivery fee:",
     "payment_taps":"Shopping Cost:",
-
+    "sweetalert_massage":"Are you sure?",
+    "sweetalert_massage2":"You won't be able to revert this!",
+    "sweetalert_massage3":"Yes, Cancel it!",
+    "sweetalert_massage4":"Cancelled!",
+    "sweetalert_massage5":"Your file has been cancelled.",
 
     "Policy_title":"Privacy Policy",
     "Policy_p1":"Our privacy policy describes how we collect and process your personal information, such as the information you provide through our application. The policy also outlines your rights regarding your personal information, how it is retained, and secured.",

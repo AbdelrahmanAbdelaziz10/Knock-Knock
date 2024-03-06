@@ -103,7 +103,7 @@
 // export default MainAddressPage;
 import React, { useContext, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { ContextLang, ServesDetailsContext } from "../../../App";
+import { ContextLang, ProductDetailsContext, ServesDetailsContext, ToggleContext } from "../../../App";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -113,6 +113,9 @@ const MainAddressPage = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const { servesDetails, saveServesDetails } = useContext(ServesDetailsContext);
+  const { productDetails, saveProductDetails } = useContext(ProductDetailsContext);
+  const { toggle, saveToggle } = useContext(ToggleContext);
+
   const navigate = useNavigate();
 
   const [addressInfo, setAddressInfo] = useState({
@@ -139,10 +142,16 @@ const MainAddressPage = () => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      saveServesDetails({
+      if(toggle){      saveServesDetails({
         ...servesDetails,
         ...addressInfo,
-      });
+      });}else{
+        saveProductDetails({
+          ...productDetails,
+          ...addressInfo,
+        });
+      }
+
       navigate("/checkout");
     } else {
       setErrors(validationErrors);

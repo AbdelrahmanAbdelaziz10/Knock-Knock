@@ -168,3 +168,11 @@
     position: absolute;
     background-color: #000000af;
 }
+.btn_cancelled{
+    border: 2px solid red !important;
+    color: red !important;
+    font-size: 19px !important;
+    font-weight: 500 !important;
+    border-radius: 24px !important;
+    background-color: rgba(255, 0, 0, 0.116) !important;
+}

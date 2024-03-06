@@ -74,3 +74,15 @@
 .payment_title{
     justify-content: space-between;
 }
+.main_book .btn_coupon{
+    background-color: #008080;
+    color: #fff;
+    padding: 7px 15px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: .5rem;
+}
+.main_book .btn_coupon:hover{
+    background-color: #008080a1;
+    color: #fff;
+}

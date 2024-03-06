@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import Location from "../../Page/Location/Location";
 import { useTranslation } from "react-i18next";
 import useFetch from "../../hooks/useFetch";
-import { ContextLang, ServesDetailsContext } from "../../App";
+import { ContextLang, ServesDetailsContext, ToggleContext } from "../../App";
 
 const MainServiesDetails = ({ changeTest }) => {
   const { t } = useTranslation();
@@ -17,6 +17,7 @@ const MainServiesDetails = ({ changeTest }) => {
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const { servesDetails, saveServesDetails } = useContext(ServesDetailsContext);
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData')) ;
+  const { toggle, saveToggle } = useContext(ToggleContext);
 
   const [date, setDate] = useState(new Date());
   const [selectDate, setSelectDate] = useState(null);
@@ -66,7 +67,11 @@ const MainServiesDetails = ({ changeTest }) => {
     selected_time:timeValue,
     payment_method:"cash",
     notes:textValue,})
+    saveToggle(true);
+    console.log(toggle);
   }
+
+
   console.log(servesDetails);
 
   return (

@@ -11,7 +11,7 @@ import BookingDetails from "../../../Checkout/mainCheckout/BookingDetails";
 import { OrderDataContext } from "../../../../App";
 
 const MainBook = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const servesOrderData = JSON.parse(localStorage.getItem("servesOrderData"));
 console.log(servesOrderData?.data)
   return (

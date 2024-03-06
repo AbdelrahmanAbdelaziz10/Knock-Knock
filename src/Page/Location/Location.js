@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { ContextLang, ServesDetailsContext } from '../../App';
+import { ContextLang, ProductDetailsContext, ServesDetailsContext, ToggleContext } from '../../App';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import ProductDeteils from './../ProductDeteils';
 
 const MapWithMarker = () => {
   const [mapCenter, setMapCenter] = useState(null);
@@ -13,6 +14,10 @@ const MapWithMarker = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const { servesDetails, saveServesDetails } = useContext(ServesDetailsContext);
+  const { productDetails, saveProductDetails } = useContext(ProductDetailsContext);
+
+  const { toggle, saveToggle } = useContext(ToggleContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,14 +40,26 @@ const MapWithMarker = () => {
   };
 
   const handleAddAddress = () => {
-    if (markerPosition) {
-      saveServesDetails({
-        ...servesDetails,
-        latitude: markerPosition.lat,
-        longitude: markerPosition.lng,
-      });
-      navigate('/addaddress')
+    if (toggle){
+      if (markerPosition) {
+        saveServesDetails({
+          ...servesDetails,
+          latitude: markerPosition.lat,
+          longitude: markerPosition.lng,
+        });
+        navigate('/addaddress')
+      }
+    } else{
+      if (markerPosition) {
+        saveProductDetails({
+          ...productDetails,
+          latitude: markerPosition.lat,
+          longitude: markerPosition.lng,
+        });
+        navigate('/addaddress')
+      }
     }
+
   };
 
   useEffect(() => {

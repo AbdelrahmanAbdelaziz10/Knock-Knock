@@ -189,6 +189,7 @@
     "order_finish":"انتهي",
     "order_processing":"قيد المعالجة",
     "order_cancelled":"تم الالغاء",
+    "to_order_cancelled":"الغاء الاوردر",
     "order_number":"تتبع الطلب",
     "order_amount":"الكمية",
     "order_total":"الاجمالي",

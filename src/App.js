@@ -35,16 +35,24 @@ import ForgetPassword from "./Page/ForgetPassword/ForgetPassword";
 import SingUp from "./Page/SingUp/SingUp";
 import ChangePassword from "./Page/RestetPassword/ChangePassword";
 import RestPassword from "./Page/Verify/ResetPassword";
+import CheckOut from "./Page/Checkoutpage/CheckOut";
 export const ContextLang = createContext();
 export const FormDataContext = createContext();
 export const LoginFormDataContext = createContext();
 export const LocationContext= createContext();
 export const ServesDetailsContext= createContext();
 export const OrderDataContext= createContext();
+export const ProductDetailsContext= createContext();
+export const ToggleContext= createContext();
 
 function App() {
   const [contentProduct, setContentProduct] = useState();
   const [contentServes, setContenServes] = useState([]);
+  const [toggle, setToggle] = useState();
+  const saveToggle = (data) => {
+    setToggle(data);
+    localStorage.setItem("toggle", JSON.stringify(data));
+  };
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { data: product } = useFetch("/api/v1/products/get-all-products");
   const [orderData, setOrderData] = useState()
@@ -69,17 +77,49 @@ function App() {
       country:"",
       longitude:"",
       latitude:"",
-    // service_coupon_id:"",
-    // discount_percentage:"",
-    // discount_amount:"",
-    // price_after_discount:"",
-    // grand_total:"",
+    service_coupon_id:"",
+    discount_percentage:"",
+    discount_amount:"",
+    price_after_discount:"",
+    grand_total:"",
   } );
   const saveServesDetails = (data) => {
     setServesDetails(data);
     localStorage.setItem("servesOrder", JSON.stringify(data));
   };
-  
+
+
+  const savedProductDetails = localStorage.getItem("ProductOrder");
+  const [productDetails, setProductDetails] = useState(
+    savedProductDetails ? JSON.parse(savedProductDetails) : {
+      user_id:"",
+      product_id:"",
+      selected_day_id:"",
+      selected_time:"",
+      payment_method:"",
+      notes:"",
+      address:"",
+      building_number:"",
+      flat_number:"",
+      city:"",
+      country:"",
+      longitude:"",
+      latitude:"",
+      product_ids:"",
+      product_quantities:"",
+      discount_amount:"",
+      price_after_discount:"",
+      grand_total:"",
+      service_coupon_id:"",
+      discount_percentage:"",
+    }
+  );
+
+  const saveProductDetails = (data) => {
+    setProductDetails(data);
+    localStorage.setItem("ProductOrder", JSON.stringify(data));
+  };
+
   const [formData, setFormData] = useState(null);
   const saveFormData = (data) => {
     setFormData(data);
@@ -128,8 +168,12 @@ function App() {
       >
         <FormDataContext.Provider value={{ formData, saveFormData }}>
         <ServesDetailsContext.Provider value={{servesDetails, saveServesDetails}}>
-        <OrderDataContext.Provider value={{orderData, saveOrderData}}>
+        <ProductDetailsContext.Provider value={{productDetails, saveProductDetails}}>
 
+        <OrderDataContext.Provider value={{orderData, saveOrderData}}>
+        <ToggleContext.Provider value={{toggle, saveToggle}}>
+
+        
           <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
             <BrowserRouter>
               <Routes>
@@ -152,7 +196,8 @@ function App() {
                 <Route path="/serves/:servesId" element={<ServesDetiels />} />
                 <Route path="/location" element={<Location />} />
                 {/* <Route path="/booking_step2" element={<MainBook2 />} /> */}
-                <Route path="/checkout" element={<CheckOutpage />} />
+                {/* <Route path="/checkout" element={<CheckOutpage />} /> */}
+                <Route path="/checkout" element={<CheckOut />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/singup" element={<SingUp />} />
                 <Route path="/verify" element={<Verify />} />
@@ -176,7 +221,9 @@ function App() {
               </Routes>
             </BrowserRouter>
           </div>
+          </ToggleContext.Provider>
           </OrderDataContext.Provider>
+          </ProductDetailsContext.Provider>
           </ServesDetailsContext.Provider>
         </FormDataContext.Provider>
         </LocationContext.Provider>
