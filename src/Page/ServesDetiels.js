@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../Component/Common Component/NavBar/NavBar'
 import Footer from '../Component/Common Component/Footer/Footer'
 import MainProductDetails from '../Component/Main ProductDeteils  com/MainProductDeteils'
@@ -10,8 +10,12 @@ export const ServesDetiels = () => {
 
   const changeTest = () => {
     setTest(false);
-    window.scrollTo({top:0})
+    window.scrollTo(0,0)
+
   };
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   return (
     <>

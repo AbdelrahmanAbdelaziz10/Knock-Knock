@@ -7,6 +7,12 @@
     display: flex;
     justify-content: center;
 }
+.serves_cards{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center;
+}
 
 .Servies .servies_card {
     border-radius: 4px;
@@ -29,7 +35,7 @@ transition: all .5s;
 }
 .Servies .servies_card .card_img {
     margin: 1rem 0;
-    width: 40% !important;
+    width: 60% !important;
 }
 
 .Servies .servies_card .card_img {

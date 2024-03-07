@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Col, Row } from "react-bootstrap";
@@ -37,7 +37,6 @@ const RestPassword = () => {
         "https://dashboard.knock-knock.ae/api/auth/reset-password",
         { email, otp }
       );
-      console.log(response.data);
       // Handle success response
       setResponseMessage(response.data.message);
       setOtp("");
@@ -56,6 +55,11 @@ const RestPassword = () => {
       }
     }
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
 
   return (
     <div className="login Verify">

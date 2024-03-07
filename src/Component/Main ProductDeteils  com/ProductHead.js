@@ -10,7 +10,7 @@ const ProductHead = ({img,page1,page2_en,page2_ar}) => {
   return (
 <div className='row product_head mb-lg-4 justify-content-center'>
 <div className='head_title'>
-<Link to="/home" className=''>
+<Link to="/" className=''>
 <FaHome className='home_icon'/>
 </Link> 
 <Link to="" className='page1'> 

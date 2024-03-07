@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -71,7 +71,6 @@ export const SingUp = () => {
           "https://dashboard.knock-knock.ae/api/auth/register",
           formData
         );
-        console.log(response.data);
         // Handle success response
         setResponseMessage(response.data.error);
         setFormData({
@@ -97,6 +96,12 @@ export const SingUp = () => {
       }
     }
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
+
   return (
     <div className="login singup">
       <div className="container">

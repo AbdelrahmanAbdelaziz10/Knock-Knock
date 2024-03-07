@@ -10,62 +10,27 @@ import "./MainServes.css";
 import useFetch from "../../../hooks/useFetch";
 import { Serves } from './../../Home Components/Serves/Serves';
 import PaginationCom from "../../Common Component/Pagination/Pagination";
+import ServesComponent from "../../Home Components/Serves/ServesComponent";
 const MainServes = ({getPage}) => {
   const { data: servies } = useFetch("/api/v1/services/get-all");
-  console.log(servies?.data?.total);
+  // console.log(servies?.data?.total);
   return (
-    <div className="main_serves my-4">
+    <div className="main_serves py-4">
       <Container>
-        <div className="row servies">
+        <div className="row Servies allservice">
         {/* <h1>{servies.data.data[0].name_ar}</h1>   */}
             {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
             return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
+              <>
+              <ServesComponent image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} link={`/serves/${s.id}`} name_ar={s.name_ar} name_en={s.name_en} />
+
+        {/* <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} /> */}
+
+              </>
 
             );
           })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
-          {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-        <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} />
-
-            );
-          })}
+      
 
           <Row>
             <Col>

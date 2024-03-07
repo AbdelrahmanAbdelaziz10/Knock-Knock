@@ -1,17 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import OneServe from './OneServe'
 import OneProduct from './OneProduct'
 import { Col } from 'react-bootstrap'
 import useFetch from '../../../hooks/useFetch'
 import { useTranslation } from 'react-i18next'
+import Swal from 'sweetalert2'
 export const ServesRow = ({title,link}) => {
 const {t,i18n}=useTranslation()
 const {data: serves}=useFetch("/api/v1/services/get-all")
 const {data: product}=useFetch("/api/v1/products/get-all-products")
 const allProduct=product?.data?.data
 const allserves=serves?.data?.data
-console.log(allProduct)
+// console.log(allProduct)
+
+
+
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">

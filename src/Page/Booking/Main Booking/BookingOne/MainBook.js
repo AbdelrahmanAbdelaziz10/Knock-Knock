@@ -13,7 +13,7 @@ import { OrderDataContext } from "../../../../App";
 const MainBook = () => {
   const { t } = useTranslation();
   const servesOrderData = JSON.parse(localStorage.getItem("servesOrderData"));
-console.log(servesOrderData?.data)
+// console.log(servesOrderData?.data)
   return (
     <div className="main_book main_card py-lg-3 py-md-2 pb-5">
       <Container className=" booking_container">

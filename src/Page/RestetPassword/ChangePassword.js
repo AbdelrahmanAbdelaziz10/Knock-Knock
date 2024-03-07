@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -55,7 +55,6 @@ const ChangePassword = () => {
             password_confirmation: forgetData.password_confirmation,
           }
         );
-        console.log(response.data);
         // Handle success response
         setResponseMessage(response.data.message);
         setForgetData({
@@ -73,6 +72,11 @@ const ChangePassword = () => {
       }
     }
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
 
   return (
     <div className="login Verify">

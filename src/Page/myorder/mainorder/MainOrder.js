@@ -46,7 +46,6 @@ const MainOrder = ({ getPageServes }) => {
             }
           );
           setCansellOrder(response);
-          console.log(cancelOrder);
           Swal.fire({
             title: t("sweetalert_massage4"),
             text: t("sweetalert_massage5"),
@@ -71,7 +70,6 @@ const MainOrder = ({ getPageServes }) => {
         }
       );
       saveOrderData(response?.data?.data);
-      // console.log(orderData);
     } catch (error) {
       console.error("Error processing order", error);
     }
@@ -87,7 +85,6 @@ const MainOrder = ({ getPageServes }) => {
         }
       );
       saveOrderData(response?.data?.data);
-      console.log(orderData);
     } catch (error) {
       console.error("Error processing order", error);
     }
@@ -103,7 +100,6 @@ const MainOrder = ({ getPageServes }) => {
         }
       );
       saveOrderData(response?.data?.data);
-      console.log(orderData);
     } catch (error) {
       console.error("Error processing order", error);
     }
@@ -119,11 +115,11 @@ const MainOrder = ({ getPageServes }) => {
         }
       );
       saveOrderData(response?.data?.data);
-      console.log(orderData);
     } catch (error) {
       console.error("Error processing order", error);
     }
   };
+
   return (
     <div className="main_order py-4">
       <Container>
@@ -192,7 +188,7 @@ const MainOrder = ({ getPageServes }) => {
         <Row className="">
           {orderData?.data &&
             orderData?.data.map((order, index) => (
-              <Col key={index} xs={12} lg={6} md={6} sm={12} className="">
+              <Col key={index} xs={12} lg={6} md={11} sm={12} className="">
                 {/* <Link to="/booking"> */}
                 <Card className="order_card">
                   <div className="row order_title">
@@ -218,15 +214,6 @@ const MainOrder = ({ getPageServes }) => {
                           )}
                         </button>
                       )}
-                      {/* <button
-                        onClick={() => CancellOrder(order.id)}
-                        className={`btn btn_pending`}
-                      >
-                        {t(
-                          items.find((item) => item.status === order.status)
-                            ?.label || ""
-                        )}
-                      </button> */}
                     </Col>
                   </div>
                   <div className="row date justify-content-end">
@@ -242,13 +229,13 @@ const MainOrder = ({ getPageServes }) => {
                       <div className="serv_text ">
                         {selectedLanguage === "en" ? (
                           <>
-                            <h6>{order.service.title_en}</h6>
-                            <p>{order.service.description_en}</p>
+                            <h6>{order.service.name_en}</h6>
+                            <p dangerouslySetInnerHTML={{__html:order.service.description_en}}/>
                           </>
                         ) : (
                           <>
-                            <h6>{order.service.title_ar}</h6>
-                            <p>{order.service.description_ar}</p>
+                            <h6>{order.service.name_ar}</h6>
+                            <p dangerouslySetInnerHTML={{__html:order.service.description_ar}}/>
                           </>
                         )}
                         <Row>
@@ -278,11 +265,11 @@ const MainOrder = ({ getPageServes }) => {
                       sm={11}
                       className="row pending_address"
                     >
-                      <h6 className="col-lg-4 col-md-12">
+                      <h6 className="col-lg-4 col-md-4 serves_names">
                         {t("booking_address")}
                       </h6>
                       {/* <p className="col-lg-7 col-md-12"> {t("booking_address_add")}</p> */}
-                      <p className="col-lg-8 col-md-12">
+                      <p className="col-lg-8 col-md-8 serves_name">
                         {order.address}-{order.country}
                       </p>
                     </Col>
@@ -294,14 +281,14 @@ const MainOrder = ({ getPageServes }) => {
                       sm={11}
                       className="row d-flex pending_phone"
                     >
-                      <h6 className="col-lg-5">{t("booking_phone")}</h6>
-                      <p className="serves_name col-lg-7">
+                      <h6 className="col-lg-5 col-md-4 serves_names">{t("booking_phone")}</h6>
+                      <p className="serves_name col-lg-7 col-md-8">
                         {loginFormData.phone}
                       </p>
                     </Col>
                   </Row>
                   <div className="row order_details">
-                    <Col xs={8} lg={4} md={7} sm={8} className="">
+                    <Col xs={4} lg={4} md={4} sm={4} className="">
                       <p className="">
                         {t("order_total")}:{" "}
                         <span>
@@ -310,12 +297,12 @@ const MainOrder = ({ getPageServes }) => {
                         </span>
                       </p>
                     </Col>
-                    <Col xs={4} lg={5} md={5} sm={4} className="">
+                    <Col xs={4} lg={5} md={4} sm={4} className="">
                       <p className="">
                         {t("order_amount")}: <span>{order.amount}</span>
                       </p>
                     </Col>
-                    <Col xs={4} lg={3} md={5} sm={4} className="">
+                    <Col xs={4} lg={3} md={4} sm={4} className="">
                       <p className="">{order.order_date}</p>
                     </Col>
                   </div>

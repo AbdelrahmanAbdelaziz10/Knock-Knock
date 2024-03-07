@@ -10,7 +10,7 @@ export const EmailProvider = ({ children }) => {
   const setEmailValue = (newEmail) => {
     setEmail(newEmail);
   };
-  console.log(email)
+  // console.log(email)
 
   return (
     <EmailContext.Provider value={{ email, setEmailValue }}>

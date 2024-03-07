@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -38,7 +38,6 @@ const ForgetPassword = () => {
           'https://dashboard.knock-knock.ae/api/auth/forget-password',
           { email }
         );
-        console.log(response.data);
         // Handle success response
         setResponseMessage(response.data.message);
         // setEmailValue('');
@@ -54,7 +53,11 @@ const ForgetPassword = () => {
       }
     }
   };
-  console.log(email)
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
 
   return (
     <div className="login Verify">

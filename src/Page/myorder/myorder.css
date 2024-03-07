@@ -69,3 +69,12 @@
 .ltr .main_order .pending_address h6{
     padding-right: 0rem !important;
 }
+.serv_text h6{
+    color: #008080;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.serv_text p{
+    font-size: .6rem;
+    font-weight: 400;
+}

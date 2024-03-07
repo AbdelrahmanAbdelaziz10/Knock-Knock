@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../images/Logo.png";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -52,7 +52,6 @@ const Login = () => {
     if (validateForm()) {
       try {
         const response = await axios.post("https://dashboard.knock-knock.ae/api/auth/login", loginData);
-        console.log(response.data);
         // Handle success response
         setResponseMessage(response.data.error);
 
@@ -72,6 +71,11 @@ const Login = () => {
       }
     }
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
 
   return (
     <div className="login">

@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import './Head.css'
 const Head = ({img,page,title}) => {
   return (
-    <div className='head_serves mb-3' >
+    <div className='head_serves pb-3' >
     <div className='black_hover'/>
     <div className='head_img' >
         <img src={img} alt=""/>
     </div>
-    <div className='head_text text-center'>
+    <div className='head_text  text-center'>
     <h2>{title}</h2>
-    <Link to="/home" className='home_icon'><FaHome /></Link> <span> <MdKeyboardArrowRight />  {page}</span>
+    <Link to="/" className='home_icon'><FaHome /></Link> <span> <MdKeyboardArrowRight />  {page}</span>
     </div>
     </div>
   )

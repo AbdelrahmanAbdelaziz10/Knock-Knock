@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ContextLang } from "../App";
 import { Link } from "react-router-dom";
@@ -21,6 +21,11 @@ const Homepage = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
   };
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   return (
     <div className="homepage">
       <NavBar />

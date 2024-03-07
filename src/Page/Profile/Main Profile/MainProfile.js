@@ -14,7 +14,7 @@ export const MainProfile = () => {
     const loginFormData = JSON.parse(localStorage.getItem('loginFormData')) ;
   
     return (
-      <div className="">
+      <div className="profile">
         <div class=" singup profile">
           <div class="container">
             <div class="row login_main">

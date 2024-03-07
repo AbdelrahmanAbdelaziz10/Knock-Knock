@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Login/Login.css";
 import logo from "../../images/Logo.png";
 import { Col, Row } from "react-bootstrap";
@@ -13,7 +13,6 @@ const Verify = () => {
   // const { email } = useEmailContext();
   const { saveFormData ,formData } = useContext(FormDataContext);
   const [email,setEmail]=useState(formData.email);
-console.log(email)
   const [code, setCode] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ console.log(email)
         "https://dashboard.knock-knock.ae/api/auth/account_verification",
         { email, code }
       );
-      console.log(response.data);
       // Handle success response
       setResponseMessage(response.data.message);
       setCode("");
@@ -56,7 +54,6 @@ console.log(email)
         "https://dashboard.knock-knock.ae/api/auth/resend-code",
         { email }
       );
-      console.log(response.data);
       // Handle success response
       setResponseMessage(response.data.message);
       setCode("");
@@ -71,6 +68,11 @@ console.log(email)
     }
   };
   
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
+
   return (
     <div className="login Verify">
       <div className="container">

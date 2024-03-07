@@ -6,7 +6,7 @@ import { ContextLang, LoginFormDataContext } from "../../../App";
 const BookingDetails = ({ address, country, name_en, name_ar, phone }) => {
   const { t } = useTranslation();
   const { selectedLanguage } = useContext(ContextLang);
-console.log(name_en)
+// console.log(name_en)
   return (
     <Col xs={12} lg={12} md={12} sm={12} className="border booking_details">
       <h4>{t("booking_title")}</h4>

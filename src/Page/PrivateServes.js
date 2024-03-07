@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../Component/Common Component/NavBar/NavBar";
 import Footer from "../Component/Common Component/Footer/Footer";
 import MainProduct from "../Component/Allproduct Component/MainProduct/MainProduct";
@@ -9,11 +9,16 @@ import { i18n } from 'i18next';
 import { useTranslation } from "react-i18next";
 const PrivateServes = ({getPage}) => {
   const{t,i18n}=useTranslation()
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   return (
-    <div className="provide_serves">
+    <div className="provide_serves ">
       <NavBar />
       <Head img={head} page={t("home_category1")} title={t("home_category1")} />
-      <MainServes getPage={getPage} />
+      <MainServes getPage={getPage} className="" />
       <Footer />
     </div>
   );

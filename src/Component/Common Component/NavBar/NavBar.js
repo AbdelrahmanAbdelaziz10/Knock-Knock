@@ -23,7 +23,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 const NavBar = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
-  const { toggleLogin, saveToggleLogin } = useContext(ToggleLoginContext);
+  const { saveToggleLogin } = useContext(ToggleLoginContext);
+  const toggleLogin = JSON.parse(localStorage.getItem('toggleLogin'));
 
   const [test, setTest] = useState(false);
   const [test2, setTest2] = useState(false);
@@ -54,11 +55,14 @@ const NavBar = () => {
     // localStorage.removeItem("servesOrder");
 
   };
+  // useEffect(()=>{
+
+  // },[toggleLogin])
   return (
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container">
-          <Link className="navbar-brand" to="/home">
+          <Link className="navbar-brand" to="/">
             <img src={Logo} alt="Logo" />
           </Link>
           <div className="d-flex form" role="search">
@@ -105,7 +109,7 @@ const NavBar = () => {
             <p> {t("profile")}</p>
           </Col>
         </Link>
-        <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
+        {/* <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <FaLocationDot />
@@ -114,7 +118,7 @@ const NavBar = () => {
           <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
             <p> {t("Address")}</p>
           </Col>
-        </Link>
+        </Link> */}
         <Link to="/credits" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
@@ -166,7 +170,7 @@ const NavBar = () => {
             <p> {t("policy")}</p>
           </Col>
         </Link>
-        <Link to="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>
+        <a href="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <RiLogoutCircleRLine className="log_out"/>
@@ -175,7 +179,7 @@ const NavBar = () => {
           <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name" >
             <p className="log_out"> {t("Log_Out")}</p>
           </Col>
-        </Link>
+        </a>
       </div>) : 
       (      <div
         className={test2 === true ? "display-block dropmenu" : "dropmenu"}

@@ -12,11 +12,11 @@ import PhoneNumber from '../../../phonenumber/PhoneNumber';
 
 const MainBook2 = () => {
   const [test,setTest]=useState(true)
-  console.log("the value of test is ", test)
+  // console.log("the value of test is ", test)
 
   const ChangeTest=()=>{
     setTest(false)
-    console.log("the value of test is ", test)
+    // console.log("the value of test is ", test)
   }
   return (
     <>

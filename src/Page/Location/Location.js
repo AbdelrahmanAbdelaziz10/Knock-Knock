@@ -7,6 +7,8 @@ import { ContextLang, ProductDetailsContext, ServesDetailsContext, ToggleContext
 import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import ProductDeteils from './../ProductDeteils';
+import NavBar from '../../Component/Common Component/NavBar/NavBar';
+import Footer from '../../Component/Common Component/Footer/Footer';
 
 const MapWithMarker = () => {
   const [mapCenter, setMapCenter] = useState(null);
@@ -64,12 +66,17 @@ const MapWithMarker = () => {
 
   useEffect(() => {
     if (markerPosition) {
-      console.log('Marker position:', markerPosition);
     }
   }, [markerPosition]);
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
+
   return (
-    <>
+    <div className='location_page'>
+    <NavBar />
       <div className="main_address py-4">
         <Container>
           <Row className="justify-content-center">
@@ -77,7 +84,7 @@ const MapWithMarker = () => {
               <Card className="address_card">
                 <div className="row d-flex">
                   <Col xs={1} lg={1} md={1} sm={1}>
-                    <Link to="/home">
+                    <Link to="/">
                       {selectedLanguage === 'ar' ? (
                         <FaArrowRight className=" arrow_icon arrow_icon_ar" />
                       ) : (
@@ -92,7 +99,7 @@ const MapWithMarker = () => {
 
                 <div className="row justify-content-center">
                   <div className="search-location-input">
-                  <LoadScript googleMapsApiKey="AIzaSyBGb7SM0lcvPbnOjGMKF-ntrZIlYRnsJ_c">
+                  <LoadScript googleMapsApiKey="AIzaSyBW9V6uqOZqM0VdUKuEJyzpWPe_FshHn6A">
                       {mapCenter && (
                         <GoogleMap
                           center={mapCenter}
@@ -118,7 +125,8 @@ const MapWithMarker = () => {
           </Row>
         </Container>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

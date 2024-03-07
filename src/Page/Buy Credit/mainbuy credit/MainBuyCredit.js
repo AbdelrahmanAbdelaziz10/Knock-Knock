@@ -31,7 +31,7 @@ const MainBuyCredit = () => {
             <Card className="address_card">
               <div className="row d-flex credit_transition">
               <Col xs={1} lg={1} md={1} sm={1}>
-                  <Link to="/home">
+                  <Link to="/">
                     {selectedLanguage === "ar" ? (
                       <FaArrowRight className=" arrow_icon arrow_icon_ar" />
                     ) : (

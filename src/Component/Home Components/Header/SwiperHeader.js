@@ -13,7 +13,7 @@ export const SwiperHeader = () => {
   const { data: slider } = useFetch("/api/v1/sliders");
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
-  console.log(slider);
+  // console.log(slider);
   return (
     <div className="header_swiper">
       {slider && (

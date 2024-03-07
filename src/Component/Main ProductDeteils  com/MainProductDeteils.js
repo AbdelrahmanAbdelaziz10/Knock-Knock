@@ -19,7 +19,7 @@ const MainProductDetails = () => {
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData'));
   const { data: day } = useFetch("/api/v1/days/get-all");
   const { data: setting } = useFetch("/api/v1/settings/get-all");
-console.log(productPrams)
+// console.log(productPrams)
   const { data: product_id } = useFetch(`/api/v1/products/get-product-details?product_id=${productPrams.productId}`);
 
   const [shopingCost,setShopingCost]=useState(setting?.data?.shipping_cost)
@@ -75,8 +75,8 @@ console.log(productPrams)
       grand_total: grandTotalWithShipping,
     });
     saveToggle(false);
-    console.log(productDetails)
-    console.log(toggle)
+    // console.log(productDetails)
+    // console.log(toggle)
 
   };
 

@@ -8,23 +8,37 @@ import { FaCircleExclamation } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { ProductDetailsContext, ServesDetailsContext, ToggleContext } from "../../App";
+import {
+  ProductDetailsContext,
+  ServesDetailsContext,
+  ToggleContext,
+} from "../../App";
 
 const CheckOutMain = () => {
   const { t } = useTranslation();
   const { servesDetails, saveServesDetails } = useContext(ServesDetailsContext);
   const { toggle, saveToggle } = useContext(ToggleContext);
-  const { productDetails, saveProductDetails } = useContext(ProductDetailsContext);
-  const servesOrder = JSON.parse(localStorage.getItem('servesOrder'));
+  const { productDetails, saveProductDetails } = useContext(
+    ProductDetailsContext
+  );
+  const servesOrder = JSON.parse(localStorage.getItem("servesOrder"));
 
   const navigate = useNavigate();
   const [coupone, setCoupone] = useState({
     coupon_name: "",
     service_id: servesOrder.service_id,
   });
+  const [payment, setPayment] = useState(false);
   const [errors, setErrors] = useState({});
   const [responseMessage, setResponseMessage] = useState("");
 
+  const handelPayMentChange = (states, payway) => {
+    setPayment(states);
+    saveServesDetails({
+      ...servesDetails,
+      payment_method: payway,
+    });
+  };
   const handelChange = (e) => {
     setCoupone({
       ...coupone,
@@ -43,27 +57,38 @@ const CheckOutMain = () => {
         "https://dashboard.knock-knock.ae/api/v1/service_orders/apply-coupon",
         coupone
       );
-      if(toggle){
+      if (toggle) {
         saveServesDetails({
           ...servesDetails,
-          service_coupon_id: response?.data?.information_after_coupon_applied?.service_coupon_id,
-          discount_percentage: response?.data?.information_after_coupon_applied?.discount_percentage,
-          discount_amount: response?.data?.information_after_coupon_applied?.discount_amount,
-          price_after_discount: response?.data?.information_after_coupon_applied?.price_after_discount,
-          grand_total: response?.data?.information_after_coupon_applied?.grand_total,
+          service_coupon_id:
+            response?.data?.information_after_coupon_applied?.service_coupon_id,
+          discount_percentage:
+            response?.data?.information_after_coupon_applied
+              ?.discount_percentage,
+          discount_amount:
+            response?.data?.information_after_coupon_applied?.discount_amount,
+          price_after_discount:
+            response?.data?.information_after_coupon_applied
+              ?.price_after_discount,
+          grand_total:
+            response?.data?.information_after_coupon_applied?.grand_total,
         });
-        console.log("after",servesDetails)  
-      } else{
+      } else {
         saveProductDetails({
           ...productDetails,
-          service_coupon_id: response?.data?.information_after_coupon_applied?.service_coupon_id,
-          discount_percentage: response?.data?.information_after_coupon_applied?.discount_percentage,
-          discount_amount: response?.data?.information_after_coupon_applied?.discount_amount,
-          price_after_discount: response?.data?.information_after_coupon_applied?.price_after_discount,
-          grand_total: response?.data?.information_after_coupon_applied?.grand_total,
+          service_coupon_id:
+            response?.data?.information_after_coupon_applied?.service_coupon_id,
+          discount_percentage:
+            response?.data?.information_after_coupon_applied
+              ?.discount_percentage,
+          discount_amount:
+            response?.data?.information_after_coupon_applied?.discount_amount,
+          price_after_discount:
+            response?.data?.information_after_coupon_applied
+              ?.price_after_discount,
+          grand_total:
+            response?.data?.information_after_coupon_applied?.grand_total,
         });
-        console.log("after",servesDetails)
-    
       }
 
       setResponseMessage(response.data.message);
@@ -72,7 +97,6 @@ const CheckOutMain = () => {
       console.error("Error applying coupon", error);
     }
   };
-
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -88,7 +112,7 @@ const CheckOutMain = () => {
           icon: "question",
         });
         if (response.data.status) {
-          navigate("/home");
+          navigate("/");
         } else {
           navigate(`/serves/${servesDetails.service_id}`);
         }
@@ -110,7 +134,7 @@ const CheckOutMain = () => {
           icon: "success",
         });
         if (response.data.status) {
-          navigate("/home");
+          navigate("/");
         } else {
           navigate(`/serves/${productDetails.productId}`);
         }
@@ -137,65 +161,84 @@ const CheckOutMain = () => {
           >
             <div className="">
               <div className="payment">
-                <div className="payment_title d-flex">
+                <Row className="justify-content-center mb-4">
+                  {/* <div className="payment_title d-flex">
                   <h4> {t("check_title")}</h4>
                   <Link to="/credit_card" className="change_card">
                     <span>{t("check_change")}</span>
-                  </Link>
-                </div>
+                  </Link> 
+                </div> */}
+                  <h4> {t("check_title")}</h4>
 
-                <div className="create_pay mb-4">
-                  <Row className="row">
-                    <Col xs={9} lg={10} md={7} sm={9}>
-                      <h6 className="credit">
-                        <FaRegCreditCard className="create" />
-                        <span>{t("add_card_visa")}</span>
-                      </h6>
+                  <Col xs={4} lg={4} md={4} sm={4}>
+                    <button
+                      className={`btn btn_payment ${!payment ? "active" : ""}`}
+                      onClick={() => handelPayMentChange(false, "cash")}
+                    >
+                      {t("cash")}
+                    </button>
+                  </Col>
+                  <Col xs={4} lg={3} md={4} sm={4}></Col>
+                  <Col xs={4} lg={4} md={4} sm={4}>
+                    <button
+                      className={`btn btn_payment ${payment ? "active" : ""}`}
+                      onClick={() => handelPayMentChange(true, "card")}
+                    >
+                      {t("credit_title")}
+                    </button>
+                  </Col>
+                </Row>
+
+                <div
+                  className={
+                    payment === true ? "credit_payment" : "display_none"
+                  }
+                >
+                  <div className="create_pay mb-4">
+                    <Row className="row">
+                      <Col xs={9} lg={10} md={7} sm={9}>
+                        <h6 className="credit">
+                          <FaRegCreditCard className="create" />
+                          <span>{t("add_card_visa")}</span>
+                        </h6>
+                      </Col>
+                      <Col xs={3} lg={1} md={5} sm={3}>
+                        <SiVisa className="visa" />
+                      </Col>
+                    </Row>
+                  </div>
+
+                  <Row className="px-lg-4">
+                    <Col xs={12} md={12} lg={12} sm={12} className="mb-4">
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder={t("add_card_placeholder_card")}
+                      />
                     </Col>
-                    <Col xs={3} lg={1} md={5} sm={3}>
-                      <SiVisa className="visa" />
+                    <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder={t("add_card_placeholder_date")}
+                      />
+                    </Col>
+                    <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder={t("add_card_placeholder_cvv")}
+                      />
                     </Col>
                   </Row>
                 </div>
 
-                <Row className="px-lg-4">
-                  <Col xs={12} md={12} lg={12} sm={12} className="mb-4">
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder={t("add_card_placeholder_card")}
-                    />
-                  </Col>
-                  <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder={t("add_card_placeholder_date")}
-                    />
-                  </Col>
-                  <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder={t("add_card_placeholder_cvv")}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <div className="nots mb-4">
-                    <FaCircleExclamation className="icon" />
-                    <p>{t("add_card_massage")}</p>
-                    <span className="btn-details">
-                      {t("all_product_product_btn")}
-                    </span>
-                  </div>
-                </Row>
                 <Row>
                   <h4>{t("check_code_title")}</h4>
                   <Col xs={6} lg={8} md={4} sm={6} className="mb-2">
@@ -226,6 +269,15 @@ const CheckOutMain = () => {
                     </Col>
                   </Row>
                 )}
+                <Row>
+                  <div className="nots my-4">
+                    <FaCircleExclamation className="icon" />
+                    <p>{t("add_card_massage")}</p>
+                    {/* <span className="btn-details">
+                      {t("all_product_product_btn")}
+                    </span> */}
+                  </div>
+                </Row>
               </div>
             </div>
             <div className="row">
@@ -241,6 +293,3 @@ const CheckOutMain = () => {
 };
 
 export default CheckOutMain;
-
-
-

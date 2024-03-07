@@ -150,7 +150,7 @@ function App() {
     }
   }, [loginFormData]);
   const getPageProduct = async (page) => {
-    console.log(contentProduct);
+    // console.log(contentProduct);
     const res = await axios.get(
       `https://dashboard.knock-knock.ae/api/v1/products/get-all-products?page=${page}`
     );
@@ -161,7 +161,7 @@ function App() {
       `https://dashboard.knock-knock.ae/api/v1/services/get-all?page=${page}`
     );
     setContenServes(res?.data?.data?.data);
-    console.log(contentServes);
+    // console.log(contentServes);
   };
 
   return (
@@ -185,7 +185,7 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<HomePageLogin />} />
-                <Route path="/home" element={<Homepage />} />
+                {/* <Route path="/home" element={<Homepage />} /> */}
                 <Route
                   path="/product"
                   element={

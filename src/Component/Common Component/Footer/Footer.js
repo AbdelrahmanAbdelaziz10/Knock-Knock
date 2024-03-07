@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { Col } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 
 const Footer = () => {
     const { t, i18n } = useTranslation();
@@ -15,40 +15,40 @@ const Footer = () => {
   return (
     <>
       <footer className="footer">
-        <div className="container">
-          <div className="row mb-3 py-3 justify-content-between">
+        <Container>
+          <div className=" mb-3 py-3  ">
             <h6>{t("f-serves")}</h6>
             <div className="f_serves">
-              <Link to="" className="footer_serves">
+              <span  className="footer_serves">
               {t("f-serves1")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves2")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves3")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves4")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves5")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves6")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves7")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves8")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves9")}
-              </Link>
-              <Link to="" className="footer_serves">
+              </span>
+              <span  className="footer_serves">
               {t("f-serves10")}
-              </Link>
+              </span>
             </div>
           </div>
           <div className="row mb-3 py-3">
@@ -147,7 +147,7 @@ const Footer = () => {
               </ul>
             </Col>
           </div>
-        </div>
+        </Container>
       </footer>
     </>
   );

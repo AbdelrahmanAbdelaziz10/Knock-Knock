@@ -49,8 +49,8 @@ const MainServiesDetails = ({ changeTest }) => {
   );
   const grandTotalWithShipping = (+serve?.data?.price + (+setting?.data?.delivery_cost || 0)).toFixed(2);
 
-  console.log("user_id:",loginFormData.id,", serves id:",prams.servesId,", selectedDayId:",selectedDayId,
-  ", timeValue:",timeValue,", textValue:",textValue,"grandTotal",grandTotalWithShipping);
+  // console.log("user_id:",loginFormData.id,", serves id:",prams.servesId,", selectedDayId:",selectedDayId,
+  // ", timeValue:",timeValue,", textValue:",textValue,"grandTotal",grandTotalWithShipping);
 
   const addData=()=>{
     saveServesDetails({
@@ -63,11 +63,9 @@ const MainServiesDetails = ({ changeTest }) => {
     grand_total:grandTotalWithShipping,
   })
     saveToggle(true);
-    console.log(toggle);
   }
 
 
-  console.log(servesDetails);
 
   return (
     <>
@@ -207,7 +205,7 @@ const MainServiesDetails = ({ changeTest }) => {
               >
                 <button className=" total_price mt-2">
                   <span>{t("total_price")}</span>
-                  {serve?.data?.price}
+                  {grandTotalWithShipping}
                   {t("price")}
                 </button>
               </Col>

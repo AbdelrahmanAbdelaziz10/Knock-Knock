@@ -20,9 +20,13 @@ img{
  .head_serves .head_text{
     position: absolute;
     top: 5rem;
-    left: 40%;
+    left: 45%;
     z-index: 11;
 }
+/* .all_product .head_serves .head_text{ */
+    /* left: 40% !important; */
+/* } */
+
 
 .head_serves .head_text h2{
     color: #fff !important;
@@ -31,13 +35,14 @@ img{
 .head_serves .head_text .home_icon{
     color: #fff;
     font-size: 19px;
+    
 }
 .head_serves .head_text span{
-    color: #fff;
+    color: #fff !important;
 }
-.ltr .head_serves .head_text .home_icon{
-    margin-left: 4rem;
+.ltr .head_serves .head_text .home_icon {
+    margin-left: 0rem;
 }
 .rtl .head_serves .head_text .home_icon{
-    margin-right: 3rem;
+    margin-right: 0rem;
 }
