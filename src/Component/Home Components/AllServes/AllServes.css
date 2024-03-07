@@ -111,4 +111,7 @@ text-align: center;
 .card.one_Product .card_text_product .btn-deteils:hover{
     opacity: .7;
 }
+.one_Product.log_out_card{
+    height: auto !important;
+}
 /* End In All Serves Section Style */

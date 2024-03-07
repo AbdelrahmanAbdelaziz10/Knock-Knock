@@ -142,7 +142,8 @@ const MainAddressPage = () => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      if(toggle){      saveServesDetails({
+      if(toggle){     
+         saveServesDetails({
         ...servesDetails,
         ...addressInfo,
       });}else{

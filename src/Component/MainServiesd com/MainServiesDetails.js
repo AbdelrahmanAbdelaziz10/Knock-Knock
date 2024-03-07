@@ -22,6 +22,7 @@ const MainServiesDetails = ({ changeTest }) => {
   const [date, setDate] = useState(new Date());
   const [selectDate, setSelectDate] = useState(null);
   const { data: day } = useFetch("/api/v1/days/get-all");
+  const { data: setting } = useFetch("/api/v1/settings/get-all");
 
   const [selectedDayId, setSelectedDayId] = useState(null);
   const [timeValue, setTimeValue] = useState("");
@@ -46,18 +47,10 @@ const MainServiesDetails = ({ changeTest }) => {
   const { data: serve } = useFetch(
     `/api/v1/services/get-service-details?service_id=${prams.servesId}`
   );
-  const [increase, setIncrease] = useState(0);
-
-  const increseNumber = () => {
-    setIncrease((prevIncrease) => prevIncrease + 1);
-  };
-
-  const decreseNumber = () => {
-    if (increase > 0) setIncrease((prevIncrease) => prevIncrease - 1);
-  };
+  const grandTotalWithShipping = (+serve?.data?.price + (+setting?.data?.delivery_cost || 0)).toFixed(2);
 
   console.log("user_id:",loginFormData.id,", serves id:",prams.servesId,", selectedDayId:",selectedDayId,
-  ", timeValue:",timeValue,", textValue:",textValue);
+  ", timeValue:",timeValue,", textValue:",textValue,"grandTotal",grandTotalWithShipping);
 
   const addData=()=>{
     saveServesDetails({
@@ -66,7 +59,9 @@ const MainServiesDetails = ({ changeTest }) => {
     selected_day_id:selectedDayId,
     selected_time:timeValue,
     payment_method:"cash",
-    notes:textValue,})
+    notes:textValue,
+    grand_total:grandTotalWithShipping,
+  })
     saveToggle(true);
     console.log(toggle);
   }
@@ -123,6 +118,12 @@ const MainServiesDetails = ({ changeTest }) => {
                   <h4>
                     {t("details_serves_price")}
                     <span> {serve?.data?.price} $</span>
+                  </h4>
+                </Col>
+                <Col xs={6} lg={6} md={6} sm={6}>
+                  <h4>
+                    {t("details_serves_delivery")}
+                    <span> {setting?.data?.delivery_cost} $</span>
                   </h4>
                 </Col>
               </div>

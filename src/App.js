@@ -44,6 +44,7 @@ export const ServesDetailsContext= createContext();
 export const OrderDataContext= createContext();
 export const ProductDetailsContext= createContext();
 export const ToggleContext= createContext();
+export const ToggleLoginContext= createContext();
 
 function App() {
   const [contentProduct, setContentProduct] = useState();
@@ -52,6 +53,11 @@ function App() {
   const saveToggle = (data) => {
     setToggle(data);
     localStorage.setItem("toggle", JSON.stringify(data));
+  };
+  const [toggleLogin, setToggleLogin] = useState(false);
+  const saveToggleLogin = (data) => {
+    setToggleLogin(data);
+    localStorage.setItem("toggleLogin", JSON.stringify(data));
   };
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { data: product } = useFetch("/api/v1/products/get-all-products");
@@ -77,11 +83,11 @@ function App() {
       country:"",
       longitude:"",
       latitude:"",
-    service_coupon_id:"",
-    discount_percentage:"",
-    discount_amount:"",
-    price_after_discount:"",
-    grand_total:"",
+      service_coupon_id: "",
+      discount_percentage: "",
+      discount_amount: "",
+      price_after_discount: "",
+      grand_total:""
   } );
   const saveServesDetails = (data) => {
     setServesDetails(data);
@@ -112,8 +118,8 @@ function App() {
       grand_total:"",
       service_coupon_id:"",
       discount_percentage:"",
-    }
-  );
+    });
+  
 
   const saveProductDetails = (data) => {
     setProductDetails(data);
@@ -172,6 +178,7 @@ function App() {
 
         <OrderDataContext.Provider value={{orderData, saveOrderData}}>
         <ToggleContext.Provider value={{toggle, saveToggle}}>
+        <ToggleLoginContext.Provider value={{toggleLogin, saveToggleLogin}}>
 
         
           <div className={selectedLanguage === "ar" ? "App rtl" : "App ltr"}>
@@ -221,6 +228,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           </div>
+          </ToggleLoginContext.Provider>
           </ToggleContext.Provider>
           </OrderDataContext.Provider>
           </ProductDetailsContext.Provider>

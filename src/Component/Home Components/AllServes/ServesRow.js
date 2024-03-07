@@ -11,6 +11,7 @@ const {data: serves}=useFetch("/api/v1/services/get-all")
 const {data: product}=useFetch("/api/v1/products/get-all-products")
 const allProduct=product?.data?.data
 const allserves=serves?.data?.data
+console.log(allProduct)
   return (
     <div className="privete_servies mb-3">
     <div className="row my-3 head">
@@ -52,46 +53,6 @@ const allserves=serves?.data?.data
     </div>)
     }
 
-{/* 
-        <div className="col-lg-3 text-center">
-            <div className="servies_image">
-                <Link to="" className="link">
-                    <img src={Rectangle1} alt=""/>
-                    <p>Hire a cleaning worker</p>
-                </Link>
-
-            </div>
-        </div> 
-        <div className="col-lg-3 text-center">
-            <div className="servies_image">
-                <Link to="" className="link">
-                    <img src={Rectangle2}alt=""/>
-                    <p>Hire technical labor</p>
-                </Link>
-            </div>
-        </div>
-        <div className="col-lg-3 text-center">
-            <div className="servies_image">
-                <Link to="" className="link">
-                    <img src={private3} alt=""/>
-                    <p>
-                        Material transportation <br/> vehicle rental
-                    </p>
-                </Link>
-            </div>
-        </div>
-        <div className="col-lg-3 text-center">
-            <div className="servies_image">
-                <Link to="" className="link">
-                    <img src={private4} alt=""/>
-                    <p>
-                        Air conditioning <br/> maintenance contracts
-                    </p>
-                </Link>
-
-            </div>
-        </div>
-        */}
 
 </div> 
  )

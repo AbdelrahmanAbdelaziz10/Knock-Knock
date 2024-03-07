@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { TiThMenu } from "react-icons/ti";
 import Logo from "../../../images/Logo.png";
 import { useTranslation } from "react-i18next";
-import { ContextLang } from "../../../App";
+import { ContextLang, ToggleLoginContext } from "../../../App";
 import googleplay from "../../../images/googleplay.png";
 import appstore from "../../../images/appstore.png";
 import { FaQuestionCircle } from "react-icons/fa";
@@ -23,6 +23,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 const NavBar = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
+  const { toggleLogin, saveToggleLogin } = useContext(ToggleLoginContext);
+
   const [test, setTest] = useState(false);
   const [test2, setTest2] = useState(false);
 
@@ -47,8 +49,9 @@ const NavBar = () => {
     i18n.changeLanguage(language);
   };
   const clearLocalStorage = () => {
+    saveToggleLogin(false)
     localStorage.removeItem("loginFormData");
-    localStorage.removeItem("servesOrder");
+    // localStorage.removeItem("servesOrder");
 
   };
   return (
@@ -86,8 +89,9 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-
-      <div
+{
+  toggleLogin === true ?
+  ( <div
         className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
         id="country"
       >
@@ -162,17 +166,48 @@ const NavBar = () => {
             <p> {t("policy")}</p>
           </Col>
         </Link>
-        <Link to="/" className="row row_hover border pt-2 mb-3" onClick={clearLocalStorage}>
+        <Link to="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
-            <RiLogoutCircleRLine />
+            <RiLogoutCircleRLine className="log_out"/>
             </div>
           </Col>
           <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name" >
             <p className="log_out"> {t("Log_Out")}</p>
           </Col>
         </Link>
-      </div>
+      </div>) : 
+      (      <div
+        className={test2 === true ? "display-block dropmenu" : "dropmenu"}
+        id="signup"
+      >
+        <div className="row  pt-2 mb-3">
+          <Link to="/login" className="btn btn-login">
+            {t("login")}
+          </Link>
+        </div>
+        <div className="row  pt-2 mb-3">
+          <Link to="/singup" className="btn btn-login">
+            {t("singup")}
+          </Link>
+        </div>
+        <Link to="/contact" className="row pt-2 mb-3 help_nav">
+          <p className="direction">
+            <FaQuestionCircle className="fa-solid fa-circle-question" />
+            {t("help")}
+          </p>
+        </Link>
+        <div className="row border_top pt-2 mb-3">
+          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
+            <img src={appstore} alt="App Store" />
+          </Col>
+          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
+            <img src={googleplay} alt="Google Play" />
+          </Col>
+        </div>
+      </div> )
+  }
+
     </>
   );
 };

@@ -114,6 +114,8 @@
     "details_sku":"SKU: ",
     "details_serves_price":"The Price: ",
     "details_serves_discount":"Discount: ",
+    "details_serves_delivery":"Delivery Cost: ",
+
     "details_date":"Whate Date would you like us To start ?",
     "details_time":"Whate Time would you like us To start ?",
     "details_btn":"Add To Card",

@@ -12,12 +12,13 @@ import air from "../../../images/air-conditioner.svg"
 import { FaVanShuttle } from "react-icons/fa6";
 import { Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import { ServesRow } from '../AllServes/ServesRow'
 
 export const Serves = () => {
     const {t,i18n} = useTranslation()
 
   return (
-    <section className="Servies py-5">
+    <section className="Servies allservice py-5">
         <div className="container">
             <div className="row title mb-4">
                 <h4 className=" text-center">
@@ -129,6 +130,7 @@ export const Serves = () => {
                     </div>
                 </Col>
             </div>
+            <ServesRow title={t("home_category3")} link={"/product"} className="productRow " />
 
         </div>
     </section>  )

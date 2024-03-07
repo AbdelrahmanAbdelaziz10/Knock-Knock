@@ -25,7 +25,8 @@ const Homepage = () => {
     <div className="homepage">
       <NavBar />
       {/* <HeaderHome /> */}
-      <SwiperHeader />
+      <HeaderHome />
+      {/* <SwiperHeader /> */}
       <AllServes />
       {/* <Serves /> */}
       <WhyUs />

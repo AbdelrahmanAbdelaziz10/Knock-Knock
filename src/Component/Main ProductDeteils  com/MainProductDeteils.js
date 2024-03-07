@@ -18,8 +18,11 @@ const MainProductDetails = () => {
   const productPrams = useParams();
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData'));
   const { data: day } = useFetch("/api/v1/days/get-all");
+  const { data: setting } = useFetch("/api/v1/settings/get-all");
+console.log(productPrams)
   const { data: product_id } = useFetch(`/api/v1/products/get-product-details?product_id=${productPrams.productId}`);
 
+  const [shopingCost,setShopingCost]=useState(setting?.data?.shipping_cost)
   const [increase, setIncrease] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [selectedDayId, setSelectedDayId] = useState(null);
@@ -41,32 +44,35 @@ const MainProductDetails = () => {
   const handleTimeChange = (e) => {
     setTimeValue(e.target.value);
   };
-
-  console.log(      "user_id:", loginFormData.id,
-    "product_id:", productPrams.productId,
-    "selected_day_id:", selectedDayId,
-    "selected_time:", timeValue,
-    "notes:", textValue,
-    "product_quantities:", increase,
-    "discount_amount:", product_id?.data?.discount,
-    "price_after_discount:", product_id?.data?.price_after_discount,
-    "grand_total:", (product_id?.data?.price_after_discount * increase).toFixed(2));
+  const newGrandTotal = (+product_id?.data?.price_after_discount + (+setting?.data?.shipping_cost || 0)).toFixed(2);
+  const grandTotalWithShipping = (newGrandTotal* increase).toFixed(2);
+  // console.log(    
+  //     "user_id:", loginFormData.id,
+  //   "product_id:", productPrams.productId,
+  //   "selected_day_id:", selectedDayId,
+  //   "selected_time:", timeValue,
+  //   "notes:", textValue,
+  //   "product_quantities:", increase,
+  //   "discount_amount:", product_id?.data?.discount,
+  //   "price_after_discount:", product_id?.data?.price_after_discount,
+  //   "grand_total:", grandTotalWithShipping
+  //   );
+    
 
 
   const addProduct = () => {
-    const newGrandTotal = (product_id?.data?.price_after_discount * increase).toFixed(2);
-    setGrandTotal(newGrandTotal);
+    setGrandTotal(grandTotalWithShipping);
     saveProductDetails({
       user_id: loginFormData.id,
-      product_id: productPrams.productId,
       selected_day_id: selectedDayId,
       selected_time: timeValue,
       payment_method: "cash",
       notes: textValue,
-      product_quantities: increase,
+      product_ids:JSON.stringify([productPrams.productId]),
+      product_quantities:JSON.stringify([increase]),
       discount_amount: product_id?.data?.discount,
       price_after_discount: product_id?.data?.price_after_discount,
-      grand_total: newGrandTotal,
+      grand_total: grandTotalWithShipping,
     });
     saveToggle(false);
     console.log(productDetails)
@@ -75,7 +81,7 @@ const MainProductDetails = () => {
   };
 
   useEffect(() => {
-    setGrandTotal((product_id?.data?.price_after_discount * increase).toFixed(2));
+    setGrandTotal(grandTotalWithShipping);
   }, [increase, product_id?.data?.price_after_discount]);
 
 

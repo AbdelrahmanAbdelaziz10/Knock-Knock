@@ -5,12 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import { LoginFormDataContext } from "../../App";
+import { LoginFormDataContext, ToggleLoginContext } from "../../App";
 
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { saveLoginFormData ,loginFormData} = useContext(LoginFormDataContext);
+  const { toggleLogin, saveToggleLogin } = useContext(ToggleLoginContext);
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -61,7 +62,8 @@ const Login = () => {
         });
         if (response.data.status) {
           saveLoginFormData(response.data.user);
-          navigate("/home");
+          saveToggleLogin(true)
+          navigate("/");
         }
       } catch (error) {
         // Handle error response
