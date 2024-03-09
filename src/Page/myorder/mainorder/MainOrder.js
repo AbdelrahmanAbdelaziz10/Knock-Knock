@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -14,7 +14,7 @@ const MainOrder = ({ getPageServes }) => {
   const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
   const [order, setOrder] = useState({
     user_id: loginFormData.id,
-    order_status: "",
+    order_status: 0,
   });
   const items = [
     { status: 0, label: "to_order_cancelled" },
@@ -22,11 +22,12 @@ const MainOrder = ({ getPageServes }) => {
     { status: 2, label: "order_cancelled" },
     { status: 3, label: "order_finish" },
   ];
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState(1);
   const [cancelOrder, setCansellOrder] = useState();
   const handleButtonClick = (buttonId) => {
     setActiveButton(buttonId);
   };
+  
   const CancellOrder = async (id) => {
     Swal.fire({
       title: t("sweetalert_massage"),
@@ -50,6 +51,8 @@ const MainOrder = ({ getPageServes }) => {
             title: t("sweetalert_massage4"),
             text: t("sweetalert_massage5"),
             icon: "success"
+          }).then(() => {
+            window.location.reload(); // Reload the page after cancelling the order
           });
         } catch (error) {
           console.error("Error processing order", error);
@@ -58,67 +61,73 @@ const MainOrder = ({ getPageServes }) => {
     });
   };
   
-  const handleOrderPanding = async () => {
-    setOrder({ ...order, order_status: "0" });
+  
+  const handleOrderPanding = async (state) => {
+    setOrder({ ...order, order_status: "state" });
 
     try {
       const response = await axios.post(
         "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
         {
           user_id: loginFormData.id,
-          order_status: 0,
+          order_status: state,
         }
       );
       saveOrderData(response?.data?.data);
+      console.log(response?.data?.data)
     } catch (error) {
       console.error("Error processing order", error);
     }
   };
-  const handleOrderprocessing = async () => {
-    setOrder({ ...order, order_status: "1" });
-    try {
-      const response = await axios.post(
-        "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-        {
-          user_id: loginFormData.id,
-          order_status: 1,
-        }
-      );
-      saveOrderData(response?.data?.data);
-    } catch (error) {
-      console.error("Error processing order", error);
-    }
-  };
-  const handleOrderCancelled = async () => {
-    setOrder({ ...order, order_status: "2" });
-    try {
-      const response = await axios.post(
-        "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-        {
-          user_id: loginFormData.id,
-          order_status: 2,
-        }
-      );
-      saveOrderData(response?.data?.data);
-    } catch (error) {
-      console.error("Error processing order", error);
-    }
-  };
-  const handleOrderFinish = async () => {
-    setOrder({ ...order, order_status: "3" });
-    try {
-      const response = await axios.post(
-        "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-        {
-          user_id: loginFormData.id,
-          order_status: 3,
-        }
-      );
-      saveOrderData(response?.data?.data);
-    } catch (error) {
-      console.error("Error processing order", error);
-    }
-  };
+  // const handleOrderprocessing = async () => {
+  //   setOrder({ ...order, order_status: "1" });
+  //   try {
+  //     const response = await axios.post(
+  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
+  //       {
+  //         user_id: loginFormData.id,
+  //         order_status: 1,
+  //       }
+  //     );
+  //     saveOrderData(response?.data?.data);
+  //   } catch (error) {
+  //     console.error("Error processing order", error);
+  //   }
+  // };
+  // const handleOrderCancelled = async () => {
+  //   setOrder({ ...order, order_status: "2" });
+  //   try {
+  //     const response = await axios.post(
+  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
+  //       {
+  //         user_id: loginFormData.id,
+  //         order_status: 2,
+  //       }
+  //     );
+  //     saveOrderData(response?.data?.data);
+  //   } catch (error) {
+  //     console.error("Error processing order", error);
+  //   }
+  // };
+  // const handleOrderFinish = async () => {
+  //   setOrder({ ...order, order_status: "3" });
+  //   try {
+  //     const response = await axios.post(
+  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
+  //       {
+  //         user_id: loginFormData.id,
+  //         order_status: 3,
+  //       }
+  //     );
+  //     saveOrderData(response?.data?.data);
+  //   } catch (error) {
+  //     console.error("Error processing order", error);
+  //   }
+  // };
+  useEffect(() => {
+    // Call handleOrderPanding with state=0 when component mounts
+    handleOrderPanding(0);
+  }, []); // Empty dependency array ensures this effect runs only once, like componentDidMount
 
   return (
     <div className="main_order py-4">
@@ -137,7 +146,7 @@ const MainOrder = ({ getPageServes }) => {
                   activeButton === 1 ? "active btn btn_order" : "btn btn_order"
                 }
                 onClick={() => {
-                  handleOrderPanding();
+                  handleOrderPanding(0);
                   handleButtonClick(1);
                 }}
               >
@@ -150,7 +159,8 @@ const MainOrder = ({ getPageServes }) => {
                   activeButton === 2 ? "active btn btn_order" : "btn btn_order"
                 }
                 onClick={() => {
-                  handleOrderprocessing();
+                  // handleOrderprocessing();
+                  handleOrderPanding(1);
                   handleButtonClick(2);
                 }}
               >
@@ -163,7 +173,8 @@ const MainOrder = ({ getPageServes }) => {
                   activeButton === 3 ? "active btn btn_order" : "btn btn_order"
                 }
                 onClick={() => {
-                  handleOrderCancelled();
+                  // handleOrderCancelled();
+                  handleOrderPanding(2);
                   handleButtonClick(3);
                 }}
               >
@@ -176,7 +187,8 @@ const MainOrder = ({ getPageServes }) => {
                   activeButton === 4 ? "active btn btn_order" : "btn btn_order"
                 }
                 onClick={() => {
-                  handleOrderFinish();
+                  // handleOrderFinish()
+                  handleOrderPanding(3);
                   handleButtonClick(4);
                 }}
               >
@@ -186,7 +198,8 @@ const MainOrder = ({ getPageServes }) => {
           </Col>
         </Row>
         <Row className="">
-          {orderData?.data &&
+        {orderData?.data?.length > 0 ?
+                (          orderData?.data &&
             orderData?.data.map((order, index) => (
               <Col key={index} xs={12} lg={6} md={11} sm={12} className="">
                 {/* <Link to="/booking"> */}
@@ -309,7 +322,12 @@ const MainOrder = ({ getPageServes }) => {
                 </Card>
                 {/* </Link> */}
               </Col>
-            ))}
+            ))):(
+          <Col xs={12} className="text-center my-3">
+            <h2 >You Donot have Order In this Processing yet.</h2>
+          </Col>
+        )}
+
         </Row>
         {/* <Row>
             <Col>

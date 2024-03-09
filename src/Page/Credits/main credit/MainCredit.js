@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../credit.css";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -10,10 +10,33 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { TbGiftCard } from "react-icons/tb";
 import { IoWalletSharp } from "react-icons/io5";
+import axios from "axios";
 
 export const MainCredit = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
+  const loginFormData = JSON.parse(localStorage.getItem('loginFormData')) ;
+  const [balance,sertBalance]=useState()
+  // const [handlingMassage,sertHandlingMassage]=useState("")
+
+  const getBalance = async () => {
+    try {
+      const response = await axios.post(
+        "https://dashboard.knock-knock.ae/api/v1/packages/my-balance",
+        { user_id: loginFormData.id } // Wrap user_id in an object
+      );
+      // Handle the response data as needed
+      // console.log(response.data);
+      sertBalance(response?.data?.data)
+    } catch (error) {
+      console.error("Error getting balance", error);
+    }
+  };
+  
+  useEffect(()=>{
+    getBalance()
+
+  },[])
 
   return (
     <div className="main_address main_credit py-4 mb-3">
@@ -101,7 +124,7 @@ export const MainCredit = () => {
                 </h5>
                 <div className="d-flex justify-content-center mt-5">
                 <IoWalletSharp className="wallet_icon"/>
-                <p> $0</p>
+                <p> {balance?.balance} $</p>
                 </div>
                 </Col>
 

@@ -195,12 +195,12 @@ const NavBar = () => {
             {t("singup")}
           </Link>
         </div>
-        <Link to="/contact" className="row pt-2 mb-3 help_nav">
+        {/* <Link to="/contact" className="row pt-2 mb-3 help_nav">
           <p className="direction">
             <FaQuestionCircle className="fa-solid fa-circle-question" />
             {t("help")}
           </p>
-        </Link>
+        </Link> */}
         <div className="row border_top pt-2 mb-3">
           <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
             <img src={appstore} alt="App Store" />

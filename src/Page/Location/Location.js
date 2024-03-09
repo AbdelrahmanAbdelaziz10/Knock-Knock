@@ -99,7 +99,7 @@ const MapWithMarker = () => {
 
                 <div className="row justify-content-center">
                   <div className="search-location-input">
-                  <LoadScript googleMapsApiKey="AIzaSyBW9V6uqOZqM0VdUKuEJyzpWPe_FshHn6A">
+                  <LoadScript googleMapsApiKey="AIzaSyCqAeZ8WASm99pFDLG1t1QlHu0ocIZxh9I">
                       {mapCenter && (
                         <GoogleMap
                           center={mapCenter}

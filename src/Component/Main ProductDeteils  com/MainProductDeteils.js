@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./MainProductDetails.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import ProductSlider from "./ProductSlider";
 import ProductHead from "./ProductHead";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useFetch from "../../hooks/useFetch";
 import { ContextLang, ProductDetailsContext, ToggleContext } from "../../App";
@@ -16,6 +16,7 @@ const MainProductDetails = () => {
   const { saveToggle,toggle } = useContext(ToggleContext);
   const { selectedLanguage } = useContext(ContextLang);
   const productPrams = useParams();
+  const navigate = useNavigate();
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData'));
   const { data: day } = useFetch("/api/v1/days/get-all");
   const { data: setting } = useFetch("/api/v1/settings/get-all");
@@ -28,6 +29,7 @@ const MainProductDetails = () => {
   const [selectedDayId, setSelectedDayId] = useState(null);
   const [timeValue, setTimeValue] = useState("");
   const [textValue, setTextValue] = useState("");
+  const [refactorError, setRefactorError] = useState("");
 
   const increseNumber = () => {
     setIncrease((prevIncrease) => prevIncrease + 1);
@@ -61,6 +63,11 @@ const MainProductDetails = () => {
 
 
   const addProduct = () => {
+    if (!selectedDayId || !timeValue || !textValue) {
+      // Handle validation error, e.g., show an alert
+      setRefactorError("Please select a Day, Time, and enter any Notes to ensure greater Service.");
+      return;
+    } else {
     setGrandTotal(grandTotalWithShipping);
     saveProductDetails({
       user_id: loginFormData.id,
@@ -75,9 +82,11 @@ const MainProductDetails = () => {
       grand_total: grandTotalWithShipping,
     });
     saveToggle(false);
+    navigate("/location");
+
     // console.log(productDetails)
     // console.log(toggle)
-
+  }
   };
 
   useEffect(() => {
@@ -244,10 +253,13 @@ const MainProductDetails = () => {
                 sm={12}
                 className="col-lg-4 col-md-3 mt-3 "
               >
-                <Link onClick={addProduct} to='/location' className="btn btn-Add">
+                <button onClick={addProduct}  className="btn btn-Add">
                   {t("details_btn")}
-                </Link>
+                </button>
               </Col>
+              {refactorError && (
+                <Alert className="Alert" variant="danger">{refactorError} </Alert>
+              )}
             </div>
           </div>
         </Container>

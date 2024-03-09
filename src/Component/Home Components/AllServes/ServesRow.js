@@ -33,7 +33,7 @@ const allserves=serves?.data?.data
         title===t("home_category3")? (
             <div className="row servies">
             {allProduct && allProduct?.map((product)=>{
-                if(product.id<=4){
+                {/* if(product.id<=4){ */}
                     return (
                         <Col xs={6} lg={3} md={4} sm={6} className=" mb-5">
                         <OneProduct image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product.id}`} />
@@ -41,18 +41,18 @@ const allserves=serves?.data?.data
                         </Col>
 
                     )
-                }
+            {/* } */}
             })}
 
             </div>
         ):(       
             <div className="row servies">
             {allserves && allserves?.map((serve)=>{
-                if(serve.id<=4){
+                {/* if(serve.id<=4){ */}
                     return (
                         <OneServe image={`https://dashboard.knock-knock.ae/${serve.image}`} link={`/serves/${serve.id}`} name_ar={serve.name_ar} name_en={serve.name_en}/>
                     )
-                }
+                {/* } */}
             })}
     </div>)
     }

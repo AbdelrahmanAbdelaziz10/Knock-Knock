@@ -239,7 +239,7 @@ const CheckOutMain = () => {
                   </Row>
                 </div>
 
-                <Row>
+                <Row className="mx-3">
                   <h4>{t("check_code_title")}</h4>
                   <Col xs={6} lg={8} md={4} sm={6} className="mb-2">
                     <input

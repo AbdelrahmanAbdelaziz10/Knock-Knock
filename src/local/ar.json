@@ -153,7 +153,7 @@
     "personal_phone_placeholder":"رقم الهاتف",
     "personal_select_placeholder":"",
     "personal_delet":"حذف الحساب",
-    "personal_btn":"حفظ",
+    "personal_btn":"حفظ التعديلات",
     "address_title":"العنوان",
     "Building_No.":"رقم المبني",
     "Flat_No.":"رقم الشقة",
@@ -224,6 +224,7 @@
     "payment_total":"المجموع الفرعي:",
     "payment_delivery":"رسوم التوصيل:",
     "payment_taps":"تكلفة التسوق:",
+    "expire_date":"تاريخ الانتهاء: ",
 
 
     "Policy_title":"سياسة الخصوصية",

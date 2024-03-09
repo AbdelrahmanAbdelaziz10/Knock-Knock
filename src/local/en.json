@@ -156,7 +156,7 @@
     "personal_phone_placeholder":"Phone Number",
     "personal_Confirmpassword_placeholder":"Confirm Password",
     "personal_delet":"Delete Account",
-    "personal_btn":"Save",
+    "personal_btn":"Save Edit",
     "address_title":"Location Link",
     "Building_No.":"Building No.",
     "Flat_No.":"Flat No.",
@@ -231,6 +231,7 @@
     "sweetalert_massage3":"Yes, Cancel it!",
     "sweetalert_massage4":"Cancelled!",
     "sweetalert_massage5":"Your file has been cancelled.",
+    "expire_date":"Expire Date: ",
 
     "Policy_title":"Privacy Policy",
     "Policy_p1":"Our privacy policy describes how we collect and process your personal information, such as the information you provide through our application. The policy also outlines your rights regarding your personal information, how it is retained, and secured.",

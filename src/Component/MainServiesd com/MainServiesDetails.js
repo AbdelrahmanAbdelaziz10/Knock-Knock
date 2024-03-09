@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import "../Main ProductDeteils  com/MainProductDetails.css";
 import BodyDetails from "../Common Component/Deteils Com/BodyDetails";
 import ProductHead from "./../Main ProductDeteils  com/ProductHead";
 import serves from "../../images/Rectangle 195.png";
 import { FaCircleExclamation } from "react-icons/fa6";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Location from "../../Page/Location/Location";
 import { useTranslation } from "react-i18next";
 import useFetch from "../../hooks/useFetch";
@@ -14,11 +14,11 @@ import { ContextLang, ServesDetailsContext, ToggleContext } from "../../App";
 const MainServiesDetails = ({ changeTest }) => {
   const { t } = useTranslation();
   const prams = useParams();
+  const navigate = useNavigate();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const { servesDetails, saveServesDetails } = useContext(ServesDetailsContext);
-  const loginFormData = JSON.parse(localStorage.getItem('loginFormData')) ;
+  const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
   const { toggle, saveToggle } = useContext(ToggleContext);
-
   const [date, setDate] = useState(new Date());
   const [selectDate, setSelectDate] = useState(null);
   const { data: day } = useFetch("/api/v1/days/get-all");
@@ -27,6 +27,7 @@ const MainServiesDetails = ({ changeTest }) => {
   const [selectedDayId, setSelectedDayId] = useState(null);
   const [timeValue, setTimeValue] = useState("");
   const [textValue, setTextValue] = useState("");
+  const [refactorError, setRefactorError] = useState("");
 
   const onChange = (date) => {
     setDate(date);
@@ -47,25 +48,35 @@ const MainServiesDetails = ({ changeTest }) => {
   const { data: serve } = useFetch(
     `/api/v1/services/get-service-details?service_id=${prams.servesId}`
   );
-  const grandTotalWithShipping = (+serve?.data?.price + (+setting?.data?.delivery_cost || 0)).toFixed(2);
+  const grandTotalWithShipping = (
+    +serve?.data?.price + (+setting?.data?.delivery_cost || 0)
+  ).toFixed(2);
 
   // console.log("user_id:",loginFormData.id,", serves id:",prams.servesId,", selectedDayId:",selectedDayId,
   // ", timeValue:",timeValue,", textValue:",textValue,"grandTotal",grandTotalWithShipping);
+  // const isButtonDisabled = () => {
+  //   return !selectedDayId && !timeValue.trim() && !textValue.trim();
+  // };
 
-  const addData=()=>{
-    saveServesDetails({
-    user_id:loginFormData.id,
-    service_id:prams.servesId,
-    selected_day_id:selectedDayId,
-    selected_time:timeValue,
-    payment_method:"cash",
-    notes:textValue,
-    grand_total:grandTotalWithShipping,
-  })
-    saveToggle(true);
-  }
-
-
+  const addData = () => {
+    if (!selectedDayId || !timeValue || !textValue) {
+      // Handle validation error, e.g., show an alert
+      setRefactorError("Please select a Day, Time, and enter any Notes to ensure greater Service.");
+      return;
+    } else {
+      saveServesDetails({
+        user_id: loginFormData.id,
+        service_id: prams.servesId,
+        selected_day_id: selectedDayId,
+        selected_time: timeValue,
+        payment_method: "cash",
+        notes: textValue,
+        grand_total: grandTotalWithShipping,
+      });
+      saveToggle(true);
+      navigate("/location");
+    }
+  };
 
   return (
     <>
@@ -216,10 +227,17 @@ const MainServiesDetails = ({ changeTest }) => {
                 sm={6}
                 className="col-lg-4 col-md-3 mt-3 "
               >
-                <Link onClick={addData} to='/location'  className="btn btn-Add next">
+                <button
+                  onClick={addData}
+                  // disabled={isButtonDisabled()}
+                  className="btn btn-Add next"
+                >
                   {t("gift_btn")}
-                </Link>
+                </button>
               </Col>
+              {refactorError && (
+                <Alert className="Alert" variant="danger">{refactorError} </Alert>
+              )}
             </div>
           </div>
         </Container>

@@ -76,5 +76,9 @@
 }
 .rtl .contact_main .contact_card .contact_icon{
     margin-left: 1rem;
-
+}
+.contact_alert{
+    width: 60% !important;
+    font-weight: 500 !important;
+    
 }

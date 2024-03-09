@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Head.css'
 const Head = ({img,page,title}) => {
   return (
-    <div className='head_serves pb-3' >
+    <div className='head_serves ' >
     <div className='black_hover'/>
     <div className='head_img' >
         <img src={img} alt=""/>
