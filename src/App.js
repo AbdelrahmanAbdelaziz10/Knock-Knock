@@ -36,19 +36,26 @@ import SingUp from "./Page/SingUp/SingUp";
 import ChangePassword from "./Page/RestetPassword/ChangePassword";
 import RestPassword from "./Page/Verify/ResetPassword";
 import CheckOut from "./Page/Checkoutpage/CheckOut";
+import BookingProductPage from './Page/Booking/BookingProductPage';
 export const ContextLang = createContext();
 export const FormDataContext = createContext();
 export const LoginFormDataContext = createContext();
 export const LocationContext= createContext();
 export const ServesDetailsContext= createContext();
 export const OrderDataContext= createContext();
+export const ProductOrderDataContext= createContext();
 export const ProductDetailsContext= createContext();
 export const ToggleContext= createContext();
 export const ToggleLoginContext= createContext();
 
+const page=1;
+
 function App() {
-  const [contentProduct, setContentProduct] = useState();
+  const [contentProduct, setContentProduct] = useState([]);
   const [contentServes, setContenServes] = useState([]);
+  const [contentOrderServes, setContenOrderServes] = useState([]);
+  const [contentOrderProduct, setContenOrderProduct] = useState([]);
+
   const [toggle, setToggle] = useState();
   const saveToggle = (data) => {
     setToggle(data);
@@ -66,7 +73,11 @@ function App() {
     setOrderData(data);
     localStorage.setItem("servesOrderData", JSON.stringify(data));
   };
-
+  const [productOrderData, setProductOrderData] = useState()
+  const saveProductOrderData = (data) => {
+    setProductOrderData(data);
+    localStorage.setItem("ProductOrderData", JSON.stringify(data));
+  };
   const savedServesDetails = localStorage.getItem("servesOrder");
   const [servesDetails, setServesDetails] = useState(
     savedServesDetails ? JSON.parse(savedServesDetails) : {
@@ -155,15 +166,30 @@ function App() {
       `https://dashboard.knock-knock.ae/api/v1/products/get-all-products?page=${page}`
     );
     setContentProduct(res?.data?.data?.data);
+    console.log(res?.data?.data?.data)
   };
+
   const getPageServes = async (page) => {
     const res = await axios.get(
       `https://dashboard.knock-knock.ae/api/v1/services/get-all?page=${page}`
     );
     setContenServes(res?.data?.data?.data);
-    // console.log(contentServes);
+    console.log(res?.data?.data?.data)
   };
-
+  const getOrderServes = async (page) => {
+    const res = await axios.get(
+      `https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders?page=${page}`
+    );
+    setContenOrderServes(res?.data?.data?.data);
+    console.log(res?.data?.data?.data)
+  };
+  const getOrderProduct = async (page) => {
+    const res = await axios.post(
+      `https://dashboard.knock-knock.ae/api/v1/product_orders/my-orders?page=${page}`
+    );
+    setContenOrderProduct(res?.data?.data?.data);
+    console.log(res?.data?.data?.data)
+  };
   return (
     <ContextLang.Provider value={{ selectedLanguage, setSelectedLanguage }}>
       <LoginFormDataContext.Provider
@@ -177,6 +203,7 @@ function App() {
         <ProductDetailsContext.Provider value={{productDetails, saveProductDetails}}>
 
         <OrderDataContext.Provider value={{orderData, saveOrderData}}>
+        <ProductOrderDataContext.Provider value={{productOrderData, saveProductOrderData}}>
         <ToggleContext.Provider value={{toggle, saveToggle}}>
         <ToggleLoginContext.Provider value={{toggleLogin, saveToggleLogin}}>
 
@@ -191,14 +218,16 @@ function App() {
                   element={
                     <AllProduct
                       getPage={getPageProduct}
-                      product={product?.data}
+                      contentProduct={contentProduct}
+                      // product={product?.data}
                     />
                   }
                 />
+                
                 <Route path="product/:productId" element={<ProductDeteils />} />
                 <Route
                   path="/serves"
-                  element={<Serves getPage={getPageServes} />}
+                  element={<Serves contentServes={contentServes} getPage={getPageServes} />}
                 />
                 <Route path="/serves/:servesId" element={<ServesDetiels />} />
                 <Route path="/location" element={<Location />} />
@@ -220,16 +249,19 @@ function App() {
                 <Route path="/buy-credit" element={<BuyCreditPage />} />
                 <Route path="/privacy_policy" element={<PolicyPage />} />
                 <Route path="/contact" element={<ContactUs />} />
-                <Route path="/your-order" element={<MyOrderpage getPageServes={getPageServes} />} />
+                <Route path="/your-order" element={<MyOrderpage contentOrderServes={contentOrderServes} getPageServes={getOrderServes} />} />
+                <Route path="/product_order" element={<BookingProductPage contentOrderProduct={contentOrderProduct} getOrderProduct={getOrderProduct} />} />
+
                 <Route path="/credit_card" element={<CreditCardPage />} />
                 <Route path="/add_card" element={<AddCard />} />
-                <Route path="/booking" element={<BookPage />} />
+                {/* <Route path="/booking" element={<BookPage />} /> */}
                 <Route path="/cart_shop" element={<CartPage />} />
               </Routes>
             </BrowserRouter>
           </div>
           </ToggleLoginContext.Provider>
           </ToggleContext.Provider>
+          </ProductOrderDataContext.Provider>
           </OrderDataContext.Provider>
           </ProductDetailsContext.Provider>
           </ServesDetailsContext.Provider>

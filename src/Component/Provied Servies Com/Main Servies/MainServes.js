@@ -1,43 +1,90 @@
-import React from "react";
-import OneProduct from "../../Home Components/AllServes/OneProduct";
-import product1 from "../../../images//Rectangle 195.svg";
-import product2 from "../../../images/Rectangle2.svg";
-import product3 from "../../../images/private3.svg";
-import product4 from "../../../images/private4.svg";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import OneServe from "../../Home Components/AllServes/OneServe";
-import "./MainServes.css";
+import axios from "axios";
+import './MainServes.css'
 import useFetch from "../../../hooks/useFetch";
-import { Serves } from './../../Home Components/Serves/Serves';
 import PaginationCom from "../../Common Component/Pagination/Pagination";
 import ServesComponent from "../../Home Components/Serves/ServesComponent";
-const MainServes = ({getPage}) => {
-  const { data: servies } = useFetch("/api/v1/services/get-all");
-  // console.log(servies?.data?.total);
+import { useTranslation } from "react-i18next";
+
+const MainServes = ({ getPage,contentServes }) => {
+  const {t,i18n}=useTranslation()
+  const { data: serves, setData: setServes } = useFetch("/api/v1/services/get-all");
+  const [servesSearch, setServesSearch] = useState({
+    search: "",
+  });
+  console.log(contentServes)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.post(
+          "https://dashboard.knock-knock.ae/api/v1/search/services",
+          servesSearch
+        );
+        setServes(response.data);
+        console.log(serves);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    
+    if (servesSearch.search.trim() !== "") {
+      fetchData();
+    } else {
+      clearSearch();
+    }
+  }, [servesSearch]);
+
+  const clearSearch = async () => {
+    // Fetch all data when search content is empty
+    const allDataResponse = await axios.get("https://dashboard.knock-knock.ae/api/v1/services/get-all");
+    setServes(allDataResponse.data);
+  };
+
+  const handelSearchChange = (e) => {
+    setServesSearch({
+      ...servesSearch,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <div className="main_serves py-4">
+    <div className="main_serves py-5">
       <Container>
+        <Row className="justify-content-center">
+          <Col xs={11} lg={11} md={9} sm={11} className="">
+            <input
+              className="search_input"
+              type="text"
+              name="search"
+              onChange={handelSearchChange}
+              placeholder={t("search")}
+            />
+          </Col>
+        </Row>
         <div className="row Servies allservice">
-        {/* <h1>{servies.data.data[0].name_ar}</h1>   */}
-            {servies && servies?.data && servies?.data?.data&& servies?.data?.data?.map((s, idx) => {
-            return (
-              <>
-              <ServesComponent image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} link={`/serves/${s.id}`} name_ar={s.name_ar} name_en={s.name_en} />
-
-        {/* <OneServe image={`https://dashboard.knock-knock.ae/${s.image}`} key={s.id} name_ar={s.name_ar} name_en={s.name_en} link={`${s.id}`} /> */}
-
-              </>
-
-            );
-          })}
-      
+          {contentServes?.length > 0 ? (
+            contentServes?.map((s, idx) => (
+              <ServesComponent
+                image={`https://dashboard.knock-knock.ae/${s.image}`}
+                key={s.id}
+                link={`/serves/${s.id}`}
+                name_ar={s.name_ar}
+                name_en={s.name_en}
+              />
+            ))
+          ) : servesSearch.search.trim() !== "" ? (
+            <h2 className="text-center p-4">{t("no_result")}</h2>
+          ) : (
+            <h2 className="text-center p-4">{t("no_serves")}</h2>
+          )}
 
           <Row>
-            <Col>
-            <PaginationCom total={servies?.data?.total} getPage={getPage} />
+            <Col>       
+             <PaginationCom total={serves?.data?.per_page} getPage={getPage} url={"https://dashboard.knock-knock.ae/api/v1/services/get-all?page="}/>
             </Col>
-                      </Row>
-
+          </Row>
         </div>
       </Container>
     </div>

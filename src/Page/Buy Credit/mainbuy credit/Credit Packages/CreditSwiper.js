@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import "./creditswiper.css";
 import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
-import { ContextLang } from "../../../../App";
+import { ContextLang, LoginFormDataContext } from "../../../../App";
 import axios from "axios";
 import useFetch from "../../../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
@@ -14,12 +14,15 @@ import Swal from "sweetalert2";
 export default function CreditSwiper() {
   const { t } = useTranslation();
   const { selectedLanguage } = useContext(ContextLang);
-  const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
+  const loginFormDatalocal = JSON.parse(localStorage.getItem("loginFormData"));
   const [responseMessage, setResponseMessage] = useState("");
   const { data: gitPacge } = useFetch("/api/v1/packages/get-all");
   const navigate = useNavigate();
+  const { saveLoginFormData ,loginFormData} = useContext(LoginFormDataContext);
 
   const handleSubmit = async (packageId) => {
+    console.log(packageId,"gygyg",loginFormDatalocal.id)
+
     Swal.fire({
       title: " Do you want to buy this package?",
       icon: "warning",
@@ -33,12 +36,49 @@ export default function CreditSwiper() {
           const response = await axios.post(
             "https://dashboard.knock-knock.ae/api/v1/packages/buy",
             {
-              user_id: loginFormData.id,
+              user_id: loginFormDatalocal.id,
               package_id: packageId,
             }
           );
+          saveLoginFormData({
+            ...loginFormData,
+            package_id: packageId,
+          })
+          console.log(loginFormData.package_id,"gygyg",loginFormDatalocal.id)
           setResponseMessage(response.data.message);
-          window.open(response?.data?.payment_link, "_blank"); // Open payment link in a new tab
+          console.log(response?.data?.payment_link)
+                     // Open payment link in a new tab
+          window.open(response?.data?.payment_link);
+          // window.open(response?.data?.payment_link, "_blank"); 
+          const res=await axios.post(
+            "https://dashboard.knock-knock.ae/api/v1/packages/stripe-success"
+          )
+          console.log(res.data)
+          if(res.status){
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+
+          const afterPayRes =await axios.post(
+            "https://dashboard.knock-knock.ae/api/v1/packages/add-balance-after-payment",
+            {
+              user_id: loginFormDatalocal.id,
+              package_id: loginFormDatalocal.packageId,
+            }
+          )
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: afterPayRes.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate("/credits")
+        }
         } catch (error) {
           console.log("error", error);
         }
@@ -73,7 +113,7 @@ export default function CreditSwiper() {
             );
           })
         ) : (
-          <h2>Sorry But Not Have Any Balance to Buy.</h2>
+          <h4 style={{marginTop:"-2rem"}}>{t("no_balance")}</h4>
         )}
       </Swiper>
     </>

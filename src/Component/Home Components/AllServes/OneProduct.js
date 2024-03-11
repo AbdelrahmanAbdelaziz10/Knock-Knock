@@ -6,11 +6,10 @@ import { useTranslation } from "react-i18next";
 import { ContextLang, ToggleLoginContext } from "../../../App";
 import Swal from "sweetalert2";
 const OneProduct = ({ image, name_ar, prise, discount, link, name_en }) => {
-  const { t, i18n } = useTranslation();
-  const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
-  const { toggleLogin, saveToggleLogin } = useContext(ToggleLoginContext);
-
-  // console.log(link);
+  const { t } = useTranslation();
+  const { selectedLanguage } = useContext(ContextLang);
+  const { saveToggleLogin } = useContext(ToggleLoginContext);
+  const toggleLogin = JSON.parse(localStorage.getItem("toggleLogin"));
 
   const navigate = useNavigate();
   const handelLogInPage = () => {
@@ -29,7 +28,7 @@ const OneProduct = ({ image, name_ar, prise, discount, link, name_en }) => {
 
   return (
     <>
-      {toggleLogin !== false ? (
+      {toggleLogin === true ? (
         <div className="card one_Product">
           <div className="card_image_product">
             <img src={image} alt="" />

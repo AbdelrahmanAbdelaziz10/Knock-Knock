@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center;
     border: .5px solid rgba(128, 128, 128, 0.432);
-    margin: .8rem 1rem;
+    margin: .8rem .6rem;
 }
 .Servies .servies_card:hover {
 margin-top: -.5rem;
@@ -41,12 +41,13 @@ transition: all .5s;
 .Servies .servies_card .card_img {
     color: #008080;
     font-size: 3.3rem;
+    width: 99% !important;
 }
 
 .Servies .servies_card .card_head {
     color: #000;
-    font-weight: 500;
-    font-size: 15px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 /* End In Serves Section Style */

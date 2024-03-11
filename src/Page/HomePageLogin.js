@@ -15,6 +15,7 @@ import NavBarLogin from "../Component/Common Component/NavBar/NavCarLogin";
 import { ServesRow } from "../Component/Home Components/AllServes/ServesRow";
 import NavBar from "../Component/Common Component/NavBar/NavBar";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const HomePageLogin = () => {
     const { t, i18n } = useTranslation();
@@ -24,6 +25,7 @@ const HomePageLogin = () => {
       setSelectedLanguage(language);
       i18n.changeLanguage(language);
     };
+
 
     useEffect(()=>{
       window.scrollTo(0,0)

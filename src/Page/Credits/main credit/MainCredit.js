@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "../credit.css";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { ContextLang } from "../../../App";
+import { ContextLang, LoginFormDataContext } from "../../../App";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import bocket from "../../../images/bocket.png";
@@ -13,21 +13,24 @@ import { IoWalletSharp } from "react-icons/io5";
 import axios from "axios";
 
 export const MainCredit = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
-  const loginFormData = JSON.parse(localStorage.getItem('loginFormData')) ;
+  const loginForm = JSON.parse(localStorage.getItem('loginFormData')) ;
   const [balance,sertBalance]=useState()
   // const [handlingMassage,sertHandlingMassage]=useState("")
+  const { loginFormData, saveLoginFormData } = useContext(LoginFormDataContext);
 
   const getBalance = async () => {
     try {
       const response = await axios.post(
         "https://dashboard.knock-knock.ae/api/v1/packages/my-balance",
-        { user_id: loginFormData.id } // Wrap user_id in an object
+        { user_id: loginForm.id } // Wrap user_id in an object
       );
       // Handle the response data as needed
-      // console.log(response.data);
+      console.log(response.data);
       sertBalance(response?.data?.data)
+    // console.log(balance.balance)
+
     } catch (error) {
       console.error("Error getting balance", error);
     }
@@ -37,6 +40,16 @@ export const MainCredit = () => {
     getBalance()
 
   },[])
+
+  // useEffect(() => {
+  //   if (balance) {
+  //     saveLoginFormData({
+  //       ...loginFormData,
+  //       balance: balance.balance
+  //     });
+  //   }
+  // }, [balance]);
+
 
   return (
     <div className="main_address main_credit py-4 mb-3">

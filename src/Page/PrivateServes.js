@@ -7,7 +7,7 @@ import head from "../images/Rectangle 195.png";
 import MainServes from "../Component/Provied Servies Com/Main Servies/MainServes";
 import { i18n } from 'i18next';
 import { useTranslation } from "react-i18next";
-const PrivateServes = ({getPage}) => {
+const PrivateServes = ({getPage,contentServes}) => {
   const{t,i18n}=useTranslation()
 
   useEffect(()=>{
@@ -18,7 +18,7 @@ const PrivateServes = ({getPage}) => {
     <div className="provide_serves ">
       <NavBar />
       <Head img={head} page={t("home_category1")} title={t("home_category1")} />
-      <MainServes getPage={getPage} className="" />
+      <MainServes getPage={getPage} contentServes={contentServes} className="" />
       <Footer />
     </div>
   );

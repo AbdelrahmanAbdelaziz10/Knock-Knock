@@ -324,7 +324,7 @@ const MainOrder = ({ getPageServes }) => {
               </Col>
             ))):(
           <Col xs={12} className="text-center my-3">
-            <h2 >You Donot have Order In this Processing yet.</h2>
+            <h2 >{t("no_order")} </h2>
           </Col>
         )}
 

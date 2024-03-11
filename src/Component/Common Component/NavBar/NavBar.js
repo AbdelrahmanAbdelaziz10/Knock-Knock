@@ -129,7 +129,7 @@ const NavBar = () => {
             <p> {t("Payment_Methods")}</p>
           </Col>
         </Link>
-        <Link to="/send_gift" className="row row_hover border pt-2 mb-3">
+        {/* <Link to="/send_gift" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <TbGiftCard />
@@ -138,7 +138,7 @@ const NavBar = () => {
           <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
             <p> {t("Gift_Card")}</p>
           </Col>
-        </Link>
+        </Link> */}
         
         <Link to="/your-order" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
@@ -148,6 +148,16 @@ const NavBar = () => {
           </Col>
           <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
             <p> {t("Booking")}</p>
+          </Col>
+        </Link>
+        <Link to="/product_order" className="row row_hover border pt-2 mb-3">
+          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+            <div className="login_flag">
+            <FaCalendarAlt />
+            </div>
+          </Col>
+          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+            <p> {t("Booking_Product")}</p>
           </Col>
         </Link>
         <Link to="/contact" className="row row_hover border pt-2 mb-3">

@@ -106,7 +106,7 @@ const MainProductDetails = () => {
               page2_en={product_id?.data?.name_en}
 
             />
-            <ProductSlider />
+            {/* <ProductSlider /> */}
           </div>
 
           <div className="body_details my-4">
