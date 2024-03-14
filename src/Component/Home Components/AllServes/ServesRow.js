@@ -28,7 +28,7 @@ export const ServesRow = ({ title, link }) => {
           <div className="row servies">
             {allProduct && allProduct.slice(0, 4).map((product) => (
               <Col xs={6} lg={3} md={4} sm={6} className=" mb-5" key={product.id}>
-                <OneProduct image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product.id}`} />
+                <OneProduct productObj={product} image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product.id}`} />
               </Col>
             ))}
           </div>

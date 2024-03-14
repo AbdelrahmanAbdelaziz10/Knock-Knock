@@ -1,8 +1,8 @@
 
 .dropmenu {
     position: absolute;
-    top: 5.4rem;
-    right: 7rem;
+    top: 4.4rem;
+    right: 5rem;
     background-color: #fff;
     text-align: right;
     width: 20vw;
@@ -167,5 +167,27 @@
 }
 .log_out_div:hover{
 background-color: #ea001b56 !important;
+}
+.navbar .form .buy_product{
+    color: #008080;
+    font-size: 1.5rem;
+    margin-top: .8rem;
+    position: relative;
+    cursor: pointer;
+}
+.navbar .form .number{
+    background-color: #EA001B;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    position: absolute;
+    right: 25.3%;
+    top:1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* End In NavBar Section Style */

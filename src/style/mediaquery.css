@@ -237,7 +237,7 @@
     }
 
     .serves_col {
-        height: 43vh !important;
+        height: auto !important;
         scroll-behavior: smooth;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -273,7 +273,7 @@
     /* 1-main Serves Details - Booking Details  */
     .booking_details {
         padding: 1rem 1rem !important;
-        height: auto;
+        height: 30vh !important;
     }
 
     .booking_details h4 {
@@ -299,7 +299,7 @@
 
     /* Booking Details */
     .total {
-        height: auto !important;
+        height: 23vh !important;
         margin-top: 2rem !important;
     }
 
@@ -452,6 +452,10 @@
     .rtl .allservice .see_more.link {
         margin-right: 2rem !important;
     }
+    .navbar .form .number{
+        right: 34%;
+        top:1.2rem;
+    }
 }
 
 
@@ -460,6 +464,7 @@
 @media (max-width: 576px) {
 
     /* Styles for small devices */
+
     .order_details p {
         font-size: 14px !important;
         font-weight: 500 !important;
@@ -493,8 +498,8 @@
 
     .dropmenu {
         top: 4rem !important;
-        right: 2rem;
-        width: 75vw !important;
+        right: .6rem;
+        width: 65vw !important;
         z-index: 1111;
     }
 
@@ -518,7 +523,7 @@
     }
 
     .header .header_text h2 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         line-height: 2rem;
         margin-bottom: .5rem;
     }
@@ -538,9 +543,6 @@
         height: 26vh;
     }
 
-    .ltr .card.one_Product {
-        margin-left: 2rem;
-    }
 
     .head h4 {
         font-size: 17px;
@@ -555,9 +557,11 @@
         padding-right: 0rem;
         font-size: 15px;
     }
-
+    .card.one_Product {
+        width: 98%;
+    }
     .rtl .card.one_Product {
-        margin-right: 2rem;
+        margin-right: .3rem;
     }
 
     .servies_image p {
@@ -601,7 +605,7 @@
 
     .header .header_text p {
         font-weight: 500;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .servies_card .card_head p {
@@ -661,9 +665,6 @@
     }
 
     /* 2-Main Product */
-    .ltr .card.one_Product {
-        margin-left: 1rem;
-    }
 
     /* Start in all Serves page responsive */
     /* 1-main Serves Details - product Head */
@@ -830,7 +831,12 @@
         overflow-x: hidden;
         scrollbar-color: #008080a4 white !important;
     }
-
+    .card.one_Product .card_text_product h6{
+        margin-bottom: .5rem;
+    }
+    .card.one_Product{
+        height: auto !important;
+    }
     /* 1-main Serves Details - serves Card */
     .book_card .serv_text h6 {
         font-size: 16px;
@@ -923,6 +929,10 @@
     }
 
     /* Start in Log In page responsive */
+    .login{
+        padding-top:6rem;
+    }
+    
     .ltr .login .login_main .form .form-control {
         border-right: 2px solid #008080 !important;
     }
@@ -995,6 +1005,10 @@
     }
 
     /* Start in Sing Up page responsive */
+    .singup{
+        height: auto;
+        padding: 3rem 0 5.5rem 0 !important;
+    }
     .singup .form_head img {
         width: 95%;
     }
@@ -1197,7 +1211,44 @@
     .rtl .allservice .see_more.link {
         margin-right: 0rem !important;
     }
-
+    .title h4 {
+        font-size: 18px;
+    }
+    .title p{
+        font-size: 14px;
+    }
+    .ltr .allservice.Servies{
+        margin-left: .3px;
+    }
+    .rtl .allservice.Servies{
+        margin-right: .3px;
+    }
+    .serves_div .servies_div .servies_card{
+        width: 40vw;
+        margin: .8rem 0.9rem;
+    }
+    .Servies .servies_card {
+        width: 29vw;
+        margin: .8rem 0.4rem;
+    }
+    .main_buy .knock_credit h4 {
+        color: #000;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .rtl .main_order .order_title .btn_pending{
+        font-size: 14px !important;
+    }
+    .main_card .btn_decrease{
+        padding: 1px 5px !important;
+        height: 3vh;
+        color: #fff;
+        opacity: 1;
+    }
+    .navbar .form .number{
+        right: 56%;
+        top:.8rem;
+    }
     /* .form .forget .forget_password:hover { */
     /* margin-left: 1.5rem !important; */
     /* transition: all .5s; */
@@ -1228,7 +1279,9 @@
         border: none;
         border-bottom: 2px solid #008080;
     }
-
+    .rtl .card.one_Product .card_text_product h6 span {
+        padding-right: 1rem;
+    }
     .header_swiper .swiper {
         height: 29vh !important;
         padding: .5rem;
@@ -1247,12 +1300,13 @@
         height: 60vh;
     }
 
-    .card.one_Product {
-        height: 40vh !important;
+    .card.one_Product{
+        height: auto !important;
+        width: 98%;
     }
 
     .ltr .card.one_Product {
-        margin-left: .3rem;
+        margin-left: 0rem;
     }
 
     .Justlife_protects .col-lg-3 {
@@ -1396,5 +1450,23 @@
 
     .singup .form .form_head img {
         width: 80%;
+    }
+    .dropmenu {
+        top: 3.5rem !important;
+        right: .3rem;
+        width: 60vw !important;
+    }
+    .total_price span {
+        font-size: 16px;
+    }
+    .navbar .form .number{
+        right: 63%;
+        top:.5rem;
+    }
+    .main_card .btn_decrease{
+        padding: 1px 5px !important;
+        height: 4vh;
+        color: #fff;
+        opacity: 1;
     }
 }

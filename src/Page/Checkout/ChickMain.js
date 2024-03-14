@@ -1,11 +1,16 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react'
-import { Alert, Col, Container, Row } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next';
-import { FaCircleExclamation } from 'react-icons/fa6'
-import Swal from 'sweetalert2';
-import { ProductDetailsContext, ServesDetailsContext, ToggleContext } from '../../App';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { Alert, Col, Container, Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import { FaCircleExclamation } from "react-icons/fa6";
+import Swal from "sweetalert2";
+import {
+  ProductDetailsContext,
+  ServesDetailsContext,
+  ToggleContext,
+} from "../../App";
+import { useNavigate } from "react-router-dom";
+import { CartCountContext } from "../../Context/CartCountContext";
 
 const ChickMain = () => {
   const { t } = useTranslation();
@@ -17,7 +22,8 @@ const ChickMain = () => {
   const servesOrder = JSON.parse(localStorage.getItem("servesOrder"));
   const ProductOrder = JSON.parse(localStorage.getItem("ProductOrder"));
   const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
-
+  const allCartItems = JSON.parse(localStorage.getItem("all-cart-items"));
+// console.log(allCartItems?.map(item => item.id))
   const navigate = useNavigate();
   const [coupone, setCoupone] = useState({
     coupon_name: "",
@@ -25,9 +31,10 @@ const ChickMain = () => {
   });
   const [productCoupone, setProductCoupone] = useState({
     coupon_name: "",
-    product_ids: ProductOrder.product_ids,
-    product_quantities: ProductOrder.product_quantities,
+    product_ids: JSON.stringify(allCartItems?.map(item => item.id)),
+    product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)),
   });
+  const { count, setCount } = useContext(CartCountContext);
   const [payment, setPayment] = useState("cash");
   const [errors, setErrors] = useState({});
   const [responseMessage, setResponseMessage] = useState("");
@@ -50,78 +57,6 @@ const ChickMain = () => {
     });
     setResponseMessage(""); // Clear response message when input changes
   };
-  const handelVisaPay= async(response)=>{
-    if(payment == "visa"){
-      window.open(response?.data?.payment_link); // Open payment link in a new tab
-      const res =await axios.get(
-        toggle
-        ? "https://dashboard.knock-knock.ae/api/v1/service_orders/stripe-success"
-        : "https://dashboard.knock-knock.ae/api/v1/product_orders/stripe-success",
-    );
-          console.log(res.data)
-          if(res.data.status){
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: res.message,
-              showConfirmButton: false,
-              timer: 1500
-            });    
-          const afterPayRes =await axios.post(
-            toggle
-              ? "https://dashboard.knock-knock.ae/api/v1/service_orders/save-order-after-payment"
-              : "https://dashboard.knock-knock.ae/api/v1/product_orders/save-order-after-payment",
-            toggle ? servesDetails : productDetails
-          );
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: afterPayRes.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          });
-            window.location.reload();
-          navigate("/credits")
-
-         }
-    }
-
-  }
-  
-  const handelCreditPay= async(response)=>{
-    if (payment === "credit "){
-      // if(toggle){
-        if (response.data.status ){
-          Swal.fire({
-            text: response.data.message,
-            icon: "success",
-          });
-        } else {
-          Swal.fire({
-            text: response.data.message,
-            icon: "error",
-          });
-        }
-      // } 
-      // else if(!toggle){
-      //   if (response.data.status  ){
-      //     Swal.fire({
-      //       text: response.data.message,
-      //       icon: "success",
-      //     });
-      //   } else {
-      //     Swal.fire({
-      //       text: response.data.message,
-      //       icon: "error",
-      //     });
-      //   }
-      // }
-      window.location.reload();
-      navigate("/credits")
-
-    }
-  }
-
   const handelPayMentChange = (payway) => {
     setPayment(payway);
     saveServesDetails({
@@ -133,7 +68,7 @@ const ChickMain = () => {
       payment_method: payway,
     });
   };
-  console.log(payment)
+  // console.log(payment)
 
   const handelAddCoupone = async (e) => {
     try {
@@ -184,24 +119,103 @@ const ChickMain = () => {
       console.error("Error applying coupon", error);
     }
   };
-  const handelCashBay=(response)=>{
-    if (response.data.status && payment === "cash") {
-      Swal.fire({
-        text: response.data.message,
-        icon: "success",
-      });
-      window.location.reload();
-      navigate("/");
-    } else if(!response.data.status && payment === "cash") {
-      Swal.fire({
-        text: response.data.message,
-        icon: "error",
-      });
-      window.location.reload();
-      navigate(`/serves/${toggle ? servesDetails.service_id : productDetails.productId}`);
-    } 
-  }
 
+  const handelCashBay = (response) => {
+    if (payment === "cash") {
+      console.log(payment);
+
+      if (response.data.status) {
+        Swal.fire({
+          text: response.data.message,
+          icon: "success",
+        }).then(() => {
+          navigate("/");
+          localStorage.removeItem("ProductOrder");
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          text: response.data.message,
+          icon: "error",
+        }).then(() => {
+          navigate(
+            `/serves/${
+              toggle ? servesDetails.service_id : productDetails.productId
+            }`
+          );
+          localStorage.removeItem("ProductOrder");
+        });
+      }
+    }
+  };
+  const handelVisaPay = async (response) => {
+    if (payment === "visa") {
+      window.open(response?.data?.payment_link); // Open payment link in a new tab
+      const res = await axios.get(
+        toggle
+          ? "https://dashboard.knock-knock.ae/api/v1/service_orders/stripe-success"
+          : "https://dashboard.knock-knock.ae/api/v1/product_orders/stripe-success"
+      );
+      console.log(res.data);
+      if (res.data.status) {
+        Promise.resolve().then(async () => {
+          const afterPayRes = await axios.post(
+            toggle
+              ? "https://dashboard.knock-knock.ae/api/v1/service_orders/save-order-after-payment"
+              : "https://dashboard.knock-knock.ae/api/v1/product_orders/save-order-after-payment",
+            toggle ? servesDetails :  {
+              ...productDetails,
+              user_id: loginFormData.id,
+              product_ids: JSON.stringify(allCartItems?.map(item => item.id)), // Modify to include all item IDs
+              product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)), // Modify to include all item quantities
+              payment_method: payment,
+
+            }
+          );
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: afterPayRes.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            navigate("/");
+            window.location.reload();
+            localStorage.removeItem("ProductOrder");
+
+          });
+        });
+      }
+    }
+  };
+
+  const handelCreditPay = async (response) => {
+    if (payment === "credit ") {
+      // console.log(payment)
+      if (response.data.status) {
+        Swal.fire({
+          text: response.data.message,
+          icon: "success",
+        }).then(() => {
+          navigate(
+            `/serves/${
+              toggle ? servesDetails.service_id : productDetails.productId
+            }`
+          );
+          localStorage.removeItem("ProductOrder");
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          text: response.data.message,
+          icon: "error",
+        }).then(() => {
+          navigate("/credits");
+          window.location.reload();
+        });
+      }
+    }
+  };
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -210,23 +224,42 @@ const ChickMain = () => {
         toggle
           ? "https://dashboard.knock-knock.ae/api/v1/service_orders/save"
           : "https://dashboard.knock-knock.ae/api/v1/product_orders/save",
-        toggle ? servesDetails : productDetails
+        toggle
+          ? servesDetails
+          : {
+              ...productDetails,
+              user_id: loginFormData.id,
+              product_ids: JSON.stringify(allCartItems?.map(item => item.id)), // Modify to include all item IDs
+              product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)), // Modify to include all item quantities
+              payment_method: payment,
+
+            }
       );
 
-      console.log("response.data:",response.data.payment_link)
-      handelCashBay(response)
-      handelVisaPay(response)
-      // handelCreditBay(response)
-      handelCreditPay(response)
+      // console.log("response.data:",response.data.payment_link)
+      handelCashBay(response);
+      handelVisaPay(response);
+      handelCreditPay(response);
+      if(!toggle){
+        setCount(0)
+      localStorage.removeItem("all-cart-items");
 
-
-    //   navigate("/credits")
-      // window.location.reload();
+      }
     } catch (error) {
       Swal.fire({
-        text: "Failed to register. Please check your inputs and try again.",
+        title: "Error!",
+        text:
+          error.response.data.message ||
+          "The given data was invalid, booking again",
         icon: "error",
+      }).then(() => {
+        navigate(
+          `/serves/${
+            toggle ? servesDetails.service_id : productDetails.productId
+          }`
+        );
       });
+
       // window.location.reload();
       // navigate(/serves/${toggle ? servesDetails.service_id : productDetails.productId});
     }
@@ -239,7 +272,7 @@ const ChickMain = () => {
           <Col
             xs={12}
             lg={7}
-            md={8}
+            md={10}
             sm={12}
             className="border main_col py-3 ps-lg-4"
           >
@@ -250,7 +283,9 @@ const ChickMain = () => {
 
                   <Col xs={4} lg={4} md={4} sm={4}>
                     <button
-                      className={`btn btn_payment ${payment === "cash" ? "active" : ""}`}
+                      className={`btn btn_payment ${
+                        payment === "cash" ? "active" : ""
+                      }`}
                       onClick={() => handelPayMentChange("cash")}
                     >
                       {t("cash")}
@@ -258,7 +293,9 @@ const ChickMain = () => {
                   </Col>
                   <Col xs={4} lg={3} md={4} sm={4}>
                     <button
-                      className={`btn btn_payment ${payment === "visa" ? "active" : ""}`}
+                      className={`btn btn_payment ${
+                        payment === "visa" ? "active" : ""
+                      }`}
                       onClick={() => handelPayMentChange("visa")}
                     >
                       {t("visa_title")}
@@ -266,7 +303,9 @@ const ChickMain = () => {
                   </Col>
                   <Col xs={4} lg={4} md={4} sm={4}>
                     <button
-                      className={`btn btn_payment ${payment === "credit " ? "active" : ""}`}
+                      className={`btn btn_payment ${
+                        payment === "credit " ? "active" : ""
+                      }`}
                       onClick={() => handelPayMentChange("credit ")}
                     >
                       {t("credit_title")}
@@ -284,7 +323,11 @@ const ChickMain = () => {
                       aria-describedby="emailHelp"
                       placeholder={t("check_place_code")}
                       name="coupon_name"
-                      value={toggle ? coupone.coupon_name : productCoupone.coupon_name}
+                      value={
+                        toggle
+                          ? coupone.coupon_name
+                          : productCoupone.coupon_name
+                      }
                       onChange={handelChange}
                     />
                   </Col>
@@ -322,6 +365,6 @@ const ChickMain = () => {
       </Container>
     </div>
   );
-}
+};
 
 export default ChickMain;

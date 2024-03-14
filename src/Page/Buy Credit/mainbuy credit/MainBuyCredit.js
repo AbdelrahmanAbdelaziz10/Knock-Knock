@@ -32,7 +32,7 @@ const MainBuyCredit = () => {
             <Card className="address_card">
               <div className="row d-flex credit_transition">
               <Col xs={1} lg={1} md={1} sm={1}>
-                  <Link to="/">
+                  <Link to="/credits">
                     {selectedLanguage === "ar" ? (
                       <FaArrowRight className=" arrow_icon arrow_icon_ar" />
                     ) : (
@@ -67,20 +67,19 @@ const MainBuyCredit = () => {
                   sm={10}
                   className=" send_gift"
                 >
-                <Link to="/send_gift" className="d-flex">
-                {/* <TbGiftCard className="gift_credit" /> */}
+                {/* <Link to="/send_gift" className="d-flex">
                   <p>
                     {t("gift_title")}
                   </p>
-                </Link>
+                </Link> */}
 
                 </Col>
                 <Col
-                  xs={10}
-                  lg={10}
-                  md={10}
-                  sm={10}
-                  className="wallet "
+                  xs={11}
+                  lg={11}
+                  md={11}
+                  sm={11}
+                  className="wallet mt-5"
                 >
                 <CreditSwiper />
                 </Col>

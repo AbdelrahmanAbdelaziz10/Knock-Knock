@@ -116,10 +116,9 @@
 .time_date .btn-Add{
     font-size: 17px;
     font-weight: 500;
+    width:90%;
 }
-.ltr .time_date .btn-Add{
-    margin-left: 50%;
-}
+
 .rtl .time_date .btn-Add{
     margin-right: 50%;
 }

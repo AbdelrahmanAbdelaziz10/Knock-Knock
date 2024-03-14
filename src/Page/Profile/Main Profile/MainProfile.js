@@ -187,10 +187,10 @@ export const MainProfile = () => {
                   />
                   {errors.phone && <Alert variant="danger" className="">{errors.phone}</Alert>}
                 </div>
-                <Link class="mb-lg-2 mb-md-3 d-flex mt-4 delete_acc">
+                {/* <Link class="mb-lg-2 mb-md-3 d-flex mt-4 delete_acc">
                   <MdDelete className="delete" />{" "}
                   <p className="delete_account">{t("personal_delet")} </p>
-                </Link>
+                </Link> */}
                 <div class="col-12 submit_btn mt-4">
                   <button type="submit" class="btn mb-4 mx-4 sing_in">
                     {t("personal_btn")}

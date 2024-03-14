@@ -9,21 +9,24 @@ import { useTranslation } from "react-i18next";
 import useFetch from "../../hooks/useFetch";
 import { ContextLang, ProductDetailsContext, ToggleContext } from "../../App";
 import { FaCircleExclamation } from "react-icons/fa6";
+import { CartCountContext } from "../../Context/CartCountContext";
+import Swal from "sweetalert2";
 
 const MainProductDetails = () => {
   const { t } = useTranslation();
-  const { saveProductDetails,productDetails } = useContext(ProductDetailsContext);
-  const { saveToggle,toggle } = useContext(ToggleContext);
+  const { saveProductDetails, productDetails } = useContext(ProductDetailsContext);
+  const { saveToggle, toggle } = useContext(ToggleContext);
   const { selectedLanguage } = useContext(ContextLang);
   const productPrams = useParams();
   const navigate = useNavigate();
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData'));
   const { data: day } = useFetch("/api/v1/days/get-all");
   const { data: setting } = useFetch("/api/v1/settings/get-all");
-// console.log(productPrams)
+  // console.log(productPrams)
   const { data: product_id } = useFetch(`/api/v1/products/get-product-details?product_id=${productPrams.productId}`);
+  const { count, setCount } = useContext(CartCountContext)
 
-  const [shopingCost,setShopingCost]=useState(setting?.data?.shipping_cost)
+  const [shopingCost, setShopingCost] = useState(setting?.data?.shipping_cost)
   const [increase, setIncrease] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);
   const [selectedDayId, setSelectedDayId] = useState(null);
@@ -47,46 +50,53 @@ const MainProductDetails = () => {
     setTimeValue(e.target.value);
   };
   const newGrandTotal = (+product_id?.data?.price_after_discount + (+setting?.data?.shipping_cost || 0)).toFixed(2);
-  const grandTotalWithShipping = (newGrandTotal* increase).toFixed(2);
-  // console.log(    
-  //     "user_id:", loginFormData.id,
-  //   "product_id:", productPrams.productId,
-  //   "selected_day_id:", selectedDayId,
-  //   "selected_time:", timeValue,
-  //   "notes:", textValue,
-  //   "product_quantities:", increase,
-  //   "discount_amount:", product_id?.data?.discount,
-  //   "price_after_discount:", product_id?.data?.price_after_discount,
-  //   "grand_total:", grandTotalWithShipping
-  //   );
-    
+  const grandTotalWithShipping = (newGrandTotal * increase).toFixed(2);
 
+  const addToCart = () => {
+    const oldCartItems = JSON.parse(localStorage.getItem('all-cart-items'));
+    let obj = { ...product_id?.data, quantity: 1 }
+    if (oldCartItems) {
+      let isAddedBefore = oldCartItems?.find((item) => item.id === product_id?.data.id);
+      if (isAddedBefore) {
+        Swal.fire({
+          title: "This Product is already Added to Cart",
+        });
+        // alert('This Product is already Added to Cart');
+        return;
+      };
+      localStorage.setItem('all-cart-items', JSON.stringify([...oldCartItems, obj]))
+      setCount(count + 1)
+    } else {
+      localStorage.setItem('all-cart-items', JSON.stringify([obj]))
+      setCount(count + 1)
+    }
+  }
 
   const addProduct = () => {
-    if (!selectedDayId || !timeValue || !textValue) {
+    if (increase===0 ) {
       // Handle validation error, e.g., show an alert
-      setRefactorError("Please select a Day, Time, and enter any Notes to ensure greater Service.");
+      setRefactorError("Please select a Amount of product you need");
       return;
     } else {
-    setGrandTotal(grandTotalWithShipping);
-    saveProductDetails({
-      user_id: loginFormData.id,
-      selected_day_id: selectedDayId,
-      selected_time: timeValue,
-      payment_method: "cash",
-      notes: textValue,
-      product_ids:JSON.stringify([productPrams.productId]),
-      product_quantities:JSON.stringify([increase]),
-      discount_amount: product_id?.data?.discount,
-      price_after_discount: product_id?.data?.price_after_discount,
-      grand_total: grandTotalWithShipping,
-    });
-    saveToggle(false);
-    navigate("/location");
+      setGrandTotal(grandTotalWithShipping);
+      saveProductDetails({
+        user_id: loginFormData.id,
+        selected_day_id: selectedDayId,
+        selected_time: timeValue,
+        // payment_method: "cash",
+        notes: textValue,
+        // product_ids: JSON.stringify([productPrams.productId]),
+        // product_quantities: JSON.stringify([increase]),
+        // discount_amount: product_id?.data?.discount,
+        // price_after_discount: product_id?.data?.price_after_discount,
+        // grand_total: grandTotalWithShipping,
+      });
+      saveToggle(false);
+      navigate("/location");
 
-    // console.log(productDetails)
-    // console.log(toggle)
-  }
+      // console.log(productDetails)
+      // console.log(toggle)
+    }
   };
 
   useEffect(() => {
@@ -98,9 +108,9 @@ const MainProductDetails = () => {
     <>
       <div className="main_product_details py-3">
         <Container>
-        <div className="row">
+          <div className="row">
             <ProductHead
-              img={`https://dashboard.knock-knock.ae/${product_id?.data.image}`}
+              img={`https://dashboard.knock-knock.ae/${product_id?.data?.image}`}
               page1={t("all_product_product")}
               page2_ar={product_id?.data?.name_ar}
               page2_en={product_id?.data?.name_en}
@@ -141,13 +151,13 @@ const MainProductDetails = () => {
                 </h4>
               </div>
               <div className="price_serves stock mb-2 row">
-                <Col xs={6} lg={6} md={6} sm={6}>
+                <Col xs={6} lg={4} md={4} sm={6}>
                   <h4>
                     {t("details_serves_price")}
                     <span> {product_id?.data?.price} $</span>
                   </h4>
                 </Col>
-                <Col xs={6} lg={6} md={6} sm={6}>
+                <Col xs={6} lg={4} md={4} sm={6}>
                   <h4>
                     {t("details_serves_discount")}
                     <span className="discount">
@@ -155,8 +165,16 @@ const MainProductDetails = () => {
                     </span>
                   </h4>
                 </Col>
+                <Col xs={10} lg={4} md={4} sm={10}>
+                  <h4>
+                    {t("details_serves_shopping")}
+                    <span className="">
+                      {setting?.data?.shipping_cost} </span><span>{t("price")}
+                    </span>
+                  </h4>
+                </Col>
               </div>
-              <div className="time_date">
+              {/* <div className="time_date">
                 <div className="delivery_date row mb-4">
                   <Col xs={11} lg={10} md={12} sm={11} className=" date_day">
                     <h5 className="my-2">{t("details_date")}</h5>
@@ -173,9 +191,8 @@ const MainProductDetails = () => {
                               key={day.id}
                             >
                               <p
-                                className={`btn btn_day action ${
-                                  selectedDayId === day.id ? "active" : ""
-                                }`}
+                                className={`btn btn_day action ${selectedDayId === day.id ? "active" : ""
+                                  }`}
                                 onClick={() => handleDayClick(day.id)}
                               >
                                 {selectedLanguage === "en"
@@ -191,7 +208,7 @@ const MainProductDetails = () => {
                   <div className="col-lg-12 col-md-6">
                     <h5>{t("details_time")}</h5>
                     <div className="time_input">
-                    <input
+                      <input
                         type="time"
                         className="input_time"
                         value={timeValue}
@@ -199,7 +216,7 @@ const MainProductDetails = () => {
                       />                    </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </Row>
           </div>
           <Row>
@@ -224,7 +241,7 @@ const MainProductDetails = () => {
           </Row>
           <div className="row time_date">
             <div className="col-lg-12 row justify-content-center add_btn ">
-              <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
+              {/* <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
                 <button className="btn decincrease" onClick={decreseNumber}>
                   <IoRemoveOutline className="remove" />
                 </button>
@@ -245,15 +262,15 @@ const MainProductDetails = () => {
                   {grandTotal}
                   {t("price")}
                 </button>
-              </Col>
+              </Col> */}
               <Col
                 xs={12}
-                lg={4}
-                md={3}
+                lg={9}
+                md={9}
                 sm={12}
                 className="col-lg-4 col-md-3 mt-3 "
               >
-                <button onClick={addProduct}  className="btn btn-Add">
+                <button onClick={addToCart} className="btn btn-Add">
                   {t("details_btn")}
                 </button>
               </Col>

@@ -5,13 +5,13 @@ import { CgProfile } from "react-icons/cg";
 import { TiThMenu } from "react-icons/ti";
 import Logo from "../../../images/Logo.png";
 import { useTranslation } from "react-i18next";
-import { ContextLang, ToggleLoginContext } from "../../../App";
+import { ContextLang, NumberProductContext, ProductNumberContext, ToggleLoginContext } from "../../../App";
 import googleplay from "../../../images/googleplay.png";
 import appstore from "../../../images/appstore.png";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Col } from "react-bootstrap";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaCartShopping, FaLocationDot } from "react-icons/fa6";
 import { FaCreditCard } from "react-icons/fa";
 import { TbGiftCard } from "react-icons/tb";
 import { LiaHandsHelpingSolid } from "react-icons/lia";
@@ -19,15 +19,19 @@ import { MdOutlineSettings } from "react-icons/md";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { MdPolicy } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
+import { CartCountContext } from "../../../Context/CartCountContext";
 
 const NavBar = () => {
   const { t, i18n } = useTranslation();
   const { selectedLanguage, setSelectedLanguage } = useContext(ContextLang);
   const { saveToggleLogin } = useContext(ToggleLoginContext);
   const toggleLogin = JSON.parse(localStorage.getItem('toggleLogin'));
-
+  const { productNumber } = useContext(NumberProductContext)
   const [test, setTest] = useState(false);
   const [test2, setTest2] = useState(false);
+
+  const { count, setCount } = useContext(CartCountContext)
+
 
   const togglleDrowpDown = () => {
     if (test === true) {
@@ -52,7 +56,8 @@ const NavBar = () => {
   const clearLocalStorage = () => {
     saveToggleLogin(false)
     localStorage.removeItem("loginFormData");
-    // localStorage.removeItem("servesOrder");
+    localStorage.removeItem("servesOrder");
+    localStorage.removeItem("ProductOrder");
 
   };
   // useEffect(()=>{
@@ -66,6 +71,14 @@ const NavBar = () => {
             <img src={Logo} alt="Logo" />
           </Link>
           <div className="d-flex form" role="search">
+            {/* <FaCartShopping className="buy_product"/>
+          <div className="number" > {productNumber} </div> */}
+          { toggleLogin === true ? (            <Link to="/cart_shop">
+              <FaCartShopping className="buy_product" />
+              <div className="number" > {count} </div>
+            </Link>):null }
+
+
             {selectedLanguage === "ar" ? (
               <button
                 className="btn btn-lang"
@@ -93,23 +106,23 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-{
-  toggleLogin === true ?
-  ( <div
-        className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
-        id="country"
-      >
-        <Link to="/profile" className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <IoPersonCircleSharp />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("profile")}</p>
-          </Col>
-        </Link>
-        {/* <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
+      {
+        toggleLogin === true ?
+          (<div
+            className={test2 === true ? "display-block dropmenu login_deopmenu" : "dropmenu"}
+            id="country"
+          >
+            <Link to="/profile" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <IoPersonCircleSharp />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("profile")}</p>
+              </Col>
+            </Link>
+            {/* <Link to="/addaddress" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <FaLocationDot />
@@ -119,17 +132,17 @@ const NavBar = () => {
             <p> {t("Address")}</p>
           </Col>
         </Link> */}
-        <Link to="/credits" className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <FaCreditCard />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Payment_Methods")}</p>
-          </Col>
-        </Link>
-        {/* <Link to="/send_gift" className="row row_hover border pt-2 mb-3">
+            <Link to="/credits" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <FaCreditCard />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("Payment_Methods")}</p>
+              </Col>
+            </Link>
+            {/* <Link to="/send_gift" className="row row_hover border pt-2 mb-3">
           <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
             <div className="login_flag">
             <TbGiftCard />
@@ -139,88 +152,88 @@ const NavBar = () => {
             <p> {t("Gift_Card")}</p>
           </Col>
         </Link> */}
-        
-        <Link to="/your-order" className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <FaCalendarAlt />
+
+            <Link to="/your-order" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <FaCalendarAlt />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("Booking")}</p>
+              </Col>
+            </Link>
+            <Link to="/product_order" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <FaCalendarAlt />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("Booking_Product")}</p>
+              </Col>
+            </Link>
+            <Link to="/contact" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <LiaHandsHelpingSolid />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("Get_Help")}</p>
+              </Col>
+            </Link>
+            <Link to='/privacy_policy' className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <MdPolicy />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("policy")}</p>
+              </Col>
+            </Link>
+            <a href="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <RiLogoutCircleRLine className="log_out" />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name" >
+                <p className="log_out"> {t("Log_Out")}</p>
+              </Col>
+            </a>
+          </div>) :
+          (<div
+            className={test2 === true ? "display-block dropmenu" : "dropmenu"}
+            id="signup"
+          >
+            <div className="row  pt-2 mb-3">
+              <Link to="/login" className="btn btn-login">
+                {t("login")}
+              </Link>
             </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Booking")}</p>
-          </Col>
-        </Link>
-        <Link to="/product_order" className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <FaCalendarAlt />
+            <div className="row  pt-2 mb-3">
+              <Link to="/singup" className="btn btn-login">
+                {t("singup")}
+              </Link>
             </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Booking_Product")}</p>
-          </Col>
-        </Link>
-        <Link to="/contact" className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <LiaHandsHelpingSolid />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("Get_Help")}</p>
-          </Col>
-        </Link>
-        <Link to='/privacy_policy' className="row row_hover border pt-2 mb-3">
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <MdPolicy />
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-            <p> {t("policy")}</p>
-          </Col>
-        </Link>
-        <a href="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>
-          <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
-            <div className="login_flag">
-            <RiLogoutCircleRLine className="log_out"/>
-            </div>
-          </Col>
-          <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name" >
-            <p className="log_out"> {t("Log_Out")}</p>
-          </Col>
-        </a>
-      </div>) : 
-      (      <div
-        className={test2 === true ? "display-block dropmenu" : "dropmenu"}
-        id="signup"
-      >
-        <div className="row  pt-2 mb-3">
-          <Link to="/login" className="btn btn-login">
-            {t("login")}
-          </Link>
-        </div>
-        <div className="row  pt-2 mb-3">
-          <Link to="/singup" className="btn btn-login">
-            {t("singup")}
-          </Link>
-        </div>
-        {/* <Link to="/contact" className="row pt-2 mb-3 help_nav">
+            {/* <Link to="/contact" className="row pt-2 mb-3 help_nav">
           <p className="direction">
             <FaQuestionCircle className="fa-solid fa-circle-question" />
             {t("help")}
           </p>
         </Link> */}
-        <div className="row border_top pt-2 mb-3">
-          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
-            <img src={appstore} alt="App Store" />
-          </Col>
-          <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
-            <img src={googleplay} alt="Google Play" />
-          </Col>
-        </div>
-      </div> )
-  }
+            <div className="row border_top pt-2 mb-3">
+              <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
+                <img src={appstore} alt="App Store" />
+              </Col>
+              <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6">
+                <img src={googleplay} alt="Google Play" />
+              </Col>
+            </div>
+          </div>)
+      }
 
     </>
   );

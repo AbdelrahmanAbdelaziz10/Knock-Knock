@@ -30,6 +30,7 @@ const HomePageLogin = () => {
     useEffect(()=>{
       window.scrollTo(0,0)
     },[])
+      // window.location.reload();
 
     return (
       <div className="homepage">

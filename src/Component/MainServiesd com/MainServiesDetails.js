@@ -61,7 +61,9 @@ const MainServiesDetails = ({ changeTest }) => {
   const addData = () => {
     if (!selectedDayId || !timeValue || !textValue) {
       // Handle validation error, e.g., show an alert
-      setRefactorError("Please select a Day, Time, and enter any Notes to ensure greater Service.");
+      setRefactorError(
+        "Please select a Day, Time, and enter any Notes to ensure greater Service."
+      );
       return;
     } else {
       saveServesDetails({
@@ -115,9 +117,9 @@ const MainServiesDetails = ({ changeTest }) => {
                 )}
               </div>
               <div className="stock mb-3">
-                <h4 className="mb-3">
+                {/* <h4 className="mb-3">
                   {t("details_avilable")} <span>{serve?.data?.quantity}</span>
-                </h4>
+                </h4> */}
                 <h4>
                   {t("details_sku")} <span>{serve?.data?.sku}</span>
                 </h4>
@@ -208,23 +210,23 @@ const MainServiesDetails = ({ changeTest }) => {
           <div className="row time_date">
             <div className="col-lg-12 row justify-content-center add_btn ">
               <Col
-                xs={6}
+                xs={7}
                 lg={5}
                 md={5}
-                sm={6}
+                sm={7}
                 className="col-lg-5 col-md-5 mt-2"
               >
                 <button className=" total_price mt-2">
                   <span>{t("total_price")}</span>
                   {grandTotalWithShipping}
-                  {t("price")}
+                  <span className="price"> {t("price")}</span>
                 </button>
               </Col>
               <Col
-                xs={6}
+                xs={5}
                 lg={4}
                 md={3}
-                sm={6}
+                sm={5}
                 className="col-lg-4 col-md-3 mt-3 "
               >
                 <button
@@ -236,7 +238,9 @@ const MainServiesDetails = ({ changeTest }) => {
                 </button>
               </Col>
               {refactorError && (
-                <Alert className="Alert" variant="danger">{refactorError} </Alert>
+                <Alert className="Alert" variant="danger">
+                  {refactorError}{" "}
+                </Alert>
               )}
             </div>
           </div>

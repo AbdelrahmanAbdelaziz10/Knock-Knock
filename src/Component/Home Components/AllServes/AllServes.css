@@ -48,8 +48,8 @@
 .card.one_Product {
     border: none;
     box-shadow: 2px 2px 10px #00000093;
-    width: 79%;
-    height: 50vh;
+    width: 90%;
+    height: auto;
     border-radius: 10px;
     overflow: hidden;
     transition: all .5s;
@@ -73,6 +73,10 @@ line-height: 16px;
 letter-spacing: 0em;
 color: #008080;
 }
+.card.one_Product .card_text_product p:hover{
+    color: #000;
+    transition: all .5s;
+}
 .card.one_Product .card_text_product h6{
 font-size: 19px;
 font-weight: 500;
@@ -87,9 +91,9 @@ font-weight: 500;
 line-height: 14px;
 letter-spacing: 0em;
 text-align: left;
-color: red;
-
+color: red !important;
 }
+
 .ltr .card.one_Product .card_text_product h6 span{
     padding-left: 2rem;
 }
@@ -98,8 +102,9 @@ color: red;
 }
 .card.one_Product .card_text_product .btn-deteils{
     color: #fff;
-    width: 95%;
-    padding: 9px 0;
+    width: 75%;
+    padding: 9px 20px;
+    margin-bottom: .5rem;
 border-radius: 8px;
 background-color: #008080;
 font-size: 16px;
@@ -107,11 +112,48 @@ font-weight: 500;
 line-height: 19px;
 letter-spacing: 0em;
 text-align: center;
+margin-top: .5rem;
+}
+.card.one_Product .card_text_product .buy_product{
+    color: #008080;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+.card.one_Product .card_text_product .buy_product:hover{
+    color: red;
+    opacity: .8;
+    transition: all .5s;
+}
+.ltr .card.one_Product .card_text_product .buy_product{
+    margin-left: 4rem;
+}
+.ltr .card.one_Product .card_text_product .btn-deteils:last-child{
+    margin-left: 1rem;
 }
 .card.one_Product .card_text_product .btn-deteils:hover{
     opacity: .7;
 }
 .one_Product.log_out_card{
     height: auto !important;
+}
+.one_Product .decincrease,
+.one_Product .increase{
+    background-color: #008080;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .2rem .5rem;
+    color: #fff;
+    margin: 0 .5rem;
+}
+.one_Product .decincrease:hover,
+.one_Product .increase:hover{
+    opacity: .8;
+    background-color: #008080;
+    color: #fff;
+}
+.one_Product .delete{
+    color: red;
+    cursor: pointer;
+    font-size: 2rem;
 }
 /* End In All Serves Section Style */

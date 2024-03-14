@@ -16,7 +16,7 @@ export const Serves = () => {
 
 
   return (
-    <section className="Servies allservice py-5">
+    <section className="Servies serves_div allservice py-5">
         <div className="container">
             <div className="row title mb-4">
                 <h4 className=" text-center">
@@ -37,7 +37,7 @@ export const Serves = () => {
         </Col>
 
     </div>
-            <div className="row servies_div justify-content-lg-start">
+            <div className="row servies_div  justify-content-lg-start">
         
             { allserves?.slice(0, 5).map((serve)=>{
                 return(

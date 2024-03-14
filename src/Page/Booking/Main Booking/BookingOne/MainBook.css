@@ -6,9 +6,9 @@
     gap: 1.5rem;
 }
 .serves_col{
-    height: 80vh !important ;
+    height: auto !important ;
     scroll-behavior: smooth;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
     scrollbar-color: #008080a4 white !important;
 }
@@ -52,7 +52,7 @@
     color: #008080;
 }
 .book_card .serv_text p{
-    font-size: 15px;
+    font-size: 19px !important;
 }
 .book_card .serv_text span{
     font-size: 16px;
@@ -94,6 +94,7 @@
     padding: 1rem 2rem !important;
     height: auto;
     background-color: #fff;
+    height: 45vh !important;
 }
 
 .booking_details h4 {

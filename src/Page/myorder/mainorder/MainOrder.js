@@ -7,7 +7,7 @@ import PaginationCom from "../../../Component/Common Component/Pagination/Pagina
 import { ContextLang, OrderDataContext } from "../../../App";
 import Swal from "sweetalert2";
 
-const MainOrder = ({ getPageServes }) => {
+const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
   const { t } = useTranslation();
   const { orderData, saveOrderData } = useContext(OrderDataContext);
   const { selectedLanguage } = useContext(ContextLang);
@@ -16,6 +16,9 @@ const MainOrder = ({ getPageServes }) => {
     user_id: loginFormData.id,
     order_status: 0,
   });
+  // console.log(orderData?.per_page)
+  // console.log(contentOrderServes)
+
   const items = [
     { status: 0, label: "to_order_cancelled" },
     { status: 1, label: "order_processing" },
@@ -74,7 +77,7 @@ const MainOrder = ({ getPageServes }) => {
         }
       );
       saveOrderData(response?.data?.data);
-      console.log(response?.data?.data)
+      // console.log(response?.data?.data)
     } catch (error) {
       console.error("Error processing order", error);
     }
@@ -205,13 +208,13 @@ const MainOrder = ({ getPageServes }) => {
                 {/* <Link to="/booking"> */}
                 <Card className="order_card">
                   <div className="row order_title">
-                    <Col xs={9} lg={8} md={8} sm={9} className="">
+                    <Col xs={8} lg={8} md={8} sm={8} className="">
                       <h4>
                         {t("order_number")}
                         {order.order_number}
                       </h4>
                     </Col>
-                    <Col xs={3} lg={4} md={4} sm={3} className="">
+                    <Col xs={4} lg={4} md={4} sm={4} className="">
                       {order.status === 0 ? (
                         <button
                           onClick={() => CancellOrder(order.id)}
@@ -253,19 +256,7 @@ const MainOrder = ({ getPageServes }) => {
                         )}
                         <Row>
                           <Col xs={5} lg={6} md={6} sm={5}>
-                            {/* <span>
-                  {t("price")} {order.service.price}
-                </span> */}
                           </Col>
-                          {/* <Col xs={7} lg={6} md={6} sm={7} className="d-flex">
-                <button className=" btn btn_decrease">
-                  <IoRemoveOutline className="add_icon" />
-                </button>
-                <span className="">1</span>
-                <button className=" btn btn_decrease">
-                  <IoAddOutline className="add_icon" />
-                </button>
-              </Col> */}
                         </Row>
                       </div>
                     </Col>
@@ -329,11 +320,13 @@ const MainOrder = ({ getPageServes }) => {
         )}
 
         </Row>
-        {/* <Row>
+        <Row>
             <Col>
-            <PaginationCom total={servies?.data?.total} getPage={getPageServes} />
+            <PaginationCom total={orderData?.per_page} getPage={getPageServes} />
+            
+
             </Col>
-                      </Row> */}
+                      </Row>
       </Container>
     </div>
   );

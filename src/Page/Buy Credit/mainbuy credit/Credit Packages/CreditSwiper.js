@@ -89,8 +89,8 @@ export default function CreditSwiper() {
   return (
     <>
       <Swiper
-        slidesPerView={1.7}
-        spaceBetween={30}
+        slidesPerView={2}
+        spaceBetween={10}
         pagination={{
           clickable: true,
         }}

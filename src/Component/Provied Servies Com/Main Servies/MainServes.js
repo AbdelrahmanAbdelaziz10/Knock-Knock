@@ -7,13 +7,12 @@ import PaginationCom from "../../Common Component/Pagination/Pagination";
 import ServesComponent from "../../Home Components/Serves/ServesComponent";
 import { useTranslation } from "react-i18next";
 
-const MainServes = ({ getPage,contentServes }) => {
-  const {t,i18n}=useTranslation()
+const MainServes = ({ getPage, contentServes, setContenServes }) => {
+  const { t, i18n } = useTranslation()
   const { data: serves, setData: setServes } = useFetch("/api/v1/services/get-all");
   const [servesSearch, setServesSearch] = useState({
     search: "",
   });
-  console.log(contentServes)
 
   useEffect(() => {
     async function fetchData() {
@@ -22,8 +21,7 @@ const MainServes = ({ getPage,contentServes }) => {
           "https://dashboard.knock-knock.ae/api/v1/search/services",
           servesSearch
         );
-        setServes(response.data);
-        console.log(serves);
+        setContenServes(response?.data?.data);
       } catch (error) {
         console.log("error", error);
       }
@@ -37,9 +35,8 @@ const MainServes = ({ getPage,contentServes }) => {
   }, [servesSearch]);
 
   const clearSearch = async () => {
-    // Fetch all data when search content is empty
-    const allDataResponse = await axios.get("https://dashboard.knock-knock.ae/api/v1/services/get-all");
-    setServes(allDataResponse.data);
+    const allDataResponse = await axios.get(`https://dashboard.knock-knock.ae/api/v1/services/get-all`);
+    setContenServes(allDataResponse.data.data);
   };
 
   const handelSearchChange = (e) => {
@@ -64,8 +61,8 @@ const MainServes = ({ getPage,contentServes }) => {
           </Col>
         </Row>
         <div className="row Servies allservice">
-          {contentServes?.length > 0 ? (
-            contentServes?.map((s, idx) => (
+          {contentServes?.data?.length > 0 ? (
+            contentServes?.data?.map((s, idx) => (
               <ServesComponent
                 image={`https://dashboard.knock-knock.ae/${s.image}`}
                 key={s.id}

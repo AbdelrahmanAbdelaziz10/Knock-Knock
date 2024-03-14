@@ -69,3 +69,7 @@
     text-align: center !important;
     font-weight: 500;
 }
+.total_price .price{
+    color: #000; 
+    font-size: 15px;
+}

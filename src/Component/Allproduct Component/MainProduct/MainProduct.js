@@ -6,13 +6,13 @@ import PaginationCom from "../../Common Component/Pagination/Pagination";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
 
-const MainProduct = ({ getPage,contentProduct }) => {
+const MainProduct = ({ getPage, contentProduct, setContentProduct }) => {
   const { t } = useTranslation();
   const { data: product, setData: setProduct } = useFetch("/api/v1/products/get-all-products");
   const [productSearch, setProductSearch] = useState({
     search: "",
   });
-  console.log(contentProduct)
+  // console.log(contentProduct)
 
   useEffect(() => {
     async function fetchData() {
@@ -21,13 +21,12 @@ const MainProduct = ({ getPage,contentProduct }) => {
           "https://dashboard.knock-knock.ae/api/v1/search/products",
           productSearch
         );
-        setProduct(response.data);
-        console.log(product);
+        setContentProduct(response?.data?.data);
       } catch (error) {
         console.log("error", error);
       }
     }
-    
+
     if (productSearch.search.trim() !== "") {
       fetchData();
     } else {
@@ -38,21 +37,21 @@ const MainProduct = ({ getPage,contentProduct }) => {
   const clearSearch = async () => {
     // Fetch all data when search content is empty
     const allDataResponse = await axios.get("https://dashboard.knock-knock.ae/api/v1/products/get-all-products");
-    setProduct(allDataResponse.data);
+    setContentProduct(allDataResponse.data.data);
   };
 
 
-const handelSearchChange = (e) => {
-  setProductSearch({
-    ...productSearch,
-    [e.target.name]: e.target.value,
-  });
-};
+  const handelSearchChange = (e) => {
+    setProductSearch({
+      ...productSearch,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className="main_product py-4">
       <Container>
-      <Row className="justify-content-center">
+        <Row className="justify-content-center">
           <Col xs={11} lg={11} md={9} sm={11} className="">
             <input
               className="search_input"
@@ -64,8 +63,8 @@ const handelSearchChange = (e) => {
           </Col>
         </Row>
         <div className="row servies mt-5">
-          {contentProduct?.length >= 1 ? (
-            contentProduct?.map((product, idx) => (
+          {contentProduct?.data?.length >= 1 ? (
+            contentProduct?.data?.map((product, idx) => (
               <Col
                 key={product.id}
                 xs={6}
@@ -75,12 +74,14 @@ const handelSearchChange = (e) => {
                 className="col-lg-3 col-md-4 mb-4"
               >
                 <OneProduct
+                  productObj={product}
                   image={`https://dashboard.knock-knock.ae/${product.image}`}
                   name_ar={product.name_ar}
                   name_en={product.name_en}
                   prise={product.price}
                   discount={product.discount}
                   link={`/product/${product.id}`}
+                  id={product.id}
                 />
               </Col>
             ))
@@ -88,7 +89,7 @@ const handelSearchChange = (e) => {
             <h1 className="text-center">{t("no_products")}</h1>
           )}
         </div>
-        <PaginationCom total={product?.data?.per_page} getPage={getPage}/>
+        <PaginationCom total={product?.data?.per_page} getPage={getPage} />
       </Container>
     </div>
   );

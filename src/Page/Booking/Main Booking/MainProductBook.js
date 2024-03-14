@@ -9,19 +9,26 @@ import {
 import Swal from "sweetalert2";
 import axios from "axios";
 import PaginationCom from "../../../Component/Common Component/Pagination/Pagination";
+import { IoIosExit } from "react-icons/io";
+import OrderDetails from "./BookingOne/OrderDetails";
 
-const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
+const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProduct}) => {
   
   const { t } = useTranslation();
   const { productOrderData, saveProductOrderData } = useContext(
     ProductOrderDataContext
   );
+  const [show,setShow]=useState(null)
   const { selectedLanguage } = useContext(ContextLang);
   const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
   const [order, setOrder] = useState({
     user_id: loginFormData.id,
     order_status: 0,
   });
+  const handelShow=()=>{
+    setShow(null)
+    // console.log(show)
+  }
   const items = [
     { status: 0, label: "to_order_cancelled" },
     { status: 1, label: "order_processing" },
@@ -90,6 +97,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
     // Call handleOrderPanding with state=0 when component mounts
     handleOrderPanding(0);
   }, []); // Empty dependency array ensures this effect runs only once, like componentDidMount
+  console.log(productOrderData)
   return (
     <div className="main_order py-4">
       <Container>
@@ -162,12 +170,13 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
         <Row className="">
           {productOrderData?.data?.length > 0 ?
                   (          productOrderData?.data &&
-                    productOrderData?.data.map((order, index) => (
-                <Col key={index} xs={12} lg={6} md={11} sm={12} className="">
+                    productOrderData?.data?.map((order, index) => (
+                      <>
+                <Col key={index} xs={12} lg={6} md={6} sm={12}  className="order_card_one">
                   <Card className="order_card">
                     <div className="row order_title">
-                      <Col xs={9} lg={8} md={8} sm={9} className="">
-                        <h4>
+                      <Col xs={8} lg={8} md={8} sm={8} className="">
+                        <h4 onClick={()=>setShow(index)}>
                           {t("order_number")}
                           {order.order_number}
                         </h4>
@@ -190,26 +199,27 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
                         )}
                       </Col>
                     </div>
-                    <div className="row date justify-content-end">
+                    {/* <div className="row date ">
                       <Col xs={4} lg={3} md={4} sm={4}>
                         <div className="serv_img">
                           <img
-                            src={`https://dashboard.knock-knock.ae/${order.items[0].product.image}`}
+                            src={`https://dashboard.knock-knock.ae/${order?.items[0]?.product?.image}`}
                             alt=""
                           />
+                          
                         </div>
                       </Col>
                       <Col xs={8} lg={9} md={8} sm={8}>
                         <div className="serv_text ">
                           {selectedLanguage === "en" ? (
                             <>
-                              <h6>{order.items[0].product.name_en}</h6>
-                              <p dangerouslySetInnerHTML={{__html:order.items[0].product.description_en}}/>
+                              <h6>{order?.items[0]?.product?.name_en}</h6>
+                              <p dangerouslySetInnerHTML={{__html:order?.items[0]?.product?.description_en}}/>
                             </>
                           ) : (
                             <>
-                              <h6>{order.items[0].product.name_ar}</h6>
-                              <p dangerouslySetInnerHTML={{__html:order.items[0].product.description_ar}}/>
+                              <h6>{order?.items[0]?.product?.name_ar}</h6>
+                              <p dangerouslySetInnerHTML={{__html:order?.items[0]?.product?.description_ar}}/>
                             </>
                           )}
                           <Row>
@@ -220,12 +230,12 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
                           </Row>
                         </div>
                       </Col>
-                    </div>
+                    </div> */}
                     <Row>
                       <Col
                         xs={11}
                         lg={7}
-                        md={6}
+                        md={11}
                         sm={11}
                         className="row pending_address"
                       >
@@ -233,14 +243,14 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
                           {t("booking_address")}
                         </h6>
                         <p className="col-lg-8 col-md-8 serves_name">
-                          {order.address}-{order.country}
+                        {order.building_number}-{order.city}-{order.country}
                         </p>
                       </Col>
   
                       <Col
                         xs={11}
                         lg={5}
-                        md={6}
+                        md={11}
                         sm={11}
                         className="row d-flex pending_phone"
                       >
@@ -251,7 +261,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
                       </Col>
                     </Row>
                     <div className="row order_details">
-                      <Col xs={4} lg={4} md={4} sm={4} className="">
+                      <Col xs={8} lg={4} md={6} sm={8} className="">
                         <p className="">
                           {t("order_total")}:{" "}
                           <span>
@@ -260,17 +270,83 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
                           </span>
                         </p>
                       </Col>
-                      <Col xs={4} lg={5} md={4} sm={4} className="">
+                      <Col xs={4} lg={5} md={6} sm={4} className="">
                         <p className="">
-                          {t("order_amount")}: <span>{order.amount}</span>
+                          {t("order_Payment")}: <span>{order.payment_method}</span>
                         </p>
                       </Col>
-                      <Col xs={4} lg={3} md={4} sm={4} className="">
+                      <Col xs={4} lg={3} md={7} sm={4} className="">
                         <p className="">{order.order_date}</p>
                       </Col>
                     </div>
                   </Card>
                 </Col>
+                {show === index?  (
+  <div className="product_details_order row justify-content-center align-items-center ">
+    <Col xs={9} lg={10} md={10} sm={9}>
+    <Card className="row">
+      <div className="row order_title my-2">
+        <Col xs={10} lg={11} md={11} sm={10}>
+          <h4>
+            {t("order_number")}
+            {order.order_number}
+          </h4>
+        </Col>
+        <Col xs={2} lg={1} md={1} sm={2}>
+          <IoIosExit className="exit_icon" onClick={handelShow} />
+        </Col>
+      </div>
+      <div className="row">
+      {order?.items &&
+      order?.items?.map((items) => (
+        <Col xs={12} lg={6} md={6} sm={12} className="d-flex my-3" key={items?.product.id}>
+          <Col xs={4} lg={3} md={4} sm={4}>
+            <div className="serv_img mx-2">
+              <img src={`https://dashboard.knock-knock.ae/${items?.product?.image}`} alt="" />
+            </div>
+          </Col>
+          <Col xs={8} lg={9} md={8} sm={8}>
+            <div className="serv_text">
+              {selectedLanguage === "en" ? (
+                <>
+                  <h6>{items?.product?.name_en}</h6>
+                  <p dangerouslySetInnerHTML={{ __html: items?.product?.description_en }} />
+                </>
+              ) : (
+                <>
+                  <h6>{items?.product?.name_ar}</h6>
+                  <p dangerouslySetInnerHTML={{ __html: items?.product?.description_ar }} />
+                </>
+              )}
+              <div className="row order_details">
+                <Col xs={11} lg={5} md={11} sm={11}>
+                  <p>
+                    {t("order_total")}
+                    <span>
+                      {order.grand_total}
+                      {t("price")}
+
+                      
+                    </span>
+                  </p>
+                </Col>
+                <Col xs={11} lg={5} md={11} sm={11}>
+                  <p>
+                  {t("order_amount")}  <span>{order.amount}</span>
+                  </p>
+                </Col>
+              </div>
+            </div>
+          </Col>
+        </Col>
+      ))}
+      </div>
+  </Card>
+          </Col>
+  </div>
+) : null}
+
+                </>
               ))):(
             <Col xs={12} className="text-center my-3">
               <h2 >{t("no_order")}</h2>
@@ -281,7 +357,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct}) => {
 
         <Row>
               <Col>
-              {/* <PaginationCom total={productOrderData?.per_page} getPage={getOrderProduct} /> */}
+              <PaginationCom total={productOrderData?.per_page} getPage={getOrderProduct} />
               </Col>
                         </Row>
       </Container>

@@ -35,9 +35,14 @@
     margin-bottom: .5rem;
 }
 .main_order .order_title h4{
+    cursor: pointer;
     font-size: 19px;
     color: #000000da;
     padding-top: .3rem;
+}
+.main_order .order_title h4:hover{
+    color: #008080 ;
+    transition: all .5s;
 }
 .main_order .order_title .btn_pending{
     color: #ffa500;
@@ -75,6 +80,6 @@
     font-weight: 500;
 }
 .serv_text p{
-    font-size: .6rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 500;
 }
