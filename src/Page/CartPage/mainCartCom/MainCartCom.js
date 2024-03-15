@@ -18,6 +18,7 @@ export const MainCartCom = () => {
   const allCartItems = JSON.parse(localStorage.getItem("all-cart-items"));
 // console.log(allCartItems.map(item => item.id))
 // console.log(allCartItems.map(item => item.quantity))
+console.log(count)
   const recalculateTotalPrice = () => {
     let data = JSON.parse(localStorage.getItem('all-cart-items'));
     if (data) {
@@ -56,7 +57,7 @@ export const MainCartCom = () => {
           <h2>{t("cart_title")}</h2>
           <Col xs={12} lg={7} md={7} sm={12} className="border main_col py-2">
             <div className="serves_col shopingCard">
-              { cartData !== 0 ? (cartData?.map((product) => (
+              { count !==0 ? (cartData?.map((product) => (
                 <>
                 <ServesCard
                   id={product.id}
@@ -74,8 +75,8 @@ export const MainCartCom = () => {
 
             </>
               )
-              )):(<h2 className="text-center my-5">Not Have any Product yet to show ......</h2>)}
-              { cartData !== 0 ? (              <div className="row">
+              )):(<h2 className="text-center my-5">{t("card_shop_massage")}</h2>)}
+              { count !== 0 ? (              <div className="row">
               <Link to="/location" className="btn btn_next">
                 {t("cart_btn")}
               </Link>

@@ -46,13 +46,13 @@ const MainContact = () => {
       setMassage({
         user_id: loginFormData.id,
         message: "",
-      })
+      });
       setResponseMessage(response.data.message);
     } catch (error) {
       console.log("error", error);
+      setResponseMessage("Please leave your massage first");
     }
   };
-  
 
   return (
     <div className="contact_main">
@@ -60,8 +60,10 @@ const MainContact = () => {
         <Row className="justify-content-center">
           <h2 className="text-center mb-3">{t("contact")}</h2>
           {responseMessage && (
-                <Alert variant="success" className="contact_alert text-center">{responseMessage}</Alert>
-              )}
+            <Alert variant="success" className="contact_alert text-center">
+              {responseMessage}
+            </Alert>
+          )}
           <Col xs={12} lg={6} md={7} sm={12} className="">
             <form className="form_contact border" onSubmit={handleSubmit}>
               {/* <div class="mb-3">
@@ -76,16 +78,27 @@ const MainContact = () => {
                   placeholder={t("contact_email_placeholder")}
                 />
               </div> */}
-              <div className="mb-3">
+              <div className="mb-3 d-block">
                 <label for="exampleInputEmail1" className="form-label">
                   {t("contact_massage")}
                 </label>
+                {/*
                 <textarea
-                  className="massage"
+                  className="let_Massage"
                   name="message"
                   placeholder={t("contact_email_placeholder")}
                   onChange={handelChange}
-                />
+                /> */}
+                <div class="form-floating">
+                  <textarea
+                    class="form-control let_Massage"
+                    onChange={handelChange}
+                    placeholder={t("contact_email_placeholder")}
+                    id="floatingTextarea"
+                    style={{ height: '100px' }}
+                  ></textarea>
+                  <label for="floatingTextarea">{t("contact_massage_placeholder")}</label>
+                </div>
               </div>
 
               <button type="submit" className="btn btn_submit">

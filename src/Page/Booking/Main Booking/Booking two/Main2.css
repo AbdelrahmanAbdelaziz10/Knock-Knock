@@ -14,12 +14,12 @@
 .main_step_2{
     overflow-y: hidden !important;
 }
-.massage{
-    border: 2px solid #008080;
-    height: 20vh;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: .8rem;
+.form_contact .form-floating textarea.form-control.let_Massage{
+    border: 2px solid #008080 !important;
+    height: 30vh !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+    margin-top: .8rem !important;
 }
 .phone_login{
     display: flex;
