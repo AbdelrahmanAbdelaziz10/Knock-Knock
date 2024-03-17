@@ -21,7 +21,7 @@ export default function CreditSwiper() {
   const { saveLoginFormData ,loginFormData} = useContext(LoginFormDataContext);
 
   const handleSubmit = async (packageId) => {
-    console.log(packageId,"gygyg",loginFormDatalocal.id)
+    // console.log(packageId,"gygyg",loginFormDatalocal.id)
 
     Swal.fire({
       title: " Do you want to buy this package?",
@@ -44,16 +44,16 @@ export default function CreditSwiper() {
             ...loginFormData,
             package_id: packageId,
           })
-          console.log(loginFormData.package_id,"gygyg",loginFormDatalocal.id)
+          // console.log(loginFormData.package_id,"gygyg",loginFormDatalocal.id)
           setResponseMessage(response.data.message);
-          console.log(response?.data?.payment_link)
+          // console.log(response?.data?.payment_link)
                      // Open payment link in a new tab
           window.open(response?.data?.payment_link);
           // window.open(response?.data?.payment_link, "_blank"); 
           const res=await axios.post(
             "https://dashboard.knock-knock.ae/api/v1/packages/stripe-success"
           )
-          console.log(res.data)
+          // console.log(res.data)
           if(res.status){
             Swal.fire({
               position: "top-end",
@@ -80,7 +80,7 @@ export default function CreditSwiper() {
           navigate("/credits")
         }
         } catch (error) {
-          console.log("error", error);
+          // console.log("error", error);
         }
       }
     });

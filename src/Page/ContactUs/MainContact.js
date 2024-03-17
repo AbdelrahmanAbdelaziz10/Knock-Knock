@@ -49,7 +49,7 @@ const MainContact = () => {
       });
       setResponseMessage(response.data.message);
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
       setResponseMessage("Please leave your massage first");
     }
   };
@@ -66,13 +66,13 @@ const MainContact = () => {
           )}
           <Col xs={12} lg={6} md={7} sm={12} className="">
             <form className="form_contact border" onSubmit={handleSubmit}>
-              {/* <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+              {/* <div className="mb-3">
+                <label for="exampleInputEmail1" className"form-label">
                 {t("contact_email")}
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder={t("contact_email_placeholder")}
@@ -89,12 +89,12 @@ const MainContact = () => {
                   placeholder={t("contact_email_placeholder")}
                   onChange={handelChange}
                 /> */}
-                <div class="form-floating">
+                <div className="form-floating">
                   <textarea
-                    class="form-control let_Massage"
+                    className="form-control let_Massage"
                     onChange={handelChange}
                     placeholder={t("contact_email_placeholder")}
-                    id="floatingTextarea"
+                    id="floatingTextarea"n
                     style={{ height: '100px' }}
                   ></textarea>
                   <label for="floatingTextarea">{t("contact_massage_placeholder")}</label>

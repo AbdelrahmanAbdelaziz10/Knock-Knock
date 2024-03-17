@@ -20,8 +20,8 @@ const SwiperHome = () => {
     loopAddBlankSlides={true} className="mySwiper">
 
 <SwiperSlide>
-        <div class="person">
-          <div class="person_img">
+        <div className="person">
+          <div className="person_img">
             <img src={profile} alt="" />
           </div>
           <span>{t("home_say_username")} </span>
@@ -33,8 +33,8 @@ const SwiperHome = () => {
 
 
       <SwiperSlide>
-        <div class="person">
-          <div class="person_img">
+        <div className="person">
+          <div className="person_img">
             <img src={profile} alt="" />
           </div>
           <span>{t("home_say_username")} </span>
@@ -45,8 +45,8 @@ const SwiperHome = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div class="person">
-          <div class="person_img">
+        <div className="person">
+          <div className="person_img">
             <img src={profile} alt="" />
           </div>
           <span>{t("home_say_username")} </span>
@@ -57,8 +57,8 @@ const SwiperHome = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div class="person">
-          <div class="person_img">
+        <div className="person">
+          <div className="person_img">
             <img src={profile} alt="" />
           </div>
           <span>{t("home_say_username")} </span>

@@ -59,7 +59,7 @@ const MainServiesDetails = ({ changeTest }) => {
   // };
 
   const addData = () => {
-    if (!selectedDayId || !timeValue || !textValue) {
+    if (!selectedDayId || !timeValue ) {
       // Handle validation error, e.g., show an alert
       setRefactorError(
         "Please select a Day, Time, and enter any Notes to ensure greater Service."

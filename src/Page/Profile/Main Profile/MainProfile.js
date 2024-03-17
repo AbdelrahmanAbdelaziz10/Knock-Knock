@@ -89,27 +89,27 @@ export const MainProfile = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log(formData);
+  // console.log(formData);
   return (
     <div className="profile">
-      <div class=" singup profile">
-        <div class="container">
-          <div class="row login_main">
+      <div className=" singup profile">
+        <div className="container">
+          <div className="row login_main">
             <Col xs={12} lg={5} md={8} sm={12}>
-              <form class="row form " onSubmit={handelSubmit}>
-                <i class="fa-solid fa-x"></i>
-                <div class="form_head text-center">
+              <form className="row form " onSubmit={handelSubmit}>
+                <i className="fa-solid fa-x"></i>
+                <div className="form_head text-center">
                   <h4>{t("profile")} </h4>
-                  <img class="" src={`https://dashboard.knock-knock.ae/${loginFormData.avatar}`} alt="" />
+                  <img className="" src={`https://dashboard.knock-knock.ae/${loginFormData.avatar}`} alt="" />
                 </div>
-                <div class="col-lg-12 col-md-12 my-lg-2 my-md-2 row media">
+                <div className="col-lg-12 col-md-12 my-lg-2 my-md-2 row media">
                 {responseMessage && (
                 <Alert variant="success " className=" text-center">{responseMessage}</Alert>
               )}
-                  <div class="col-lg-6 col-md-6 pl1">
+                  <div className="col-lg-6 col-md-6 pl1">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="inputEmail"
                       name="first_name"
                       value={formData.first_name}
@@ -120,10 +120,10 @@ export const MainProfile = () => {
                       <Alert variant="danger" className="">{errors.first_name}</Alert>
                     )}
                   </div>
-                  <div class="col-lg-6 col-md-6 pl2">
+                  <div className="col-lg-6 col-md-6 pl2">
                     <input
                       type="text"
-                      class="form-control lastName"
+                      className="form-control lastName"
                       id="inputEmail"
                       name="last_name"
                       value={formData.last_name}
@@ -135,10 +135,10 @@ export const MainProfile = () => {
                     )}
                   </div>
                 </div>
-                <div class="col-md-12 mb-3 p-r">
+                <div className="col-md-12 mb-3 p-r">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="inputEmail"
                     name="email"
                     value={formData.email}
@@ -147,10 +147,10 @@ export const MainProfile = () => {
                   />
                   {errors.email && <Alert variant="danger" className="">{errors.email}</Alert>}
                 </div>
-                <div class="col-md-12 mb-3 p-r">
+                <div className="col-md-12 mb-3 p-r">
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="inputPassword"
                     name="password"
                     value={formData.password}
@@ -161,10 +161,10 @@ export const MainProfile = () => {
                     <Alert variant="danger" className="">{errors.password}</Alert>
                   )}
                 </div>
-                <div class="col-md-12 mb-3 p-r">
+                <div className="col-md-12 mb-3 p-r">
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="inputPassword"
                     name="password_confirmation"
                     value={formData.password_confirmation}
@@ -175,10 +175,10 @@ export const MainProfile = () => {
                     <Alert variant="danger" className="">{errors.password_confirmation}</Alert>
                   )}
                 </div>
-                <div class="mb-lg-2 mb-md-3 d-flex">
+                <div className="mb-lg-2 mb-md-3 d-flex">
                   <input
                     type="number"
-                    class="form-control phone"
+                    className="form-control phone"
                     id="exampleInputEmail1"
                     value={formData.phone}
                     onChange={handleChange}
@@ -187,12 +187,12 @@ export const MainProfile = () => {
                   />
                   {errors.phone && <Alert variant="danger" className="">{errors.phone}</Alert>}
                 </div>
-                {/* <Link class="mb-lg-2 mb-md-3 d-flex mt-4 delete_acc">
+                {/* <Link className="mb-lg-2 mb-md-3 d-flex mt-4 delete_acc">
                   <MdDelete className="delete" />{" "}
                   <p className="delete_account">{t("personal_delet")} </p>
                 </Link> */}
-                <div class="col-12 submit_btn mt-4">
-                  <button type="submit" class="btn mb-4 mx-4 sing_in">
+                <div className="col-12 submit_btn mt-4">
+                  <button type="submit" className="btn mb-4 mx-4 sing_in">
                     {t("personal_btn")}
                   </button>
                 </div>

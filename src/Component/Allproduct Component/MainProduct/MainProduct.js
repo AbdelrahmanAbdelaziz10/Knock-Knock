@@ -23,7 +23,7 @@ const MainProduct = ({ getPage, contentProduct, setContentProduct }) => {
         );
         setContentProduct(response?.data?.data);
       } catch (error) {
-        console.log("error", error);
+        // console.log("error", error);
       }
     }
 

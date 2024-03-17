@@ -9,12 +9,12 @@ import { useTranslation } from "react-i18next";
 const PhoneNumber = ({ test, setTest }) => {
   const { t, i18n } = useTranslation();
   return (
-    <div class="singup phone_login">
-      <div class="container">
-        <div class="row login_main mt-4">
-          <Col xs={11} lg={6} md={10} sm={11} class="col-lg-5 col-md-8 ">
-            <form class="row form g-3 mb-5 mt-3">
-              <div class=" mb-3 row title">
+    <div className="singup phone_login">
+      <div className="container">
+        <div className="row login_main mt-4">
+          <Col xs={11} lg={6} md={10} sm={11} className="col-lg-5 col-md-8 ">
+            <form className="row form g-3 mb-5 mt-3">
+              <div className=" mb-3 row title">
                 <Col xs={10} lg={10} md={10} sm={11}>
                   <h5 className=" ">{t("phone_title")}</h5>
                 </Col>
@@ -26,12 +26,12 @@ const PhoneNumber = ({ test, setTest }) => {
                 </Col>
               </div>
 
-              <div class="col-lg-12 row col-md-12 my-3">
-                <div class="row justify-content-center">
+              <div className="col-lg-12 row col-md-12 my-3">
+                <div className="row justify-content-center">
                   <label className="mb-3">{t("phone_p")}</label>
-                  <div class=" d-flex justify-content-center">
+                  <div className=" d-flex justify-content-center">
                     <select
-                      class="form-select nationality"
+                      className="form-select nationality"
                       aria-label="Default select example"
                     >
                       <option selected>Egy +20</option>
@@ -41,7 +41,7 @@ const PhoneNumber = ({ test, setTest }) => {
                     </select>
                     <input
                       type="number"
-                      class="form-control phone"
+                      className="form-control phone"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("phone_placeholder")}
@@ -51,10 +51,10 @@ const PhoneNumber = ({ test, setTest }) => {
                 </div>
               </div>
 
-              <div class="row justify-content-center submit_btn mt-4">
+              <div className="row justify-content-center submit_btn mt-4">
                 <Link
                   type="submit"
-                  class="btn mb-4 mx-2 btn-verify"
+                  className="btn mb-4 mx-2 btn-verify"
                   to="/verify"
                 >
                   {t("phone_btn")}

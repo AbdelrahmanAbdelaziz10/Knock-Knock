@@ -27,7 +27,7 @@ export const MainCredit = () => {
         { user_id: loginForm.id } // Wrap user_id in an object
       );
       // Handle the response data as needed
-      console.log(response.data);
+      // console.log(response.data);
       sertBalance(response?.data?.data)
     // console.log(balance.balance)
 

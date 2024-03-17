@@ -23,9 +23,9 @@ const MainBook = () => {
   const navigate = useNavigate();
   const loginFormData = JSON.parse(localStorage.getItem('loginFormData'));
   const { data: setting } = useFetch("/api/v1/settings/get-all");
- console.log(productPrams)
+//  console.log(productPrams)
   const { data: product_id } = useFetch(`/api/v1/products/get-product-details?product_id=${productPrams.productId}`);
-console.log(product_id)
+// console.log(product_id)
   const [shopingCost,setShopingCost]=useState(setting?.data?.shipping_cost)
   const [increase, setIncrease] = useState(0);
   const [grandTotal, setGrandTotal] = useState(0);

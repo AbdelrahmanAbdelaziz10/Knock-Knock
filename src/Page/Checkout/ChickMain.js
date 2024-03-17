@@ -31,8 +31,8 @@ const ChickMain = () => {
   });
   const [productCoupone, setProductCoupone] = useState({
     coupon_name: "",
-    product_ids: JSON.stringify(allCartItems?.map(item => item.id)),
-    product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)),
+    product_ids: JSON.stringify(allCartItems?.map(item => item?.id)),
+    product_quantities: JSON.stringify(allCartItems?.map(item => item?.quantity)),
   });
   const { count, setCount } = useContext(CartCountContext);
   const [payment, setPayment] = useState("cash");
@@ -122,15 +122,19 @@ const ChickMain = () => {
 
   const handelCashBay = (response) => {
     if (payment === "cash") {
-      console.log(payment);
+      // console.log(payment);
 
       if (response.data.status) {
         Swal.fire({
           text: response.data.message,
           icon: "success",
         }).then(() => {
+          if(toggle){
+            localStorage.removeItem("servesOrder");
+          } else{
+            localStorage.removeItem("ProductOrder");
+          }
           navigate("/");
-          localStorage.removeItem("ProductOrder");
           window.location.reload();
         });
       } else {
@@ -143,8 +147,12 @@ const ChickMain = () => {
               toggle ? servesDetails.service_id : productDetails.productId
             }`
           );
-          localStorage.removeItem("ProductOrder");
-        });
+          if(toggle){
+            localStorage.removeItem("servesOrder");
+          } else{
+            localStorage.removeItem("ProductOrder");
+          }
+                });
       }
     }
   };
@@ -156,7 +164,7 @@ const ChickMain = () => {
           ? "https://dashboard.knock-knock.ae/api/v1/service_orders/stripe-success"
           : "https://dashboard.knock-knock.ae/api/v1/product_orders/stripe-success"
       );
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.status) {
         Promise.resolve().then(async () => {
           const afterPayRes = await axios.post(
@@ -165,9 +173,9 @@ const ChickMain = () => {
               : "https://dashboard.knock-knock.ae/api/v1/product_orders/save-order-after-payment",
             toggle ? servesDetails :  {
               ...productDetails,
-              user_id: loginFormData.id,
-              product_ids: JSON.stringify(allCartItems?.map(item => item.id)), // Modify to include all item IDs
-              product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)), // Modify to include all item quantities
+              user_id: loginFormData?.id,
+              product_ids: JSON.stringify(allCartItems?.map(item => item?.id)), // Modify to include all item IDs
+              product_quantities: JSON.stringify(allCartItems?.map(item => item?.quantity)), // Modify to include all item quantities
               payment_method: payment,
 
             }
@@ -181,8 +189,11 @@ const ChickMain = () => {
           }).then(() => {
             navigate("/");
             window.location.reload();
-            localStorage.removeItem("ProductOrder");
-
+            if(toggle){
+              localStorage.removeItem("servesOrder");
+            } else{
+              localStorage.removeItem("ProductOrder");
+            }
           });
         });
       }
@@ -202,7 +213,11 @@ const ChickMain = () => {
               toggle ? servesDetails.service_id : productDetails.productId
             }`
           );
-          localStorage.removeItem("ProductOrder");
+          if(toggle){
+            localStorage.removeItem("servesOrder");
+          } else{
+            localStorage.removeItem("ProductOrder");
+          }
           window.location.reload();
         });
       } else {
@@ -211,6 +226,11 @@ const ChickMain = () => {
           icon: "error",
         }).then(() => {
           navigate("/credits");
+          if(toggle){
+            localStorage.removeItem("servesOrder");
+          } else{
+            localStorage.removeItem("ProductOrder");
+          }
           window.location.reload();
         });
       }
@@ -228,9 +248,9 @@ const ChickMain = () => {
           ? servesDetails
           : {
               ...productDetails,
-              user_id: loginFormData.id,
-              product_ids: JSON.stringify(allCartItems?.map(item => item.id)), // Modify to include all item IDs
-              product_quantities: JSON.stringify(allCartItems?.map(item => item.quantity)), // Modify to include all item quantities
+              user_id: loginFormData?.id,
+              product_ids: JSON.stringify(allCartItems?.map(item => item?.id)), // Modify to include all item IDs
+              product_quantities: JSON.stringify(allCartItems?.map(item => item?.quantity)), // Modify to include all item quantities
               payment_method: payment,
 
             }

@@ -18,7 +18,7 @@ export const MainCartCom = () => {
   const allCartItems = JSON.parse(localStorage.getItem("all-cart-items"));
 // console.log(allCartItems.map(item => item.id))
 // console.log(allCartItems.map(item => item.quantity))
-console.log(count)
+// console.log(count)
   const recalculateTotalPrice = () => {
     let data = JSON.parse(localStorage.getItem('all-cart-items'));
     if (data) {

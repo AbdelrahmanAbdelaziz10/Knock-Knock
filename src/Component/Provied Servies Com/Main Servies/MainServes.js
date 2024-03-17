@@ -23,7 +23,7 @@ const MainServes = ({ getPage, contentServes, setContenServes }) => {
         );
         setContenServes(response?.data?.data);
       } catch (error) {
-        console.log("error", error);
+        // console.log("error", error);
       }
     }
     

@@ -49,7 +49,7 @@ const MainAddCard = () => {
                   <Col xs={12} md={12} lg={12} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_card")}
@@ -58,7 +58,7 @@ const MainAddCard = () => {
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_date")}
@@ -67,7 +67,7 @@ const MainAddCard = () => {
                   <Col xs={12} md={6} lg={6} sm={12} className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder={t("add_card_placeholder_cvv")}

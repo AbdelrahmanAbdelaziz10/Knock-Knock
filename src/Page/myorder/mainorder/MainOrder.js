@@ -6,6 +6,7 @@ import axios from "axios";
 import PaginationCom from "../../../Component/Common Component/Pagination/Pagination";
 import { ContextLang, OrderDataContext } from "../../../App";
 import Swal from "sweetalert2";
+import PaginationOrder from "../../../Component/Common Component/Pagination/PaginationOrder";
 
 const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
   const { t } = useTranslation();
@@ -13,11 +14,10 @@ const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
   const { selectedLanguage } = useContext(ContextLang);
   const loginFormData = JSON.parse(localStorage.getItem("loginFormData"));
   const [order, setOrder] = useState({
-    user_id: loginFormData.id,
+    user_id: loginFormData?.id,
     order_status: 0,
   });
-  // console.log(orderData?.per_page)
-  // console.log(contentOrderServes)
+
 
   const items = [
     { status: 0, label: "to_order_cancelled" },
@@ -66,67 +66,23 @@ const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
   
   
   const handleOrderPanding = async (state) => {
-    setOrder({ ...order, order_status: "state" });
+    setOrder({ ...order, order_status: state });
 
     try {
       const response = await axios.post(
         "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
         {
-          user_id: loginFormData.id,
+          user_id: loginFormData?.id,
           order_status: state,
         }
       );
-      saveOrderData(response?.data?.data);
+      setContenOrderServes(response?.data?.data);
       // console.log(response?.data?.data)
     } catch (error) {
       console.error("Error processing order", error);
     }
   };
-  // const handleOrderprocessing = async () => {
-  //   setOrder({ ...order, order_status: "1" });
-  //   try {
-  //     const response = await axios.post(
-  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-  //       {
-  //         user_id: loginFormData.id,
-  //         order_status: 1,
-  //       }
-  //     );
-  //     saveOrderData(response?.data?.data);
-  //   } catch (error) {
-  //     console.error("Error processing order", error);
-  //   }
-  // };
-  // const handleOrderCancelled = async () => {
-  //   setOrder({ ...order, order_status: "2" });
-  //   try {
-  //     const response = await axios.post(
-  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-  //       {
-  //         user_id: loginFormData.id,
-  //         order_status: 2,
-  //       }
-  //     );
-  //     saveOrderData(response?.data?.data);
-  //   } catch (error) {
-  //     console.error("Error processing order", error);
-  //   }
-  // };
-  // const handleOrderFinish = async () => {
-  //   setOrder({ ...order, order_status: "3" });
-  //   try {
-  //     const response = await axios.post(
-  //       "https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders",
-  //       {
-  //         user_id: loginFormData.id,
-  //         order_status: 3,
-  //       }
-  //     );
-  //     saveOrderData(response?.data?.data);
-  //   } catch (error) {
-  //     console.error("Error processing order", error);
-  //   }
-  // };
+  
   useEffect(() => {
     // Call handleOrderPanding with state=0 when component mounts
     handleOrderPanding(0);
@@ -201,9 +157,9 @@ const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
           </Col>
         </Row>
         <Row className="">
-        {orderData?.data?.length > 0 ?
-                (          orderData?.data &&
-            orderData?.data.map((order, index) => (
+        {contentOrderServes?.data?.length > 0 ?
+                (          contentOrderServes?.data &&
+                  contentOrderServes?.data.map((order, index) => (
               <Col key={index} xs={12} lg={6} md={11} sm={12} className="">
                 {/* <Link to="/booking"> */}
                 <Card className="order_card">
@@ -322,7 +278,7 @@ const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
         </Row>
         <Row>
             <Col>
-            <PaginationCom total={orderData?.per_page} getPage={getPageServes} />
+            <PaginationOrder order={order} total={contentOrderServes?.per_page} getPage={getPageServes} />
             
 
             </Col>

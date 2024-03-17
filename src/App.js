@@ -53,6 +53,7 @@ function App() {
   const [contentProduct, setContentProduct] = useState([]);
   const [contentServes, setContenServes] = useState([]);
   const [contentOrderServes, setContenOrderServes] = useState([]);
+
   const [contentOrderProduct, setContenOrderProduct] = useState([]);
   const loginFormLocal = JSON.parse(localStorage.getItem("loginFormData"));
 
@@ -114,7 +115,7 @@ function App() {
   const savedProductDetails = localStorage.getItem("ProductOrder");
   const [productDetails, setProductDetails] = useState(
     savedProductDetails ? JSON.parse(savedProductDetails) : {
-      user_id: loginFormLocal.id,
+      user_id: loginFormLocal?.id,
       product_id: "",
       selected_day_id: "",
       selected_time: "",
@@ -181,25 +182,23 @@ function App() {
     setContenServes(res?.data?.data);
     // console.log(res?.data?.data)
   };
-  const getOrderServes = async (page) => {
-    const res = await axios.post(
-      `https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders?page=${page}`,
-      {
-        user_id:loginFormLocal.id
-      }
+  const getOrderServes = async (page , order) => {
+    // console.log(order)
+    const res = await axios.get(
+      `https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders-get-method?user_id=${order?.user_id}&order_status=${order?.order_status}&page=${page}`
     );
     setContenOrderServes(res?.data?.data);
-    console.log(res?.data?.data?.data)
+    // console.log(res?.data?.data?.data)
+    // console.log(order)
+
   };
-  const getOrderProduct = async (page) => {
-    const res = await axios.post(
-      `https://dashboard.knock-knock.ae/api/v1/product_orders/my-orders?page=${page}`,
-      {
-        user_id:loginFormLocal.id
-      }
+
+  const getOrderProduct = async (page,order) => {
+    const res = await axios.get(
+      `https://dashboard.knock-knock.ae/api/v1/product_orders/my-orders-get-method?user_id=${order?.user_id}&order_status=${order?.order_status}&page=${page}`
     );
-    setContenOrderProduct(res?.data?.data?.data);
-    console.log(res?.data?.data?.data)
+    setContenOrderProduct(res?.data?.data);
+    // console.log(res?.data?.data?.data)
   };
 
 

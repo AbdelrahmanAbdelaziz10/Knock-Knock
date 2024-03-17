@@ -39,9 +39,9 @@ export const Serves = () => {
     </div>
             <div className="row servies_div  justify-content-lg-start">
         
-            { allserves?.slice(0, 5).map((serve)=>{
+            { allserves?.slice(0, 5).map((serve,index)=>{
                 return(
-                    <ServesComponent image={`https://dashboard.knock-knock.ae/${serve.image}`} link={`/serves/${serve.id}`} name_ar={serve.name_ar} name_en={serve.name_en} />
+                    <ServesComponent key={serve.id} image={`https://dashboard.knock-knock.ae/${serve.image}`} link={`/serves/${serve?.id}`} name_ar={serve.name_ar} name_en={serve.name_en} />
 
                 )
             })}

@@ -27,15 +27,15 @@ export const ServesRow = ({ title, link }) => {
         title === t("home_category3") ? (
           <div className="row servies">
             {allProduct && allProduct.slice(0, 4).map((product) => (
-              <Col xs={6} lg={3} md={4} sm={6} className=" mb-5" key={product.id}>
-                <OneProduct productObj={product} image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product.id}`} />
+              <Col xs={6} lg={3} md={4} sm={6} className=" mb-5" key={product?.id}>
+                <OneProduct productObj={product} image={`https://dashboard.knock-knock.ae/${product.image}`} name_ar={product.name_ar} name_en={product.name_en} prise={product.price} discount={product.discount} link={`/product/${product?.id}`} />
               </Col>
             ))}
           </div>
         ) : (
           <div className="row servies">
             {allserves && allserves.map((serve) => (
-              <OneServe key={serve.id} image={`https://dashboard.knock-knock.ae/${serve.image}`} link={`/serves/${serve.id}`} name_ar={serve.name_ar} name_en={serve.name_en} />
+              <OneServe key={serve?.id} image={`https://dashboard.knock-knock.ae/${serve?.image}`} link={`/serves/${serve?.id}`} name_ar={serve?.name_ar} name_en={serve.name_en} />
             ))}
           </div>
         )

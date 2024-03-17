@@ -11,6 +11,7 @@ import axios from "axios";
 import PaginationCom from "../../../Component/Common Component/Pagination/Pagination";
 import { IoIosExit } from "react-icons/io";
 import OrderDetails from "./BookingOne/OrderDetails";
+import PaginationOrder from "../../../Component/Common Component/Pagination/PaginationOrder";
 
 const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProduct}) => {
   
@@ -75,7 +76,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProd
   };
 
   const handleOrderPanding = async (state) => {
-    setOrder({ ...order, order_status: "state" });
+    setOrder({ ...order, order_status: state });
 
     try {
       const response = await axios.post(
@@ -85,8 +86,8 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProd
           order_status: state,
         }
       );
-      saveProductOrderData(response?.data?.data);
-      console.log(contentOrderProduct);
+      setContenOrderProduct(response?.data?.data);
+      // console.log(contentOrderProduct);
 
       // console.log(response?.data?.data);
     } catch (error) {
@@ -97,7 +98,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProd
     // Call handleOrderPanding with state=0 when component mounts
     handleOrderPanding(0);
   }, []); // Empty dependency array ensures this effect runs only once, like componentDidMount
-  console.log(productOrderData)
+  // console.log(productOrderData)
   return (
     <div className="main_order py-4">
       <Container>
@@ -168,9 +169,9 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProd
         </Row>
 
         <Row className="">
-          {productOrderData?.data?.length > 0 ?
-                  (          productOrderData?.data &&
-                    productOrderData?.data?.map((order, index) => (
+          {contentOrderProduct?.data?.length > 0 ?
+                  (          contentOrderProduct?.data &&
+                    contentOrderProduct?.data?.map((order, index) => (
                       <>
                 <Col key={index} xs={12} lg={6} md={6} sm={12}  className="order_card_one">
                   <Card className="order_card">
@@ -357,7 +358,7 @@ const MainProductBook = ({getOrderProduct,contentOrderProduct,setContenOrderProd
 
         <Row>
               <Col>
-              <PaginationCom total={productOrderData?.per_page} getPage={getOrderProduct} />
+              <PaginationOrder order={order} total={contentOrderProduct?.per_page} getPage={getOrderProduct} />
               </Col>
                         </Row>
       </Container>

@@ -57,18 +57,18 @@ const Footer = () => {
               {t("f-uae")}
               </h6>
               <div className="f_serves">
-                <Link to="" className="footer_serves">
+                <span to="" className="footer_serves">
                 {t("f-dubai")}
-                </Link>
-                <Link to="" className="footer_serves">
+                </span>
+                <span to="" className="footer_serves">
                 {t("f-abuzabi")}
-                </Link>
-                <Link to="" className="footer_serves">
+                </span>
+                <span to="" className="footer_serves">
                 {t("f-sharjah")}
-                </Link>
-                <Link to="" className="footer_serves">
+                </span>
+                <span to="" className="footer_serves">
                 {t("f-agman")}
-                </Link>
+                </span>
               </div>
             </Col>
             <Col xs={6} lg={3} md={4} sm={6} className="col-lg-3 col-md-4">
@@ -76,12 +76,12 @@ const Footer = () => {
               {t("f-suid")}
               </h6>
               <div className="f_serves">
-                <Link to="" className="footer_serves">
+                <span to="" className="footer_serves">
                 {t("f-gda")}
-                </Link>
-                <Link to="" className="footer_serves">
+                </span>
+                <span to="" className="footer_serves">
                 {t("f-reid")}
-                </Link>
+                </span>
               </div>
             </Col>
             <Col xs={6} lg={3} md={2} sm={6} className="col-lg-3 col-md-2">
@@ -89,9 +89,9 @@ const Footer = () => {
               {t("f-quter")}
               </h6>
               <div className="f_serves">
-                <Link to="" className="footer_serves">
+                <span to="" className="footer_serves">
                   {t("f-doha")}
-                </Link>
+                </span>
               </div>
             </Col>
           </div>
@@ -100,49 +100,49 @@ const Footer = () => {
             <Col xs={12} lg={3} md={3} sm={12} className="col-lg-3 col-md-3">
               <div className="row">
                 <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6 col-md-6">
-                  <Link href="">
+                  <span href="">
                     <img src={googleplay} alt="google play" />
-                  </Link>
+                  </span>
                 </Col>
                 <Col xs={6} lg={6} md={6} sm={6} className="col-lg-6 col-md-6">
-                  <Link href="">
+                  <span href="">
                     <img src={appstore} alt="App Store" />
-                  </Link>
+                  </span>
                 </Col>
               </div>
             </Col>
             <Col xs={8} lg={4} md={2} sm={8} className=" social_icon">
-              <Link to="" className="fa-brand">
+              <span to="" className="fa-brand">
               <FaFacebook className="facebook"/>
-              </Link>
-              <Link to="" className="fa-brand">
+              </span>
+              <span to="" className="fa-brand">
               <FaTwitter className="twitter"/>
-              </Link>
-              <Link to="" className="fa-brand">
+              </span>
+              <span to="" className="fa-brand">
               <FaInstagram className="instagram"/>
-              </Link>
+              </span>
             </Col>
             <Col xs={11} lg={4} md={5} sm={11} className="">
               <ul className="footer_list">
                 <li>
-                  <Link to="" className="list_li">
+                  <span to="" className="list_li">
                   {t("f-terms")}
-                  </Link>
+                  </span>
                 </li>
                 <li>
-                <Link to="" className="list_li">
+                <span to="" className="list_li">
                   {t("f-privacy")}
-                  </Link>
+                  </span>
                 </li>
                 <li>
-                <Link to="" className="list_li">
+                <span to="" className="list_li">
                   {t("f-sitemap")}
-                  </Link>
+                  </span>
                 </li>
                 <li>
-                <Link to="" className="list_li">
+                <span to="" className="list_li">
                   {t("f-career")}
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </Col>

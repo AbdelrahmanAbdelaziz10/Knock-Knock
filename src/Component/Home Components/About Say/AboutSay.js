@@ -15,9 +15,9 @@ import { useTranslation } from 'react-i18next';
 const AboutSay = () => {
     const {t,i18n} = useTranslation()
   return (
-    <section class="aboutsay py-5">
-        <div class="container">
-            <div class="row text-center mb-3">
+    <section className="aboutsay py-5">
+        <div className="container">
+            <div className="row text-center mb-3">
                 <h3>
                 {t("home_say_title")}
                 </h3>
@@ -25,7 +25,7 @@ const AboutSay = () => {
                 {t("home_say_p")}
                 </p>
             </div>
-            <div class="row">
+            <div className="row">
             <SwiperHome />
             </div>
         </div>

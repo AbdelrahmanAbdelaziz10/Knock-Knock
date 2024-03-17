@@ -65,7 +65,7 @@ const MainGift = () => {
               <Row className="justify-content-center ">
                 <Col xs={10} lg={9} md={10} sm={10} className=" ">
   <div className="mb-3">
-    <label for="exampleInputEmail1" class="form-label">
+    <label for="exampleInputEmail1" className="form-label">
     {t("gift_amount")}
     </label>
     <input type="number" className="form-control" id="exampleInputEmail1" placeholder={t("gift_input_placeholder")}/>
@@ -102,7 +102,7 @@ const MainGift = () => {
 {/* <p className="text-center">
 You have to select a method to send it with
 </p> */}
-  <Link to="/checkout" type="submit" class="btn btn_next">  {t("gift_btn")}
+  <Link to="/checkout" type="submit" className="btn btn_next">  {t("gift_btn")}
 </Link>
 </Row>
 
