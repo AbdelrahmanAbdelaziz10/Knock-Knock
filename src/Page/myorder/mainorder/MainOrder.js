@@ -87,6 +87,7 @@ const MainOrder = ({setContenOrderServes,contentOrderServes,getPageServes}) => {
     // Call handleOrderPanding with state=0 when component mounts
     handleOrderPanding(0);
   }, []); // Empty dependency array ensures this effect runs only once, like componentDidMount
+  console.log(contentOrderServes)
 
   return (
     <div className="main_order py-4">

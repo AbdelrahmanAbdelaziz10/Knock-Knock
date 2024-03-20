@@ -14,10 +14,12 @@ import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { useShoppingCart } from "../../../Context/ShopingCardContext";
 import { CartCountContext } from "../../../Context/CartCountContext";
+import { MdAddShoppingCart } from "react-icons/md";
 
 const OneProduct = ({ image, name_ar, prise, discount, link, name_en, id, productObj }) => {
   const { t } = useTranslation();
   const { selectedLanguage } = useContext(ContextLang);
+  const native=useNavigate()
   const { saveToggleLogin } = useContext(ToggleLoginContext);
   const toggleLogin = JSON.parse(localStorage.getItem("toggleLogin"));
   const {
@@ -66,7 +68,15 @@ const OneProduct = ({ image, name_ar, prise, discount, link, name_en, id, produc
         });
         // alert('This Product is already Added to Cart');
         return;
-      };
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
       localStorage.setItem('all-cart-items', JSON.stringify([...oldCartItems, obj]))
       setCount(count + 1)
     } else {
@@ -83,9 +93,9 @@ const OneProduct = ({ image, name_ar, prise, discount, link, name_en, id, produc
             <img src={image} alt="" />
           </div>
           <div className="card_text_product">
-            <Link to={link}>
+            {/* <Link to={link}> */}
               {selectedLanguage === "en" ? <p>{name_en}</p> : <p>{name_ar}</p>}
-            </Link>
+            {/* </Link> */}
             <h6>
               {prise} {t("price")}
               <span>{discount} %</span>
@@ -111,16 +121,27 @@ const OneProduct = ({ image, name_ar, prise, discount, link, name_en, id, produc
             <FaCartShopping />
             </Link> */}
 
-            <div className="">
+            <div className="row">
               {quantity === 0 ? (
+                <>
+                <Col xs={10} lg={9} md={7} sm={10}>
                 <button
+                onClick={()=>native(link)}
                   // to={link}
                   className="btn btn-deteils"
-                  // onClick={() => increaseCartQuantity(id)}
-                  onClick={addToCart}
+                  // onClick={addToCart}
                 >
-                  {t("all_product_addtocar")}
+                
+                  {t("all_product_product_btn")}
                 </button>
+                </Col>
+                <Col xs={2} lg={2} md={5} sm={2}>
+                <MdAddShoppingCart onClick={addToCart}  className="shopIcon"/>
+
+                </Col>
+
+                </>
+
               ) : (
                 <div className="row justify-content-between">
                   <Col

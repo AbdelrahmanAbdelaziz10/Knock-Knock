@@ -1,6 +1,20 @@
 /* Medium devices (tablets) */
 @media (min-width: 577px) and (max-width: 992px) {
-
+    .main_product_details .time_date .time_input .input_time{
+        width: 80%;
+        height: 3.5vh;
+    }
+    .ltr .main_product_details .time_date .time_input .input_time{
+        margin-left: 1rem;
+    }
+    .rtl .main_product_details .time_date .time_input .input_time{
+        margin-right: 1rem;
+    }
+    .time_date .btn{
+        font-size: 14px;
+        margin: 0 !important;
+    }
+    
     /* Styles for medium devices */
     /* Start in home page responsive */
     /* 1-NavBar */
@@ -429,7 +443,8 @@
     }
 
     .day_booking {
-        margin: 0 2px 10px 0 !important;
+        margin: 0 0px 10px 0 !important;
+        padding: 0 !important;
     }
 
     .date_day {
@@ -462,7 +477,23 @@
 
 /* Small devices (phones) */
 @media (max-width: 576px) {
-
+.main_product_details .card_details .details .product_name {
+margin-top: 1rem;
+}
+    .main_product_details .time_date .time_input .input_time{
+        width: 80%;
+        height: 5vh;
+    }
+    .ltr .main_product_details .time_date .time_input .input_time{
+        margin-left: .5rem;
+    }
+    .rtl .main_product_details .time_date .time_input .input_time{
+        margin-right: .5rem;
+    }
+    .time_date .btn{
+        font-size: 14px;
+        margin-bottom: .5rem !important;
+    }
     /* Styles for small devices */
 
     .order_details p {
@@ -663,7 +694,29 @@
     .rtl .card.one_Product .card_text_product h6 span {
         padding-right: 2rem;
     }
-
+    .details_row,
+    .nots_row{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .ltr .card_details .stock .sku {
+        margin-left: 1.5rem;
+    }
+    .rtl .card_details .stock .sku {
+        margin-right: 1.5rem;
+    }
+    .details_row .product_name{
+        font-size: 17px !important;
+    }
+    .details_row .details p{
+        font-size: 14px !important;
+    }
+    .details_row .stock h4{
+        font-size: 17px !important;
+    }
+    .nots_add p{
+        margin-bottom: 0 !important;
+    }
     /* 2-Main Product */
 
     /* Start in all Serves page responsive */
@@ -732,11 +785,12 @@
     .ltr .total_price {
         margin-left: 1.5rem;
     }
-
+    /* .ltr .time_date .btn-Add { */
+        /* margin-left: 10%; */
+    /* } */
     .ltr .time_date .btn-Add {
-        margin-left: 10%;
+        margin-left: 14%;
     }
-
     .ltr .btn-book {
         margin-left: 0rem;
     }
@@ -745,10 +799,12 @@
         margin-right: 1.5rem;
     }
 
+    /* .rtl .time_date .btn-Add { */
+        /* margin-right: 10%; */
+    /* } */
     .rtl .time_date .btn-Add {
-        margin-right: 10%;
+        margin-right: 16%;
     }
-
     .rtl .btn-book {
         margin-right: 0rem;
     }

@@ -73,10 +73,10 @@ line-height: 16px;
 letter-spacing: 0em;
 color: #008080;
 }
-.card.one_Product .card_text_product p:hover{
-    color: #000;
-    transition: all .5s;
-}
+/* .card.one_Product .card_text_product p:hover{ */
+    /* color: #000; */
+    /* transition: all .5s; */
+/* } */
 .card.one_Product .card_text_product h6{
 font-size: 19px;
 font-weight: 500;
@@ -127,9 +127,9 @@ margin-top: .5rem;
 .ltr .card.one_Product .card_text_product .buy_product{
     margin-left: 4rem;
 }
-.ltr .card.one_Product .card_text_product .btn-deteils:last-child{
-    margin-left: 1rem;
-}
+/* .ltr .card.one_Product .card_text_product .btn-deteils:last-child{ */
+    /* margin-left: 1rem; */
+/* } */
 .card.one_Product .card_text_product .btn-deteils:hover{
     opacity: .7;
 }
@@ -155,5 +155,15 @@ margin-top: .5rem;
     color: red;
     cursor: pointer;
     font-size: 2rem;
+}
+.shopIcon{
+    color: #008080;
+    font-size:1.8rem ;
+    margin-top: .9rem;
+}
+.shopIcon:hover{
+    transition: all .5s;
+    color: red;
+    cursor: pointer;
 }
 /* End In All Serves Section Style */

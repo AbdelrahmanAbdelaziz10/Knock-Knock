@@ -82,13 +82,6 @@ const MainContact = () => {
                 <label for="exampleInputEmail1" className="form-label">
                   {t("contact_massage")}
                 </label>
-                {/*
-                <textarea
-                  className="let_Massage"
-                  name="message"
-                  placeholder={t("contact_email_placeholder")}
-                  onChange={handelChange}
-                /> */}
                 <div className="form-floating">
                   <textarea
                     className="form-control let_Massage"
@@ -140,6 +133,83 @@ const MainContact = () => {
         </Row>
       </Container>
     </div>
+  //   <div className="contact_main">
+  //   <Container>
+  //     <Row className="justify-content-center">
+
+  //       <Col xs={12} lg={7} md={7} sm={12} className="">
+  //         <form className="form_contact border" onSubmit={handleSubmit}>
+  //         <h2 className="text-center mb-3 contact_title">{t("contact")}</h2>
+  //         <p className="text-center"> {t("contact_p")} </p>
+  //       {responseMessage && (
+  //         <Alert variant="success" className="contact_alert text-center">
+  //           {responseMessage}
+  //         </Alert>
+  //       )}
+  //           <div className="row ">
+  //             <Col xs={12} lg={6} md={6} sm={12}>
+  //             <div className="mb-3">
+  //             <input
+  //               type="text"
+  //               className="form-control"
+  //               id="exampleInputEmail1"
+  //               aria-describedby="emailHelp"
+  //               placeholder={t("personal_fname_placeholder")}
+  //             />
+  //           </div>
+  //           </Col>
+  //           <Col xs={12} lg={6} md={6} sm={12}>
+  //           <div className="mb-3">
+  //             <input
+  //               type="text"
+  //               className="form-control"
+  //               id="exampleInputEmail1"
+  //               aria-describedby="emailHelp"
+  //               placeholder={t("personal_lname_placeholder")}
+  //             />
+  //           </div>
+  //             </Col>
+  //           </div>
+  //           <div className="mb-3">
+  //             <input
+  //               type="email"
+  //               className="form-control"
+  //               id="exampleInputEmail1"
+  //               aria-describedby="emailHelp"
+  //               placeholder={t("contact_email_placeholder")}
+  //             />
+  //           </div>
+  //           <div className="mb-3">
+  //             <input
+  //               type="number"
+  //               className="form-control"
+  //               id="exampleInputEmail1"
+  //               aria-describedby="emailHelp"
+  //               placeholder={t("phone_placeholder")}
+  //             />
+  //           </div>
+  //           <div className="mb-3 d-block">
+  //             <div className="form-floating">
+  //               <textarea
+  //                 className="form-control let_Massage"
+  //                 onChange={handelChange}
+  //                 placeholder=""
+  //                 id="floatingTextarea"
+  //                 style={{ height: '100px' }}
+  //               ></textarea>
+  //               <label for="floatingTextarea" className="label_input">{t("contact_massage_placeholder")}</label>
+  //             </div>
+  //           </div>
+
+  //           <button type="submit" className="btn btn_submit">
+  //             {t("contact_btn")}
+  //           </button>
+  //         </form>
+  //       </Col>
+
+  //     </Row>
+  //   </Container>
+  // </div>
   );
 };
 

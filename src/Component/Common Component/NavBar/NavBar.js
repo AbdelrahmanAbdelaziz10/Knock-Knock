@@ -20,6 +20,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { MdPolicy } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
 import { CartCountContext } from "../../../Context/CartCountContext";
+import { MdMobileScreenShare } from "react-icons/md";
 
 const NavBar = () => {
   const { t, i18n } = useTranslation();
@@ -173,6 +174,16 @@ const NavBar = () => {
                 <p> {t("Booking_Product")}</p>
               </Col>
             </Link>
+            <Link to="/screen" className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <MdMobileScreenShare />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("screen")}</p>
+              </Col>
+            </Link>
             <Link to="/contact" className="row row_hover border pt-2 mb-3">
               <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
                 <div className="login_flag">
@@ -190,7 +201,17 @@ const NavBar = () => {
                 </div>
               </Col>
               <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
-                <p> {t("policy")}</p>
+                <p> {t("Policy_title")}</p>
+              </Col>
+            </Link>
+            <Link to='/terms_conditions' className="row row_hover border pt-2 mb-3">
+              <Col xs={3} lg={1} md={3} sm={3} className="col-lg-2">
+                <div className="login_flag">
+                  <MdPolicy />
+                </div>
+              </Col>
+              <Col xs={9} lg={10} md={9} sm={9} className="col-lg-10 country_name">
+                <p> {t("Terms_title")}</p>
               </Col>
             </Link>
             <a href="/" className="row row_hover border pt-2 mb-3 log_out_div" onClick={clearLocalStorage}>

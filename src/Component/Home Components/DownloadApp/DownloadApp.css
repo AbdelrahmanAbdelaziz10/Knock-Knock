@@ -1,6 +1,9 @@
 
 
 /* Start in Download Application Style */
+.download{
+    background-image: linear-gradient(#008080,#fff);
+}
 .download .text {
     margin-top: 3rem;
 }
@@ -15,13 +18,15 @@
 
 .download .text h2 {
     margin: 1rem 0;
-
+    color: #fff;
 }
 
 .download .text p {
     margin: 1rem 0;
     font-size: 17px;
     font-weight: 500;
+    color: #fff;
+
 }
 
 .download .download_img {

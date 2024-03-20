@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Footr.css";
 import googleplay from '../../../images/googleplay.png';
 import appstore from '../../../images/appstore.png';
@@ -7,14 +7,17 @@ import { useTranslation } from "react-i18next";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { Col, Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import Logo from '../../../images/Logo.png'
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Footer = () => {
     const { t, i18n } = useTranslation();
-
+    const navigate=useNavigate()
   return (
     <>
-      <footer className="footer">
+      {/* <footer className="footer">
         <Container>
           <div className=" mb-3 py-3  ">
             <h6>{t("f-serves")}</h6>
@@ -148,6 +151,72 @@ const Footer = () => {
             </Col>
           </div>
         </Container>
+      </footer> */}
+      <footer className="footer">
+        <Container>
+          <Row className="py-4">
+            <Col xs={12} lg={4} md={6} sm={12}>
+            <div className="footer_img">
+              <img src={Logo} alt="" />
+            </div>
+            <div className="footer_text">
+            <p>
+            {t("home_download_p")}  
+            </p>
+            </div>
+            </Col>
+            <Col xs={12} lg={4} md={6} sm={12}>
+            <div className="footer_list">
+            <h5>{t("pages")}</h5>
+              <ul className="f_list">
+                <li>
+                <Link className="list_link" to="/">
+                {t("home")}
+                </Link>
+                  </li>
+                <li>
+                <Link className="list_link" to="/product">
+                 {t("f-allProduct")}
+                 </Link>
+                  </li>
+                <li>
+                <Link className="list_link" to="/product_order">
+                 {t("Booking_Product")}
+                 </Link>
+                 </li>
+                 <li>
+                <Link className="list_link" to="/serves">
+                {t("f-allserves")}
+                 </Link>
+                 </li>
+                 <li>
+                <Link className="list_link" to="/your-order">
+                {t("Booking")}
+                 </Link>
+                 </li>
+              </ul>
+            </div>
+              </Col>
+              <Col xs={12} lg={4} md={6} sm={12}>
+              <div className="footer_contact">
+              <h5> {t("f_contact_h")} </h5>
+              <p><span> <FaPhoneAlt /> </span>  +966 59 333 4444 </p>
+              <p> <span><FaLocationDot /> </span>  {t("Contact_address")} </p>
+              <button className="btn btn_contact" onClick={()=>navigate("/contact")} > {t("contact")}</button>
+              </div>
+              
+              </Col>
+          </Row>
+          <div className="line row" />
+          <div className="row justify-content-center align-item-center min_footer">
+            <Col xs={6} lg={6} md={6} sm={6} className="">
+              <p className="text-center" >© 2024. All Rights Reserved.</p>
+            </Col>
+
+          </div>
+
+        </Container>
+
       </footer>
     </>
   );

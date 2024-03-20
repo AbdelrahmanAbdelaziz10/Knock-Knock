@@ -35,6 +35,8 @@ import BookingProductPage from './Page/Booking/BookingProductPage';
 import CartCountProvider from './Context/CartCountContext'
 import BookPage from './Page/Booking/BookPage';
 import ShoppingCartProvider from "./Context/ShopingCardContext";
+import TermsPage from "./Page/Terms/TermsPage";
+import ScreenPage from "./Page/ScreanPage/ScreenPage";
 export const ContextLang = createContext();
 export const FormDataContext = createContext();
 export const LoginFormDataContext = createContext();
@@ -185,7 +187,7 @@ function App() {
   const getOrderServes = async (page , order) => {
     // console.log(order)
     const res = await axios.get(
-      `https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders-get-method?user_id=${order?.user_id}&order_status=${order?.order_status}&page=${page}`
+      `https://dashboard.knock-knock.ae/api/v1/service_orders/my-orders-get-method?user_id=${loginFormLocal.id}&order_status=${order?.order_status}&page=${page}`
     );
     setContenOrderServes(res?.data?.data);
     // console.log(res?.data?.data?.data)
@@ -195,10 +197,10 @@ function App() {
 
   const getOrderProduct = async (page,order) => {
     const res = await axios.get(
-      `https://dashboard.knock-knock.ae/api/v1/product_orders/my-orders-get-method?user_id=${order?.user_id}&order_status=${order?.order_status}&page=${page}`
+      `https://dashboard.knock-knock.ae/api/v1/product_orders/my-orders-get-method?user_id=${loginFormLocal.id}&order_status=${order?.order_status}&page=${page}`
     );
     setContenOrderProduct(res?.data?.data);
-    // console.log(res?.data?.data?.data)
+    console.log(res?.data?.data?.data)
   };
 
 
@@ -256,12 +258,14 @@ function App() {
                                     <Route path="/reset_password" element={<RestPassword />} />
                                     <Route path="/profile" element={<ProfilePage />} />
 
-                                    {/* <Route path="/phone" element={<PhoneNumber />} /> */}
+                                    <Route path="/screen" element={<ScreenPage />} />
                                     <Route path="/addaddress" element={<AddAddressPage />} />
                                     <Route path="/credits" element={<CreditsPage />} />
                                     <Route path="/send_gift" element={<SendGiftPage />} />
                                     <Route path="/buy-credit" element={<BuyCreditPage />} />
                                     <Route path="/privacy_policy" element={<PolicyPage />} />
+                                    <Route path="/terms_conditions" element={<TermsPage />} />
+
                                     <Route path="/contact" element={<ContactUs />} />
                                     <Route path="/your-order" element={<MyOrderpage contentOrderServes={contentOrderServes} setContenOrderServes={setContenOrderServes} getPageServes={getOrderServes} />} />
                                     <Route path="/product_order" element={<BookingProductPage setContenOrderProduct={setContenOrderProduct} contentOrderProduct={contentOrderProduct} getOrderProduct={getOrderProduct} />} />

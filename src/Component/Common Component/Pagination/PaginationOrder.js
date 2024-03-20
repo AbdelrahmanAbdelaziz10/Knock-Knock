@@ -8,7 +8,7 @@ import axios from 'axios';
 const PaginationOrder = ({ total, getPage, order }) => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1); // Initialize current page to 1
-
+console.log(total)
   useEffect(() => {
     setCurrentPage(1); // Reset current page to 1 when order changes
     getPage(1); // Get data for page 1

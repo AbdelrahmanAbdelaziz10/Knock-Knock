@@ -73,3 +73,56 @@
     color: #000; 
     font-size: 15px;
 }
+
+.card_details{
+    box-shadow: 2px 2px 10px #00000071;
+    padding: 1rem .5rem;
+}
+.card_details .details .product_name{
+    color: #008080;
+}
+.card_details .details p{
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000;
+}
+.card_details .stock h4{
+    font-size: 1.2rem;
+    color: #000;
+
+}
+.card_details .stock h4 span{
+    color: #008080;
+}
+.ltr .card_details .stock .sku{
+    margin-left: 9rem;
+}
+.rtl .card_details .stock .sku{
+    margin-right: 9rem;
+}
+.product_header .home_icon{
+    color: #008080;
+    font-size: 20px;
+}
+.product_header span,
+.product_header .page1{
+    color: #000 !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+.main_product_details .time_date .time_input .input_time{
+    border: 2px solid #008080;
+    width: 80%;
+    height: 6vh;
+    padding: 0 1rem;
+    border-radius: 5px;
+}
+.ltr .main_product_details .time_date .time_input .input_time{
+    margin-left: 2rem;
+}
+.rtl .main_product_details .time_date .time_input .input_time{
+    margin-right: 2rem;
+}
+/* .card_details .nots_row{ */
+    /* margin-left: -10rem !important; */
+/* } */
